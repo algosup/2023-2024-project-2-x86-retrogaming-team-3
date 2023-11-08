@@ -91,3 +91,11 @@ Write a short summary of the project and its goals
     - Ensuring the participation of a business resource (if required)
     - Providing final acceptance of the solution upon project completion.
 
+    - #### Stakeholders
+    
+    | Stakeholder | Might have/find an interest in... |
+    |---|---|
+    | Franck JEANNIN | |
+    | ALGOSUP Students | |
+    | B3 ?? | |
+
