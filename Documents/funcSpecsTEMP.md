@@ -179,3 +179,30 @@ text goes here
 - ### 3) Functional Analysis
 
 Functional Diagrams each function addresses a use case
+
+## D) Non-Functional Requirements
+	  *Add or remove sections as relevant*  
+- ### Costs
+    - #### I - Capital Expenditures
+        - ##### Material
+        - ##### Production Line
+        - ##### Tools
+        - ##### Software
+        - ##### Time Spent/Wages
+    - #### II - Operational Expenditures
+        - ##### Server Costs
+        - ##### Maintenance
+        - ##### Salaries
+        - ##### Energies
+- ### Reliability
+- ### Response/Performance
+- ### Operability
+- ### Recovery
+- ### Delivery
+- ### Maintainability
+- ### Scalability
+- ### Availability
+- ### Security
+- ### Transition Requirements
+
+## E) Conclusion
