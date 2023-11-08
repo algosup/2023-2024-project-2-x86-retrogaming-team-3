@@ -6,7 +6,7 @@ edited on : 07/11/2023 - by : Max BERNARD
 ### Task and Objective
 #### Task
 <!--- Explain what we have to do -->
-Our team was tasked with doing a Pac-Man clone. With the added restriction that it has to be coded in assembly and run on a x86 CPU architecture 16bit system. We are allowed to be creative with our implementation of Pac-Man.
+Our team was tasked with doing a Pac-Man clone. With the added restriction that it has to be coded in assembly and run on a x86 CPU architecture 16bit system.
 
 #### Goal and Vision
 <!-- our end goal with this project -->
@@ -16,7 +16,7 @@ Our team was tasked with doing a Pac-Man clone. With the added restriction that 
 <!-- Explain what is pacman + image to be pretty -->
 Pac-Man is a maze arcade game created in 1980 in Japan. In the game you play Pac-Man who look like : <img src="./pictures/pac-man1.png" alt="a yellow ball with a mouth" width="15"/>, and need to eat all the Gums in a maze to end the level. <p align="center"><img src="./pictures/PAC-MAN-game1.png" alt="pac-man game" width="400"/></p> 
 In this picture, the smallest dot in the maze are Gums. To navigate the level you can go up, down, left or right, with no other input required<br>
-Multi-coulored ghosts <img src="./pictures/pink-ghost.png" alt="pink-ghost" width="15"/> are chassing Pac-Man through the level and if one touch Pac-Man, he lose a life.<br> Pac-Man can eat a Super Gum (The slightly bigger dots) they give Pac-Man the ability to eat the ghost for a period of time. When you compleet a level, the ghost get faster and the Super Gum bonus get shorter. <br> After a set amount of time, fruits appear in a level. Eating the fruits give bonus points. <br>
+Multi-coulored ghosts <img src="./pictures/pink-ghost.png" alt="pink ghost" width="15"/> are chassing Pac-Man through the level and if one touch Pac-Man, he lose a life. <br> Pac-Man can eat a Super Gum (The slightly bigger dots) they give Pac-Man the ability to eat the ghost for a period of time. When you compleet a level, the ghost get faster and the Super Gum bonus get shorter. <br> After a set amount of time, fruits appear in a level. Eating the fruits give bonus points. <br>
 
 ### Personas
 <!--
