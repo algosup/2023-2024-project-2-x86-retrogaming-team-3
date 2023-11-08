@@ -36,17 +36,18 @@
 
 - ### 2) Project Overview
 
-Write a short summary of the project and its goals
+<!--- Explain what we have to do -->
+Our team was tasked with doing a Pac-Man clone. With the added restriction that it has to be coded in assembly and run on a x86 CPU architecture 16bit system.
 
 - ### 3) Project Definition
 
     - #### Vision
 
-    Tell how we perceive this project and how we are going about it
+    We are making a perfect Pac-Man clone. We will use the original game assets and try to mimic/reverse engineer the same game mechanics. 
 
     - #### Objectives
 
-    Tell the objectives given by the customer and the objectives we gave ourselves (in simple bullet points)
+    > Tell the objectives given by the customer and the objectives we gave ourselves (in simple bullet points)
 
     - #### Scope
 
@@ -165,9 +166,65 @@ Write a short summary of the project and its goals
 
 ## C) Functional Requirements
 
-- ### 1) Assumptions
+- ### 1) Pac-Man's features
 
-text goes here
+    - #### Environment
+
+        - ##### Unit of Measurement
+
+        We are using Pac-Man diameter as a unit of Reference through this section as we needed a constant that would not change. In the original Game Pac-Man has a 12px diameter but we can't assume that this will be the case for us.
+
+        - ##### Level
+
+        We will use the original 1980 Pac-Man level layout. The picture bellow can be used as a reference to recreate the layout. Neither Pac-Man nor the ghosts can cross the blue lines.
+        <p align="center"><img src="./pictures/PAC-MAN-game1.png" alt="pac-man game" width="500"/></p>
+        The Gum and Super-Gum should be placed on the exact same location. as in the picture.<br>
+        The levels walls have a blue border and a transparent fill. They should be 83.3% as wide as the Pac-Man. When wall are next to one an other, the iner border should be removed so that is looks like there is no empty space.<br>
+        The outer wall of the level are as wide as 41.6% of Pac-Man.
+        There should be a 30% rounded of effect to every corner similar to the border radius efect in CSS.<br>
+        The exeption to those rules is the Ghost spawning box at the center of the level who as the same wall as the outer wall of the level.<br>
+        Every coridor in which the player and ghosts can move should be 116.6% wider than the player.
+
+        - ##### User Interface
+
+        At the UI should be at the top of the screen. "HIGH SCORE" should be aligned at the center of the screen.<br> The Number should be displayed bellow the text with a 8.3% Pac-Man high gap between the top and bottom lines. The right most number in the high score should be under the "O" of "SCORE<br><br> The current Score should be displayed as "1UP", horizontaly aligned with "HIGH SCORE". the "P" of "1UP" should be 4 characters left of the "H" of "HIGH SCORE".<br>The number should be displayed, horizontaly aligned with the numbers under "HIGH SCORE" 
+        <p align="center"><img src="./pictures/UI.png" alt="pac-man UI" width="500"/></p>
+        The Font is a monospace and should be all Upercase. The characters are white to create a contrast against the black background. Every character is 58.3% Pac-Man high and and wide. There should be a 8.3% Pac-Man wide gap between characters.
+
+    - #### Player
+
+    Explain the player movement
+    Talk about eating pac-Gum talk about super pac-gum
+    Score 
+    Fruits ( cherry level 1, Strawberry level 2 , orange lv 3 and 4, Apple lv5 and lv6 , Melon lv7 et 8, Galaxian lv 9 et 10 , bell lv 11 et 12 key lv 13 and more)
+
+    Point reward fruit: 
+
+    |Fruit|Score|
+    |---|---|
+    |Cherry|100|
+    |Strawberry|300|
+    |Orange|500|
+    |Apple|700|
+    |Melon|1000|
+    |Galaxian|2000|
+    |Bell|3000|
+    |Key|5000|
+
+    Lives(4) + what happens on death
+    Live + 1 if you kill all ghost
+
+    - #### Ghosts
+
+    Ghost kill the player
+    Ghost scramble at game start
+    Frightened, Normal and Chase
+    Personality
+    ghost can’t leave base if you eat super pac-gum
+    
+    - #### Increasing Difficulty
+
+    the game gets faster and faster when you finish a level
 
 - ### 2) Use Cases Analysis
 

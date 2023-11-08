@@ -57,23 +57,30 @@ At the UI should be at the top of the screen. "HIGH SCORE" should be aligned at 
 The Font is a monospace and should be all Upercase. The characters are white to create a contrast against the black background. Every character is 58.3% Pac-Man high and and wide. There should be a 8.3% Pac-Man wide gap between characters.
 
 ### Player
+
 Explain the player movement
 Talk about eating pac-Gum talk about super pac-gum
 Score 
 Fruits ( cherry level 1, Strawberry level 2 , orange lv 3 and 4, Apple lv5 and lv6 , Melon lv7 et 8, Galaxian lv 9 et 10 , bell lv 11 et 12 key lv 13 and more)
+
 Point reward fruit: 
-      Cherry = 100
-	      Strawberry = 300
-	      Orange =  500
-     	      Apple = 700
-	      Melon = 1000
-	      Galaxian = 2000
-	      Bell = 3000
-	      Key = 5000
+
+|Fruit|Reward|
+|---|---|
+|Cherry|100|
+|Strawberry|300|
+|Orange|500|
+|Apple|700|
+|Melon|1000|
+|Galaxian|2000|
+|Bell|3000|
+|Key|5000|
+
 Lives(4) + what happens on death
 Live + 1 if you kill all ghost
 
-### Ghost
+### Ghosts
+
 Ghost kill the player
 Ghost scramble at game start
 Frightened, Normal and Chase
