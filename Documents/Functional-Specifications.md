@@ -29,7 +29,7 @@ someone who never played
 someone who played the original pacman
 someone an e-sport player of pacman 
 -->
-<img src="./pictures/personas/etienne.PNG" alt="Etienne-Persona" width="95%" align="center"/> 
+<img src="./pictures/personas/etienne.png" alt="Etienne-Persona" width="95%" align="center"/> 
 <img src="./pictures/personas/isabelle.PNG" alt="Isabelle-Persona" width="95%" align="center"/> 
 <img src="./pictures/personas/antoine.PNG" alt="Antoine-Persona" width="95%" align="center"/>
 
