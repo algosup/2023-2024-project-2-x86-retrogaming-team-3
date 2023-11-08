@@ -124,4 +124,13 @@ Write a short summary of the project and its goals
     ![image.png](./pictures/retroplan.png)
     (do agile instead of waterfall) => use scrum methodology
 
-    
+    - #### Milestones
+
+    | Milestone | Deadline |
+    |---|---|
+    | Functional Specifications V1 | Friday, November 10th 2023 |
+    | Technical Specifications V1 | |
+    | POC (pre MVP) | |
+    | MVP (Alpha realease) | |
+    | Oral Presentation (Beta Release) | |
+    | ?? | |
