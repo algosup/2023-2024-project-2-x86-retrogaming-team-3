@@ -134,3 +134,45 @@ Write a short summary of the project and its goals
     | MVP (Alpha realease) | |
     | Oral Presentation (Beta Release) | |
     | ?? | |
+
+    - #### Dependencies
+
+    The POC requires some prior understanding of the target technologies before being developed, meaning that its development will probably start on week 2.
+
+    The MVP requires the POC to be made first to estimate difficulty of tasks and viability of set objectives.
+
+    The rest of the project depends on the first version of the functional specifications to be released and approved first.
+
+    - #### Resources/Financial plan
+
+    We have an estimated 55 hours total to complete this project
+    => We have the team
+
+    => Teachers
+
+    => School's resources
+
+    - #### Assumptions/Constraints
+
+    | Assumptions |
+    |---|
+    | We assume that reality is real |
+    |We assume to be alive in such reality|
+
+    | Constraints |
+    |---|
+    | We only live once |
+
+## C) Functional Requirements
+
+- ### 1) Assumptions
+
+text goes here
+
+- ### 2) Use Cases Analysis
+
+| Use Case Number | Name | Description | Actor(s) | Pre-Conditions | Flow of Events | Post-Conditions | Exit Criteria | Notes & Issues |
+|---|---|---|---|---|---|---|---|---|
+| text | text | The player launches the game | the player | text | text | text | text | text |
+| text | text | The player pauses the game | the player | text | text | text | text | text |
+
