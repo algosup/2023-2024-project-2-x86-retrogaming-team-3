@@ -1,9 +1,3 @@
-<style>
-    table {
-        width: 100%;
-    }
-</style>
-
 <h1 align="center">Weekly Report</h1>
 
 Project x86-retrogaming
@@ -13,8 +7,20 @@ Project x86-retrogaming
 
 <div align="center">
 
-|Team 3|Week 1|
-|:-|-:|
+<table width="100%">
+<tr>
+<th>
+<p align="left">
+Team 3
+</p>
+</th>
+<th>
+<p align="right">
+Week 1
+</p>
+</th>
+</tr>
+</table>
 
 </div>
 
