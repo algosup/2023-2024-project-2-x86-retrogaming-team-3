@@ -29,30 +29,43 @@
 
 - ### 1) Glossary
 
-    | Term used | Definition |
-    |---|---|
-    | "team" | ALGOSUP team 3 (2023-2024 - Project 2) |
-    | "player" | A person playing the game |
+| Term used | Definition |
+|---|---|
+| "team" | ALGOSUP team 3 (2023-2024 - Project 2) |
+| "player" | A person playing the game |
 
 - ### 2) Project Overview
 
-    => Write a short summary of the project and its goals
+=> Write a short summary of the project and its goals
 
 - ### 3) Project Definition
 
     - #### Vision
 
-        Tell how we perceive this project and how we are going about it
+    Tell how we perceive this project and how we are going about it
+
     - #### Objectives
 
-        Tell the objectives given by the customer and the objectives we gave ourselves (in simple bullet points)
+    Tell the objectives given by the customer and the objectives we gave ourselves (in simple bullet points)
 
     - #### Scope
 
-        | In Scope |
-        |---|
-        | Delivering the project |
-        | Delivering an open source clone of pacman |
-        | Out of Scope |
-        |---|
-        | Delivering the actual DOS binaries of pacman |
+    | In Scope |
+    |---|
+    | Delivering the project |
+    | Delivering an open source clone of pacman |
+
+    | Out of Scope |
+    |---|
+    | Delivering the actual DOS binaries of pacman |
+
+    - #### Deliverables
+
+    | Name | Type | Deadline | Goal | Link |
+    |---|---|---|---|---|
+    | Functional Specifications Document | Document (markdown) | | | |
+    | Technical Specifications Document | Document (markdown) | | | |
+    | Weekly Reports | Document ( | | | |
+    | Test Plan | Document (markdown) | | | |
+    | Test Cases | Spreadsheet (Google Sheets) | | | |
+
