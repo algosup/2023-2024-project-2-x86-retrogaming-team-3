@@ -49,10 +49,10 @@
 
     - #### Scope
 
-| In Scope |
-|---|
-| Delivering the project |
-| Delivering an open source clone of pacman |
-| Out of Scope |
-|---|
-| Delivering the actual DOS binaries of pacman |
+        | In Scope |
+        |---|
+        | Delivering the project |
+        | Delivering an open source clone of pacman |
+        | Out of Scope |
+        |---|
+        | Delivering the actual DOS binaries of pacman |
