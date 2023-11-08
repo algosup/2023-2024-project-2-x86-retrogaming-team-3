@@ -10,7 +10,7 @@ Our team was tasked with doing a Pac-Man clone. With the added restriction that 
 
 #### Goal and Vision
 <!-- our end goal with this project -->
-
+We are making a perfect Pac-Man clone. We will use the Original assets and copy exactly the game mechanics. 
 
 ### What is Pac-Man ?
 <!-- Explain what is pacman + image to be pretty -->
@@ -32,7 +32,6 @@ someone an e-sport player of pacman
 <img src="./pictures/personas/etienne.png" alt="Etienne-Persona" width="95%" align="center"/> 
 <img src="./pictures/personas/isabelle.PNG" alt="Isabelle-Persona" width="95%" align="center"/> 
 <img src="./pictures/personas/antoine.PNG" alt="Antoine-Persona" width="95%" align="center"/>
-
 
 ## Game
 ### Environment
