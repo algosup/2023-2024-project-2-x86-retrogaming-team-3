@@ -176,3 +176,6 @@ text goes here
 | text | text | The player launches the game | the player | text | text | text | text | text |
 | text | text | The player pauses the game | the player | text | text | text | text | text |
 
+- ### 3) Functional Analysis
+
+Functional Diagrams each function addresses a use case
