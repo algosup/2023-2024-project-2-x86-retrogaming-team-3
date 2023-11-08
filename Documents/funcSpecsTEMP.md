@@ -92,10 +92,24 @@ Write a short summary of the project and its goals
     - Providing final acceptance of the solution upon project completion.
 
     - #### Stakeholders
-    
+
     | Stakeholder | Might have/find an interest in... |
     |---|---|
     | Franck JEANNIN | |
     | ALGOSUP Students | |
     | B3 ?? | |
+
+    - #### Project Roles
+
+    As defined by the project owner (ALGOSUP), the team is arranged in the following manner:
+    
+    | Role | Description | Name |
+    |---|---|---|
+    | Project Manager | | Arthur LEMOINE |
+    | Program Manager | | Max BERNARD |
+    | Tech Lead | | Mathis KAKAL |
+    | Software Developer | | Pierre GORIN |
+    | Software Developer | | Evan UHRLING |
+    | Quality Assurance | | Quentin CLEMENT |
+    | Quality Assurance | | Robin DEBRY |
 
