@@ -106,7 +106,9 @@ When a player set a new high score, it should push out the player that was previ
 
 ### Sound Design
 
-
+<audio controls>
+  <source src="./wav/pacman_beginning.wav" type="audio/wav">
+</audio>
 
 ### Player
 
