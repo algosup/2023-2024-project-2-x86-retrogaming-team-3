@@ -35,11 +35,26 @@ someone an e-sport player of pacman
 
 ## Game
 ### Environment
-Describe the walls and stuff. picture included
+<!-- Describe the walls and stuff. picture included
 Describe the UI
-when game end leaderboard 
+when game end leaderboard -->
+#### Unit of Mesurment
+We are using Pac-Man diameter as a unit of Reference through this section as we needed a constant that would not change. In the original Game Pac-Man has a 12px diameter but we can't assume that this will be the case for us.
 
-Describe the colors use
+#### Level
+We will use the original 1980 Pac-Man level layout. The picture bellow can be used as a reference to recreate the layout. Neither Pac-Man nor the ghosts can cross the blue lines.
+<p align="center"><img src="./pictures/PAC-MAN-game1.png" alt="pac-man game" width="500"/></p>
+The Gum and Super-Gum should be placed on the exact same location. as in the picture.<br>
+The levels walls have a blue border and a transparent fill. They should be 83.3% as wide as the Pac-Man. When wall are next to one an other, the iner border should be removed so that is looks like there is no empty space.<br>
+The outer wall of the level are as wide as 41.6% of Pac-Man.
+There should be a 30% rounded of effect to every corner similar to the border radius efect in CSS.<br>
+The exeption to those rules is the Ghost spawning box at the center of the level who as the same wall as the outer wall of the level.<br>
+Every coridor in which the player and ghosts can move should be 116.6% wider than the player.
+
+#### User Interface
+At the UI should be at the top of the screen. "HIGH SCORE" should be aligned at the center of the screen.<br> The Number should be displayed bellow the text with a 8.3% Pac-Man high gap between the top and bottom lines. The right most number in the high score should be under the "O" of "SCORE<br><br> The current Score should be displayed as "1UP", horizontaly aligned with "HIGH SCORE". the "P" of "1UP" should be 4 characters left of the "H" of "HIGH SCORE".<br>The number should be displayed, horizontaly aligned with the numbers under "HIGH SCORE" 
+<p align="center"><img src="./pictures/UI.png" alt="pac-man UI" width="500"/></p>
+The Font is a monospace and should be all Upercase. The characters are white to create a contrast against the black background. Every character is 58.3% Pac-Man high and and wide. There should be a 8.3% Pac-Man wide gap between characters.
 
 ### Player
 Explain the player movement
