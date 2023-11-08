@@ -102,7 +102,7 @@ Write a short summary of the project and its goals
     - #### Project Roles
 
     As defined by the project owner (ALGOSUP), the team is arranged in the following manner:
-    
+
     | Role | Description | Name |
     |---|---|---|
     | Project Manager | | Arthur LEMOINE |
@@ -113,3 +113,15 @@ Write a short summary of the project and its goals
     | Quality Assurance | | Quentin CLEMENT |
     | Quality Assurance | | Robin DEBRY |
 
+    - #### Project Reviewers
+
+    External project reviewers have been appointed by the project owner to review our specifications and provide us with feedback.
+
+- ### 5) Project Plan
+
+    - #### Retroplanning
+
+    ![image.png](./pictures/retroplan.png)
+    (do agile instead of waterfall) => use scrum methodology
+
+    
