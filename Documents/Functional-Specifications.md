@@ -106,9 +106,38 @@ When a player set a new high score, it should push out the player that was previ
 
 ### Sound Design
 
-<audio controls>
-  <source src="./wav/pacman_beginning.wav" type="audio/wav">
-</audio>
+#### Intro
+When the game start or restart after a player death, this tune should play.
+[pacman_beginning.wav](./wav/pacman_beginning.wav)<br><br>If there is a need to recreate the music rather than use the file, this is the coresponding partition.
+<p align="center"><img src="./pictures/Partition/into.png" alt="pac-man UI" width="400"></p>
+
+#### Other 
+##### Waka Waka
+The sound that plays when Pac-Man is eating normal gums.
+[pacman_chomp.wav](./wav/pacman_chomp.wav)
+
+##### Background sound
+The background sounds that play once the game start. A diferent sounds play when you eat a Super Gum.
+[pacman_wewew.wav](./wav/pacman_wewew.wav)
+
+##### Afraid Ghosts
+This replace the background sound when the Super Gum is active and the ghost are runing from you.
+[pacman_ghostrun.wav](./wav/pacman_ghostrun.wav)
+
+##### Death
+The sound that plays when Pac-Man dies.
+[pacman_death.wav](./wav/pacman_death.wav)
+
+##### Super Gum
+The sound that plays when Pac-Man eats either a Fruit or a Super Gum.
+[pacman_eatfruit.wav](./wav/pacman_eatfruit.wav)
+
+##### Eat Ghost
+The sound that plays when Pac-Man eats a ghost when in Super Gum mode.
+[pacman_eatghost.wav](./wav/pacman_eatghost.wav)
+
+##### Victory Sound
+There is no victory sound in the original Pac-Man. Instead, at the end of each level there was a [short animated scene](https://www.youtube.com/watch?v=UGQ5sOWuzy8) featuring Pac-Man and the Red Ghost. This scene has music, but as we are not implementing this Level transition, we wont implement this music either.
 
 ### Player
 
