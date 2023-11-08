@@ -36,7 +36,7 @@
 
 - ### 2) Project Overview
 
-=> Write a short summary of the project and its goals
+Write a short summary of the project and its goals
 
 - ### 3) Project Definition
 
@@ -68,4 +68,26 @@
     | Weekly Reports | Document ( | | | |
     | Test Plan | Document (markdown) | | | |
     | Test Cases | Spreadsheet (Google Sheets) | | | |
+
+- ### 4) Project Organisation
+
+    - #### Project Representatives
+
+    |Project Owner|Represented by...|
+    |---|---|
+    |**Franck JEANNIN**|Represented by himself|
+    |Arthur LEMOINE|Represented by Max BERNARD (Program Manager)|
+    
+    The project sponsors (highlighted in **bold**) are expected to be in charge of:
+
+    - Defining the vision and high level objectives for the project
+    - Approving the requirements, timetable, resources and budget (if necessary).
+    - Authorising the provision of funds/resources (internal or external) (if necessary).
+    - Approving the functional and technical specifications written by the team.
+    - Ensuring that major business risks are identified and managed by the team
+    - Approving any major changes in scope
+    - Receiving Project Weekly Reports and taking action accordingly resolving issues escalated by the Project Manager.
+    - Ensuring business/operational support arrangements are put in place
+    - Ensuring the participation of a business resource (if required)
+    - Providing final acceptance of the solution upon project completion.
 
