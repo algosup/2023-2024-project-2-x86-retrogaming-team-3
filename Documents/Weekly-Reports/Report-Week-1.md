@@ -1,28 +1,12 @@
-<h1 align="center">Weekly Report</h1>
-
-Project x86-retrogaming
+Project x86-retrogaming -- Team 3
 ---
 
+<h1 align="center">Weekly Report 1</h1>
+
+<h4 align="center">6/11/2023 to 10/11/2023</h4>
+
+
 <p align="right">last modified : 8/11/2023</p>
-
-<div align="center">
-
-<table width="100%">
-<tr>
-<th>
-<p align="left">
-Team 3
-</p>
-</th>
-<th>
-<p align="right">
-Week 1
-</p>
-</th>
-</tr>
-</table>
-
-</div>
 
 ### Ongoing tasks
 
