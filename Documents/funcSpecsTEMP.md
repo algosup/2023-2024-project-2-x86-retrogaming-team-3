@@ -1,6 +1,16 @@
-# Functional Specifications Document
+# Functional Specifications
+<!-- TABLE OF CONTENTS -->
+<h2 id="table-of-contents"> 📖 Table of Contents</h2>
+
+<details>
+    <summary><em>click to expand...</em></summary>
+    Hello There !
+</details>
+
 ## A) Document Control
-- ### 1) Document Information
+
+- ### ➤ 1) Document Information
+
 | Document ID | Document # 01 |
 |---|---|
 | Document Owner | Max BERNARD |
@@ -8,13 +18,13 @@
 | Last Issue Date | |
 | Document Name | |
 
-- ### 2) Document History
+- ### ➤ 2) Document History
 
 | Version n° | Edits completed by | Date | Description of edit |
 |---|---|---|---|
 |01|Max BERNARD, Mathis KAKAL| 11/08/2023 | Initial Release (V.01) |
 
-- ### 3) Document Approval
+- ### ➤ 3) Document Approval
 
 | Role | Name | Signature | Date |
 |---|---|---|---|
@@ -27,29 +37,29 @@
 
 ## B) Introduction
 
-- ### 1) Glossary
+- ### ➤ 1) Glossary
 
 | Term used | Definition |
 |---|---|
 | "team" | ALGOSUP team 3 (2023-2024 - Project 2) |
 | "player" | A person playing the game |
 
-- ### 2) Project Overview
+- ### ➤ 2) Project Overview
 
 <!--- Explain what we have to do -->
 Our team was tasked with doing a Pac-Man clone. With the added restriction that it has to be coded in assembly and run on a x86 CPU architecture 16bit system.
 
-- ### 3) Project Definition
+- ### ➤ 3) Project Definition
 
-    - #### Vision
+    - #### ➭ <ins>Vision</ins>
 
     We are making a perfect Pac-Man clone. We will use the original game assets and try to mimic/reverse engineer the same game mechanics. 
 
-    - #### Objectives
+    - #### ➭ <ins>Objectives</ins>
 
     > Tell the objectives given by the customer and the objectives we gave ourselves (in simple bullet points)
 
-    - #### Scope
+    - #### ➭ <ins>Scope</ins>
 
     | In Scope |
     |---|
@@ -60,7 +70,7 @@ Our team was tasked with doing a Pac-Man clone. With the added restriction that 
     |---|
     | Delivering the actual DOS binaries of pacman |
 
-    - #### Deliverables
+    - #### ➭ <ins>Deliverables</ins>
 
     | Name | Type | Deadline | Goal | Link |
     |---|---|---|---|---|
@@ -70,9 +80,9 @@ Our team was tasked with doing a Pac-Man clone. With the added restriction that 
     | Test Plan | Document (markdown) | | | |
     | Test Cases | Spreadsheet (Google Sheets) | | | |
 
-- ### 4) Project Organisation
+- ### ➤ 4) Project Organisation
 
-    - #### Project Representatives
+    - #### ➭ <ins>Project Representatives</ins>
 
     |Project Owner|Represented by...|
     |---|---|
@@ -92,7 +102,7 @@ Our team was tasked with doing a Pac-Man clone. With the added restriction that 
     - Ensuring the participation of a business resource (if required)
     - Providing final acceptance of the solution upon project completion.
 
-    - #### Stakeholders
+    - #### ➭ <ins>Stakeholders</ins>
 
     | Stakeholder | Might have/find an interest in... |
     |---|---|
@@ -100,7 +110,7 @@ Our team was tasked with doing a Pac-Man clone. With the added restriction that 
     | ALGOSUP Students | |
     | B3 ?? | |
 
-    - #### Project Roles
+    - #### ➭ <ins>Project Roles</ins>
 
     As defined by the project owner (ALGOSUP), the team is arranged in the following manner:
 
@@ -114,18 +124,18 @@ Our team was tasked with doing a Pac-Man clone. With the added restriction that 
     | Quality Assurance | | Quentin CLEMENT |
     | Quality Assurance | | Robin DEBRY |
 
-    - #### Project Reviewers
+    - #### ➭ <ins>Project Reviewers</ins>
 
     External project reviewers have been appointed by the project owner to review our specifications and provide us with feedback.
 
-- ### 5) Project Plan
+- ### ➤ 5) Project Plan
 
-    - #### Retroplanning
+    - #### ➭ <ins>Retroplanning</ins>
 
     ![image.png](./pictures/retroplan.png)
     (do agile instead of waterfall) => use scrum methodology
 
-    - #### Milestones
+    - #### ➭ <ins>Milestones</ins>
 
     | Milestone | Deadline |
     |---|---|
@@ -136,7 +146,7 @@ Our team was tasked with doing a Pac-Man clone. With the added restriction that 
     | Oral Presentation (Beta Release) | |
     | ?? | |
 
-    - #### Dependencies
+    - #### ➭ <ins>Dependencies</ins>
 
     The POC requires some prior understanding of the target technologies before being developed, meaning that its development will probably start on week 2.
 
@@ -144,7 +154,7 @@ Our team was tasked with doing a Pac-Man clone. With the added restriction that 
 
     The rest of the project depends on the first version of the functional specifications to be released and approved first.
 
-    - #### Resources/Financial plan
+    - #### ➭ <ins>Resources/Financial plan</ins>
 
     We have an estimated 55 hours total to complete this project
     => We have the team
@@ -153,7 +163,7 @@ Our team was tasked with doing a Pac-Man clone. With the added restriction that 
 
     => School's resources
 
-    - #### Assumptions/Constraints
+    - #### ➭ <ins>Assumptions/Constraints</ins>
 
     | Assumptions |
     |---|
@@ -166,15 +176,15 @@ Our team was tasked with doing a Pac-Man clone. With the added restriction that 
 
 ## C) Functional Requirements
 
-- ### 1) Pac-Man's features
+- ### ➤ 1) Pac-Man's features
 
-    - #### Environment
+    - #### ➭ <ins>Environment</ins>
 
-        - ##### Unit of Measurement
+        - ##### ➤ <ins>Unit of Measurement</ins>
 
         We are using Pac-Man diameter as a unit of Reference through this section as we needed a constant that would not change. In the original Game Pac-Man has a 12px diameter but we can't assume that this will be the case for us.
 
-        - ##### Level
+        - ##### ➤ <ins>Level</ins>
 
         We will use the original 1980 Pac-Man level layout. The picture bellow can be used as a reference to recreate the layout. Neither Pac-Man nor the ghosts can cross the blue lines.
         <p align="center"><img src="./pictures/PAC-MAN-game1.png" alt="pac-man game" width="500"/></p>
@@ -185,13 +195,13 @@ Our team was tasked with doing a Pac-Man clone. With the added restriction that 
         The exeption to those rules is the Ghost spawning box at the center of the level who as the same wall as the outer wall of the level.<br>
         Every coridor in which the player and ghosts can move should be 116.6% wider than the player.
 
-        - ##### User Interface
+        - ##### ➤ <ins>User Interface</ins>
 
         At the UI should be at the top of the screen. "HIGH SCORE" should be aligned at the center of the screen.<br> The Number should be displayed bellow the text with a 8.3% Pac-Man high gap between the top and bottom lines. The right most number in the high score should be under the "O" of "SCORE<br><br> The current Score should be displayed as "1UP", horizontaly aligned with "HIGH SCORE". the "P" of "1UP" should be 4 characters left of the "H" of "HIGH SCORE".<br>The number should be displayed, horizontaly aligned with the numbers under "HIGH SCORE" 
         <p align="center"><img src="./pictures/UI.png" alt="pac-man UI" width="500"/></p>
         The Font is a monospace and should be all Upercase. The characters are white to create a contrast against the black background. Every character is 58.3% Pac-Man high and and wide. There should be a 8.3% Pac-Man wide gap between characters.
 
-    - #### Player
+    - #### ➭ <ins>Player</ins>
 
     Explain the player movement
     Talk about eating pac-Gum talk about super pac-gum
@@ -214,7 +224,7 @@ Our team was tasked with doing a Pac-Man clone. With the added restriction that 
     Lives(4) + what happens on death
     Live + 1 if you kill all ghost
 
-    - #### Ghosts
+    - #### <ins>Ghosts</ins>
 
     Ghost kill the player
     Ghost scramble at game start
@@ -222,44 +232,52 @@ Our team was tasked with doing a Pac-Man clone. With the added restriction that 
     Personality
     ghost can’t leave base if you eat super pac-gum
     
-    - #### Increasing Difficulty
+    - #### <ins>Increasing Difficulty</ins>
 
     the game gets faster and faster when you finish a level
 
-- ### 2) Use Cases Analysis
+- ### ➤ 2) Personas Definition
+
+<img src="./pictures/personas/etienne.png" alt="Etienne-Persona" width="95%" align="center"/> 
+
+<img src="./pictures/personas/isabelle.PNG" alt="Isabelle-Persona" width="95%" align="center"/> 
+
+<img src="./pictures/personas/antoine.PNG" alt="Antoine-Persona" width="95%" align="center"/>
+
+- ### ➤ 3) Use Cases Analysis
 
 | Use Case Number | Name | Description | Actor(s) | Pre-Conditions | Flow of Events | Post-Conditions | Exit Criteria | Notes & Issues |
 |---|---|---|---|---|---|---|---|---|
 | text | text | The player launches the game | the player | text | text | text | text | text |
 | text | text | The player pauses the game | the player | text | text | text | text | text |
 
-- ### 3) Functional Analysis
+- ### ➤ 4) Functional Analysis
 
 Functional Diagrams each function addresses a use case
 
 ## D) Non-Functional Requirements
 	  *Add or remove sections as relevant*  
-- ### Costs
-    - #### I - Capital Expenditures
-        - ##### Material
-        - ##### Production Line
-        - ##### Tools
-        - ##### Software
-        - ##### Time Spent/Wages
-    - #### II - Operational Expenditures
-        - ##### Server Costs
-        - ##### Maintenance
-        - ##### Salaries
-        - ##### Energies
-- ### Reliability
-- ### Response/Performance
-- ### Operability
-- ### Recovery
-- ### Delivery
-- ### Maintainability
-- ### Scalability
-- ### Availability
-- ### Security
-- ### Transition Requirements
+- ### ➤ Costs
+    - #### <ins>I - Capital Expenditures</ins>
+        - ##### <ins>Material</ins>
+        - ##### <ins>Production Line</ins>
+        - ##### <ins>Tools</ins>
+        - ##### <ins>Software</ins>
+        - ##### <ins>Time Spent/Wages</ins>
+    - #### <ins>II - Operational Expenditures</ins>
+        - ##### <ins>Server Costs</ins>
+        - ##### <ins>Maintenance</ins>
+        - ##### <ins>Salaries</ins>
+        - ##### <ins>Energies</ins>
+- ### ➤ Reliability
+- ### ➤ Response/Performance
+- ### ➤ Operability
+- ### ➤ Recovery
+- ### ➤ Delivery
+- ### ➤ Maintainability
+- ### ➤ Scalability
+- ### ➤ Availability
+- ### ➤ Security
+- ### ➤ Transition Requirements
 
-## E) Conclusion
+## E) Conclusion??
