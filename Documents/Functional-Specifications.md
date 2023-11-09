@@ -156,24 +156,58 @@ The sound that plays when Pac-Man eats a ghost when in Super Gum mode.
 There is no victory sound in the original Pac-Man. Instead, at the end of each level there was a [short animated scene](https://www.youtube.com/watch?v=UGQ5sOWuzy8) featuring Pac-Man and the Red Ghost. This scene has music, but as we are not implementing this Level transition, we wont implement this music either.
 
 ### Player
+#### Movement
+<!-- Explain the player movement -->
+The Pac-Man can move in four directions: Up, Down, Left and Right. The Pac-Man can not Cros the wall of the Maze. He continues to move in a direction until it enconters a wall, at which point it stop moving, or the player gives an other direction.<br>The Pac-Man can go through tunels, highlighted in red on the picture bellow. Going through a tunel transport you to the other tunel.
+<p align="center"><img src="./pictures/PAC-MAN-game2.png" alt="pac-man tunel" width="400"></p>
+Pac-Man base speed is 676.9% Pac-Man per second.
 
-Explain the player movement
-Talk about eating pac-Gum talk about super pac-gum
-Score 
-Fruits ( cherry level 1, Strawberry level 2 , orange lv 3 and 4, Apple lv5 and lv6 , Melon lv7 et 8, Galaxian lv 9 et 10 , bell lv 11 et 12 key lv 13 and more)
+##### Turning
+If the player intitiat the turn before the corner He can move 45° until he gets to the middle of the coridor as seen in the picture below.
+<p align="center"><img src="./pictures/turning.png" alt="pac-man tunel" width="200"></p>
+The player move faster at this point as he is moving in both direction at the same time, making him twice as fast.
+The if the turn is initiated earlier this efect last longer, but it can not be intitated before the Player is in the turning coridor.
 
-Point reward fruit: 
+#### Eating Gums
+Pac-Man can eat Gums, the small dots in the maze. When he eat he stop for 1/60th of a second. Eating a gum adds 10 points to the score.<br> Eating a Super Gum (the bigger dots) stop Pac-Man for 3/60th of a second. Once he eat this Super Gum he enter Fright modes and add 50 to the score.
 
-|Fruit|Reward|
-|---|---|
-|Cherry|100|
-|Strawberry|300|
-|Orange|500|
-|Apple|700|
-|Melon|1000|
-|Galaxian|2000|
-|Bell|3000|
-|Key|5000|
+#### Fright Mode
+This speed up Pac-Man and Makes the ghost run away from the player. The player can now eat the ghosts. Each ghost give a certain amount of points. 
+_| points
+---|---
+1st ghost | 200
+2nd ghost | 400
+3rd ghost | 800
+4th ghost | 1600
+
+#### Speed
+When the level increase Pac-Man movement speed increase. This table give the % modifier over the Base Speed.
+
+Level | Speed Modifier | Fright Mode
+---|---|---
+1 | 80% | 90%
+2-4 | 90% | 95%
+5-20 | 100% | 100%
+21+ | 90% | 100%
+
+#### Fruits
+
+Fruits appear twice per level. When eaten  they give bonus points. However they don't stay on screen forever. They stay between 9 and 10 second. The exact time should be randomized each time.<br> The Fruit 1st appears after the player eat 70 gums and a 2nd Fruit appears after 170 have been eaten.<br><br>The bonus fruits are from left to right :<br>Cherry, Strawberry, Orange, Apple, Galaxian, Melon, Bell, Key
+<p align="center"><img src="./pictures/fruits.png" alt="pac-man game" width="500"/></p>
+Diferent fruits appear at diferent level and give diferent point reward : 
+
+|Fruit|Reward| Level
+|---|---| ---
+|Cherry|100| 1
+|Strawberry|300| 2
+|Orange|500| 3
+|Apple|700| 5-6
+|Melon|1000| 7-8
+|Galaxian|2000| 9-10
+|Bell|3000| 11-12
+|Key|5000| 13+
+
+#### Score
 
 Lives(4) + what happens on death
 Live + 1 if you kill all ghost
