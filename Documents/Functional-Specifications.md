@@ -162,23 +162,49 @@ The Pac-Man can move in four directions: Up, Down, Left and Right. The Pac-Man c
 <p align="center"><img src="./pictures/PAC-MAN-game2.png" alt="pac-man tunel" width="400"></p>
 Pac-Man base speed is 676.9% Pac-Man per second.
 
+##### Animation
+
+Pac-Man close and oppen his mouth in a loop whenever he move. This GIF should be used as a reference for this animation. Pac-Man mouth should point in the direction of movment.
+<p align="center"><img src="./pictures/pacman-move.gif" alt="pac-man tunel" width="300"></p>
+
 ##### Turning
 If the player intitiat the turn before the corner He can move 45° until he gets to the middle of the coridor as seen in the picture below.
 <p align="center"><img src="./pictures/turning.png" alt="pac-man tunel" width="200"></p>
 The player move faster at this point as he is moving in both direction at the same time, making him twice as fast.
-The if the turn is initiated earlier this efect last longer, but it can not be intitated before the Player is in the turning coridor.
+The if the turn is initiated earlier this efect last longer, but it can not be intitated before the Player is in the turning coridor.<br>Otherwise The turn should be a 90° angle and gets no speed boost.
 
 #### Eating Gums
 Pac-Man can eat Gums, the small dots in the maze. When he eat he stop for 1/60th of a second. Eating a gum adds 10 points to the score.<br> Eating a Super Gum (the bigger dots) stop Pac-Man for 3/60th of a second. Once he eat this Super Gum he enter Fright modes and add 50 to the score.
 
 #### Fright Mode
-This speed up Pac-Man and Makes the ghost run away from the player. The player can now eat the ghosts. Each ghost give a certain amount of points. 
+This speed up Pac-Man and Makes the ghost run away from the player. The player can now eat the ghosts. Each ghost give a certain amount of points.
 _| points
 ---|---
 1st ghost | 200
 2nd ghost | 400
 3rd ghost | 800
 4th ghost | 1600
+
+As the level increase, the time in Fright Mode varies up to level 19 when fright mode ends instantly.
+
+Level | Fright. Time (in sec.)
+--- | ---
+1 | 6
+2 | 5
+3 | 4
+4 | 3
+5 | 2
+6 | 5
+7-8 | 2
+9 | 1
+10 | 5
+11 | 2
+12-13 | 1
+14 | 3
+15-16 | 1 
+17 | 0
+18 | 1
+19+ | 0
 
 #### Speed
 When the level increase Pac-Man movement speed increase. This table give the % modifier over the Base Speed.
@@ -207,21 +233,64 @@ Diferent fruits appear at diferent level and give diferent point reward :
 |Bell|3000| 11-12
 |Key|5000| 13+
 
-#### Score
-
-Lives(4) + what happens on death
-Live + 1 if you kill all ghost
+#### Player Lifes and Death
+The player start with 3 extra life. He lose one whenver he get touched by a ghost when not in frightened mode. This reset the player and ghost to their starting position.<br>once the player reach 10,000 point he gain an aditional life.
+<p align="center"><img src="./pictures/pacman-death.gif" alt="pac-man game" width="400"/></p>
+When pacman die an animation of the circle disapering and exploding plays as seen in the picture above.
 
 ### Ghosts
 
-Ghost kill the player
-Ghost scramble at game start
-Frightened, Normal and Chase
-Personality
-ghost can’t leave base if you eat super pac-gum
+#### General Behavior
+Ghost main features is to kill the player on contact. Except when the game is in Fright Mode.
 
-### increasing difficulty 
-the game gets faster and faster when you finish a level
+##### Speed
+As the level increase ghost get faster. When the Game is in Fright Mode, the ghosts get slower. Aditionaly when crossing a tunnel, unlike pac-man ghost are slowed. The slow down zone is highlighted in green in the picture below.
+<p align="center"><img src="./pictures/tunnel.png" alt="pac-man game" width="400"/></p>
+<br>This table give the numbers as % of Pac-Man's base speed (676.9% Pac-Man per second).
+
+Level | Ghost speed | Fright Mode | Tunnel Speed
+--- | --- | --- | --- 
+1 | 75% | 50% | 40%
+2-4 | 85% | 55% | 45%
+5+ | 95% | 60% | 50%
+
+##### Behavior
+There are three modes for ghost. 
+* Chase : In chase mode the ghost is hunting down Pac-Man each ghost has a unique chase behavior.
+* Scatter : Each ghost has a home corner in the maze. In Scatter mode ghost will navigate toward that corner.  
+* Frightened : When Pac-Man is in Fright Mode after eating a Super Gum, the ghosts move at random through the maze. they also turn blue and frown (see image). <img src="./pictures/frightened.jpeg" alt="frightened" width="50"/>
+
+Ghost alternate between Scater and Chase at predeterminded intervals. The timer on thos interval stops when the ghost are in Fright mode. When level change so does this timing. <br> This table give the timeing in second :
+
+Mode | Level 1 | Level 2-4 | Level 5+
+--- | --- | --- | ---
+Scatter | 7 | 7 | 5
+Chase | 20 | 20 | 20
+Scatter | 7 | 7 | 5
+Chase | 20 | 20 | 20
+Scatter | 5 | 5 | 5
+Chase | 20 | 1033 | 1037
+Scatter | 5 | 1/60 | 1/60
+Chase | ∞ | ∞ | ∞
+
+##### Game Start
+Ghost should start in the <em>Ghost Spawning Box</em> exept Red who start in front of the door as seen in the image.
+<p align="center"><img src="./pictures/start.png" alt="pac-man game" width="300"/></p>
+Red moves first. Pink once Red is clear of the door, then Orange when Pac-Man has eaten 30 Gums and finaly Cyan when Pac-Man has eaten 60 Gums. All the ghost start in Scatter mode and on the same timing.
+
+##### Ghost death
+When Pac-Man eat a ghost it takes a few second to reapear in the Ghost Spawning Box. The ghosts can't leave the box as long as the Fright Mode is active. Once the Fright Mode is over, ghosts go back to the behavior they were at before being eaten.
+
+#### Personality
+Each ghost has a slightly diferent personality
+
+##### Red 
+Red chase mode aim for the current player location. When the number of remain Gums drop bellow a certain threshold it speed up. when it drop again it accelerate a second time. <br>The number and aceleration figure change from level to level :
+
+Level | Gum Threshold 1 | Speed up 1 | Gum Threshold 2 | Speed up 2
+--- | --- | --- | --- | ---
+1-2 | 30 | 90% | 15 | 95%
+3-4
 
 ## Project Stages
 
