@@ -1,5 +1,42 @@
 # Pac-Man
-edited on : 07/11/2023 - by : Max BERNARD
+edited on : 10/11/2023 - by : Max BERNARD
+
+## Table of Content
+* [Overview](#overview)
+    + [Task and Objective](#task-and-objective)
+        - [Task](#task)
+        - [Goal and Vision](#goal-and-vision)
+    + [What is Pac-Man ?](#what-is-pac-man-)
+    + [Personas](#personas)
+* [Game](#game)
+    + [Game Overview](#game-overview)
+        - [Objectives and lose condition](#objectives-and-lose-condition)
+        - [Evironment](#evironment)
+        - [Player](#player)
+        - [Score](#score)
+        - [Ghosts](#ghosts)
+    + [Environment](#environment)
+        - [Unit of Measurement](#unit-of-measurement)
+        - [Level](#level)
+        - [User Interface](#user-interface)
+        - [Leaderboard](#leaderboard)
+    + [Player](#player-1)
+        - [Movement](#movement)
+        - [Eating Gums](#eating-gums)
+        - [Fright Mode](#fright-mode)
+        - [Speed](#speed)
+        - [Fruits](#fruits)
+        - [Player Lifes and Death](#player-lifes-and-death)
+    + [Ghosts](#ghosts-1)
+        - [General Behavior](#general-behavior)
+        - [Personality](#personality)
+    + [Sound Design](#sound-design)
+        - [Intro](#intro)
+        - [Other ](#other)
+* [Project Stages](#project-stages)
+    + [MVP](#mvp)
+    + [Priority ](#priority)
+* [Glossaire](#glossaire)
 
 ## Overview
 
@@ -38,6 +75,57 @@ someone an e-sport player of pacman
 <img src="./pictures/personas/antoine.PNG" alt="Antoine-Persona" width="95%" align="center"/>
 
 ## Game
+
+### Game Overview
+#### Objectives and lose condition
+The game objectives are twofold :
+* Eat all the Gums (244) in a maze. this will bring the player to the next level.
+* Get the highest posible Score. Several action will let the player increase their score.
+Eating all the Gums will increase the score, but is not the only way to do so.
+
+There is a single lose condition : being touched by a ghost.<br>The player can lose 4 times before getting a game over.
+
+#### Evironment
+The game is played in a maze with this exact layout.
+<p align="center"><img src="./pictures/PAC-MAN-game1.png" alt="Pac-Man game" width="500"/></p>
+Neither the player nor the ghost can cross the blue lines.
+The maze does not change from one level to the other.<br>When the player or ghost go through the gate at the left and right side of the maze, they reapear at the other end of the level.
+
+#### Player
+The player play as Pac-Man, a yellow ball with a mouth. It can move in 4 directions : Up, Down, Left, Right. The movement speed change from level to level.<br>The player can eat Gums to gain points. The player can eat Super Gum (the bigger pink dots in the maze) to enter what is called Fright Mode.
+
+##### fright mode
+In Fright Mode the player can move faster and can now eat ghost without dieing. When in this state the objectives becomes to eat the ghost. at higher level Fright Mode get shorter and shorter.
+
+##### Fruits 
+Fruits can appear in the maze twice per game when the player eats a specific amount of Gums. fruits only stay on screen for a short period of time.
+
+#### Score
+This are all the way the player can get score :
+* Eating Gums
+* Eating Super Gums
+* Eating Fruits
+* Eating a ghost
+
+once the player reach 10,000 points he gains an extra life.
+
+#### Ghosts
+##### Overview
+* There are 4 ghost. 
+* The player dies when touching one of the ghost.
+* A ghost can be eaten by the player when the game is in fright mode
+* If a ghost is eaten he goes back to the center of the maze
+* At higher dificulty ghost get faster
+
+##### Behavior
+The ghost have three behaviors :
+* Scater : the ghost are going for a corner of the maze
+* Chase : Each ghost has a diferent chase behavior, but the idea is to hunt down the player.
+* Frightened : The ghosts are runnig away from the player with random movement. this only activate when the game is in Fright Mode when the player eat a Super Gum.
+
+The Ghost cycle between Scater and Chase. at higher level ghosts spend more time in Chase mode.
+
+
 ### Environment
 <!-- Describe the walls and stuff. picture included
 Describe the UI
@@ -120,40 +208,6 @@ When a player sets a new high score, it should push out the player that was prev
 ##### Leaving Leaderboard
 There should be a button to press that leaves the leaderboard and starts a new game.
 
-### Sound Design
-
-#### Intro
-This tune should play, when the game starts or restarts after a player's death.
-[pacman_beginning.wav](./wav/pacman_beginning.wav)<br><br>If there is a need to recreate the music rather than use the file, this is the coresponding partition.
-<p align="center"><img src="./pictures/Partition/into.png" alt="pac-man UI" width="400"></p>
-
-#### Other 
-##### Waka Waka
-The sound that plays when Pac-Man is eating normal gums.
-[pacman_chomp.wav](./wav/pacman_chomp.wav)
-
-##### Background sound
-The background sound that plays once the game starts. A different sound plays when you eat a Super Gum.
-[pacman_wewew.wav](./wav/pacman_wewew.wav)
-
-##### Afraid Ghosts
-This replaces the background sound when the Super Gum is active, and the ghosts are running from you.
-[pacman_ghostrun.wav](./wav/pacman_ghostrun.wav)
-
-##### Death
-The sound that plays when Pac-Man dies.
-[pacman_death.wav](./wav/pacman_death.wav)
-
-##### Super Gum
-The sound that plays when Pac-Man eats either a Fruit or a Super Gum.
-[pacman_eatfruit.wav](./wav/pacman_eatfruit.wav)
-
-##### Eat Ghost
-The sound that plays when Pac-Man eats a ghost when in Super Gum mode.
-[pacman_eatghost.wav](./wav/pacman_eatghost.wav)
-
-##### Victory Sound
-There is no victory sound in the original Pac-Man. Instead, at the end of each level there was a [short animated scene](https://www.youtube.com/watch?v=UGQ5sOWuzy8) featuring Pac-Man and the Red Ghost. This scene has music, but as we are not implementing this Level transition, we wont implement this music either.
 
 ### Player
 #### Movement
@@ -282,7 +336,7 @@ Red moves first. Pink once Red is clear of the door, then Orange when Pac-Man ha
 When Pac-Man eat a ghost it takes a few second to reapear in the Ghost Spawning Box. The ghosts can't leave the box as long as the Fright Mode is active. Once the Fright Mode is over, ghosts go back to the behavior they were at before being eaten.
 
 #### Personality
-Each ghost has a slightly diferent personality
+Each ghost has a slightly diferent personality and AI.
 
 ##### Red 
 Red chase mode aim for the current player location. When the number of remain Gums drop bellow a certain threshold it speed up. when it drop again it accelerate a second time. <br>The number and aceleration figure change from level to level :
@@ -290,7 +344,68 @@ Red chase mode aim for the current player location. When the number of remain Gu
 Level | Gum Threshold 1 | Speed up 1 | Gum Threshold 2 | Speed up 2
 --- | --- | --- | --- | ---
 1-2 | 30 | 90% | 15 | 95%
-3-4
+3-4 | 40 | 90% | 20 | 95%
+5 | 40 | 100% | 20 | 105%
+6-8 | 50 | 100% | 25 | 105%
+9-11 | 60 | 100% | 30 | 105%
+12-14 | 80 | 100% | 40 | 105%
+15-18 | 100 | 100% | 50 | 105%
+19+ | 120 | 100% | 60 | 105%
+
+##### Pink
+Pink chase mode aims 4 tile in front of the player. There is an exeption to that logic, when the player is looking up pinky aims 4 tiles up and 4 tile left of the player.
+<p align="center"><img src="./pictures/Pinky-Target.PNG" alt="pinky" width="300"/></p>
+
+##### Orange
+When this ghost is over 8 tiles away from Pac-Man he aims for Pac-Mans position. If he is closer than 8 tiles he goes into scater mode. This result in this ghost doing back and forth. Keep in mind that ghosts can not turn 180° on themself and this rule still applies when changing mode.
+
+##### Cyan
+Cyan has a complex targeting algorithm.<br> Step by Steps:
+* Look 2 tiles ahead of Pac-Man. or 2 tiles up and 2 left when Pac-Man is looking up.
+* Then draw a line from the Red Ghost to that target
+* Then double that line. 
+<p align="center"><img src="./pictures/cyan-target.PNG" alt="pinky" width="400"/></p>
+In this exemple above :
+<ol>
+<li>The red Arrow show is looking 2 tiles in front of Pac-Man into the green dashed tile.</li>
+<li>In purple we draw a line from Red to that dashed tile</li>
+<li>The yellow Arrow is a copy of the purple arrow but it is using the dashed tile as a point of origin. The yellow arrow points at Cyan's target tile</li>
+</ol>
+
+### Sound Design
+
+#### Intro
+This tune should play, when the game starts or restarts after a player's death.
+[pacman_beginning.wav](./wav/pacman_beginning.wav)<br><br>If there is a need to recreate the music rather than use the file, this is the coresponding partition.
+<p align="center"><img src="./pictures/Partition/into.png" alt="pac-man UI" width="400"></p>
+
+#### Other 
+##### Waka Waka
+The sound that plays when Pac-Man is eating normal gums.
+[pacman_chomp.wav](./wav/pacman_chomp.wav)
+
+##### Background sound
+The background sound that plays once the game starts. A different sound plays when you eat a Super Gum.
+[pacman_wewew.wav](./wav/pacman_wewew.wav)
+
+##### Afraid Ghosts
+This replaces the background sound when the Super Gum is active, and the ghosts are running from you.
+[pacman_ghostrun.wav](./wav/pacman_ghostrun.wav)
+
+##### Death
+The sound that plays when Pac-Man dies.
+[pacman_death.wav](./wav/pacman_death.wav)
+
+##### Super Gum
+The sound that plays when Pac-Man eats either a Fruit or a Super Gum.
+[pacman_eatfruit.wav](./wav/pacman_eatfruit.wav)
+
+##### Eat Ghost
+The sound that plays when Pac-Man eats a ghost when in Super Gum mode.
+[pacman_eatghost.wav](./wav/pacman_eatghost.wav)
+
+##### Victory Sound
+There is no victory sound in the original Pac-Man. Instead, at the end of each level there was a [short animated scene](https://www.youtube.com/watch?v=UGQ5sOWuzy8) featuring Pac-Man and the Red Ghost. This scene has music, but as we are not implementing this Level transition, we wont implement this music either.
 
 ## Project Stages
 
