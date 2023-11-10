@@ -47,13 +47,14 @@
 - ### ➤ 2) Project Overview
 
 <!--- Explain what we have to do -->
-Our team was tasked with doing a Pac-Man clone. With the added restriction that it has to be coded in assembly and run on a x86 CPU architecture 16bit system.
+Our team was tasked with creating a Pac-Man clone, with the added restriction that it had to be coded in assembly and run on an x86 CPU architecture 16-bit system.
 
 - ### ➤ 3) Project Definition
 
     - #### ➭ <ins>Vision</ins>
 
-    We are making a perfect Pac-Man clone. We will use the original game assets and try to mimic/reverse engineer the same game mechanics. 
+    <!-- our end goal with this project -->
+    We are making a perfect Pac-Man clone. We will use the Original assets and copy exactly the game mechanics. 
 
     - #### ➭ <ins>Objectives</ins>
 
