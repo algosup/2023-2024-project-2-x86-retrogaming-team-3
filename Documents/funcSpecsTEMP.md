@@ -3,7 +3,7 @@
 <summary>
 
 <!-- TABLE OF CONTENTS -->
-<h2 id="table-of-contents"> 📖 Table of Contents</h2>
+<h3 id="table-of-contents"> 📖 Table of Contents</h3>
 
 </summary>
     
