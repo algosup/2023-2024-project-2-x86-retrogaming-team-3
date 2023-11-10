@@ -193,63 +193,21 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     They give Pac-Man the ability to eat the ghosts for a period of time. When you complete a level, the ghosts get faster, and the Super Gum bonus gets shorter.
     After a set amount of time, fruits appear in a level. Eating the fruits gives bonus points.
 
-    - #### ➭ <ins>Environment</ins>
+    - #### Objectives and lose condition
 
-        - ##### ➤ <ins>Unit of Measurement</ins>
+    The game objectives are twofold :
+    - Eat all the Gums (244) in a maze. this will bring the player to the next level.
+    - Get the highest posible Score. Several action will let the player increase their score.
+    Eating all the Gums will increase the score, but is not the only way to do so.
 
-        We are using Pac-Man diameter as a unit of Reference through this section as we needed a constant that would not change. In the original Game Pac-Man has a 12px diameter but we can't assume that this will be the case for us.
+    There is a single lose condition : being touched by a ghost.<br>The player can lose 4 times before getting a game over.
 
-        - ##### ➤ <ins>Level</ins>
+    - #### Environment 
 
-        We will use the original 1980 Pac-Man level layout. The picture bellow can be used as a reference to recreate the layout. Neither Pac-Man nor the ghosts can cross the blue lines.
-        <p align="center"><img src="./pictures/PAC-MAN-game1.png" alt="pac-man game" width="500"/></p>
-        The Gum and Super-Gum should be placed on the exact same location. as in the picture.<br>
-        The levels walls have a blue border and a transparent fill. They should be 83.3% as wide as the Pac-Man. When wall are next to one an other, the iner border should be removed so that is looks like there is no empty space.<br>
-        The outer wall of the level are as wide as 41.6% of Pac-Man.
-        There should be a 30% rounded of effect to every corner similar to the border radius efect in CSS.<br>
-        The exeption to those rules is the Ghost spawning box at the center of the level who as the same wall as the outer wall of the level.<br>
-        Every coridor in which the player and ghosts can move should be 116.6% wider than the player.
-
-        - ##### ➤ <ins>User Interface</ins>
-
-        At the UI should be at the top of the screen. "HIGH SCORE" should be aligned at the center of the screen.<br> The Number should be displayed bellow the text with a 8.3% Pac-Man high gap between the top and bottom lines. The right most number in the high score should be under the "O" of "SCORE<br><br> The current Score should be displayed as "1UP", horizontaly aligned with "HIGH SCORE". the "P" of "1UP" should be 4 characters left of the "H" of "HIGH SCORE".<br>The number should be displayed, horizontaly aligned with the numbers under "HIGH SCORE" 
-        <p align="center"><img src="./pictures/UI.png" alt="pac-man UI" width="500"/></p>
-        The Font is a monospace and should be all Upercase. The characters are white to create a contrast against the black background. Every character is 58.3% Pac-Man high and and wide. There should be a 8.3% Pac-Man wide gap between characters.
-
-    - #### ➭ <ins>Player</ins>
-
-    Explain the player movement
-    Talk about eating pac-Gum talk about super pac-gum
-    Score 
-    Fruits ( cherry level 1, Strawberry level 2 , orange lv 3 and 4, Apple lv5 and lv6 , Melon lv7 et 8, Galaxian lv 9 et 10 , bell lv 11 et 12 key lv 13 and more)
-
-    Point reward fruit: 
-
-    |Fruit|Score|
-    |---|---|
-    |Cherry|100|
-    |Strawberry|300|
-    |Orange|500|
-    |Apple|700|
-    |Melon|1000|
-    |Galaxian|2000|
-    |Bell|3000|
-    |Key|5000|
-
-    Lives(4) + what happens on death
-    Live + 1 if you kill all ghost
-
-    - #### <ins>Ghosts</ins>
-
-    Ghost kill the player
-    Ghost scramble at game start
-    Frightened, Normal and Chase
-    Personality
-    ghost can’t leave base if you eat super pac-gum
-    
-    - #### <ins>Increasing Difficulty</ins>
-
-    the game gets faster and faster when you finish a level
+    The game is played in a maze with this exact layout.
+    <p align="center"><img src="./pictures/PAC-MAN-game1.png" alt="Pac-Man game" width="500"/></p>
+    Neither the player nor the ghost can cross the blue lines.
+    The maze does not change from one level to the other.<br>When the player or ghost go through the gate at the left and right side of the maze, they reapear at the other end of the level.
 
 - ### ➤ 2) Personas Definition
 
