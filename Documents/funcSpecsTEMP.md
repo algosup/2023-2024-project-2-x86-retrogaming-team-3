@@ -207,12 +207,6 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     
     The player can eat Gums to gain points. The player can eat Super Gum (the bigger pink dots in the maze) to enter what is called Fright Mode.
 
-    - #### Environment 
-
-    The game is played in a maze with this exact layout.
-    <p align="center"><img src="./pictures/PAC-MAN-game1.png" alt="Pac-Man game" width="500"/></p>
-    Neither the player nor the ghost can cross the blue lines.
-    The maze does not change from one level to the other.<br>When the player or ghost go through the gate at the left and right side of the maze, they reapear at the other end of the level.
 
     - #### Fruits 
 
@@ -230,7 +224,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     - Eating Fruits
     - Eating a ghost
 
-    once the player reach 10,000 points he gains an extra life.
+    Oznce the player reach 10,000 points he gains an extra life.
 
     - #### Ghosts
 
@@ -247,8 +241,39 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
     The Ghost cycle between Scater and Chase. at higher level ghosts spend more time in Chase mode.
 
-    
+    - #### Environment 
 
+    The game is played in a maze with this exact layout.
+    <p align="center"><img src="./pictures/PAC-MAN-game1.png" alt="Pac-Man game" width="500"/></p>
+    Neither the player nor the ghost can cross the blue lines.
+    The maze does not change from one level to the other.<br>When the player or ghost go through the gate at the left and right side of the maze, they reapear at the other end of the level.
+
+
+    - #### User Interface
+
+        - ##### Font
+
+        The font is a monospace sans-serif and should be all uppercase. The characters are white to create a contrast against the black background. Every character is 53.8% Pac-Man high and wide. There should be a 7.7% Pac-Man wide gap between characters. A new line should have a 7.7% Pac-Man gap from the one above.
+
+        - ##### Game Score
+
+        At the top of the screen, "HIGH SCORE" should be aligned at the centre of the screen.<br> The number should be displayed below the text. The rightmost number in the high score should be under the "O" of "SCORE".<br><br> The current score should be displayed as "1UP", horizontally aligned with "HIGH SCORE". The "P" of "1UP" should be 4 characters to the left of the "H" of "HIGH SCORE".<br> The number should be displayed horizontally aligned with the numbers under "HIGH SCORE". The rightmost number should be offset 1 character to the right of the "P" in "1UP". The end result should look like this picture:
+        
+        <p align="center"><img src="./pictures/UI.png" alt="pac-man UI" width="400"/></p>
+
+        - ##### Game Ready
+
+        At the start of the game, "READY!" gets displayed on the corridor just under the Ghost Spawning Box, as seen in the image below.
+        <p align='center'><img src='./pictures/game-ready.png' alt='Pac-Man UI' width='400'/></p>
+
+        This message should disappear when the game starts. This message should use the same font as the rest of the UI but be yellow.
+
+        - ##### Game Over
+
+        When the player loses all of his lives, a game over screen needs to appear. The words "GAME OVER" appear in the corridor under the <em>Ghost Spawning Box</em>, as seen in the image below.
+        <p align='center'><img src='./pictures/game-over.png' alt='Pac-Man UI' width='400'/></p>
+
+        This stays on display for 3 seconds until the game takes the player to the leaderboard. This message uses the same font as the rest of the UI but is red.
 
 - ### ➤ 2) Personas Definition
 
