@@ -1,13 +1,19 @@
 # Functional Specifications
+<details>
+<summary>
+
 <!-- TABLE OF CONTENTS -->
 <h2 id="table-of-contents"> 📖 Table of Contents</h2>
 
-<details>
-    <summary><em>click to expand...</em></summary>
-    Hello There !
+</summary>
+    
+
+
 </details>
 
 ## A) Document Control
+<details>
+<summary><em></em></summary>
 
 - ### ➤ 1) Document Information
 
@@ -35,7 +41,11 @@
 | Quality Assurance | Quentin CLEMENT | | |
 | Quality Assurance | Robin DEBRY | | |
 
+</details>
+
 ## B) Introduction
+<details>
+<summary><em></em></summary>
 
 - ### ➤ 1) Glossary
 
@@ -175,7 +185,13 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     |---|
     | We only live once |
 
+</details>
+
 ## C) Functional Requirements
+
+
+<details>
+<summary><em>𝕔𝕝𝕚𝕔𝕜 𝕥𝕠 𝕖𝕩𝕡𝕒𝕟𝕕...</em></summary>
 
 - ### ➤ 1) Pac-Man's features
 
@@ -193,7 +209,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     They give Pac-Man the ability to eat the ghosts for a period of time. When you complete a level, the ghosts get faster, and the Super Gum bonus gets shorter.
     After a set amount of time, fruits appear in a level. Eating the fruits gives bonus points.
 
-    - #### Objectives and lose condition
+    - #### ➭ <ins>Objectives and lose condition</ins>
 
     The game objectives are twofold :
     - Eat all the Gums (244) in a maze. this will bring the player to the next level.
@@ -202,21 +218,21 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
     There is a single lose condition : being touched by a ghost.<br>The player can lose 4 times before getting a game over.
 
-    - #### Player
+    - #### ➭ <ins>Player</ins>
     The player play as Pac-Man, a yellow ball with a mouth. It can move in 4 directions : Up, Down, Left, Right. The movement speed change from level to level.
     
     The player can eat Gums to gain points. The player can eat Super Gum (the bigger pink dots in the maze) to enter what is called Fright Mode.
 
 
-    - #### Fruits 
+    - #### ➭ <ins>Fruits</ins>
 
     Fruits can appear in the maze twice per game when the player eats a specific amount of Gums. fruits only stay on screen for a short period of time.
 
-    - #### Fright mode
+    - #### ➭ <ins>Fright mode</ins>
 
     In Fright Mode the player can move faster and can now eat ghost without dieing. When in this state the objectives becomes to eat the ghost. at higher level Fright Mode get shorter and shorter.
 
-    - #### Score
+    - #### ➭ <ins>Score</ins>
 
     This are all the way the player can get score :
     - Eating Gums
@@ -226,7 +242,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
     Oznce the player reach 10,000 points he gains an extra life.
 
-    - #### Ghosts
+    - #### ➭ <ins>Ghosts</ins>
 
     - There are 4 ghost. 
     - The player dies when touching one of the ghost.
@@ -241,7 +257,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
     The Ghost cycle between Scater and Chase. at higher level ghosts spend more time in Chase mode.
 
-    - #### Environment 
+    - #### ➭ <ins>Environment</ins>
 
     The game is played in a maze with this exact layout.
     <p align="center"><img src="./pictures/PAC-MAN-game1.png" alt="Pac-Man game" width="500"/></p>
@@ -249,26 +265,26 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     The maze does not change from one level to the other.<br>When the player or ghost go through the gate at the left and right side of the maze, they reapear at the other end of the level.
 
 
-    - #### User Interface
+    - #### ➭ <ins>User Interface</ins>
 
-        - ##### Font
+        - ##### <ins>Font</ins>
 
         The font is a monospace sans-serif and should be all uppercase. The characters are white to create a contrast against the black background. Every character is 53.8% Pac-Man high and wide. There should be a 7.7% Pac-Man wide gap between characters. A new line should have a 7.7% Pac-Man gap from the one above.
 
-        - ##### Game Score
+        - ##### <ins>Game Score</ins>
 
         At the top of the screen, "HIGH SCORE" should be aligned at the centre of the screen.<br> The number should be displayed below the text. The rightmost number in the high score should be under the "O" of "SCORE".<br><br> The current score should be displayed as "1UP", horizontally aligned with "HIGH SCORE". The "P" of "1UP" should be 4 characters to the left of the "H" of "HIGH SCORE".<br> The number should be displayed horizontally aligned with the numbers under "HIGH SCORE". The rightmost number should be offset 1 character to the right of the "P" in "1UP". The end result should look like this picture:
         
         <p align="center"><img src="./pictures/UI.png" alt="pac-man UI" width="400"/></p>
 
-        - ##### Game Ready
+        - ##### <ins>Game Ready</ins>
 
         At the start of the game, "READY!" gets displayed on the corridor just under the Ghost Spawning Box, as seen in the image below.
         <p align='center'><img src='./pictures/game-ready.png' alt='Pac-Man UI' width='400'/></p>
 
         This message should disappear when the game starts. This message should use the same font as the rest of the UI but be yellow.
 
-        - ##### Game Over
+        - ##### <ins>Game Over</ins>
 
         When the player loses all of his lives, a game over screen needs to appear. The words "GAME OVER" appear in the corridor under the <em>Ghost Spawning Box</em>, as seen in the image below.
         <p align='center'><img src='./pictures/game-over.png' alt='Pac-Man UI' width='400'/></p>
@@ -327,4 +343,6 @@ Functional Diagrams each function addresses a use case
 - ### ➤ Security
 - ### ➤ Transition Requirements
 
-## E) Conclusion??
+</details>
+
+<br>
