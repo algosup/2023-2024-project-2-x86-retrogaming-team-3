@@ -21,7 +21,7 @@
 
 </summary>
 
-- ### ☛ 1) Document Information
+- ### 1) Document Information
 
 | Document ID | Document # 01 |
 |---|---|
@@ -30,13 +30,13 @@
 | Last Issue Date | |
 | Document Name | |
 
-- ### ☛ 2) Document History
+- ### 2) Document History
 
 | Version n° | Edits completed by | Date | Description of edit |
 |---|---|---|---|
 |01|Max BERNARD, Mathis KAKAL| 11/08/2023 | Initial Release (V.01) |
 
-- ### ☛ 3) Document Approval
+- ### 3) Document Approval
 
 | Role | Name | Signature | Date |
 |---|---|---|---|
@@ -57,19 +57,19 @@
 
 </summary>
 
-- ### ☛ 1) Glossary
+- ### 1) Glossary
 
 | Term used | Definition |
 |---|---|
 | "team" | ALGOSUP team 3 (2023-2024 - Project 2) |
 | "player" | A person playing the game |
 
-- ### ☛ 2) Project Overview
+- ### 2) Project Overview
 
 <!--- Explain what we have to do -->
 Our team was tasked with creating a Pac-Man clone, with the added restriction that it had to be coded in assembly and run on an x86 CPU architecture 16-bit system.
 
-- ### ☛ 3) Project Definition
+- ### 3) Project Definition
 
     - #### ➭ <ins>Vision</ins>
 
@@ -101,7 +101,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     | Test Plan | Document (markdown) | | | |
     | Test Cases | Spreadsheet (Google Sheets) | | | |
 
-- ### ☛ 4) Project Organisation
+- ### 4) Project Organisation
 
     - #### ➭ <ins>Project Representatives</ins>
 
@@ -205,7 +205,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
 </summary>
 
-- ### ☛ 1) Pac-Man's features
+- ### 1) Pac-Man's features
 
     - #### ➭ <ins>Brief History...</ins>
 
@@ -303,7 +303,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
         This stays on display for 3 seconds until the game takes the player to the leaderboard. This message uses the same font as the rest of the UI but is red.
 
-- ### ☛ 2) Personas Definition
+- ### 2) Personas Definition
 
 <!--
 Some stuff about persona
@@ -319,14 +319,14 @@ someone an e-sport player of pacman
 <img src="./pictures/personas/isabelle.PNG" alt="Isabelle-Persona" width="95%" align="center"/> 
 <img src="./pictures/personas/antoine.PNG" alt="Antoine-Persona" width="95%" align="center"/>
 
-- ### ☛ 3) Use Cases Analysis
+- ### 3) Use Cases Analysis
 
 | Use Case Number | Name | Description | Actor(s) | Pre-Conditions | Flow of Events | Post-Conditions | Exit Criteria | Notes & Issues |
 |---|---|---|---|---|---|---|---|---|
 | text | text | The player launches the game | the player | text | text | text | text | text |
 | text | text | The player pauses the game | the player | text | text | text | text | text |
 
-- ### ☛ 4) Functional Analysis
+- ### 4) Functional Analysis
 
 > Functional Diagrams each function addresses a use case
 
@@ -341,7 +341,7 @@ someone an e-sport player of pacman
 </summary>
 
 	  *Add or remove sections as relevant*  
-- ### ☛ Costs
+- ### Costs
     - #### <ins>I - Capital Expenditures</ins>
         - ##### <ins>Material</ins>
         - ##### <ins>Production Line</ins>
@@ -353,16 +353,16 @@ someone an e-sport player of pacman
         - ##### <ins>Maintenance</ins>
         - ##### <ins>Salaries</ins>
         - ##### <ins>Energies</ins>
-- ### ☛ Reliability
-- ### ☛ Response/Performance
-- ### ☛ Operability
-- ### ☛ Recovery
-- ### ☛ Delivery
-- ### ☛ Maintainability
-- ### ☛ Scalability
-- ### ☛ Availability
-- ### ☛ Security
-- ### ☛ Transition Requirements
+- ### Reliability
+- ### Response/Performance
+- ### Operability
+- ### Recovery
+- ### Delivery
+- ### Maintainability
+- ### Scalability
+- ### Availability
+- ### Security
+- ### Transition Requirements
 
 </details>
 
