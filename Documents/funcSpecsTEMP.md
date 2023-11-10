@@ -215,12 +215,30 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     The maze does not change from one level to the other.<br>When the player or ghost go through the gate at the left and right side of the maze, they reapear at the other end of the level.
 
     - #### Fruits 
-    
+
     Fruits can appear in the maze twice per game when the player eats a specific amount of Gums. fruits only stay on screen for a short period of time.
 
-    - ##### Fright mode
+    - #### Fright mode
 
     In Fright Mode the player can move faster and can now eat ghost without dieing. When in this state the objectives becomes to eat the ghost. at higher level Fright Mode get shorter and shorter.
+
+    - #### Score
+
+    This are all the way the player can get score :
+    - Eating Gums
+    - Eating Super Gums
+    - Eating Fruits
+    - Eating a ghost
+
+    once the player reach 10,000 points he gains an extra life.
+
+    - #### Ghosts
+
+    - There are 4 ghost. 
+    - The player dies when touching one of the ghost.
+    - A ghost can be eaten by the player when the game is in fright mode
+    - If a ghost is eaten he goes back to the center of the maze
+    - At higher dificulty ghost get faster
 
     
 
