@@ -240,6 +240,13 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     - If a ghost is eaten he goes back to the center of the maze
     - At higher dificulty ghost get faster
 
+    The ghost have three behaviors :
+        - Scater : the ghost are going for a corner of the maze
+        - Chase : Each ghost has a diferent chase behavior, but the idea is to hunt down the player.
+        - Frightened : The ghosts are runnig away from the player with random movement. this only activate when the game is in Fright Mode when the player eat a Super Gum.
+
+    The Ghost cycle between Scater and Chase. at higher level ghosts spend more time in Chase mode.
+
     
 
 
