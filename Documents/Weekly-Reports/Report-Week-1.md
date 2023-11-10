@@ -1,7 +1,7 @@
 Project x86-retrogaming -- Team 3
 ---
 
-<h1 align="center">Weekly Report 1</h1>
+<h2 align="center">Weekly Report 1</h2>
 
 <h4 align="center">6/11/2023 to 10/11/2023</h4>
 
@@ -17,8 +17,8 @@ Project x86-retrogaming -- Team 3
 |Functionnal Specification  |Max & Mathis         |30%              |95%                        |6/11/2023      |
 |Test Plan                  |Quentin & Robin      |25%              |40%                        |6/11/2023      |
 |Research                   |Pierre & Evan        |/                |/                          |6/11/2023      |
-|Project Charter            |Arthur               |0%               |100%                       |8/11/2023      |
-|Gantt Diagramm (Crit Path) |Arthur               |60%              |100%                       |6/11/2023      |
+|Project Charter            |Arthur               |100%               |100%                       |8/11/2023      |
+|Gantt Diagramm simplified (Crit Path) |Arthur               |60%              |100%                       |6/11/2023      |
 
 </div>
 
