@@ -19,9 +19,13 @@
     - [Testing type](#testing-type)
     - [Document testing](#document-testing)
     - [Game testing](#game-testing)
-  - [Test objectives](#test-objectives)
   - [Test criteria](#test-criteria)
-  - [Ressource planning](#ressource-planning)
+    - [Suspension criteria](#suspension-criteria)
+    - [Exit criteria](#exit-criteria)
+  - [Resource planning](#resource-planning)
+    - [Human resource](#human-resource)
+    - [System resource](#system-resource)
+    - [Test tool](#test-tool)
   - [Plan test environment](#plan-test-environment)
   - [Schedule estimation](#schedule-estimation)
   - [Test deliverables](#test-deliverables)
@@ -69,21 +73,52 @@ As the functional and technical specifications are the most important documents,
 
 About the product in itself, all the features listed in the functional specifications will be tested to verify if they are corresponding to what was planned in the specifications.
 
-## Test objectives
-
-![mindmap](../pictures/mindmap.png "mindmap of all test we will do")
-
-With this mindmap we can define the test objectives for this project.
-
-- Check all documents to make sure they are in accordance with the customer's requirements.
-- Check the environment and design to make sure that all aspects of the Pac-Man game are in our game.
-- Check all the player controls to be sure that the controls are intuitive, work well without any bugs.
-- Check the characteristic of the ghosts to make sure they are the same as the old Pac-Man with the same mechanism.
-- Check the way to change the level of the game to be sure it will work as the way of Pac-Man of 1980.
-
 ## Test criteria
 
-## Ressource planning
+### Suspension criteria
+
+The active test cycle will be suspended until the criteria are resolved.
+
+![suspensionCriteria](../pictures/QA/suspension%20criteria.png)
+
+We will use this test criteria for tests with critical priority, because if a test is with critical priority, it means we absolutely need it on our game, also we will need these features for the MVP.
+
+### Exit criteria
+
+We will use this test criteria for tests with a priority between low and high for each development phases.
+For that we need to target a run rate and a pass rate.
+
+**run rate** will be the ratio between the number test cases executed/total test cases.
+**pass rate** will be the ratio between number test cases passed/test cases executed.
+
+Run rate is mandatory to be 100%.
+Achieving high pass rate is a goal.
+
+A weekly report will be make each friday to confirm the exit criteria with the report of the test results
+
+## Resource planning
+
+### Human resource
+
+The Quality Assurance of this team will take all QA roles together like Test manager,Tester, developer in test, test administrator and software quality assurance(SQA).
+
+|No|Member|Tasks|
+|---|---|---|
+|1|Tester|Execute the tests, Log results and report the defects|
+|2|Developer in test|Implement the test cases, the test units|
+|3|Test Administrator|Builds up and ensure the test environment to be use by the test|
+|4|SQA|Take in charge the quality assurance. Check to confirm the testing process is meeting specified requirements of the customers|
+
+### System resource
+
+|No|Resources|Description|
+|---|---|---|
+|1|Test tools|Builds up and ensure the test environment to be use by the test.|
+|2|Computer|We will use 2 different OS (Windows and MAC to be sure that the game works in each of them|
+
+### Test tool
+
+For this project we will use Linear(https://linear.app). It will be useful for all issues make each weeks for each features needs for the game. After that we will convert the issue into github.
 
 ## Plan test environment
 
