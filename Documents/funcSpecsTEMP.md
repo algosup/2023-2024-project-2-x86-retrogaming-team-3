@@ -179,6 +179,20 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
 - ### ➤ 1) Pac-Man's features
 
+    - #### ➭ <ins>Brief History...</ins>
+
+    <!-- Explain what is pacman + image to be pretty -->
+    Pac-Man is a maze arcade game created in 1980 in Japan. In the game, you play Pac-Man, who looks like: <img src="./pictures/pac-man1.png" alt="a yellow ball with a mouth" width="15">, and need to eat all the Gums in a maze to end the level.
+    <p align="center"><img src="./pictures/PAC-MAN-game1.png" alt="Pac-Man game" width="400"/></p> 
+
+    In this picture, the smallest dots in the maze are Gums. To navigate the level, you can go up, down, left, or right, with no other input required.
+
+    Multi-coloured ghosts <img src="./pictures/pink-ghost.png" alt="pink ghost" width="15"/> are chasing Pac-Man through the level, and if one touches Pac-Man, he loses a life.
+    Pac-Man can eat a Super Gum (the slightly bigger dots). 
+    
+    They give Pac-Man the ability to eat the ghosts for a period of time. When you complete a level, the ghosts get faster, and the Super Gum bonus gets shorter.
+    After a set amount of time, fruits appear in a level. Eating the fruits gives bonus points.
+
     - #### ➭ <ins>Environment</ins>
 
         - ##### ➤ <ins>Unit of Measurement</ins>
