@@ -7,13 +7,17 @@
 
 </summary>
     
-
+...table of contents
 
 </details>
 
-## A) Document Control
+<!-- Document Control -->
 <details>
-<summary><em></em></summary>
+<summary>
+
+## A) Document Control
+
+</summary>
 
 - ### ➤ 1) Document Information
 
@@ -43,9 +47,13 @@
 
 </details>
 
-## B) Introduction
+<!-- Introduction  -->
 <details>
-<summary><em></em></summary>
+<summary>
+
+## B) Introduction
+
+</summary>
 
 - ### ➤ 1) Glossary
 
@@ -187,11 +195,13 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
 </details>
 
+<!-- Functional Requirements -->
+<details>
+<summary>
+
 ## C) Functional Requirements
 
-
-<details>
-<summary><em>𝕔𝕝𝕚𝕔𝕜 𝕥𝕠 𝕖𝕩𝕡𝕒𝕟𝕕...</em></summary>
+</summary>
 
 - ### ➤ 1) Pac-Man's features
 
@@ -316,7 +326,10 @@ someone an e-sport player of pacman
 
 - ### ➤ 4) Functional Analysis
 
-Functional Diagrams each function addresses a use case
+> Functional Diagrams each function addresses a use case
+
+</details>
+
 
 ## D) Non-Functional Requirements
 	  *Add or remove sections as relevant*  
