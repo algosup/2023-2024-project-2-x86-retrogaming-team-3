@@ -330,8 +330,14 @@ someone an e-sport player of pacman
 
 </details>
 
+<!-- Non-Functional Requirements -->
+<details>
+<summary>
 
 ## D) Non-Functional Requirements
+
+</summary>
+
 	  *Add or remove sections as relevant*  
 - ### ☛ Costs
     - #### <ins>I - Capital Expenditures</ins>
