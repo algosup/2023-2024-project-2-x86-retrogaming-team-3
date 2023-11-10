@@ -202,12 +202,28 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
     There is a single lose condition : being touched by a ghost.<br>The player can lose 4 times before getting a game over.
 
+    - #### Player
+    The player play as Pac-Man, a yellow ball with a mouth. It can move in 4 directions : Up, Down, Left, Right. The movement speed change from level to level.
+    
+    The player can eat Gums to gain points. The player can eat Super Gum (the bigger pink dots in the maze) to enter what is called Fright Mode.
+
     - #### Environment 
 
     The game is played in a maze with this exact layout.
     <p align="center"><img src="./pictures/PAC-MAN-game1.png" alt="Pac-Man game" width="500"/></p>
     Neither the player nor the ghost can cross the blue lines.
     The maze does not change from one level to the other.<br>When the player or ghost go through the gate at the left and right side of the maze, they reapear at the other end of the level.
+
+    - #### Fruits 
+    
+    Fruits can appear in the maze twice per game when the player eats a specific amount of Gums. fruits only stay on screen for a short period of time.
+
+    - ##### Fright mode
+
+    In Fright Mode the player can move faster and can now eat ghost without dieing. When in this state the objectives becomes to eat the ghost. at higher level Fright Mode get shorter and shorter.
+
+    
+
 
 - ### ➤ 2) Personas Definition
 
