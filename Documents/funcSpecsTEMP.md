@@ -253,10 +253,18 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
 - ### ➤ 2) Personas Definition
 
+<!--
+Some stuff about persona
+
+link to personas image
+https://docs.google.com/presentation/d/1_mEMP8P38QoMadhjGEqS27iHCdO-DTESxNDUPH_uHMA/edit?usp=sharing
+
+someone who never played 
+someone who played the original pacman
+someone an e-sport player of pacman 
+-->
 <img src="./pictures/personas/etienne.png" alt="Etienne-Persona" width="95%" align="center"/> 
-
 <img src="./pictures/personas/isabelle.PNG" alt="Isabelle-Persona" width="95%" align="center"/> 
-
 <img src="./pictures/personas/antoine.PNG" alt="Antoine-Persona" width="95%" align="center"/>
 
 - ### ➤ 3) Use Cases Analysis
