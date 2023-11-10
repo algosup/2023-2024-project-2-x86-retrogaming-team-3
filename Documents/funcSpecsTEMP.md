@@ -19,7 +19,7 @@
 
 </summary>
 
-- ### ➤ 1) Document Information
+- ### ☛ 1) Document Information
 
 | Document ID | Document # 01 |
 |---|---|
