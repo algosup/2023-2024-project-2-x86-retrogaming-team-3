@@ -3,13 +3,15 @@
 <summary>
 
 <!-- TABLE OF CONTENTS -->
-<h4 id="table-of-contents"> 📖 Table of Contents</h4>
+<h4 id="table-of-contents"> 📖 <ins>Table of Contents</ins></h4>
 
 </summary>
     
 ...table of contents
 
 </details>
+
+<hr>
 
 <!-- Document Control -->
 <details>
