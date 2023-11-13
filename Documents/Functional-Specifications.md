@@ -187,13 +187,12 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
     - #### ➭ <ins>Deliverables</ins>
 
-    | Name | Type | Deadline | Goal | Link |
+    | Name | Type | Deadline | Link |
     |---|---|---|---|---|
-    | Functional Specifications Document | Document (markdown) | | | |
-    | Technical Specifications Document | Document (markdown) | | | |
-    | Weekly Reports | Document (markdown) | | | |
-    | Test Plan | Document (markdown) | | | |
-    | Test Cases | Spreadsheet (Google Sheets) | | | |
+    | Functional Specifications Document | Document (markdown) | 11/13/2023 | [Functional-Specifications.md](./Functional-Specifications.md) |
+    | Technical Specifications Document | Document (markdown) | 11/27/2023 | [Technical-Specifications.md](./Technical-Specifications.md)|
+    | Weekly Reports | Document (markdown) | Every Friday | [Weekly-Reports/](./Weekly-Reports/)|
+    | Test Plan | Document (markdown) | 12/08/2023 | [Test-Plan.md](./Quality-assurance/Test-Plan.md) |
 
 - ### 4) Project Organisation
 
