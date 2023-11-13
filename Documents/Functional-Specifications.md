@@ -95,7 +95,7 @@
 
 | Role | Name | Signature | Date |
 |---|---|---|---|
-| Project Manager | Arthur LEMOINE | | |
+| Project Manager | Arthur LEMOINE | ✅ | 11/13/2023 |
 | Tech Lead | Mathis KAKAL | | |
 | Software Developer | Pierre GORIN | | |
 | Software Developer | Evan UHRLING | | |
