@@ -140,7 +140,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     - #### ➭ <ins>Vision</ins>
 
     <!-- our end goal with this project -->
-    We are making a perfect Pac-Man clone. We will use the original assets and copy the game mechanics as closely as possible. We want to make an arcade machine to play the game on.F
+    We are making a perfect Pac-Man clone. We will use the original assets and copy the game mechanics as closely as possible. We want to make an arcade machine to play the game on.
 
     - #### ➭ <ins>Objectives</ins>
 
@@ -188,11 +188,11 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
     - Defining the vision and high-level objectives for the project.
     - Approving the requirements, timetable, resources and budget (if necessary).
-    - Authorizing the provision of funds/resources (internal or external) (if necessary).
+    - Authorising the provision of funds/resources (internal or external) (if necessary).
     - Approving the functional and technical specifications written by the team.
     - Ensuring that major business risks are identified and managed by the team.
     - Approving any major changes in scope.
-    - Received Project Weekly Reports and took action accordingly to resolve issues escalated by the Project Manager.
+    - Received Project Weekly Reports and take action accordingly to resolve issues escalated by the Project Manager.
     - Ensuring business/operational support arrangements are put in place.
     - Ensuring the participation of a business resource (if required).
     - Providing final acceptance of the solution upon project completion.
@@ -212,7 +212,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     | Role | Description | Name |
     |---|---|---|
     | Project Manager | Is in charge of organization, planing and budgeting.<br>Keep the team motivated.  | Arthur LEMOINE |
-    | Program Manager | Makes sure the project meets expectation.<br>Is in charge of design.<br>Is responsible for writing the Functional Specification | Max BERNARD |
+    | Program Manager | Makes sure the project meets expectation.<br>Is in charge of design.<br>Is responsible for writing the Functional Specifications | Max BERNARD |
     | Tech Lead | Makes the technical decision in the project.<br>Translates the Functional Specification into Technical Specifications.<br> Does code review. | Mathis KAKAL |
     | Software Engineer | Writes the code.<br>Writes documentation<br>Participate in the technical design. | Pierre GORIN |
     | Software Engineer | | Evan UHRLING |
@@ -736,7 +736,7 @@ someone an e-sport player of pacman
         - ##### <ins>Material</ins>
             - Plywood
             - Paint
-            - Rasbery Pie
+            - Raspberry Pie
             - Arcade Joystick
             - A 60 FPS Screen
         - ##### <ins>Software</ins>
