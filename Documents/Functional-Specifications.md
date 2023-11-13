@@ -76,12 +76,26 @@
       - [➭ Pink](#-pink)
       - [➭ Orange](#-orange)
       - [➭ Cyan](#-cyan)
+    - [➭ Sound Design](#-sound-design)
       - [➭ Intro](#-intro)
       - [➭ Other](#-other)
     - [2) Personas Definition](#2-personas-definition)
     - [3) Use Cases Analysis](#3-use-cases-analysis)
     - [4) Functional Analysis](#4-functional-analysis)
   - [D) Non-Functional Requirements](#d-non-functional-requirements)
+    - [Costs](#costs)
+      - [I - Capital Expenditures](#i---capital-expenditures)
+        - [Material](#material)
+        - [Time Spent/Wages](#time-spentwages)
+      - [II - Operational Expenditures](#ii---operational-expenditures)
+        - [Energies](#energies)
+    - [Reliability](#reliability)
+    - [Response/Performance](#responseperformance)
+    - [Operability](#operability)
+    - [Recovery](#recovery)
+    - [Delivery](#delivery)
+    - [Maintainability](#maintainability)
+    - [Security](#security)
 
 </details>
 <!-- Document Control -->
@@ -294,7 +308,7 @@ We have an estimated 385 man-hours total to complete this project
 Pac-Man is a maze arcade game created in 1980 in Japan. In the game, you play Pac-Man, who looks like: <img src="./pictures/functional-specification/game/pac-man1.png" alt="a yellow ball with a mouth" width="15">, and need to eat all the Gums in a maze to end the level.
 <p align="center"><img src="./pictures/functional-specification/game/pac-man-game.png" alt="Pac-Man game" width="400"/></p> 
 
-    In this picture, the smallest dots in the Maze are Gums. You can go up, down, left, or right to navigate the level, with no other input required.
+In this picture, the smallest dots in the Maze are Gums. You can go up, down, left, or right to navigate the level, with no other input required.
 
 Multi-coloured ghosts <img src="./pictures/functional-specification/game/pink-ghost.png" alt="pink ghost" width="15"/> are chasing Pac-Man through the level, and if one touches Pac-Man, he loses a life.
 Pac-Man can eat a Super Gum (the slightly bigger dots).
@@ -318,14 +332,15 @@ The player plays as Pac-Man, a yellow ball with a mouth.
 
 <p align="center"><img src="./pictures/functional-specification/game/pacman-move.gif" alt="Pac-Man gif" width="200"/></p>
 
-    It can move in 4 directions : Up, Down, Left and Right. The movement speed changes from level to level.
-    
-    The player can eat Gums to gain points. The player can eat Super Gum (the bigger pink dots in the Maze) to enter what is called Fright Mode.
+It can move in 4 directions : Up, Down, Left and Right. The movement speed changes from level to level.
+
+The player can eat Gums to gain points. The player can eat Super Gum (the bigger pink dots in the Maze) to enter what is called Fright Mode.
 
 #### ➭ <ins>Fruits</ins>
 
-    Fruits can appear in the Maze twice per game when the player eats a specific amount of Gums. Fruits only stay on screen for a short time.
-    <p align="center"><img src="./pictures/functional-specification/game/fruits.png" alt="fruits" width="200"/></p>
+Fruits can appear in the Maze twice per game when the player eats a specific amount of Gums. Fruits only stay on screen for a short time.
+    
+<p align="center"><img src="./pictures/functional-specification/game/fruits.png" alt="fruits" width="200"/></p>
 
 #### ➭ <ins>Fright mode</ins>
 
@@ -349,17 +364,17 @@ There are 4 ghosts.
 
 The player dies when touching one of the ghosts.
 
-    A ghost can be eaten by the player when the game is in fright mode.
+A ghost can be eaten by the player when the game is in fright mode.
 
-    If a ghost gets eaten, he goes back to the center of the Maze.
+If a ghost gets eaten, he goes back to the center of the Maze.
 
 At higher difficulties, ghosts get faster
 
-The ghosts have three behaviors:<br><br>
+The ghosts have three behaviors:
 
-    - Scater : The ghosts are going for a corner of the Maze.
-    - Chase : Each ghost has a different chase behavior, but the idea is to hunt down the player.
-    - Frightened : The ghosts are running away from the player with random movement. This only activates when the game is in Fright Mode when the player eats a Super Gum.
+- Scater : The ghosts are going for a corner of the Maze.
+- Chase : Each ghost has a different chase behavior, but the idea is to hunt down the player.
+- Frightened : The ghosts are running away from the player with random movement. This only activates when the game is in Fright Mode when the player eats a Super Gum.
 
 The Ghosts cycle between Scater and Chase. At higher levels, ghosts spend more time in Chase mode.
 
@@ -382,7 +397,7 @@ There are sound effects for the following events:
 
 ##### <ins>Grid</ins>
 
-        The level can be subdivided into a grid. In that grid, the Maze is made of 28 by 31 tiles. A single subdivision will be referred to as a 'Tile'.
+The level can be subdivided into a grid. In that grid, the Maze is made of 28 by 31 tiles. A single subdivision will be referred to as a 'Tile'.
 
 ##### <ins>Maze</ins>
 
@@ -405,8 +420,8 @@ Fruits should be a more or less pixelated version of these designs, with more or
 
 ##### <ins>Ghost Spawning Box</ins>
 
-        The <em>Ghost Spawning Box</em> or GSB is the box at the Maze's center from which the ghosts appear. This box's walls shouldn't be rounded, unlike the other walls in the maze.
-        <p align="center"><img src="./pictures/functional-specification/game/ghost-sb.png" alt="GSB" width="300"/></p>
+The <em>Ghost Spawning Box</em> or GSB is the box at the Maze's center from which the ghosts appear. This box's walls shouldn't be rounded, unlike the other walls in the maze.
+<p align="center"><img src="./pictures/functional-specification/game/ghost-sb.png" alt="GSB" width="300"/></p>
 
 The box's internal size is 6x3 tiles. The box has a white door in the middle of the top wall. This door is 2 tiles wide<br>The player cannot cross the box, but the ghosts can.
 
@@ -418,7 +433,7 @@ The font is a monospace sans-serif and should be all uppercase. The characters a
 
 ##### <ins>Game Score</ins>
 
-        At the top of the screen 2 Tiles above the Maze. "HIGH SCORE" should be aligned at the center of the screen.<br> The number should be displayed below the text. The rightmost number in the high score should be under the "O" of "SCORE".<br><br> The current score should be displayed as "1UP", horizontally aligned with "HIGH SCORE". The "P" of "1UP" should be 3 tiles to the left of the "H" of "HIGH SCORE".<br> The number should be displayed horizontally aligned with the numbers under "HIGH SCORE". The rightmost number should be offset 1 character to the right of the "P" in "1UP". The end result should look like this picture:
+At the top of the screen 2 Tiles above the Maze. "HIGH SCORE" should be aligned at the center of the screen.<br> The number should be displayed below the text. The rightmost number in the high score should be under the "O" of "SCORE".<br><br> The current score should be displayed as "1UP", horizontally aligned with "HIGH SCORE". The "P" of "1UP" should be 3 tiles to the left of the "H" of "HIGH SCORE".<br> The number should be displayed horizontally aligned with the numbers under "HIGH SCORE". The rightmost number should be offset 1 character to the right of the "P" in "1UP". The end result should look like this picture:
         <p align="center"><img src="./pictures/functional-specification/game/score.png" alt="pac-man UI" width="400"/></p>
 
 ##### <ins>Game Ready</ins>
@@ -476,8 +491,8 @@ Pac-Man base speed is 9.47 tiles per second.
 
 ##### <ins>Animation</ins>
 
-        Pac-Man's diameter is 13/8 of a tile. It closes and opens his mouth in a loop whenever he moves. This GIF should be used as a reference for this animation. Pac-Man's mouth should point in the direction of movement.
-        <p align="center"><img src="./pictures/functional-specification/game/pacman-move.gif" alt="pac-man gif" width="300"></p>
+Pac-Man's diameter is 13/8 of a tile. It closes and opens his mouth in a loop whenever he moves. This GIF should be used as a reference for this animation. Pac-Man's mouth should point in the direction of movement.
+<p align="center"><img src="./pictures/functional-specification/game/pacman-move.gif" alt="pac-man gif" width="300"></p>
 
 ##### <ins>Turning</ins>
 
@@ -658,14 +673,14 @@ Cyan has a complex targeting algorithm.<br> Step by Steps:
 
 <p align="center"><img src="./pictures/functional-specification/game/cyan-targeting.png" alt="cyan target" width="400"/></p>
 
-        In the example above :
+In the example above :
         <ol>
         <li>The red Arrow show is looking 2 tiles in front of Pac-Man into the green dashed tile.</li>
         <li>In purple, we draw a line from Red to that dashed tile.</li>
         <li>The yellow Arrow is a copy of the purple arrow but uses the dashed tile as a point of origin. The yellow arrow points at Cyan's target tile.</li>
         </ol>
-    
-    - ### ➭ Sound Design
+
+### ➭ Sound Design
 
 #### ➭ <ins>Intro</ins>
 
@@ -739,40 +754,65 @@ Fright-Mode and Ghosts :
 
 </summary>
 
-- ### Costs
-    - #### <ins>I - Capital Expenditures</ins>
-        - ##### <ins>Material</ins>
-            - Plywood
-            - Paint
-            - Raspberry Pie
-            - Arcade Joystick
-            - A 60 FPS Screen
-        - ##### <ins>Software</ins>
-            - DosBox 0.74-3-3
-        - ##### <ins>Time Spent/Wages</ins>
-            - 385 man-hours
-    - #### <ins>II - Operational Expenditures</ins>
-        - ##### <ins>Energies</ins>
-            - Cost of electricity for the hardware
-- ### Reliability
-    - Has to be bug-free up to 256 Level
-    - Should not crash
-    - Reliability is a core value of the videogame
-- ### Response/Performance
-    - Should Run at 60 FPS
-    - Should respond in under 80ms
-- ### Operability
-    - Should Run on all OS suported by DosBox
-- ### Recovery
-    - Should Reset to default state in case of crash
-    - should be able to keep the leaderboard in memory
-- ### Delivery
-    - As a free software with no commercial purpose, available to download from GitHub
-    - In the form of a free Arcade Machine in the B3 Building at ALGOSUP
-- ### Maintainability
-    - Commented and Documented code
-- ### Security
-    - No Network conection
-    - USB Port locked away on the arcade
+### Costs
+
+#### <ins>I - Capital Expenditures</ins>
+
+##### <ins>Material</ins>
+
+- Plywood
+- Paint
+- Raspberry Pie
+- Arcade Joystick
+- A 60 FPS Screen
+  
+- ##### <ins>Software</ins>
+
+- DosBox 0.74-3-3
+  
+##### <ins>Time Spent/Wages</ins>
+
+- 385 man-hours
+
+#### <ins>II - Operational Expenditures</ins>
+
+##### <ins>Energies</ins>
+
+- Cost of electricity for the hardware
+
+### Reliability
+
+- Has to be bug-free up to 256 Level
+- Should not crash
+- Reliability is a core value of the videogame
+
+### Response/Performance
+
+- Should Run at 60 FPS
+- Should respond in under 80ms
+
+### Operability
+
+- Should Run on all OS suported by DosBox
+  
+### Recovery
+
+- Should Reset to default state in case of crash
+
+- should be able to keep the leaderboard in memory
+
+### Delivery
+
+- As a free software with no commercial purpose, available to download from GitHub
+- In the form of a free Arcade Machine in the B3 Building at ALGOSUP
+
+### Maintainability
+
+- Commented and Documented code
+
+### Security
+
+- No Network conection
+- USB Port locked away on the arcade
 
 </details>
