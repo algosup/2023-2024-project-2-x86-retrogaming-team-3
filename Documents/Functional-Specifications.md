@@ -8,14 +8,36 @@
 </summary>
 
 <ul>
-    <li><a href="#a-document-control"></li>
-    <li><a href="#b-introduction"></li>
-    <li><a href="#c-functional-requirements"></li>
-    <li><a href="#d-non-functional-requirements"></li>
+    <li><a href="#a-document-control">A) Document Control</a></li>
+        <ul>
+            <li><a href="">1. Document Information</a></li>
+            <li><a href="">2. Document History</a></li>
+            <li><a href="">3. Document Approval</a></li>
+        </ul>
+    <li><a href="#b-introduction">B) Introduction</a></li>
+        <ul>
+            <li><a href="#1-glossary">1. Glossary</a></li>
+            <li><a href="#2-project-overview">2. Project Overview</a></li>
+                <ul> 
+                    <li><a href="#-vision"></a>Vision</li>
+                    <li><a href="#-objectives">Objectives</a></li>
+                    <li><a href="#-scope"></a>Scope</li>
+                    <li><a href="#-deliverables">Deliverables</a></li>
+                </ul>
+            <li><a href="#3-project-definition">3. Project Definition</a></li>
+            <li><a href="#4-project-organisation">4. Project Organisation</a></li>
+            <li><a href="#5-project-plan">5. Project Plan</a></li>
+        </ul>
+    <li><a href="#c-functional-requirements">C) Functional Requirements</a></li>
+        <ul>
+            <li><a href="#1-pac-mans-features-overview">1. Pac-Man's Feature Overview</a></li>
+            <li><a href="#2-personas-definition">2. Personas Definition</a></li>
+            <li><a href="#3-use-cases-analysis">3. Use Case Analysis</a></li>
+            <li><a href="#4-functional-analysis">4. Functional Analysis</a></li>
+        </ul>
+    <li><a href="#d-non-functional-requirements">D) Non-Functional Requirements</a></li>
 </ul>
     
-[Document History](#1-document-information)
-
 </details>
 
 <hr>
@@ -175,7 +197,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
     External project reviewers have been appointed by the project owner to review our specifications and provide us with feedback.
 
-- ### ☛ 5) Project Plan
+- ### 5) Project Plan
 
     - #### ➭ <ins>Retroplanning</ins>
 
