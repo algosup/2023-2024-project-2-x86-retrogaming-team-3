@@ -45,14 +45,14 @@
         <ul>
             <li><a href="#1-pac-mans-features-overview">1.a) Pac-Man's Feature Overview</a></li>
                 <ul>
-                    <li><a href="">➭ Brief History..</a></li>
-                    <li><a href="">➭ Objective and loss condition</a></li>
-                    <li><a href="">➭ Player</a></li>
-                    <li><a href="">➭ Fruits</a></li>
-                    <li><a href="">➭ Fright Mode</a></li>
-                    <li><a href="">➭ Score</a></li>
-                    <li><a href="">➭ Ghosts</a></li>
-                    <li><a href="">➭ Sound</a></li>
+                    <li><a href="#-brief-history">➭ Brief History..</a></li>
+                    <li><a href="#-objectives-and-loss-condition">➭ Objective and loss condition</a></li>
+                    <li><a href="#-player">➭ Player</a></li>
+                    <li><a href="#-fruits">➭ Fruits</a></li>
+                    <li><a href="#-fright-mode">➭ Fright Mode</a></li>
+                    <li><a href="#-score">➭ Score</a></li>
+                    <li><a href="#-ghosts">➭ Ghosts</a></li>
+                    <li><a href="#-sound">➭ Sound</a></li>
                 </ul>
             <li><a href="#1b-pacmans-features-breakdown">1.b) Pac-Man's Features Breakdown</a></li>
                 <ul>
