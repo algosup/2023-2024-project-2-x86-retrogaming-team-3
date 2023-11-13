@@ -10,9 +10,9 @@
 <ul>
     <li><a href="#a-document-control">A) Document Control</a></li>
         <ul>
-            <li><a href="">1. Document Information</a></li>
-            <li><a href="">2. Document History</a></li>
-            <li><a href="">3. Document Approval</a></li>
+            <li><a href="#1-document-information">1. Document Information</a></li>
+            <li><a href="#2-document-history">2. Document History</a></li>
+            <li><a href="#3-document-approval">3. Document Approval</a></li>
         </ul>
     <li><a href="#b-introduction">B) Introduction</a></li>
         <ul>
@@ -20,48 +20,68 @@
             <li><a href="#2-project-overview">2. Project Overview</a></li>
             <li><a href="#3-project-definition">3. Project Definition</a></li>
                 <ul> 
-                    <li><a href="#-vision">Vision</a></li>
-                    <li><a href="#-objectives">Objectives</a></li>
-                    <li><a href="#-scope">Scope</a></li>
-                    <li><a href="#-deliverables">Deliverables</a></li>
+                    <li><a href="#-vision">➭ Vision</a></li>
+                    <li><a href="#-objectives">➭ Objectives</a></li>
+                    <li><a href="#-scope">➭ Scope</a></li>
+                    <li><a href="#-deliverables">➭ Deliverables</a></li>
                 </ul>
             <li><a href="#4-project-organisation">4. Project Organisation</a></li>
                 <ul> 
-                    <li><a href="#-project-representatives">Project Representatives</a></li>
-                    <li><a href="#-stakeholders">Stakeholders</a></li>
-                    <li><a href="#-project-roles">Project Roles</a></li>
-                    <li><a href="#-project-reviewers">Project Reviewers</a></li>
+                    <li><a href="#-project-representatives">➭ Project Representatives</a></li>
+                    <li><a href="#-stakeholders">➭ Stakeholders</a></li>
+                    <li><a href="#-project-roles">➭ Project Roles</a></li>
+                    <li><a href="#-project-reviewers">➭ Project Reviewers</a></li>
                 </ul>
             <li><a href="#5-project-plan">5. Project Plan</a></li>
                 <ul> 
-                    <li><a href="#-retroplanning">Retroplanning</a></li>
-                    <li><a href="#-milestones">Milestones</a></li>
-                    <li><a href="#-dependencies">Dependencies</a></li>
-                    <li><a href="#-resourcesfinancial-plan">Resources / Financial Plan</a></li>
-                    <li><a href="#-assumptionsconstraints">Assumptions & Constraints</a></li>
+                    <li><a href="#-retroplanning">➭ Retroplanning</a></li>
+                    <li><a href="#-milestones">➭ Milestones</a></li>
+                    <li><a href="#-dependencies">➭ Dependencies</a></li>
+                    <li><a href="#-resourcesfinancial-plan">➭ Resources / Financial Plan</a></li>
+                    <li><a href="#-assumptionsconstraints">➭ Assumptions & Constraints</a></li>
                 </ul>
         </ul>
     <li><a href="#c-functional-requirements">C) Functional Requirements</a></li>
         <ul>
-            <li><a href="#1-pac-mans-features-overview">1. Pac-Man's Feature Overview</a></li>
+            <li><a href="#1-pac-mans-features-overview">1.a) Pac-Man's Feature Overview</a></li>
                 <ul>
-                    <li><a href="">Brief History..</a></li>
-                    <li><a href="">Objective and loss condition</a></li>
-                    <li><a href="">Player</a></li>
-                    <li><a href="">Fruits</a></li>
-                    <li><a href="">Fright Mode</a></li>
-                    <li><a href="">Score</a></li>
-                    <li><a href="">Ghosts</a></li>
-                    <li><a href="">Sound Design</a></li>
-                    <li><a href="">Level</a></li>
-                    <li><a href="">User Interface</a></li>
-                    <li><a href="">Leaderboard</a></li>
+                    <li><a href="#-brief-history">➭ Brief History..</a></li>
+                    <li><a href="#-objectives-and-loss-condition">➭ Objective and loss condition</a></li>
+                    <li><a href="#-player">➭ Player</a></li>
+                    <li><a href="#-fruits">➭ Fruits</a></li>
+                    <li><a href="#-fright-mode">➭ Fright Mode</a></li>
+                    <li><a href="#-score">➭ Score</a></li>
+                    <li><a href="#-ghosts">➭ Ghosts</a></li>
+                    <li><a href="#-sound">➭ Sound</a></li>
+                </ul>
+            <li><a href="#1b-pacmans-features-breakdown">1.b) Pac-Man's Features Breakdown</a></li>
+                <ul>
+                    <li><a href="#-level">➭ Level</a></li>
+                    <li><a href="#-user-interface">➭ User Interface</a></li>
+                    <li><a href="#-leaderboard">➭ Leaderboard</a></li>
+                    <li><a href="#-player-1">➭ Player</a></li>
+                    <li><a href="#-level">➭ Ghosts</a></li>
+                    <li><a href="#-sound-design">➭ Sound Design</a></li>
                 </ul>
             <li><a href="#2-personas-definition">2. Personas Definition</a></li>
             <li><a href="#3-use-cases-analysis">3. Use Case Analysis</a></li>
             <li><a href="#4-functional-analysis">4. Functional Analysis</a></li>
         </ul>
     <li><a href="#d-non-functional-requirements">D) Non-Functional Requirements</a></li>
+        <ul>
+            <li><a href="#costs">1. Costs</a></li>
+                <ul>
+                    <li><a href="#i---capital-expenditures">➭ Capital Expenditures</a></li>
+                    <li><a href="#ii---operational-expenditures">➭ Operational Expenditures</a></li>
+                </ul>
+            <li><a href="#reliability">2. Reliability</a></li>
+            <li><a href="#responseperformance">3. Response / Performance</a></li>
+            <li><a href="#operability">4. Operability</a></li>
+            <li><a href="#recovery">5. Recovery</a></li>
+            <li><a href="#delivery">6. Delivery</a></li>
+            <li><a href="#maintainability">7. Maintainability</a></li>
+            <li><a href="#security">8. Security</a></li>
+        </ul>
 </ul>
     
 </details>
@@ -96,11 +116,11 @@
 | Role | Name | Signature | Date |
 |---|---|---|---|
 | Project Manager | Arthur LEMOINE | ✅ | 11/13/2023 |
-| Tech Lead | Mathis KAKAL | | |
-| Software Developer | Pierre GORIN | | |
-| Software Developer | Evan UHRLING | | |
+| Tech Lead | Mathis KAKAL | ✅ | 11/13/2023 |
+| Software Developer | Pierre GORIN | ✅ | 11/13/2023 |
+| Software Developer | Evan UHRLING |✅ | 11/13/2023|
 | Quality Assurance | Quentin CLEMENT | ✅ | 11/13/2023 |
-| Quality Assurance | Robin DEBRY | | |
+| Quality Assurance | Robin DEBRY |✅|11/13/2023|
 
 </details>
 
@@ -284,7 +304,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
 </summary>
 
-- ### 1) Pac-Man's Features Overview
+- ### 1.a) Pac-Man's Features Overview
 
     - #### ➭ <ins>Brief History...</ins>
 
@@ -369,6 +389,8 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     - Pac-Man Eating Ghost
     - Pac-Man Get High Score (10,000 points)
     - Pac-Man dying/Game Over
+
+- ### 1.b) Pacman's Features Breakdown
 
     - #### ➭ <ins>Level</ins>
 

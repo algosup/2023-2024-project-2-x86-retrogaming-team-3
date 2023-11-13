@@ -4,13 +4,15 @@
 
 ## Project Charter
 
-![](/Documents/pictures/Project-charter.png)
+![](/Documents/pictures/Managemement/Project-charter.png)
 
 ## Gantt Diagram (Simplified)
 
-![](/Documents/pictures/Gantt-Simplified.png)
+![](/Documents/pictures/Managemement/Gantt-Simplified.png)
 
 ## Gantt Diagram
+
+![](/Documents/pictures/Managemement/Gantt.png)
 
 ## KPIs
 
