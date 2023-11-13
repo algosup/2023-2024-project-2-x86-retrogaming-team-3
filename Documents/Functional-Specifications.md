@@ -164,8 +164,8 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     | Role | Description | Name |
     |---|---|---|
     | Project Manager | Is in charge of organization, planing and budgeting.<br>Keep the team motivated.  | Arthur LEMOINE |
-    | Program Manager | Makes sure the project meets expectation.<br>Is in charge of design.<br>Is responsible for writing the Fonctional Specification | Max BERNARD |
-    | Tech Lead | Makes the technical decision in the project.<br>Translates the Fonctional Specification into Technical Specifications.<br> Does code review. | Mathis KAKAL |
+    | Program Manager | Makes sure the project meets expectation.<br>Is in charge of design.<br>Is responsible for writing the Functional Specification | Max BERNARD |
+    | Tech Lead | Makes the technical decision in the project.<br>Translates the Functional Specification into Technical Specifications.<br> Does code review. | Mathis KAKAL |
     | Software Engineer | Writes the code.<br>Writes documentation<br>Participate in the technical design. | Pierre GORIN |
     | Software Engineer | | Evan UHRLING |
     | Quality Assurance |  Tests all the functionalities of a product to find bugs and issue.<br>Document bugs and issues.<br>Write the test plan.<br>Check that issues have been fixed.| Quentin CLEMENT |
@@ -240,12 +240,12 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
     - #### ➭ <ins>Brief History...</ins>
 
-    Pac-Man is a maze arcade game created in 1980 in Japan. In the game, you play Pac-Man, who looks like: <img src="./pictures/fonctional-specification/game/pac-man1.png" alt="a yellow ball with a mouth" width="15">, and need to eat all the Gums in a maze to end the level.
-    <p align="center"><img src="./pictures/fonctional-specification/game/pac-man-game.png" alt="Pac-Man game" width="400"/></p> 
+    Pac-Man is a maze arcade game created in 1980 in Japan. In the game, you play Pac-Man, who looks like: <img src="./pictures/functional-specification/game/pac-man1.png" alt="a yellow ball with a mouth" width="15">, and need to eat all the Gums in a maze to end the level.
+    <p align="center"><img src="./pictures/functional-specification/game/pac-man-game.png" alt="Pac-Man game" width="400"/></p> 
 
     In this picture, the smallest dots in the maze are Gums. You can go up, down, left, or right to navigate the level, with no other input required.
 
-    Multi-coloured ghosts <img src="./pictures/fonctional-specification/game/pink-ghost.png" alt="pink ghost" width="15"/> are chasing Pac-Man through the level, and if one touches Pac-Man, he loses a life.
+    Multi-coloured ghosts <img src="./pictures/functional-specification/game/pink-ghost.png" alt="pink ghost" width="15"/> are chasing Pac-Man through the level, and if one touches Pac-Man, he loses a life.
     Pac-Man can eat a Super Gum (the slightly bigger dots). 
     
     They allow Pac-Man to eat the ghosts for a period of time. The ghosts get faster when you complete a level, and the Super Gum bonus gets shorter.
@@ -263,7 +263,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     - #### ➭ <ins>Player</ins>
     The player plays as Pac-Man, a yellow ball with a mouth.
 
-    <p align="center"><img src="./pictures/fonctional-specification/game/pacman-move.gif" alt="Pac-Man gif" width="200"/></p>
+    <p align="center"><img src="./pictures/functional-specification/game/pacman-move.gif" alt="Pac-Man gif" width="200"/></p>
 
     It can move in 4 directions : Up, Down, Left and Right. The movement speed changes from level to level.
     
@@ -272,7 +272,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     - #### ➭ <ins>Fruits</ins>
 
     Fruits can appear in the maze twice per game when the player eats a specific amount of Gums. Fruits only stay on screen for a short time.
-    <p align="center"><img src="./pictures/fonctional-specification/game/fruits.png" alt="fruits" width="200"/></p>
+    <p align="center"><img src="./pictures/functional-specification/game/fruits.png" alt="fruits" width="200"/></p>
 
     - #### ➭ <ins>Fright mode</ins>
 
@@ -290,7 +290,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
     - #### ➭ <ins>Ghosts</ins>
 
-    <p align="center"><img src="./pictures/fonctional-specification/game/red.png" alt="red" width="50"/><img src="./pictures/fonctional-specification/game/pink-ghost.png" alt="pink" width="50"/><img src="./pictures/fonctional-specification/game/orange-ghost.png" alt="orange" width="50"/><img src="./pictures/fonctional-specification/game/cyan.png" alt="cyan" width="50"/></p>
+    <p align="center"><img src="./pictures/functional-specification/game/red.png" alt="red" width="50"/><img src="./pictures/functional-specification/game/pink-ghost.png" alt="pink" width="50"/><img src="./pictures/functional-specification/game/orange-ghost.png" alt="orange" width="50"/><img src="./pictures/functional-specification/game/cyan.png" alt="cyan" width="50"/></p>
     There are 4 ghosts. 
 
     The player dies when touching one of the ghosts.
@@ -331,7 +331,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
         - ##### <ins>Maze</ins>
 
         We will use the original 1980 Pac-Man level layout. The picture below can be used as a reference to recreate the layout. Neither Pac-Man nor the ghosts can cross the blue lines.
-        <p align="center"><img src="./pictures/fonctional-specification/game/tiles.png" alt="Tiles" width="500"/></p>
+        <p align="center"><img src="./pictures/functional-specification/game/tiles.png" alt="Tiles" width="500"/></p>
             
         The level's walls have a blue border and a transparent fill. They should be 1/2 Grid thick. When walls are next to one another, the inner border should be removed so that it looks like there is no empty space.<br>
         There should be a 30% rounded effect on every corner, similar to the border-radius effect in CSS.
@@ -343,14 +343,14 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
         - ##### <ins>Fruits</ins>
 
         The fruits should be in the center of a tile. Fruits Sprites should fit in a square with sides 5/4th that of a tile.
-        <p align="center"><img src="./pictures/fonctional-specification/game/fruits.png" alt="fruits" width="500"/></p>
+        <p align="center"><img src="./pictures/functional-specification/game/fruits.png" alt="fruits" width="500"/></p>
 
         Fruits should be a more or less pixelated version of these designs, with more or less simplified colours as the technical limitation dictates.
 
         - ##### <ins>Ghost Spawning Box</ins>
 
         The <em>Ghost Spawning Box</em> or GSB is the box at the maze's center from which the ghosts appear. This box's walls shouldn't be rounded, unlike the other walls in the maze.
-        <p align="center"><img src="./pictures/fonctional-specification/game/ghost-sb.png" alt="GSB" width="300"/></p>
+        <p align="center"><img src="./pictures/functional-specification/game/ghost-sb.png" alt="GSB" width="300"/></p>
 
         The box's internal size is 6x3 tiles. The box has a white door in the middle of the top wall. This door is 2 tiles wide<br>The player cannot cross the box, but the ghosts can.
 
@@ -363,19 +363,19 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
         - ##### <ins>Game Score</ins>
 
         At the top of the screen 2 Tiles above the maze. "HIGH SCORE" should be aligned at the center of the screen.<br> The number should be displayed below the text. The rightmost number in the high score should be under the "O" of "SCORE".<br><br> The current score should be displayed as "1UP", horizontally aligned with "HIGH SCORE". The "P" of "1UP" should be 3 tiles to the left of the "H" of "HIGH SCORE".<br> The number should be displayed horizontally aligned with the numbers under "HIGH SCORE". The rightmost number should be offset 1 character to the right of the "P" in "1UP". The end result should look like this picture:
-        <p align="center"><img src="./pictures/fonctional-specification/game/score.png" alt="pac-man UI" width="400"/></p>
+        <p align="center"><img src="./pictures/functional-specification/game/score.png" alt="pac-man UI" width="400"/></p>
 
         - ##### <ins>Game Ready</ins>
 
         At the start of the game, "READY!" gets displayed on the corridor just under the Ghost Spawning Box, as seen in the image below.
-        <p align='center'><img src='./pictures/fonctional-specification/game/game-ready.png' alt='ready' width='400'/></p>
+        <p align='center'><img src='./pictures/functional-specification/game/game-ready.png' alt='ready' width='400'/></p>
 
         This message should disappear when the game starts. This message should use the same font as the rest of the UI but be yellow.
 
         - ##### <ins>Game Over</ins>
 
         When the player loses all of his lives, a game-over screen needs to appear. The words "GAME OVER" appear in the corridor under the <em>Ghost Spawning Box</em>, as seen in the image below.
-        <p align='center'><img src='./pictures/fonctional-specification/game/game-over.png' alt='game over' width='400'/></p>
+        <p align='center'><img src='./pictures/functional-specification/game/game-over.png' alt='game over' width='400'/></p>
 
         This stays on display for 3 seconds until the game takes the player to the leaderboard. This message uses the same font as the rest of the UI but is red. The space between the "GAME" and the "OVER" is 2 Tiles.
 
@@ -384,7 +384,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
         - ##### <ins>Enter Your Initials</ins>
 
         Once a player reaches a score high enough to make it into the top 10 of players, they will be prompted to enter their initials on a screen that looks like the one below.
-        <p align='center'><img src='./pictures/fonctional-specification/game/enter-your-initials.png' alt='initials' width='350'></p>
+        <p align='center'><img src='./pictures/functional-specification/game/enter-your-initials.png' alt='initials' width='350'></p>
 
         The player can use the Up and Down buttons to change the selected letter. Going up cycles from Z to A, and going down cycles from A to Z. It should loop once you try to go beyond Z or A. There should only be the 26 letters of the alphabet.
         You can select which letters you are changing by using the Left and Right buttons. This does <b>not</b> loop when you reach either end. The selected letters should have arrows above and below them.
@@ -392,7 +392,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
         - ##### <ins>High Scores</ins>
         "HIGH SCORES" should be displayed at the top and center of the screen.<br> On the High Score page, the font will have a 1 tile gap between each line. The font is otherwise unchanged from the normal UI font.
-        <p align='center'><img src='./pictures/fonctional-specification/game/leaderboard.png' alt='leaderboard' width='400'></p>
+        <p align='center'><img src='./pictures/functional-specification/game/leaderboard.png' alt='leaderboard' width='400'></p>
 
         There should be a 3 tile gap between "HIGH SCORES" and the header of the score table. The table should contain 3 columns: "RANK", "SCORE", and "NAME" from left to right.
 
@@ -412,19 +412,19 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     - #### ➭ <ins>Movement</ins>
 
         The Pac-Man can move in four directions: Up, Down, Left and Right. The Pac-Man can not cross the wall of the Maze. It continues to move in a direction until it encounters a wall, at which point it stops moving, or the player gives another direction.<br>The Pac-Man can go through tunnels, highlighted in red in the picture below. Going through a tunnel transports you to the other tunnel.
-        <p align="center"><img src="./pictures/fonctional-specification/game/pac-man-game-1.png" alt="pac-man tunel" width="400"></p>
+        <p align="center"><img src="./pictures/functional-specification/game/pac-man-game-1.png" alt="pac-man tunel" width="400"></p>
 
         Pac-Man base speed is 9.47 tiles per second.
 
         - ##### <ins>Animation</ins>
 
         Pac-Man's diameter is 13/8 of a tile. It closes and oppens his mouth in a loop whenever he moves. This GIF should be used as a reference for this animation. Pac-Man's mouth should point in the direction of movement.
-        <p align="center"><img src="./pictures/fonctional-specification/game/pacman-move.gif" alt="pac-man gif" width="300"></p>
+        <p align="center"><img src="./pictures/functional-specification/game/pacman-move.gif" alt="pac-man gif" width="300"></p>
 
         - ##### <ins>Turning</ins>
 
         If the player initiates the turn 1/2 tile before the corner, He can move 45° until he gets to the middle of the corridor, as seen in the picture below.
-        <p align="center"><img src="./pictures/fonctional-specification/game/turning.png" alt="turning" width="200"></p>
+        <p align="center"><img src="./pictures/functional-specification/game/turning.png" alt="turning" width="200"></p>
 
         The player moves faster during this phase as he is moving in both directions simultaneously, making him twice as fast.
         If the turn is initiated earlier, this effect lasts longer, but it can not be initiated earlier than 1/2 tile before the corner. <br> Otherwise, The turn is a 90° angle and gets no speed boost.
@@ -478,7 +478,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
         - #### ➭ <ins>Fruits</ins>
 
         Fruits appear twice per level. When eaten, they give bonus points. However they don't stay on screen forever. They stay between 9 and 10 seconds. The exact time should be randomized each time.<br> The Fruit 1st appears after the player eats 70 gums. A 2nd Fruit appears after 170 gums have been eaten. <br><br> The bonus fruits are from left to right :<br> Cherry, Strawberry, Orange, Apple, Galaxian, Melon, Bell, Key
-        <p align="center"><img src="./pictures/fonctional-specification/game/fruits.png" alt="fruits" width="500"/></p>
+        <p align="center"><img src="./pictures/functional-specification/game/fruits.png" alt="fruits" width="500"/></p>
 
         Different fruits appear at different levels and give different point rewards : 
 
@@ -496,7 +496,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
         - #### ➭ <ins>Player Lives and Death</ins>
 
         The player starts with 3 extra lives. He loses one whenever he gets touched by a ghost when not in frightened mode. This resets the player and ghosts to their starting position. <br> Once the player reaches 10,000 points, he gains an additional life.
-        <p align="center"><img src="./pictures/fonctional-specification/game/pacman-death.gif" alt="pac-man death" width="400"/></p>
+        <p align="center"><img src="./pictures/functional-specification/game/pacman-death.gif" alt="pac-man death" width="400"/></p>
 
         When Pac-Man dies, an animation of the circle disappearing and exploding plays, as seen in the picture above.
 
@@ -509,7 +509,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
         - #### ➭ <ins>Speed</ins>
 
         As the level increases, ghosts get faster. When the Game is in Fright Mode, the ghosts get slower. Additionally, when crossing a tunnel, unlike Pac-Man, ghosts are slowed. The slow-down zone is highlighted in green in the picture below.
-        <p align="center"><img src="./pictures/fonctional-specification/game/tunnel.png" alt="tunnel" width="400"/></p>
+        <p align="center"><img src="./pictures/functional-specification/game/tunnel.png" alt="tunnel" width="400"/></p>
         
         This table gives the numbers as % of Pac-Man's base speed (9.47 tiles per second).
 
@@ -524,7 +524,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
         There are three modes for ghosts:
         * Chase : In chase mode, the ghost is hunting down Pac-Man. Each ghost has a unique chase behavior.
         * Scatter : Each ghost has a home corner in the maze. In Scatter mode, ghosts will navigate toward that corner.  
-        * Frightened : When Pac-Man is in Fright Mode after eating a Super Gum, the ghosts randomly move through the maze. They also turn blue and frown (see image). <p align="center"><img src="./pictures/fonctional-specification/game/frightened.jpeg" alt="frightened" width="50"/></p>
+        * Frightened : When Pac-Man is in Fright Mode after eating a Super Gum, the ghosts randomly move through the maze. They also turn blue and frown (see image). <p align="center"><img src="./pictures/functional-specification/game/frightened.jpeg" alt="frightened" width="50"/></p>
 
         Ghost alternates between Scater and Chase at predetermined intervals. The timer on those intervals stops when the ghosts are in Fright mode. When the level changes, so does this timing. <br> This table gives the timing in second :
 
@@ -542,7 +542,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
         - #### ➭ <ins>Game Start</ins>
 
         Ghosts should start in the <em>Ghost Spawning Box</em> except Red, who starts in front of the door, as seen in the image.
-        <p align="center"><img src="./pictures/fonctional-specification/game/start.png" alt="pac-man game" width="300"/></p>
+        <p align="center"><img src="./pictures/functional-specification/game/start.png" alt="pac-man game" width="300"/></p>
 
         Red moves first, then Pink once Red is clear of the door, Orange moves when Pac-Man has eaten 30 Gums and last, Cyan leaves once Pac-Man has eaten 60 Gums. All the ghosts start in Scatter mode and on the same timer.
 
@@ -556,7 +556,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
         - #### ➭ <ins>Red</ins>
 
-        <p align="center"><img src="./pictures/fonctional-specification/game/red.png" alt="red" width="200"/></p>
+        <p align="center"><img src="./pictures/functional-specification/game/red.png" alt="red" width="200"/></p>
 
         Red chase mode aims for the current player location. When the number of remaining Gums drops below a certain threshold, it speeds up. When it drops again, it accelerates a second time. <br>The number and acceleration figure change from level to level :
 
@@ -573,27 +573,27 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
         - #### ➭ <ins>Pink</ins>
 
-        <p align="center"><img src="./pictures/fonctional-specification/game/pink-ghost.png" alt="pink" width="200"/></p>
+        <p align="center"><img src="./pictures/functional-specification/game/pink-ghost.png" alt="pink" width="200"/></p>
 
         Pink chase mode aims 4 tiles in front of the player. There is an exception to that logic; when the player is looking up, pink aims 4 tiles above and 4 tiles to the left of the player.
-        <p align="center"><img src="./pictures/fonctional-specification/game/pink-target.png" alt="pink target" width="300"/></p>
+        <p align="center"><img src="./pictures/functional-specification/game/pink-target.png" alt="pink target" width="300"/></p>
 
         - #### ➭ <ins>Orange</ins>
 
-        <p align="center"><img src="./pictures/fonctional-specification/game/orange-ghost.png" alt="orange" width="200"/></p>
+        <p align="center"><img src="./pictures/functional-specification/game/orange-ghost.png" alt="orange" width="200"/></p>
 
         When this ghost is over 8 tiles away from Pac-Man he aims for Pac-Man's position. If he is closer than 8 tiles, he goes into scatter mode. This results in Orange doing back and forth. Keep in mind that, unlike Pac-Man, ghosts can not turn 180° on themselves, and this rule still applies when changing mode.
 
         - #### ➭ <ins>Cyan</ins>
 
-        <p align="center"><img src="./pictures/fonctional-specification/game/cyan.png" alt="cyan" width="200"/></p>
+        <p align="center"><img src="./pictures/functional-specification/game/cyan.png" alt="cyan" width="200"/></p>
 
         Cyan has a complex targeting algorithm.<br> Step by Steps:
         * Look 2 tiles ahead of Pac-Man. or 2 tiles up and 2 left when Pac-Man is looking up.
         * Then, draw a line from the Red Ghost to that target
         * Then double that line. 
 
-        <p align="center"><img src="./pictures/fonctional-specification/game/cyan-targeting.png" alt="cyan target" width="400"/></p>
+        <p align="center"><img src="./pictures/functional-specification/game/cyan-targeting.png" alt="cyan target" width="400"/></p>
 
         In the example above :
         <ol>
@@ -609,7 +609,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
         This tune should play, when the game starts or restarts after a player's death.
         [Intro.wav](./sound/Intro.wav)<br><br>If there is a need to recreate the music rather than use the file, this is the coresponding partition.
 
-        <p align="center"><img src="./pictures/fonctional-specification/partition/into.png" alt="into music" width="400"></p>
+        <p align="center"><img src="./pictures/functional-specification/partition/into.png" alt="into music" width="400"></p>
 
     - #### ➭ <ins>Other</ins>
 
@@ -637,9 +637,9 @@ someone who never played
 someone who played the original pacman
 someone an e-sport player of pacman 
 -->
-<img src="./pictures/fonctional-specification/personas/etienne_persona.png" alt="Etienne-Persona" width="95%" align="center"/> 
-<img src="./pictures/fonctional-specification/personas/isabelle_persona.png" alt="Isabelle-Persona" width="95%" align="center"/> 
-<img src="./pictures/fonctional-specification//personas/antoine_persona.png" alt="Antoine-Persona" width="95%" align="center"/>
+<img src="./pictures/functional-specification/personas/etienne_persona.png" alt="Etienne-Persona" width="95%" align="center"/> 
+<img src="./pictures/functional-specification/personas/isabelle_persona.png" alt="Isabelle-Persona" width="95%" align="center"/> 
+<img src="./pictures/functional-specification//personas/antoine_persona.png" alt="Antoine-Persona" width="95%" align="center"/>
 
 - ### 3) Use Cases Analysis
 
@@ -658,19 +658,19 @@ someone an e-sport player of pacman
 
     - Navigating the Maze :
 
-    <p align="center"><img src="./pictures/fonctional-specification/fonction-diagram/moving.png" alt="pac-man UI" width="600"></p>
+    <p align="center"><img src="./pictures/functional-specification/function-diagram/moving.png" alt="pac-man UI" width="600"></p>
 
     - Dying and Game Over :
 
-    <p align="center"><img src="./pictures/fonctional-specification/fonction-diagram/death.png" alt="pac-man UI" width="600"></p>
+    <p align="center"><img src="./pictures/functional-specification/function-diagram/death.png" alt="pac-man UI" width="600"></p>
 
     - Fright-Mode and Ghosts :
 
-    <p align="center"><img src="./pictures/fonctional-specification/fonction-diagram/ghost.png" alt="pac-man UI" width="600"></p>
+    <p align="center"><img src="./pictures/functional-specification/function-diagram/ghost.png" alt="pac-man UI" width="600"></p>
 
     - Finishing a Level and Collecting Fruit :
 
-    <p align="center"><img src="./pictures/fonctional-specification/fonction-diagram/eat.png" alt="pac-man UI" width="600"></p>
+    <p align="center"><img src="./pictures/functional-specification/function-diagram/eat.png" alt="pac-man UI" width="600"></p>
 
 
 </details>
