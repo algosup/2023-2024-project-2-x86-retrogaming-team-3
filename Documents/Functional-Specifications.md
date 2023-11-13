@@ -63,12 +63,12 @@
 |---|---|
 | "Team" | ALGOSUP team 3 (2023-2024 - Project 2) |
 | "Player" | The person playing the game |
-| "Pac-Man" the character | A yellow ball controled by the player |
+| "Pac-Man" the character | A yellow ball controlled by the player |
 | "Ghost" | The game's enemy |
 | "Gum" | The small dots in the maze |
-| "Super Gum" | The biger dots in the maze that trigger Fright Mode |
+| "Super Gum" | The bigger dots in the maze that trigger Fright Mode |
 | "Fright Mode" | The state of the game in which pac-man can eat ghosts |
-| "Ghost Spawning Box" or "GSB" | The box at the center of the screen from which a ghots appear |
+| "Ghost Spawning Box" or "GSB" | The box at the center of the screen from which a ghost appear |
 | "Maze" | The game environment  |
 | "User Interface" or "UI" | The visual and interactive elements through which users interact with the game |
 | "x86 CPU" | x86 is a popular computer processor architecture |
@@ -85,7 +85,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     - #### ➭ <ins>Vision</ins>
 
     <!-- our end goal with this project -->
-    We are making a perfect Pac-Man clone. We will use the original assets and copy the game mechanics as closely as possible. We want to make an arcade machine to play the game on.
+    We are making a perfect Pac-Man clone. We will use the original assets and copy the game mechanics as closely as possible. We want to make an arcade machine to play the game on.F
 
     - #### ➭ <ins>Objectives</ins>
 
