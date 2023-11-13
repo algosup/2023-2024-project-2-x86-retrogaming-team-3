@@ -19,12 +19,18 @@
             <li><a href="#1-glossary">1. Glossary</a></li>
             <li><a href="#2-project-overview">2. Project Overview</a></li>
                 <ul> 
-                    <li><a href="#-vision"></a>Vision</li>
+                    <li><a href="#-vision">Vision</a></li>
                     <li><a href="#-objectives">Objectives</a></li>
-                    <li><a href="#-scope"></a>Scope</li>
+                    <li><a href="#-scope">Scope</a></li>
                     <li><a href="#-deliverables">Deliverables</a></li>
                 </ul>
             <li><a href="#3-project-definition">3. Project Definition</a></li>
+                <ul> 
+                    <li><a href="#-project-representatives">Project Representatives</a></li>
+                    <li><a href="#-stakeholders">Stakeholders</a></li>
+                    <li><a href="#-project-roles">Project Roles</a></li>
+                    <li><a href="#-project-reviewers">Project Reviewers</a></li>
+                </ul>
             <li><a href="#4-project-organisation">4. Project Organisation</a></li>
             <li><a href="#5-project-plan">5. Project Plan</a></li>
         </ul>
