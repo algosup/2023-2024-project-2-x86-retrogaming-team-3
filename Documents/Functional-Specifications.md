@@ -68,8 +68,19 @@
 
 | Term used | Definition |
 |---|---|
-| "team" | ALGOSUP team 3 (2023-2024 - Project 2) |
-| "player" | A person playing the game |
+| "Team" | ALGOSUP team 3 (2023-2024 - Project 2) |
+| "Player" | The person playing the game |
+| "Pac-Man" the character | A yellow ball controlled by the player |
+| "Ghost" | The game's enemy |
+| "Gum" | The small dots in the maze |
+| "Super Gum" | The bigger dots in the maze that trigger Fright Mode |
+| "Fright Mode" | The state of the game in which pac-man can eat ghosts |
+| "Ghost Spawning Box" or "GSB" | The box at the center of the screen from which a ghost appear |
+| "Maze" | The game environment  |
+| "User Interface" or "UI" | The visual and interactive elements through which users interact with the game |
+| "x86 CPU" | x86 is a popular computer processor architecture |
+| "Assembly" | A low-level programming language that is human-readable |
+| "Leaderboard" | a ranked list that displays the scores or performance of players |
 
 - ### 2) Project Overview
 
@@ -81,7 +92,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     - #### ➭ <ins>Vision</ins>
 
     <!-- our end goal with this project -->
-    We are making a perfect Pac-Man clone. We will use the original assets and copy the game mechanics as closely as possible. We want to make an arcade machine to play the game on.
+    We are making a perfect Pac-Man clone. We will use the original assets and copy the game mechanics as closely as possible. We want to make an arcade machine to play the game on.F
 
     - #### ➭ <ins>Objectives</ins>
 
@@ -127,7 +138,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     
     The project sponsors (highlighted in **bold**) are expected to be in charge of:
 
-    - Defining the vision and high-level objectives for the project
+    - Defining the vision and high-level objectives for the project.
     - Approving the requirements, timetable, resources and budget (if necessary).
     - Authorizing the provision of funds/resources (internal or external) (if necessary).
     - Approving the functional and technical specifications written by the team.
@@ -549,7 +560,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
         Red chase mode aims for the current player location. When the number of remaining Gums drops below a certain threshold, it speeds up. When it drops again, it accelerates a second time. <br>The number and acceleration figure change from level to level :
 
-        Level | Gum Threshold 1 | Speed up 1 | Gum Threshold 2 | Speed up 2
+        Level | Remaining Gums 1 | Speed Up 1 | Remaining Gums 2 | Speed Up 2
         --- | --- | --- | --- | ---
         1-2 | 30 | 90% | 15 | 95%
         3-4 | 40 | 90% | 20 | 95%
