@@ -115,12 +115,17 @@
 
 | Role | Name | Signature | Date |
 |---|---|---|---|
-| Project Manager | Arthur LEMOINE | | |
+| Project Manager | Arthur LEMOINE | ✅ | 11/13/2023 |
 | Tech Lead | Mathis KAKAL | | |
 | Software Developer | Pierre GORIN | | |
 | Software Developer | Evan UHRLING | | |
-| Quality Assurance | Quentin CLEMENT | | |
+<<<<<<< Updated upstream
+| Quality Assurance | Quentin CLEMENT | ✅ | 11/13/2023 |
 | Quality Assurance | Robin DEBRY | | |
+=======
+| Quality Assurance | Quentin CLEMENT | | |
+| Quality Assurance | Robin DEBRY |✅|11/13/2023|
+>>>>>>> Stashed changes
 
 </details>
 
