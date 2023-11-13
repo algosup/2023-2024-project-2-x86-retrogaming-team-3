@@ -99,7 +99,7 @@
 | Tech Lead | Mathis KAKAL | | |
 | Software Developer | Pierre GORIN | | |
 | Software Developer | Evan UHRLING | | |
-| Quality Assurance | Quentin CLEMENT | | |
+| Quality Assurance | Quentin CLEMENT | ✅ | 11/13/2023 |
 | Quality Assurance | Robin DEBRY | | |
 
 </details>
