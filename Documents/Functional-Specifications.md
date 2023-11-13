@@ -10,9 +10,9 @@
 <ul>
     <li><a href="#a-document-control">A) Document Control</a></li>
         <ul>
-            <li><a href="">1. Document Information</a></li>
-            <li><a href="">2. Document History</a></li>
-            <li><a href="">3. Document Approval</a></li>
+            <li><a href="#1-document-information">1. Document Information</a></li>
+            <li><a href="#2-document-history">2. Document History</a></li>
+            <li><a href="#3-document-approval">3. Document Approval</a></li>
         </ul>
     <li><a href="#b-introduction">B) Introduction</a></li>
         <ul>
