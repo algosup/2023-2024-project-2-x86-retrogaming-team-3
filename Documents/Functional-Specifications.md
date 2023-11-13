@@ -33,10 +33,30 @@
                     <li><a href="#-project-reviewers">Project Reviewers</a></li>
                 </ul>
             <li><a href="#5-project-plan">5. Project Plan</a></li>
+                <ul> 
+                    <li><a href="#-retroplanning">Retroplanning</a></li>
+                    <li><a href="#-milestones">Milestones</a></li>
+                    <li><a href="#-dependencies">Dependencies</a></li>
+                    <li><a href="#-resourcesfinancial-plan">Resources / Financial Plan</a></li>
+                    <li><a href="#-assumptionsconstraints">Assumptions & Constraints</a></li>
+                </ul>
         </ul>
     <li><a href="#c-functional-requirements">C) Functional Requirements</a></li>
         <ul>
             <li><a href="#1-pac-mans-features-overview">1. Pac-Man's Feature Overview</a></li>
+                <ul>
+                    <li><a href="">Brief History..</a></li>
+                    <li><a href="">Objective and loss condition</a></li>
+                    <li><a href="">Player</a></li>
+                    <li><a href="">Fruits</a></li>
+                    <li><a href="">Fright Mode</a></li>
+                    <li><a href="">Score</a></li>
+                    <li><a href="">Ghosts</a></li>
+                    <li><a href="">Sound Design</a></li>
+                    <li><a href="">Level</a></li>
+                    <li><a href="">User Interface</a></li>
+                    <li><a href="">Leaderboard</a></li>
+                </ul>
             <li><a href="#2-personas-definition">2. Personas Definition</a></li>
             <li><a href="#3-use-cases-analysis">3. Use Case Analysis</a></li>
             <li><a href="#4-functional-analysis">4. Functional Analysis</a></li>
