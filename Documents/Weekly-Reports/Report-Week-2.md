@@ -1,11 +1,11 @@
 Project x86-retrogaming -- Team 3
 ---
 
-<h2 align="center">Weekly Report 1</h2>
+<h2 align="center">Weekly Report 2</h2>
 
-<h4 align="center">6/11/2023 to 10/11/2023</h4>
+<h4 align="center">13/11/2023 to 17/11/2023</h4>
 
-<p align="right">last modified : 10/11/2023</p>
+<p align="right">last modified : 13/11/2023</p>
 
 ### Ongoing tasks
 
@@ -13,9 +13,11 @@ Project x86-retrogaming -- Team 3
 
 |           Task            |   Member Assigned   |   Progression   |   End Of Week objective   |   Start Date  |
 |:-------------------------:|:-------------------:|:---------------:|:-------------------------:|:-------------:|
-|Functionnal Specification  |Max & Mathis         |80%              |95%                        |6/11/2023      |
-|Test Plan                  |Quentin & Robin      |40%              |35%                        |6/11/2023      |
+|Test Plan                  |Quentin & Robin      |40%              |75%                        |6/11/2023      |
 |Research                   |Pierre & Evan        |/                |/                          |6/11/2023      |
+|Test cases creation        |Quentin & Robin      |/                |75%                        |13/11/2023      |
+|Gantt Diagram              |Arthur               |0%               |75%                        |13/11/2023      |
+|Technical Specifications   |Mathis               |0%               |/                          |13/11/2023      |
 
 
 </div>
@@ -29,6 +31,7 @@ Project x86-retrogaming -- Team 3
 |Gantt Diagram Simplified   |Arthur                 |6/11/2023      |9/11/2023    |
 |Project Charter            |Arthur                 |8/11/2023      |10/11/2023   |
 |Defining KPIs              |Team                   |9/11/2023      |10/11/2023   |
+|Functional Specifications  |Max & Mathis           |6/11/2023      |13/11/2023   |
 
 </div>
 
@@ -42,6 +45,6 @@ Even if we are a bit late on the schedule compared to what our objective was for
 
 <div align="center">
 
-![Progression](../pictures/Weekly-Report/Progression-Week-1.png)
+![Progression](/Documents/pictures/Weekly-Report/Progression-Week-1.png)
 
 </div>
