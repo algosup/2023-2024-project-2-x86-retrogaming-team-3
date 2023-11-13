@@ -226,7 +226,7 @@ The project sponsors (highlighted in **bold**) are expected to be in charge of:
 |---|---|
 | Franck JEANNIN | Having the student learn assembly  |
 | ALGOSUP Students | Learning assembly and getting experience |
-| B3 | Geting an arcade machnine in the breakroom |
+| B3 | Geting an arcade machine in the breakroom |
 
 #### ➭ <ins>Project Roles</ins>
 
