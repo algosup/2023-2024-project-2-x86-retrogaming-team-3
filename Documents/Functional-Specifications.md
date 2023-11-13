@@ -120,8 +120,6 @@
 | Software Developer | Pierre GORIN | ✅ | 11/13/2023 |
 | Software Developer | Evan UHRLING |✅ | 11/13/2023|
 | Quality Assurance | Quentin CLEMENT | ✅ | 11/13/2023 |
-| Quality Assurance | Robin DEBRY | | |
-| Quality Assurance | Quentin CLEMENT | | |
 | Quality Assurance | Robin DEBRY |✅|11/13/2023|
 
 </details>
