@@ -6,8 +6,15 @@
 <h4 id="table-of-contents"> 📖 <ins>Table of Contents</ins></h4>
 
 </summary>
+
+<ul>
+    <li><a href="#a-document-control"></li>
+    <li><a href="#b-introduction"></li>
+    <li><a href="#c-functional-requirements"></li>
+    <li><a href="#d-non-functional-requirements"></li>
+</ul>
     
-...table of contents
+[Document History](#1-document-information)
 
 </details>
 
@@ -218,9 +225,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
 </summary>
 
-- ### 1) Pac-Man's features
-
-    - ### ➭ General Overview
+- ### 1) Pac-Man's Features Overview
 
     - #### ➭ <ins>Brief History...</ins>
 
@@ -275,32 +280,36 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
     - #### ➭ <ins>Ghosts</ins>
 
     <p align="center"><img src="./pictures/fonctional-specification/game/red.png" alt="red" width="50"/><img src="./pictures/fonctional-specification/game/pink-ghost.png" alt="pink" width="50"/><img src="./pictures/fonctional-specification/game/orange-ghost.png" alt="orange" width="50"/><img src="./pictures/fonctional-specification/game/cyan.png" alt="cyan" width="50"/></p>
-    - There are 4 ghosts. 
-    - The player dies when touching one of the ghosts.
-    - A ghost can be eaten by the player when the game is in fright mode
-    - If a ghost gets eaten, he goes back to the center of the maze
-    - At higher difficulties, ghosts get faster
+    There are 4 ghosts. 
 
-    The ghosts have three behaviors :
-        - Scater : the ghosts are going for a corner of the maze
-        - Chase : Each ghost has a different chase behavior, but the idea is to hunt down the player.
-        - Frightened : The ghosts are running away from the player with random movement. This only activates when the game is in Fright Mode when the player eats a Super Gum.
+    The player dies when touching one of the ghosts.
+
+    A ghost can be eaten by the player when the game is in fright mode
+
+    If a ghost gets eaten, he goes back to the center of the maze
+
+    At higher difficulties, ghosts get faster
+
+    The ghosts have three behaviors:<br><br>
+
+    - Scater : the ghosts are going for a corner of the maze
+    - Chase : Each ghost has a different chase behavior, but the idea is to hunt down the player.
+    - Frightened : The ghosts are running away from the player with random movement. This only activates when the game is in Fright Mode when the player eats a Super Gum.
 
     The Ghosts cycle between Scater and Chase. At higher levels, ghosts spend more time in Chase mode.
 
     - #### ➭ <ins>Sound</ins>
 
-    There are sound effects for the following events :
-        - Start-Up
-        - Pac-Man Eating
-        - Pac-Man Eating Fruits
-        - Ghost Siren Sound
-        - Fright Mode
-        - Pac-Man Eating Ghost
-        - Pac-Man Get High Score (10,000 points)
-        - Pac-Man dying/Game Over
+    There are sound effects for the following events:
 
-    - ### ➭ Environment
+    - Start-Up
+    - Pac-Man Eating
+    - Pac-Man Eating Fruits
+    - Ghost Siren Sound
+    - Fright Mode
+    - Pac-Man Eating Ghost
+    - Pac-Man Get High Score (10,000 points)
+    - Pac-Man dying/Game Over
 
     - #### ➭ <ins>Level</ins>
 
@@ -501,7 +510,7 @@ Our team was tasked with creating a Pac-Man clone, with the added restriction th
 
         - #### ➭ <ins>Behavior</ins>
 
-        There are three modes for ghosts.
+        There are three modes for ghosts:
         * Chase : In chase mode, the ghost is hunting down Pac-Man. Each ghost has a unique chase behavior.
         * Scatter : Each ghost has a home corner in the maze. In Scatter mode, ghosts will navigate toward that corner.  
         * Frightened : When Pac-Man is in Fright Mode after eating a Super Gum, the ghosts randomly move through the maze. They also turn blue and frown (see image). <p align="center"><img src="./pictures/fonctional-specification/game/frightened.jpeg" alt="frightened" width="50"/></p>
