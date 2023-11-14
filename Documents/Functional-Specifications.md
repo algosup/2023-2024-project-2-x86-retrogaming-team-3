@@ -234,9 +234,9 @@ As defined by the project owner (ALGOSUP), the team is arranged in the following
 
 | Role | Description | Name |
 |---|---|---|
-| Project Manager | Is in charge of organization, planing and budgeting.<br>Keep the team motivated.  | Arthur LEMOINE |
+| Project Manager | Is in charge of organization, planning and budgeting.<br>Keep the team motivated.  | Arthur LEMOINE |
 | Program Manager | Makes sure the project meets expectation.<br>Is in charge of design.<br>Is responsible for writing the Functional Specifications | Max BERNARD |
-| Tech Lead | Makes the technical decision in the project.<br>Translates the Functional Specification into Technical Specifications.<br> Does code review. | Mathis KAKAL |
+| Tech Lead | Makes the technical decisions in the project.<br>Translates the Functional Specification into Technical Specifications.<br> Does code review.| Mathis KAKAL |
 | Software Engineer | Writes the code.<br>Writes documentation<br>Participate in the technical design. | Pierre GORIN |
 | Software Engineer | | Evan UHRLING |
 | Quality Assurance |  Tests all the functionalities of a product to find bugs and issue.<br>Document bugs and issues.<br>Write the test plan.<br>Check that issues have been fixed.| Quentin CLEMENT |
@@ -289,7 +289,7 @@ We have an estimated 385 man-hours total to complete this project
 |---|
 | We assume we will have no issue with the copyright of Pac-Man |
 | DosBox is stable enough to not be a concern for reliability |
-| DosBox can run the same program no pater the OS |
+| DosBox can run the same program no matter the OS |
 
 | Constraints |
 |---|
@@ -372,11 +372,11 @@ At higher difficulties, ghosts get faster
 
 The ghosts have three behaviors:
 
-- Scater : The ghosts are going for a corner of the Maze.
+- Scatter : The ghosts are going for a corner of the Maze.
 - Chase : Each ghost has a different chase behavior, but the idea is to hunt down the player.
 - Frightened : The ghosts are running away from the player with random movement. This only activates when the game is in Fright Mode when the player eats a Super Gum.
 
-The Ghosts cycle between Scater and Chase. At higher levels, ghosts spend more time in Chase mode.
+The Ghosts cycle between Scatter and Chase. At higher levels, ghosts spend more time in Chase mode.
 
 #### ➭ <ins>Sound</ins>
 
