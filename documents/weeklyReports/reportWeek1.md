@@ -42,6 +42,6 @@ Even if we are a bit late on the schedule compared to what our objective was for
 
 <div align="center">
 
-![Progression](../pictures/Weekly-Report/Progression-Week-1.png)
+![Progression](../pictures/weeklyReport/progressionWeek1.png)
 
 </div>
