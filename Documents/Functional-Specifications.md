@@ -458,7 +458,7 @@ Once a player reaches a score high enough to make it into the top 10 of players,
 <p align='center'><img src='./pictures/functional-specification/game/enter-your-initials.png' alt='initials' width='350'></p>
 
 The player can use the Up and Down buttons to change the selected letter. Going up cycles from Z to A, and going down cycles from A to Z. It should loop once you try to go beyond Z or A. There should only be the 26 letters of the alphabet.
-You can select which letters you are changing by using the Left and Right buttons. This does <b>not</b> loop when you reach either end. The selected letters should have arrows above and below them.
+You can select which letters you are changing by using the left and right buttons. This does <b>not</b> loop when you reach either end. The selected letters should have arrows above and below them.
 When the player presses the Right button while on the rightmost letter, the name is validated, and the High Score page is displayed.
 
 ##### <ins>High Scores</ins>
@@ -675,9 +675,9 @@ Cyan has a complex targeting algorithm.<br> Step by Steps:
 
 In the example above :
         <ol>
-        <li>The red Arrow show is looking 2 tiles in front of Pac-Man into the green dashed tile.</li>
+        <li>The red arrow show is looking 2 tiles in front of Pac-Man into the green dashed tile.</li>
         <li>In purple, we draw a line from Red to that dashed tile.</li>
-        <li>The yellow Arrow is a copy of the purple arrow but uses the dashed tile as a point of origin. The yellow arrow points at Cyan's target tile.</li>
+        <li>The yellow arrow is a copy of the purple arrow but uses the dashed tile as a point of origin. The yellow arrow points at Cyan's target tile.</li>
         </ol>
 
 ### ➭ Sound Design
