@@ -79,7 +79,7 @@ About the product in itself, all the features listed in the functional specifica
 
 The active test cycle will be suspended until the criteria are resolved.
 
-![suspensionCriteria](../pictures/QA/suspension%20criteria.png)
+![suspensionCriteria](../pictures/qa/suspensionCriteria.png)
 
 We will use this test criteria for tests with critical priority, because if a test is with critical priority, it means we absolutely need it on our game, also we will need these features for the MVP.
 
