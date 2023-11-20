@@ -47,6 +47,6 @@ We are still facing some difficulties but our understanding of the theme and too
 
 <div align="center">
 
-![Progression](../pictures/Weekly-Report/Progression-Week-2.png)
+![Progression](../pictures/weeklyReport/progressionWeek2.png)
 
 </div>
