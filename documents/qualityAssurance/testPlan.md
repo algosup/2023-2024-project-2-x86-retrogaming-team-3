@@ -3,7 +3,7 @@
 |Author|Robin DEBRY and Quentin CLEMENT|
 |---|---|
 |Created|11/09/2023|
-|Last Modified|11/09/2023|
+|Last Modified|20/09/2023|
 
 ## Table of Contents
 
@@ -27,6 +27,7 @@
     - [System resource](#system-resource)
     - [Test tool](#test-tool)
   - [Plan test environment](#plan-test-environment)
+    - [Test environment](#test-environment)
   - [Schedule estimation](#schedule-estimation)
   - [Test deliverables](#test-deliverables)
 
@@ -120,7 +121,36 @@ The Quality Assurance of this team will take all QA roles together like Test man
 
 For this project we will use Linear(https://linear.app). It will be useful for all issues make each weeks for each features needs for the game. After that we will convert the issue into github.
 
+![Linear_overview](../pictures/QA/linearOverview.png)
+
+We can see that we can add a description, a priority, a label, a milestone, a project, a assignee, a due date and a estimate time.
+The only difference with github is that we can add a estimate time and a due date. Also is better to understand in which part of the project the issue is and to see if a issue it's already in progress or not. Finally each members of the team can see is own issues and the issues of the team.
+
 ## Plan test environment
+
+### Test environment
+
+To test the game we will use NASM to compile the game and DosBox to run the game.
+
+To compile the game we will use a file bash to compile the game
+
+```bash
+ nasm pacman.asm -f bin -o "pacman.com"
+```
+
+after that we will create a file bash to open DosBox and run the game
+
+We will use this command to open DosBox
+
+```bash
+DOSBOX_BIN="/Applications/dosbox.app/Contents/MacOS/DOSBox"
+```
+
+and this command to run the game directly when DosBox is open
+
+```bash
+dosbox -c "mount c ${BIN_DIR}" -c "pacman.com" -c "exit"
+```
 
 ## Schedule estimation
 
