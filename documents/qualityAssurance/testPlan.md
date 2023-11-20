@@ -24,8 +24,8 @@
     - [b. Testing scope](#b-testing-scope)
     - [c. Testing type](#c-testing-type)
     - [d. Testing tools](#d-testing-tools)
-    - [Test cases](#test-cases)
-    - [Bug data reports](#bug-data-reports)
+    - [e. Test cases](#e-test-cases)
+    - [f. Bug data reports](#f-bug-data-reports)
   - [3. Test criteria](#3-test-criteria)
     - [a. Suspension criteria](#a-suspension-criteria)
     - [b. Exit criteria](#b-exit-criteria)
@@ -113,7 +113,7 @@ Linear:
 
 GitHub Issues:
 
-### Test cases
+### e. Test cases
 
 To be sure that all features and all possible bugs have been tested, we will create multiple test cases on Linear/GitHub Issues. We will use a template to be sure that each test case is clear and concise. This template will be used for each test case and will be filled with the following information:
 
@@ -139,7 +139,7 @@ Status:
 Comments:
 ```
 
-### Bug data reports
+### f. Bug data reports
 
 When a bug is found, we will create a ticket on Linear/GitHub issues with the label "bug" so the developpers can see it by sorting the tickets with this particular label, and fix it as soon as possible. The ticket will be filled with the following information:
 
