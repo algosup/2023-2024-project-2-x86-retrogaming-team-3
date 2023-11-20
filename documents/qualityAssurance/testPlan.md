@@ -1,6 +1,6 @@
 # Test plan document
 
-|Author|Robin DEBRY and Quentin CLEMENT|
+|Author|Robin DEBRY and Quentin CLÉMENT|
 |---|---|
 |Created|11/09/2023|
 |Last Modified|20/09/2023|
@@ -9,45 +9,46 @@
 
 - [Test plan document](#test-plan-document)
   - [Table of Contents](#table-of-contents)
-  - [Analyse the product](#analyse-the-product)
-    - [Who will use this pac-man game?](#who-will-use-this-pac-man-game)
+  - [1. Analyse the product](#1-analyse-the-product)
+    - [a. Who will use this pac-man game?](#a-who-will-use-this-pac-man-game)
       - [Former players](#former-players)
       - [New players](#new-players)
       - [Competitive players](#competitive-players)
-    - [What is it used for?](#what-is-it-used-for)
-    - [How will it work?](#how-will-it-work)
-    - [What are software/ hardware the game uses?](#what-are-software-hardware-the-game-uses)
+    - [b. What is it used for?](#b-what-is-it-used-for)
+    - [c. How will it work?](#c-how-will-it-work)
+    - [d. What are software/ hardware the game uses?](#d-what-are-software-hardware-the-game-uses)
       - [Asssembly](#asssembly)
       - [DosBox](#dosbox)
-  - [Test strategy](#test-strategy)
-    - [Testing scope](#testing-scope)
-    - [Testing type](#testing-type)
-    - [Document testing](#document-testing)
-    - [Game testing](#game-testing)
-  - [Test criteria](#test-criteria)
-    - [Suspension criteria](#suspension-criteria)
-    - [Exit criteria](#exit-criteria)
-  - [Resource planning](#resource-planning)
-    - [Human resource](#human-resource)
-    - [System resource](#system-resource)
-    - [Test tool](#test-tool)
-  - [Plan test environment](#plan-test-environment)
-    - [Test environment for Mac](#test-environment-for-mac)
-    - [Test environment for Windows](#test-environment-for-windows)
+  - [2. Test strategy](#2-test-strategy)
+    - [a. Testing team](#a-testing-team)
+    - [b. Testing scope](#b-testing-scope)
+    - [c. Testing type](#c-testing-type)
+    - [d. Document testing](#d-document-testing)
+    - [e. Game testing](#e-game-testing)
+  - [3. Test criteria](#3-test-criteria)
+    - [a. Suspension criteria](#a-suspension-criteria)
+    - [b. Exit criteria](#b-exit-criteria)
+  - [4. Resource planning](#4-resource-planning)
+    - [a. Human resource](#a-human-resource)
+    - [b. System resource](#b-system-resource)
+    - [c. Test tool](#c-test-tool)
+  - [5. Plan test environment](#5-plan-test-environment)
+    - [a. Test environment for Mac](#a-test-environment-for-mac)
+    - [b. Test environment for Windows](#b-test-environment-for-windows)
   - [Schedule estimation](#schedule-estimation)
-  - [Test deliverables](#test-deliverables)
+  - [7. Test deliverables](#7-test-deliverables)
 
-## Analyse the product
+## 1. Analyse the product
 
-### Who will use this pac-man game?
+### a. Who will use this pac-man game?
 
 As testers, we will have to put ourselves in the shoes of the users. For this reason, we will have to determine all the possible different user types. By doing that, we will be able to test the product from different perspectives and make sure that it is suitable for all types of users.
 
 #### Former players
 
-The principal targetted audience is nostalgic gamers who have a fondness for classic arcade experiences. It’s for those who remember the iconic Pac-Man of 1980 and want to relive the excitement of crunching pellets and escaping ghosts.
+The principal targetted audience is nostalgic gamers who have a fondness for classic arcade experiences. It's for those who remember the iconic Pac-Man of 1980 and want to relive the excitement of crunching pellets and escaping ghosts.
 
-#### New players
+#### New players 
 
 The second targetted audience Pac-Man was really popular during the 80's and the 90's, afterwards it became less played and a lot of people never played the original Pac-Man game. This is why, newbies are also a targetted audience. They will be able to discover the game and the retro gaming world.
 
@@ -55,17 +56,19 @@ The second targetted audience Pac-Man was really popular during the 80's and the
 
 Competitive Pac-Man players are a tiny part of the target audience, but they do exist. These players will be aiming to beat their records, whether in terms of speed, score. But also to achieve the various challenges that are popular in this community.
 
-### What is it used for?
+<!-- This Pac-Man game is designed for nostalgic gamers who have a fondness for classic arcade experiences. It caters to those who remember the iconic Pac-Man of 1980 and want to relive the excitement of chomping pellets and evading ghosts. Whether you're a seasoned gamer who grew up with the original or a newcomer curious about gaming history, this clone appeals to a broad audience of all ages. -->
+
+### b. What is it used for?
 
 The Pac-Man game serves as a delightful escape into the past, offering a virtual time machine to the golden era of arcade gaming. It's a source of entertainment and nostalgia, allowing players to immerse themselves in the simple yet addictive gameplay that made Pac-Man a timeless classic. Additionally, it can be a great way to introduce younger generations to the joy of retro gaming, fostering a sense of appreciation for the roots of the gaming industry. Overall, it's a fun and engaging experience that transcends generations.
 
-### How will it work?
+### c. How will it work?
 
-Given that this is an exact clone of the 1980 Pac-Man, the gameplay mechanics will faithfully replicate the original experience. Players will navigate through a maze, controlling the iconic yellow character to consume pellets while avoiding colorful ghosts. The controls will mimic the simplicity of the arcade joystick, ensuring an authentic feel for players.
+Given that this is an exact clone of the 1980 Pac-Man, the gameplay mechanics will faithfully replicate the original experience. Players will navigate through a maze, controlling the iconic yellow character to consume pellets while avoiding colorful ghosts. The controls will mimic the simplicity of the arcade joystick, ensuring an authentic feel for players. Here's a [link](https://www.nintendo.co.jp/clv/manuals/en/pdf/CLV-P-NABME.pdf) to the official instruction manual we'll be referring to.
 
 The graphics and audio will stay true to the retro charm, maintaining the pixelated aesthetic and classic sound effects that defined the original Pac-Man. The game will be designed to run smoothly on modern platforms while preserving the nostalgic elements that make Pac-Man a timeless favorite.
 
-### What are software/ hardware the game uses?
+### d. What are software/ hardware the game uses?
 
 The development of this Pac-Man clone involves a combination of software and hardware elements.
 
@@ -77,28 +80,48 @@ We will use Assembly to develop the game. Assembly is a low-level programming la
 
 DosBox is a DOS-emulator that uses the SDL-library which makes DosBox very easy to port to different platforms. DosBox has already been ported to many different platforms, such as Windows, BeOS, Linux, MacOS X...
 
-## Test strategy
+## 2. Test strategy
 
-### Testing scope
+### a. Testing team
 
-All the documents and features listed in the functional specifications will be sorted by priority and product areas. If 2 features are ready for testing at the same, the one with the highest priority will be tested first. Documents will be tested first so when they are fully completed, the whole will be able to focus on the product.
+The testing team will be divided into 2 parts. The first half will be composed of team 4's QA's:
+- Robin DEBRY (Mac OS)
+- Quentin CLÉMENT (Mac OS)
 
-### Testing type
+The second half will be composed of team 5's QA's:
+- Thomas PLANCHARD (Mac OS)
+- Maxime CARON (Windows)
 
-We will use an agile testing type. The goal is to make a overall test set each friday to test eveything that has been done during the week and provide feedbacks quickly so that the concerned team can rework the tested feature.
+Sparing the testing team in 2 parts will allow us to test the game on 2 different OS (Windows and MAC) to be sure that the game works in each of them. As Thomas and Maxime are not part of our team and of the developpment of the project, they point of view will be completely different from ours and will allow us to have a more objective point of view on the quality of our product.
 
-### Document testing
+### b. Testing scope
+
+The 2 principal things to test during this project will be the documents and the game itself. <br>
+About the document, assuring their quality is paramount so the communication with the client is clear and the whole team can work on the same basis. We will verify the grammar and the different writing mistakes of the documents, but also the content itself, to ensure that no crucial points have been overlooked or erroneous elements introduced into the document. <br>
+About the game, we will test all the features listed in the functional specifications to verify if they are corresponding to what was planned in the specifications. We will also test the game on different OS (Windows and MAC) to be sure that the game works in each of them.
+
+<!-- All the documents and features listed in the functional specifications will be sorted by priority and product areas. If 2 features are ready for testing at the same, the one with the highest priority will be tested first. Documents will be tested first so when they are fully completed, the whole will be able to focus on the product. -->
+
+### c. Testing type
+
+We're going to use an agile testing strategy so that as new features are released by the development team, and previous bugs are fixed, team 4 QA's will have to be reactive and test them as soon as possible (according to their priorities if 2 things are ready to be tested at the same time, priorities will be set in the test cases on the linear). <br>
+
+
+
+
+
+### d. Document testing
 
 Documents are milestones in this project. They are an important way of communication within the team and between the team and the external world. Their quality and their pertinance is paramount so the whole way of thinking of the team can be transmitted. Moreover, each point has to be clear and precise so the final product is as close as possible to the specifications and ALGOSUP's requirements.
 As the functional and technical specifications are the most important documents, they will be tested as a priority and published as soon as possible so that the teams can base their production work on them.
 
-### Game testing
+### e. Game testing
 
 About the product in itself, all the features listed in the functional specifications will be tested to verify if they are corresponding to what was planned in the specifications.
 
-## Test criteria
+## 3. Test criteria
 
-### Suspension criteria
+### a. Suspension criteria
 
 The active test cycle will be suspended until the criteria are resolved.
 
@@ -106,7 +129,7 @@ The active test cycle will be suspended until the criteria are resolved.
 
 We will use this test criteria for tests with critical priority, because if a test is with critical priority, it means we absolutely need it on our game, also we will need these features for the MVP.
 
-### Exit criteria
+### b. Exit criteria
 
 We will use this test criteria for tests with a priority between low and high for each development phases.
 For that we need to target a run rate and a pass rate.
@@ -119,9 +142,9 @@ Achieving high pass rate is a goal.
 
 A weekly report will be make each friday to confirm the exit criteria with the report of the test results
 
-## Resource planning
+## 4. Resource planning
 
-### Human resource
+### a. Human resource
 
 The Quality Assurance of this team will take all QA roles together like Test manager,Tester, developer in test, test administrator and software quality assurance(SQA).
 
@@ -132,14 +155,14 @@ The Quality Assurance of this team will take all QA roles together like Test man
 |3|Test Administrator|Builds up and ensure the test environment to be use by the test|
 |4|SQA|Take in charge the quality assurance. Check to confirm the testing process is meeting specified requirements of the customers|
 
-### System resource
+### b. System resource
 
 |No|Resources|Description|
 |---|---|---|
 |1|Test tools|Builds up and ensure the test environment to be use by the test.|
 |2|Computer|We will use 2 different OS (Windows and MAC to be sure that the game works in each of them|
 
-### Test tool
+### c. Test tool
 
 For this project we will use Linear(https://linear.app). It will be useful for all issues make each weeks for each features needs for the game. After that we will convert the issue into github.
 
@@ -148,9 +171,9 @@ For this project we will use Linear(https://linear.app). It will be useful for a
 We can see that we can add a description, a priority, a label, a milestone, a project, a assignee, a due date and a estimate time.
 The only difference with github is that we can add a estimate time and a due date. Also is better to understand in which part of the project the issue is and to see if a issue it's already in progress or not. Finally each members of the team can see is own issues and the issues of the team.
 
-## Plan test environment
+## 5. Plan test environment
 
-### Test environment for Mac
+### a. Test environment for Mac
 
 To test the game we will use NASM to compile the game and DosBox to run the game.
 
@@ -174,8 +197,8 @@ and this command to run the game directly when DosBox is open
 dosbox -c "mount c ${BIN_DIR}" -c "pacman.com" -c "exit"
 ```
 
-### Test environment for Windows
+### b. Test environment for Windows
 
 ## Schedule estimation
 
-## Test deliverables
+## 7. Test deliverables
