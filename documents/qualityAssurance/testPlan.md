@@ -20,11 +20,12 @@
       - [Asssembly](#asssembly)
       - [DosBox](#dosbox)
   - [2. Test strategy](#2-test-strategy)
-    - [a. Testing team](#a-testing-team)
+    - [a. Quality assurance team](#a-quality-assurance-team)
     - [b. Testing scope](#b-testing-scope)
     - [c. Testing type](#c-testing-type)
-    - [d. Document testing](#d-document-testing)
-    - [e. Game testing](#e-game-testing)
+    - [d. Testing tools](#d-testing-tools)
+    - [Test cases](#test-cases)
+    - [Bug data reports](#bug-data-reports)
   - [3. Test criteria](#3-test-criteria)
     - [a. Suspension criteria](#a-suspension-criteria)
     - [b. Exit criteria](#b-exit-criteria)
@@ -48,7 +49,7 @@ As testers, we will have to put ourselves in the shoes of the users. For this re
 
 The principal targetted audience is nostalgic gamers who have a fondness for classic arcade experiences. It's for those who remember the iconic Pac-Man of 1980 and want to relive the excitement of crunching pellets and escaping ghosts.
 
-#### New players 
+#### New players
 
 The second targetted audience Pac-Man was really popular during the 80's and the 90's, afterwards it became less played and a lot of people never played the original Pac-Man game. This is why, newbies are also a targetted audience. They will be able to discover the game and the retro gaming world.
 
@@ -82,7 +83,7 @@ DosBox is a DOS-emulator that uses the SDL-library which makes DosBox very easy 
 
 ## 2. Test strategy
 
-### a. Testing team
+### a. Quality assurance team
 
 The testing team will be divided into 2 parts. The first half will be composed of team 4's QA's:
 - Robin DEBRY (Mac OS)
@@ -96,9 +97,9 @@ Sparing the testing team in 2 parts will allow us to test the game on 2 differen
 
 ### b. Testing scope
 
-The 2 principal things to test during this project will be the documents and the game itself. <br>
-About the document, assuring their quality is paramount so the communication with the client is clear and the whole team can work on the same basis. We will verify the grammar and the different writing mistakes of the documents, but also the content itself, to ensure that no crucial points have been overlooked or erroneous elements introduced into the document. <br>
-About the game, we will test all the features listed in the functional specifications to verify if they are corresponding to what was planned in the specifications. We will also test the game on different OS (Windows and MAC) to be sure that the game works in each of them.
+The 2 main things to test during this project will be the documents and the game itself. <br>
+About the documents, it's paramount to ensure their quality, so that communication with the client is clear and the whole team can work on the same basis. Not only will we check the documents for grammatical and typographical errors, but also the content itself, to ensure that no crucial points have been overlooked or erroneous elements introduced into the document. <br>
+As far as the game is concerned, we'll be testing all the features listed in the functional specifications to check that they correspond to what was originally intended. We will also be testing the game on different operating systems (Windows and MAC) to ensure that it works on all of them.
 
 <!-- All the documents and features listed in the functional specifications will be sorted by priority and product areas. If 2 features are ready for testing at the same, the one with the highest priority will be tested first. Documents will be tested first so when they are fully completed, the whole will be able to focus on the product. -->
 
@@ -106,18 +107,73 @@ About the game, we will test all the features listed in the functional specifica
 
 We're going to use an agile testing strategy so that as new features are released by the development team, and previous bugs are fixed, team 4 QA's will have to be reactive and test them as soon as possible (according to their priorities if 2 things are ready to be tested at the same time, priorities will be set in the test cases on the linear). <br>
 
+### d. Testing tools
 
+Linear:
 
+GitHub Issues:
 
+### Test cases
 
-### d. Document testing
+To be sure that all features and all possible bugs have been tested, we will create multiple test cases on Linear/GitHub Issues. We will use a template to be sure that each test case is clear and concise. This template will be used for each test case and will be filled with the following information:
+
+```
+Ticket ID:
+
+Test title [MM/DD/YYYY]:
+
+Priority:
+
+Labels: Test Case, ...
+
+Test description:
+
+Steps:
+
+Expected result:
+
+Actual result:
+
+Status:
+
+Comments:
+```
+
+### Bug data reports
+
+When a bug is found, we will create a ticket on Linear/GitHub issues with the label "bug" so the developpers can see it by sorting the tickets with this particular label, and fix it as soon as possible. The ticket will be filled with the following information:
+
+```
+Ticket ID:
+
+Bug title [MM/DD/YYYY]:
+
+Priority:
+
+Labels: Bug, ...
+
+Bug description:
+
+Steps to reproduce the bug:
+
+Expected result:
+
+Actual result:
+
+Potential solution:
+
+Comments:
+```
+
+<!-- ### d. Document testing
 
 Documents are milestones in this project. They are an important way of communication within the team and between the team and the external world. Their quality and their pertinance is paramount so the whole way of thinking of the team can be transmitted. Moreover, each point has to be clear and precise so the final product is as close as possible to the specifications and ALGOSUP's requirements.
 As the functional and technical specifications are the most important documents, they will be tested as a priority and published as soon as possible so that the teams can base their production work on them.
 
 ### e. Game testing
 
-About the product in itself, all the features listed in the functional specifications will be tested to verify if they are corresponding to what was planned in the specifications.
+About the product in itself, all the features listed in the functional specifications will be tested to verify if they are corresponding to what was planned in the specifications. -->
+
 
 ## 3. Test criteria
 
