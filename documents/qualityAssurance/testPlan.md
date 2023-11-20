@@ -11,9 +11,14 @@
   - [Table of Contents](#table-of-contents)
   - [Analyse the product](#analyse-the-product)
     - [Who will use this pac-man game?](#who-will-use-this-pac-man-game)
+      - [Former players](#former-players)
+      - [New players](#new-players)
+      - [Competitive players](#competitive-players)
     - [What is it used for?](#what-is-it-used-for)
     - [How will it work?](#how-will-it-work)
     - [What are software/ hardware the game uses?](#what-are-software-hardware-the-game-uses)
+      - [Asssembly](#asssembly)
+      - [DosBox](#dosbox)
   - [Test strategy](#test-strategy)
     - [Testing scope](#testing-scope)
     - [Testing type](#testing-type)
@@ -27,7 +32,8 @@
     - [System resource](#system-resource)
     - [Test tool](#test-tool)
   - [Plan test environment](#plan-test-environment)
-    - [Test environment](#test-environment)
+    - [Test environment for Mac](#test-environment-for-mac)
+    - [Test environment for Windows](#test-environment-for-windows)
   - [Schedule estimation](#schedule-estimation)
   - [Test deliverables](#test-deliverables)
 
@@ -35,7 +41,19 @@
 
 ### Who will use this pac-man game?
 
-This Pac-Man game is designed for nostalgic gamers who have a fondness for classic arcade experiences. It caters to those who remember the iconic Pac-Man of 1980 and want to relive the excitement of chomping pellets and evading ghosts. Whether you're a seasoned gamer who grew up with the original or a newcomer curious about gaming history, this clone appeals to a broad audience of all ages.
+As testers, we will have to put ourselves in the shoes of the users. For this reason, we will have to determine all the possible different user types. By doing that, we will be able to test the product from different perspectives and make sure that it is suitable for all types of users.
+
+#### Former players
+
+The principal targetted audience is nostalgic gamers who have a fondness for classic arcade experiences. It’s for those who remember the iconic Pac-Man of 1980 and want to relive the excitement of crunching pellets and escaping ghosts.
+
+#### New players
+
+The second targetted audience Pac-Man was really popular during the 80's and the 90's, afterwards it became less played and a lot of people never played the original Pac-Man game. This is why, newbies are also a targetted audience. They will be able to discover the game and the retro gaming world.
+
+#### Competitive players
+
+Competitive Pac-Man players are a tiny part of the target audience, but they do exist. These players will be aiming to beat their records, whether in terms of speed, score. But also to achieve the various challenges that are popular in this community.
 
 ### What is it used for?
 
@@ -49,11 +67,15 @@ The graphics and audio will stay true to the retro charm, maintaining the pixela
 
 ### What are software/ hardware the game uses?
 
-The development of this Pac-Man clone involves a combination of software and hardware elements. The primary programming language utilized is Assembly, known for its efficiency and low-level control, making it well-suited for recreating the intricate details of the 1980 Pac-Man.
+The development of this Pac-Man clone involves a combination of software and hardware elements.
 
-To facilitate the development process and recreate the vintage gaming environment, DosBox is employed as the emulator. DosBox allows the Pac-Man clone to run seamlessly on modern hardware and operating systems, emulating the DOS environment that was prevalent during the original Pac-Man era.
+#### Asssembly
 
-The choice of Assembly and DosBox ensures that the clone remains faithful to the programming languages and platforms of the 1980s, providing an authentic replication of the classic Pac-Man experience. This combination of software and emulation allows the game to bridge the gap between the past and the present, offering a nostalgic journey for players.
+We will use Assembly to develop the game. Assembly is a low-level programming language that is used to write programs that are directly executable by the computer's hardware.
+
+#### DosBox
+
+DosBox is a DOS-emulator that uses the SDL-library which makes DosBox very easy to port to different platforms. DosBox has already been ported to many different platforms, such as Windows, BeOS, Linux, MacOS X...
 
 ## Test strategy
 
@@ -128,7 +150,7 @@ The only difference with github is that we can add a estimate time and a due dat
 
 ## Plan test environment
 
-### Test environment
+### Test environment for Mac
 
 To test the game we will use NASM to compile the game and DosBox to run the game.
 
@@ -151,6 +173,8 @@ and this command to run the game directly when DosBox is open
 ```bash
 dosbox -c "mount c ${BIN_DIR}" -c "pacman.com" -c "exit"
 ```
+
+### Test environment for Windows
 
 ## Schedule estimation
 
