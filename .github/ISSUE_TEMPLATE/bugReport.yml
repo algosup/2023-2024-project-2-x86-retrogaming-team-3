@@ -39,6 +39,7 @@ body:
     attributes:
       label: "Expected result"
       description: "What were you expecting to happen?"
+  - type: textarea
     id: solution
     attributes:
       label: "Potential solution"
