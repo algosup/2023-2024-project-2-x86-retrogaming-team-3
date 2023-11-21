@@ -8,7 +8,7 @@ body:
     attributes:
       label: "Description"
       description: "Please enter an explicit description of your issue."
-      placeholder: "Short and explicit description of your incident..."
+      placeholder: "Write a clear description of your incident..."
   - type: dropdown
     id: severity
     attributes:

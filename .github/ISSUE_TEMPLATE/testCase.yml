@@ -8,7 +8,7 @@ body:
     attributes:
       label: "Description"
       description: "Please enter an explicit description of the test case and on the feature/s you want to test."
-      placeholder: "Write a clear and concise description of your test case."
+      placeholder: "Write a clear description of your test case..."
   - type: dropdown
     id: severity
     attributes:
