@@ -8,7 +8,7 @@ body:
     attributes:
       label: "Description"
       description: "Please enter an explicit description of your issue."
-      placeholder: "Short and explicit description of your incident..."
+      placeholder: "Write a clear description of your incident..."
   - type: dropdown
     id: severity
     attributes:
@@ -39,6 +39,7 @@ body:
     attributes:
       label: "Expected result"
       description: "What were you expecting to happen?"
+  - type: textarea
     id: solution
     attributes:
       label: "Potential solution"
@@ -47,4 +48,4 @@ body:
     id: other
     attributes:
       label: "Other"
-      description: "If you have anything else to say"
+      description: "If you have anything else to say."
