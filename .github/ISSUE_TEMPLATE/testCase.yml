@@ -14,7 +14,7 @@ body:
     attributes:
       label: "Severity"
       options:
-        - 1 - Critical
+        - 1 - Urgent
         - 2 - High
         - 3 - Medium
         - 4 - Low
@@ -31,6 +31,20 @@ body:
     attributes:
       label: "Expected result"
       description: "What were you expecting to happen?"
+  - type: dropdown
+    id: status
+    attributes:
+      label: "Status"
+      options:
+        - Pass
+        - Fail
+  - type: input
+    id: testdate
+    attributes:
+      label: "Last test date"
+      description: "When was it last tested?"
+    validations:
+      required: true
   - type: textarea
     id: solution
     attributes:
