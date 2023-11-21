@@ -14,7 +14,7 @@ body:
     attributes:
       label: "Severity"
       options:
-        - 1 - Critical
+        - 1 - Urgent
         - 2 - High
         - 3 - Medium
         - 4 - Low
