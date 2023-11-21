@@ -1,0 +1,42 @@
+name: "Test Case"
+description: "Create a test case for future tests"
+title: "XXXXX [2023/XX/XX]"
+labels: ["Test Case"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "Please enter an explicit description of the test case and on the feature/s you want to test."
+      placeholder: "Write a clear and concise description of your test case."
+  - type: dropdown
+    id: severity
+    attributes:
+      label: "Severity"
+      options:
+        - 1 - Critical
+        - 2 - High
+        - 3 - Medium
+        - 4 - Low
+        - 5 - None
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Action to realise"
+      description: "What are the actions that need be done to ensure that tests are carried out correctly??"
+  - type: textarea
+    id: expected
+    attributes:
+      label: "Expected result"
+      description: "What were you expecting to happen?"
+    id: solution
+    attributes:
+      label: "Potential solution"
+      description: "If you have an idea on how to solve this problem, please share it here."
+  - type: textarea
+    id: other
+    attributes:
+      label: "Other"
+      description: "If you have anything else to say"
