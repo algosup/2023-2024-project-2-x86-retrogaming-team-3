@@ -25,7 +25,7 @@ body:
     id: steps
     attributes:
       label: "Action to realise"
-      description: "What are the actions that need be done to ensure that tests are carried out correctly??"
+      description: "What are the actions that need be done to ensure that tests are carried out correctly?"
   - type: textarea
     id: expected
     attributes:
@@ -40,4 +40,4 @@ body:
     id: other
     attributes:
       label: "Other"
-      description: "If you have anything else to say"
+      description: "If you have anything else to say."
