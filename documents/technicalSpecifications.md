@@ -20,6 +20,92 @@
 
 </summary>
 
+- [1. Introduction](#1-introduction)
+ 	- [Document Purpose & Definition](#document-purpose--definition)
+ 	- [Glossary](#glossary)
+ 	- [Project Overview](#project-overview)
+  		- [Project Brief](#project-brief)
+  		- [Requirements](#requirements)
+			- ➭ [Setting up the Development Environment](#setting-up-the-development-environment)
+      				- [Hardware Requirements](#hardware-requirements)
+      				- [Software Requirements](#software-requirements)
+				- [Coding Methodology](#coding-methodology)
+					- [Workflow](#-workflow)
+					- [Coding Conventions](#-coding-conventions)
+					- [Commenting Conventions](#-commenting-conventions)
+					- [Documenting Conventions](#-documenting-conventions)
+					- [Test-Driven Development](#-test-driven-development)
+			- ➭ [Setting up the Game](#setting-up-the-game)
+				- [Hardware requirements](#hardware-requirements-1)
+				- [Software requirements](#software-requirements-1)
+  		- [Assumptions & Constraints](#assumptions--constraints)
+- [2. Technical Specification](2-technical-specifications)
+	- [Folder Structure](#folder-structure)
+	- [Data Structures](#data-structures)
+ 		- [Maze Representation](#maze-representation)
+ 		- [Ghost Representation](#ghosts-representation)
+ 		- [Pac-Man Representation](#pac-man-representation)
+ 		- [Fruits Representation](#fruits-representation)
+ 		- [Game Representation](#game-state)
+ 		- [Score Representation](#score)
+ 		- [Lives Representation](#lives)
+ 		- [Colours Representation](#colours)
+	- [Interaction](#interaction)
+ 		- [Movement/Direction](#movement-direction)
+	- [Graphics](#graphics)
+ 		- [Orientation](#orientation)
+ 		- [Grid System](#grid-system)
+ 		- [User Interface](#user-interface)
+  			- [Splash Screen](#-splash-screen)
+  			- [Menu](#-menu)
+  			- [Font](#-font)
+  			- [Displaying the Score](#-displaying-the-score)
+	- [Placement, Movement & Collision](#placement-movement--collision)
+ 		- [Placement](#placement)
+   			- ➭ [Actor's tile positioning](#-actors-tile-positioning)
+   			- ➭ [Pac-Man spawn](#-pacman-spawn)
+   			- ➭ [Ghosts' spawn](#-ghost-spawn)
+   			- ➭ [Gum & Super Gums spawn](#-gums--super-gums-spawn)
+   			- ➭ [Fruits' spawn](#-how-fruits-spawn)
+ 		- [Movement](#movement)
+			- ➭ [Player](#-player)
+				- [Player Speed](#-player-speed)
+				- [Eating Gum stops you](#-eating-gum-stops-you)
+				- [Eating Super Gums stop you even more](#-eating-super-gum-stops-you-even-more)
+				- [Cornering](#-cornering)
+				- [Fright Mode](#-fright-mode)
+				- [Side Teleporting](#-side-teleporting)
+			- ➭ [Ghosts](#-ghosts)
+				- [Picking Directions](#picking-directions)
+				- [Intersections](#intersections)
+				- [Scatter & Chase](#scatter--chase)
+				- [Frightened Mode](#frightened-mode)
+				- [Ghosts' Speed](#ghosts-speed)
+				- [Ghosts' leaving mechanism](#ghosts-leaving-mechanism)
+				- [Ghost's eaten back to base mode](#ghosts-eaten-back-to-base-mode)
+				- [Ghost's target tiles](#ghosts-target-tiles)
+				- [Red Ghost (Blinky)](#red-ghost-blinky)
+				- [Pink Ghost (Pinky)](#pink-ghost-pinky)
+				- [Blue Ghost (Inky)](#cyan-ghost-inky)
+				- [Orange Ghost (Clyde)](#orange-ghost-clyde)
+				- [Forbidden areas](#forbidden-areas)
+		- [Collision](#collision)
+	- [Scoring](#scoring)
+ 		- [Incrementing Score](#incrementing-score)
+   			- ➭ [Eating a Gum](#eating-a-gum)
+   			- ➭ [Eating a Super Gum](#eating-a-super-gum)
+   			- ➭ [Eating Ghosts](#eating-ghosts)
+   			- ➭ [Eating Fruits](#eating-fruits)
+   			- ➭ [10k Extra Life](#10k-extra-life)
+ 		- [Saving Score in memory and leaderboard mechanics](#saving-score-in-memory-and-leaderboard-mechanics)
+	- [Animation](#animation)
+ 		- [How Animations are Played](#defining-how-animations-are-played)
+ 		- [Defining the Different Animations and Their Triggers](#defining-the-different-animations-and-their-trigger)
+- [3. Conclusion](#3-conclusion)
+	- [Thanks](#thanks)
+	- [Extras](#extras)
+		- [All Value Tables](#all-value-tables)
+
 </details>
 
 # 1. Introduction
@@ -147,7 +233,79 @@ The technical Specifications will attempt to go through the development process 
 
 ## Folder Structure
 
-This is how we plan the project to be laid out:
+The folder structure of the x86 assembly project dedicated to the creation of a Pac-Man clone is defined as follows, according to the requirements of assembly language programming and the multiple facets of game development:
+
+`/src`: This principal directory houses all the source code in assembly language. The contents include:
+
+`main.asm`: Core game logic and initialization code.
+
+`rendering.asm`: Graphics rendering routines for drawing the game environment.
+
+`inputHandling.asm`: Input processing routines for player and system inputs.
+
+`gameLogic.asm`: Game state management and gameplay rules implementation.
+
+`ghostsAI.asm`: Artificial intelligence routines for ghost behavior.
+
+`audioManagement.asm`: Audio processing routines for sound effects and music.
+
+`mainMenu.asm`: Code for the main menu interface and navigation.
+
+`sprites.asm`: Sprite data and metadata for the game’s visual assets.
+
+`/bin`: This directory is allocated for the compiled output of the source code, consisting of:
+
+`game.com`: The primary executable file of the game ready for distribution and execution.
+
+`/docs`: Documentation related to the project is maintained here, formatted in Markdown for ease of access and editing. It includes:
+
+`FunctionalSpecifications.md`: Describes the game’s intended functionality and user interaction.`
+
+`TechnicalSpecifications.md`: Details the technical approach, including algorithms, data structures, and system design.
+
+`TestPlan.md`: Outlines the testing procedures, criteria, and benchmarks for quality assurance.
+
+*__Inside the /docs directory, there is a /management subdirectory, which further contains:__*
+
+`/docs/management/WeeklyReport.md`: A log of weekly progress reports detailing development updates (there is one document like this for each weeks).
+
+`/docs/management/management.md`: Documents related to project management, including task assignments and milestones.
+
+*__Additionally in the /docs directory, there is also a /src subdirectory, which stores all media assets used in the documentation, such as images and audio files, each document type within the /docs directory has its corresponding subdirectory to organize related media assets:__*
+
+`/docs/src/technicalSpecifications`: Contains images and audio pertinent to the technical specifications.
+
+`/docs/src/functionalSpecifications`: Houses media related to functional specifications.
+
+`/docs/src/QA`: Stores quality assurance related media.
+
+`/docs/src/management`: Organizes media for management documentation.
+
+`/docs/src/readme`: Contains assets for the README documentation.
+
+`/tools`: This directory includes auxiliary tools and utilities that facilitate development, such as:
+
+`NASM.exe`: The Netwide Assembler used for compiling assembly code.
+
+`DOSBox.exe`: An x86 emulator with DOS compatibility for testing and running the game in a controlled environment.
+
+`buildGame.sh`: A shell script for automating the build process on Unix-like systems.
+
+`buildGame.cmd`: A command script for automating the build process on Windows systems.
+
+`/tests`: Dedicated to the testing phase, this directory contains:
+
+`testScript.asm`: Assembly test scripts designed to validate individual units of game code and integrated subsystems.
+
+`.github/ISSUE_TEMPLATE/`: This folder contains issue templates to standardize the submission of bug reports (`bugReport.yml`) and test cases (`testCase.yml`) on GitHub.
+
+`.gitignore`: A configuration file that tells Git which files or directories to ignore in the project.
+
+`readme.md`: This file serves as the project's README, offering an overview and essential information for anyone interacting with the repository.
+
+This structure is crafted to promote ease of navigation, efficient workflow, and effective version control management, ensuring a streamlined development process and facilitating collaboration among team members.
+
+The following diagram visualises the directory and file structure for the Pac-Man clone project, highlighting the organisation of source code, compiled binaries, documentation, development tools and tests.
 
 ![folderStructure.png](../Documents/pictures/technical/folderStructure_1701076714060_0.png)
 
@@ -284,18 +442,35 @@ The different data for each tile are explained both in the data structures and c
 
 #### ➭ <ins>Splash Screen</ins>
 
+The splash screen for our Pac-Man-like game on x86 assembly will be displayed by setting the graphics mode and copying the splash screen image directly into video memory. This involves using basic assembly instructions to place the image data at the correct location in memory where the graphics hardware will read it and show it on the screen. 
+
+We'll also set the colour palette to match the vibrant colours of the game. The process is orchestrated by the CPU until the splash screen is fully rendered and ready for player interaction.
+
 #### ➭ <ins>Menu</ins>
 
-> [!NOTE]  
-> Will be defined in version Technical V2.0
+For the menu in our Pac-Man-like game, the display will be simplified to show four options: "Single Player," "Multi-Player" (which will appear inactive or "greyed out"), "Credits," and "Exit." In assembly language on the x86 architecture, we will use a series of instructions to draw text on the screen for each menu item. 
+
+The "Single Player" option will be selectable, while "Multi-Player" will be visually distinguished to indicate it is not selectable. Menu navigation can be implemented through keyboard interrupts, allowing the user to use the arrow keys to select an option and the enter key to confirm their choice. 
+
+"Credits" will lead to a screen detailing the game's creators, and "Exit" will terminate the game.
+
+The menu options will be strategically placed vertically on the screen, with "Single Player" at the top followed by the "Multi-Player" option, which will be visually distinguished to show it's not available. "Credits" and "Exit" will be listed below, each spaced evenly for clear selection using keyboard inputs.
 
 #### ➭ <ins>Font</ins>
 
-Mention how the font works, so virtually, anything can be written, explain how writing a font works..
+The font of the original Pac-Man video game in 1980, was made of 7 pixels in width and the same height, knowing each cell of the grid is composed of 8 pixels in width and height and we put one letter by cell each letter is spaced by 1 pixel.
+
+![Pacman Font](../Documents/pictures/technical/pacmanOGFont.png)
+
+In the image below, we can clearly see each pixel and its spacing.
+
+![Pacman Font letter A](../Documents/pictures/technical/letter_A.png)
 
 #### ➭ <ins>Displaying the score</ins>
 
-Tell about how the score is displayed throughout the game and how it is implemented (what's that 1up thing?)
+In the game, the player's current score appears in the top left, with each digit occupying a single cell, while the high score is centrally displayed at the top of the screen. The current score is updated instantaneously as players collect pellets and overcome ghosts.
+
+![Scores](../Documents/pictures/technical/scoresGraphics.png)
 
 ## Placement, Movement & Collision
 
@@ -327,10 +502,12 @@ It is worth noting that Pac-Man's direction is set to "left" by default if left 
 
 #### ➭ <ins>Ghost Spawn</ins>
 
-![pacmanGhosts.jpeg](../Documents/pictures/technical/pacmanGhosts.jpeg)
+<img src="../Documents/pictures/technical/pacmanGhosts.jpeg" width="330px"></img>
 
-> From left to right and top to bottom: Pinky, Blinky, Clyde and Inky  
+> From left to right and top to bottom: Pinky, Blinky, Clyde and Inky
+
 ![ghostHouse.png](../Documents/pictures/technical/ghostHouse.png)
+
 > At the beginning of the Game, Inky, Pinky and Clyde appear in the ghost house.  
 This area is off-limits for Pac-Man
 
