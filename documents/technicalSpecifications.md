@@ -82,7 +82,7 @@ The first step is to set up the development environment, which we can define as 
 
 ### Coding Methodology
 
-#### Workflow
+#### ➭ <ins>Workflow</ins>
 
 The development team started to work on the basic features of the project such as rendering sprites, handling collisions, adding score etc. before the specifications were fully understood and laid out.
 
@@ -92,22 +92,22 @@ Each of those tickets are then sent to triage, assigned to team members and prio
 Each ticket represents a chunk of work, a bug found, a feature request, an update. This abstraction allows to keep track of many types of tasks, break them down even more and allows to move forward swiftly.
 We will touch more on that at the end of this document.
 
-#### Coding conventions
+#### ➭ <ins>Coding conventions</ins>
 
 camel case, all sprites and variables declared at the same place (in the beginning)
 section data above and section text below
 explicit functions naming convention
 
-#### Commenting Conventions
+#### ➭ <ins>Commenting Conventions</ins>
 
 Comment near 100% of the Functions in the code
 
-#### Documenting Conventions
+#### ➭ <ins>Documenting Conventions</ins>
 
 We will generate documentation automatically for this project, along with the other deliverables provided in this repository.
 A user manual will also be included.
 
-#### Test-Driven Development
+#### ➭ <ins>Test-Driven Development</ins>
 
 We have defined that the following functions are the most important to be tested:
 - Movement
@@ -282,18 +282,18 @@ The different data for each tile are explained both in the data structures and c
 
 ### User Interface
 
-#### Splash Screen
+#### ➭ <ins>Splash Screen</ins>
 
-#### Menu
+#### ➭ <ins>Menu</ins>
 
 > [!NOTE]  
 > Will be defined in version Technical V2.0
 
-#### Font
+#### ➭ <ins>Font</ins>
 
 Mention how the font works, so virtually, anything can be written, explain how writing a font works..
 
-#### Displaying the score
+#### ➭ <ins>Displaying the score</ins>
 
 Tell about how the score is displayed throughout the game and how it is implemented (what's that 1up thing?)
 
@@ -301,7 +301,7 @@ Tell about how the score is displayed throughout the game and how it is implemen
 
 ### Placement
 
-#### Actors Tile Positioning
+#### ➭ <ins>Actors Tile Positioning</ins>
 
 As the actors progress through the maze, the game keeps track of the tile each one occupies.
 
@@ -317,7 +317,7 @@ Each actor is defined by the tile it presently occupies along with its current d
 
 ![TileGame.png](../Documents/pictures/technical/TileGame_1700917089119_0.png)
 
-#### Pacman Spawn
+#### ➭ <ins>Pacman Spawn</ins>
 
 Whether it is at the beginning of a game, at the beginning of a new level, or after a death, Pac-Man always (re)spawns at the same point in the maze, at the intersection of the tiles 14 and 15 (from left to right) and tile 28 from the top.
 
@@ -325,7 +325,7 @@ Whether it is at the beginning of a game, at the beginning of a new level, or af
 
 It is worth noting that Pac-Man's direction is set to "left" by default if left unattended.
 
-#### Ghost Spawn
+#### ➭ <ins>Ghost Spawn</ins>
 
 ![pacmanGhosts.jpeg](../Documents/pictures/technical/pacmanGhosts.jpeg)
 
@@ -340,7 +340,7 @@ The pink door on top is used by the ghosts to enter or exit the house.
 
 Since Blinky is already on the outside after a level is completed or a life is lost, the only time he can get inside the ghost house is after Pac-Man captures him, and he immediately turns around to leave once revived.
 
-#### Gums & Super Gums Spawn
+#### ➭ <ins>Gums & Super Gums Spawn</ins>
 
 The 244 Gums should be placed on every single non-solid tile of the Maze apart from the two spawn tiles, the center square, its connectors to other sections as well as the two horizontal corridors, as seen in the image below, represented by the white Gums:
 
@@ -350,7 +350,7 @@ The 4 Super Gums can also be seen on this image, one per corner of the map (repr
 
 Both Gums and super Gums respawn every new game or new level.
 
-#### How Fruits spawn
+#### ➭ <ins>How Fruits spawn</ins>
 
 Fruits are one of the features of the game that allows the player to score points.
 
@@ -388,9 +388,9 @@ Fruits/Level:
 
 ### Movement
 
-#### Player
+#### ➭ <ins>Player</ins>
 
-#### Player Speed
+#### ➭ <ins>Player Speed</ins>
 
 Pac-Man moves exactly 80 pixels per second, or 10 tiles per second. All the other movement speeds in the game are computed from this speed.
 
@@ -404,15 +404,15 @@ The game starts with Pac-Man at 80% of his maximum speed. By the fifth level, Pa
 | 5 – 20 | 100% | ~87% | 100% | ~87% |
 | 21+ | 90% | ~79% | – | – |
 
-#### Eating Gum stops you
+#### ➭ <ins>Eating Gum stops you</ins>
 
 Every time Pac-Man eats a regular gum, he stops moving for one frame (1/60th of a second), slowing his progress by roughly ten percent—just enough for a following ghost to overtake him.
 
-#### Eating Super Gum stops you even more
+#### ➭ <ins>Eating Super Gum stops you even more</ins>
 
 Eating an energizer gum causes Pac-Man to stop moving for three frames.
 
-#### Cornering
+#### ➭ <ins>Cornering</ins>
 
 Pac-Man is able to navigate the turns in the maze faster than his enemies. He does not have to wait until he reaches the middle of a turn to change direction as the ghosts do (see picture below)
 
@@ -426,19 +426,19 @@ Once he reaches the centerline of the new direction's path, he starts moving pur
 
 Basically, it pays to move the joystick well before reaching a turn to maximize your speed.
 
-#### Fright Mode
+#### ➭ <ins>Fright Mode</ins>
 
 Please refer to the Level Specifications in the extras to know how fright mode speed is affected throughout the different levels.
 
-#### Side Teleporting
+#### ➭ <ins>Side Teleporting</ins>
 
 By default Pac Man and Ghosts can teleport from side to side of the map by crossing the border of it. However, they can only do it in the center of the map where the two corridors are placed, since the rest of the map is walled off.
 
 The expected behaviour when entering either side of the corridors is to be teleported to the other side with Pac-Man's direction preserved.
 
-#### Ghosts
+#### ➭ <ins>Ghosts</ins>
 
-##### Picking Directions
+##### <ins>Picking Directions</ins>
 
 Ghosts are always thinking one step into the future as they move through the maze. Whenever a ghost enters a new tile, it looks ahead to the next tile along its current direction of travel and decides which way it will go when it gets there. When it eventually reaches that tile, it will change its direction of travel to whatever it had decided on a tile beforehand.
 
@@ -452,7 +452,7 @@ With three of the four possible exits eliminated from tile B, moving left is the
 
 ![AISimple2.png](../Documents/pictures/technical/AISimple2_1701077769273_0.png)
 
-##### Intersections
+##### <ins>Intersections</ins>
 
 When a ghost arrives one tile away from an upcoming intersection, it must choose between several possible directions in which to proceed.
 
@@ -470,7 +470,7 @@ To break the tie, the ghost prefers directions in this order: *up, left, down, 
 
 ![TieBreakALL.png](../Documents/pictures/technical/TieBreakALL_1701078136156_0.png)
 
-##### Scatter & Chase
+##### <ins>Scatter & Chase</ins>
 
 Ghosts alternate between scatter and chase modes during gameplay at predetermined intervals.
 
@@ -491,7 +491,7 @@ This information is summarized in the following table (all values are in seconds
 | Scatter | 5 | 1/60 | 1/60 |
 | Chase | ∞ | ∞ | ∞ |
 
-##### Frightened mode
+##### <ins>Frightened mode</ins>
 
 For levels 1 to 20, when Pac-Man eats a Super Gum, ghosts will enter a "frightened" mode, causing them to slow down, and to flash (see animations) and reverse direction. Starting from level 21, only the reversal of direction is the only effect that is still effective (the rest no longer applies).
 
@@ -528,7 +528,7 @@ This results in frightened ghosts always choosing the same paths when executing 
 | 20 | Key | 5000 | 100% | ~87% | 95% | 50% | 120 | 100% | 60 | 105% | – | – | – | – | – |
 | 21+ | Key | 5000 | 90% | ~79% | 95% | 50% | 120 | 100% | 60 | 105% | – | – | – | – | – |
 
-##### Ghosts Speed
+##### <ins>Ghosts Speed</ins>
 
 Ghost speeds throughout the levels can be seen in this table (they are expressed in % of Pac-Man's speed, which was described previously):
 
@@ -540,7 +540,7 @@ Ghost speeds throughout the levels can be seen in this table (they are expressed
 | 5 – 20 | 95% | 60% | 50% |
 | 21+ | 95% | – | 50% |
 
-##### Ghosts leaving mechanism
+##### <ins>Ghosts leaving mechanism</ins>
 
 There are two scenarios for the mechanism which ghosts follow to know when to leave the ghost house:
 - The first one is the default one, when a new game or level starts which makes use of a specific counter per ghost.
@@ -581,7 +581,7 @@ Ghosts will typically go left but if the game has changed modes while they were 
 
 ![ghostExitDirection.png](../Documents/pictures/technical/ghostExitDirection_1701076594402_0.png)
 
-##### Ghosts eaten back to base mode
+##### <ins>Ghosts eaten back to base mode</ins>
 
 Once ghosts are eaten by Pac-Man in fright mode, they will transform into the disembodied eyes and aim for going back to the base defined by the Green square, then aim for 3 blocks below, once they have reached it.
 
@@ -595,7 +595,7 @@ Disembodied travel at three times Pac-Man's 100% speed
 
 ![backToBase.png](../Documents/pictures/technical/backToBase_1701075440395_0.png)
 
-##### Ghosts' target tiles
+##### <ins>Ghosts' target tiles</ins>
 
 ![target tiles.png](../Documents/pictures/technical/targetTiles.png)
 
@@ -607,7 +607,7 @@ In chase mode, the target tile is usually (but not always) related to Pac-Man's 
 
 Although it may not be obvious at first, the only difference between chase and scatter mode to a ghost is where its target tile is located. The same pathfinding logic applies in either case.
 
-##### Red Ghost (Blinky)
+##### <ins>Red Ghost (Blinky)</ins>
 
 ![blinky.png](../Documents/pictures/technical/blinky_1701078658938_0.png)
 
@@ -624,7 +624,7 @@ On the first level, for example, Blinky becomes Elroy when there are 20 Gums rem
 This results in Elroy continuing to chase Pac-Man while the other three ghosts head for their corners as normal. As if that weren't bad enough, when only 10 Gums remain, Elroy speeds up *again* to the point where he is now moving faster than Pac-Man. As the levels progress, Blinky will turn into Elroy with more Gums remaining in the maze than in previous rounds.
 Refer to the level specifications in the extras section for gum counts and speeds for both Elroy changes, per level.
 
-##### Pink Ghost (Pinky)
+##### <ins>Pink Ghost (Pinky)</ins>
 
 ![Pinky.png](../Documents/pictures/technical/Pinky_1701078844642_0.png)
 
@@ -635,7 +635,7 @@ If Pac-Man is moving left, Pinky's target tile will be four game tiles to the le
 
 ![PinkyAI.png](../Documents/pictures/technical/PinkyAI_1701079385639_0.png)
 
-##### Cyan Ghost (Inky)
+##### <ins>Cyan Ghost (Inky)</ins>
 
 ![Inky.png](../Documents/pictures/technical/Inky_1701078853358_0.png)
 
@@ -647,7 +647,7 @@ To determine Inky's target, we must first establish an intermediate offset two t
 
 Inky's targeting logic will keep him away from Pac-Man when Blinky is far away from Pac-Man, but as Blinky draws closer, so will Inky's target tile.
 
-##### Orange Ghost (Clyde)
+##### <ins>Orange Ghost (Clyde)</ins>
 
 ![Clyde.png](../Documents/pictures/technical/Clyde_1701078863455_0.png)
 
@@ -661,7 +661,7 @@ If the distance between them is eight tiles or more, Clyde targets Pac-Man direc
 
 In the picture above, Clyde is stuck in an endless loop (as long as Pac-Man stays where he is) thanks to this scheme. While occupying any tile completely outside the dashed perimeter, Clyde's target is Pac-Man. Upon entering the area, Clyde changes his mind and heads for his scatter target instead. Once he exits the perimeter, his target will change *back* to Pac-Man's current tile again. The end result is Clyde circling around and around until Pac-Man moves elsewhere or a mode change occurs.
 
-##### "Forbidden" Areas
+##### <ins>"Forbidden" Areas</ins>
 
 ![areasToExploit.png](../Documents/pictures/technical/areasToExploit.png)
 
@@ -713,15 +713,15 @@ If a cell value is equal to 14, the Pac-Man eating a fruit event will be trigger
 
 ### Incrementing Score
 
-#### Eating a Gum
+#### <ins>Eating a Gum</ins>
 
 The score is incremented by 10 for eating one gum
 
-#### Eating a Super Gum
+#### <ins>Eating a Super Gum</ins>
 
 The score is incremented by 50 for eating one super gum
 
-#### Eating Ghosts
+#### <ins>Eating Ghosts</ins>
 
 Eating ghosts give increasingly more points if done during one fright mode period.`
 
@@ -733,7 +733,7 @@ Here is the table describing bonus points you get for each consecutive ghost.
 | 2nd ghost | 400 |
 | 3rd ghost | 800 |
 | 4th ghost | 1600 |
-#### Eating Fruits
+#### <ins>Eating Fruits</ins>
 
 Fruits, described earlier in "Placement" chapter, yield the following points to the player
 
@@ -748,7 +748,7 @@ Fruits, described earlier in "Placement" chapter, yield the following points to 
 | Bell | 3000 | 11-12 |
 | Key | 5000 | 13+ |
 
-#### 10k Extra life
+#### <ins>10k Extra life</ins>
 
 An extra life is granted to the player every 10000 points earned.
 
