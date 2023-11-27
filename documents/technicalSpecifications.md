@@ -39,7 +39,7 @@
 				- [Hardware requirements](#hardware-requirements-1)
 				- [Software requirements](#software-requirements-1)
   		- [Assumptions & Constraints](#assumptions--constraints)
-- [2. Technical Specification](2-technical-specifications)
+- [2. Technical Specification](#2-technical-specifications)
 	- [Folder Structure](#folder-structure)
 	- [Data Structures](#data-structures)
  		- [Maze Representation](#maze-representation)
