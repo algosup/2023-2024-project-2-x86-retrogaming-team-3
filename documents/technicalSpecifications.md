@@ -125,6 +125,11 @@ The document should also benefit other stakeholders and project owners by giving
 
 # Glossary
 
+- 16-32 bits processor architecture: 32-bit or 16-bit, in computer systems, refers to the number of bits that can be transmitted or processed in parallel. In other words, 32-bits the number of bits that compose a data element. A bit is the fundamental unit of storage that can only be equal to one or zero. Therefore, if compared to water plumbing, a 32-bit wide pipe will be able to carry twice as much water as a 16-bit wide one.
+- 486 or 586 (pentium) instruction sets refers to families of intel processors, that started in 1989 and that was succeeded by the 586 (Pentium) family, which started in 1993. Those processors have specific instructions that we must use for our project.
+- MS-DOS: Is a flavor of DOS, an operating system bought by Microsoft before they had the opportunity to develop their own OS foundation, known as NT (New Technology)
+- Emulator: In computing, an emulator is hardware or software that enables one computer system to behave like another computer system. An emulator typically enables the host system to run software or use peripheral devices designed for the guest system. In our case, most of our operating systems don't allow to run programs developed for architectures as old as x86 COM programs. We therefore use an emulator to simulate this old school environment and make the process less cumbersome.
+
 # Project Overview
 
 ## Project Brief
