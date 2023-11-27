@@ -330,13 +330,13 @@ Since Blinky is already on the outside after a level is completed or a life is l
 
 #### Gums & Super Gums Spawn
 
-The 244 Gums should be placed on every single non-solid tile of the Maze apart from the two spawn tiles, the center square, its connectors to other sections as well as the two horizontal corridors, as seen in the image below, represented by the white dots:
+The 244 Gums should be placed on every single non-solid tile of the Maze apart from the two spawn tiles, the center square, its connectors to other sections as well as the two horizontal corridors, as seen in the image below, represented by the white Gums:
 
 ![gums.png](../Documents/pictures/technical/gums_1701042199892_0.png)
 
-The 4 Super Gums can also be seen on this image, one per corner of the map (represented by the large white dots).
+The 4 Super Gums can also be seen on this image, one per corner of the map (represented by the large white Gums).
 
-Both dots and super dots respawn every new game or new level.
+Both Gums and super Gums respawn every new game or new level.
 
 #### How Fruits spawn
 
@@ -386,7 +386,7 @@ The game starts with Pac-Man at 80% of his maximum speed. By the fifth level, Pa
 
 | | PAC-MAN SPEED | | | |
 |---|---|---|---|---|
-| LEVEL | NORM | NORM DOTS | FRIGHT | FRIGHT DOTS |
+| LEVEL | NORM | NORM Gums | FRIGHT | FRIGHT Gums |
 | 1 | 80% | ~71% | 90% | ~79% |
 | 2 – 4 | 90% | ~79% | 95% | ~83% |
 | 5 – 20 | 100% | ~87% | 100% | ~87% |
@@ -394,11 +394,11 @@ The game starts with Pac-Man at 80% of his maximum speed. By the fifth level, Pa
 
 #### Eating Gum stops you
 
-Every time Pac-Man eats a regular dot, he stops moving for one frame (1/60th of a second), slowing his progress by roughly ten percent—just enough for a following ghost to overtake him.
+Every time Pac-Man eats a regular gum, he stops moving for one frame (1/60th of a second), slowing his progress by roughly ten percent—just enough for a following ghost to overtake him.
 
 #### Eating Super Gum stops you even more
 
-Eating an energizer dot causes Pac-Man to stop moving for three frames.
+Eating an energizer gum causes Pac-Man to stop moving for three frames.
 
 #### Cornering
 
@@ -492,7 +492,7 @@ Otherwise, the code proceeds in a clockwise fashion to the next possible directi
 
 This results in frightened ghosts always choosing the same paths when executing patterns during play. As the levels progress, the time ghosts spend in frightened mode grows shorter until eventually they no longer turn blue at all (they still reverse direction, however).
 
-| Level | Bonus Symbol | Bonus Points | Pac-Man Speed | Pac-Man Dots Speed | Ghost Speed | Ghost Tunnel Speed | Elroy 1 Dots Left | Elroy 1 Speed | Elroy 2 Dots Left | Elroy 2 Speed | Fright. Pac-Man Speed | Fright Pac-Man Dots Speed | Fright Ghost Speed | Fright. Time (in sec.) | # of Flashes |
+| Level | Bonus Symbol | Bonus Points | Pac-Man Speed | Pac-Man Gums Speed | Ghost Speed | Ghost Tunnel Speed | Elroy 1 Gums Left | Elroy 1 Speed | Elroy 2 Gums Left | Elroy 2 Speed | Fright. Pac-Man Speed | Fright Pac-Man Gums Speed | Fright Ghost Speed | Fright. Time (in sec.) | # of Flashes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | Cherries | 100 | 80% | ~71% | 75% | 40% | 20 | 80% | 10 | 85% | 90% | ~79% | 50% | 6 | 5 |
 | 2 | Strawberry | 300 | 90% | ~79% | 85% | 45% | 30 | 90% | 15 | 95% | 95% | ~83% | 55% | 5 | 5 |
@@ -559,7 +559,7 @@ Here is the table defining those values:
 
 In the second scenario (after life lost):
 
-Whenever a life is lost, the system disables (but does not reset) the ghosts' individual gum counters and uses a global gum counter instead. This counter is enabled and reset to zero after a life is lost, counting the number of dots eaten from that point forward. The three ghosts inside the house must wait for this special counter to tell them when to leave. Pinky is released when the counter value is equal to 7 and Inky is released when it equals 17.
+Whenever a life is lost, the system disables (but does not reset) the ghosts' individual gum counters and uses a global gum counter instead. This counter is enabled and reset to zero after a life is lost, counting the number of Gums eaten from that point forward. The three ghosts inside the house must wait for this special counter to tell them when to leave. Pinky is released when the counter value is equal to 7 and Inky is released when it equals 17.
 
 The only way to deactivate the counter is for Clyde to be inside the house when the counter equals 32; otherwise, it will keep counting gums even after the ghost house is empty. If Clyde *is* present at the appropriate time, the global counter is reset to zero and deactivated, and the ghosts' personal gum limits are re-enabled and used as before for determining when to leave the house (including Clyde who is still in the house at this time). If gum counters were the only control, Pac-Man could simply stop eating gums early on and keep the ghosts trapped inside the house forever.
 
@@ -605,11 +605,11 @@ He is by far the most aggressive of the four and will pursue Pac-Man once behind
 
 Of all the ghosts' targeting schemes for chase mode, Blinky's is the most simple and direct, using Pac-Man's current tile as his target. In the pictures above, we can see Blinky's target tile is the same as Pac-Man's currently occupied tile.
 
-All ghosts move at the same rate of speed when a level begins, but Blinky will increase his rate of speed twice each round based on the number of dots remaining in the maze. While in this accelerated state, Blinky is called “*Cruise Elroy*”.
+All ghosts move at the same rate of speed when a level begins, but Blinky will increase his rate of speed twice each round based on the number of Gums remaining in the maze. While in this accelerated state, Blinky is called “*Cruise Elroy*”.
 
-On the first level, for example, Blinky becomes Elroy when there are 20 dots remaining in the maze, accelerating to be as fast as Pac-Man. More importantly, his scatter mode behavior is also modified at this time to keep targeting Pac-Man's current tile in lieu of his typical fixed target tile for any remaining scatter periods in the level (he will still reverse direction when entering/exiting a scatter period).
+On the first level, for example, Blinky becomes Elroy when there are 20 Gums remaining in the maze, accelerating to be as fast as Pac-Man. More importantly, his scatter mode behavior is also modified at this time to keep targeting Pac-Man's current tile in lieu of his typical fixed target tile for any remaining scatter periods in the level (he will still reverse direction when entering/exiting a scatter period).
 
-This results in Elroy continuing to chase Pac-Man while the other three ghosts head for their corners as normal. As if that weren't bad enough, when only 10 dots remain, Elroy speeds up *again* to the point where he is now moving faster than Pac-Man. As the levels progress, Blinky will turn into Elroy with more dots remaining in the maze than in previous rounds.
+This results in Elroy continuing to chase Pac-Man while the other three ghosts head for their corners as normal. As if that weren't bad enough, when only 10 Gums remain, Elroy speeds up *again* to the point where he is now moving faster than Pac-Man. As the levels progress, Blinky will turn into Elroy with more Gums remaining in the maze than in previous rounds.
 Refer to the level specifications in the extras section for gum counts and speeds for both Elroy changes, per level.
 
 ##### Pink Ghost (Pinky)
@@ -791,7 +791,7 @@ Ghost Speeds:
 
 | | PAC-MAN SPEED | | | | GHOST SPEED | | |
 |---|---|---|---|---|---|---|---|
-| LEVEL | NORM | NORM DOTS | FRIGHT | FRIGHT DOTS | NORM | FRIGHT | TUNNEL |
+| LEVEL | NORM | NORM Gums | FRIGHT | FRIGHT Gums | NORM | FRIGHT | TUNNEL |
 | 1 | 80% | ~71% | 90% | ~79% | 75% | 50% | 40% |
 | 2 – 4 | 90% | ~79% | 95% | ~83% | 85% | 55% | 45% |
 | 5 – 20 | 100% | ~87% | 100% | ~87% | 95% | 60% | 50% |
@@ -812,7 +812,7 @@ Chase/Scatter Sequence:
 
 Level Specifications:
 
-| Level | Bonus Symbol | Bonus Points | Pac-Man Speed | Pac-Man Dots Speed | Ghost Speed | Ghost Tunnel Speed | Elroy 1 Dots Left | Elroy 1 Speed | Elroy 2 Dots Left | Elroy 2 Speed | Fright. Pac-Man Speed | Fright Pac-Man Dots Speed | Fright Ghost Speed | Fright. Time (in sec.) | # of Flashes |
+| Level | Bonus Symbol | Bonus Points | Pac-Man Speed | Pac-Man Gums Speed | Ghost Speed | Ghost Tunnel Speed | Elroy 1 Gums Left | Elroy 1 Speed | Elroy 2 Gums Left | Elroy 2 Speed | Fright. Pac-Man Speed | Fright Pac-Man Gums Speed | Fright Ghost Speed | Fright. Time (in sec.) | # of Flashes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | Cherries | 100 | 80% | ~71% | 75% | 40% | 20 | 80% | 10 | 85% | 90% | ~79% | 50% | 6 | 5 |
 | 2 | Strawberry | 300 | 90% | ~79% | 85% | 45% | 30 | 90% | 15 | 95% | 95% | ~83% | 55% | 5 | 5 |
