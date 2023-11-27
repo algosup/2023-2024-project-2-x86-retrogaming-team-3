@@ -20,7 +20,7 @@
 
 </summary>
 
-- [1. Introduction](https://github.com/algosup/2023-2024-project-2-x86-retrogaming-team-3/blob/main/documents/technicalSpecifications.md#1-introduction)
+- [1. Introduction](#1-introduction)
  	- [Document Purpose & Definition]()
  	- [Glossary]()
  	- [Project Overview]()
