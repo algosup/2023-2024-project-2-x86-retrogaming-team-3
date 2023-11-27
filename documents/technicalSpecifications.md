@@ -28,7 +28,7 @@
   		- [Requirements](#requirements)
 			- ➭ [Setting up the Development Environment](#setting-up-the-development-environment)
       				- [Hardware Requirements](#hardware-requirements)
-      				- [Hardware Requirements](#software-requirements)
+      				- [Software Requirements](#software-requirements)
 				- [Coding Methodology](#coding-methodology)
 					- [Workflow](#-workflow)
 					- [Coding Conventions](#-coding-conventions)
@@ -442,18 +442,35 @@ The different data for each tile are explained both in the data structures and c
 
 #### ➭ <ins>Splash Screen</ins>
 
+The splash screen for our Pac-Man-like game on x86 assembly will be displayed by setting the graphics mode and copying the splash screen image directly into video memory. This involves using basic assembly instructions to place the image data at the correct location in memory where the graphics hardware will read it and show it on the screen. 
+
+We'll also set the colour palette to match the vibrant colours of the game. The process is orchestrated by the CPU until the splash screen is fully rendered and ready for player interaction.
+
 #### ➭ <ins>Menu</ins>
 
-> [!NOTE]  
-> Will be defined in version Technical V2.0
+For the menu in our Pac-Man-like game, the display will be simplified to show four options: "Single Player," "Multi-Player" (which will appear inactive or "greyed out"), "Credits," and "Exit." In assembly language on the x86 architecture, we will use a series of instructions to draw text on the screen for each menu item. 
+
+The "Single Player" option will be selectable, while "Multi-Player" will be visually distinguished to indicate it is not selectable. Menu navigation can be implemented through keyboard interrupts, allowing the user to use the arrow keys to select an option and the enter key to confirm their choice. 
+
+"Credits" will lead to a screen detailing the game's creators, and "Exit" will terminate the game.
+
+The menu options will be strategically placed vertically on the screen, with "Single Player" at the top followed by the "Multi-Player" option, which will be visually distinguished to show it's not available. "Credits" and "Exit" will be listed below, each spaced evenly for clear selection using keyboard inputs.
 
 #### ➭ <ins>Font</ins>
 
-Mention how the font works, so virtually, anything can be written, explain how writing a font works..
+The font of the original Pac-Man video game in 1980, was made of 7 pixels in width and the same height, knowing each cell of the grid is composed of 8 pixels in width and height and we put one letter by cell each letter is spaced by 1 pixel.
+
+![Pacman Font](../Documents/pictures/technical/pacmanOGFont.png)
+
+In the image below, we can clearly see each pixel and its spacing.
+
+![Pacman Font letter A](../Documents/pictures/technical/letter_A.png)
 
 #### ➭ <ins>Displaying the score</ins>
 
-Tell about how the score is displayed throughout the game and how it is implemented (what's that 1up thing?)
+In the game, the player's current score appears in the top left, with each digit occupying a single cell, while the high score is centrally displayed at the top of the screen. The current score is updated instantaneously as players collect pellets and overcome ghosts.
+
+![Scores](../Documents/pictures/technical/scoresGraphics.png)
 
 ## Placement, Movement & Collision
 
