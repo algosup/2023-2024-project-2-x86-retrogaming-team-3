@@ -756,7 +756,7 @@ Once out of the box the Ghosts still have to choose whether they go left or righ
 
 Ghosts will typically go left but if the game has changed modes while they were inside, they will go right upon leaving the house
 
-<img src="../Documents/pictures/technical/ghostExitDirection_1701076594402_0.png" max-width="300px"></img>
+<img src="../Documents/pictures/technical/ghostExitDirection_1701076594402_0.png" width="300px"></img>
 
 ##### <ins>Ghosts eaten back to base mode</ins>
 
