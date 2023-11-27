@@ -274,7 +274,8 @@ The different data for each tile are explained both in the data structures and c
 
 #### Menu
 
-=> Will be defined in version Technical V2.0
+> [!NOTE]  
+> Will be defined in version Technical V2.0
 
 #### Font
 
@@ -767,7 +768,8 @@ In order to optimise assets even more, we will use superimposition to divide the
 
 ### Defining the different animations and their trigger
 
-=> Will be defined in Technical Version 2.0
+> [!NOTE]  
+> Will be defined in version Technical V2.0
 
 # 3. Conclusion
 
