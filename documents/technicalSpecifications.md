@@ -147,7 +147,79 @@ The technical Specifications will attempt to go through the development process 
 
 ## Folder Structure
 
-This is how we plan the project to be laid out:
+The folder structure of the x86 assembly project dedicated to the creation of a Pac-Man clone is defined as follows, according to the requirements of assembly language programming and the multiple facets of game development:
+
+`/src`: This principal directory houses all the source code in assembly language. The contents include:
+
+`main.asm`: Core game logic and initialization code.
+
+`rendering.asm`: Graphics rendering routines for drawing the game environment.
+
+`inputHandling.asm`: Input processing routines for player and system inputs.
+
+`gameLogic.asm`: Game state management and gameplay rules implementation.
+
+`ghostsAI.asm`: Artificial intelligence routines for ghost behavior.
+
+`audioManagement.asm`: Audio processing routines for sound effects and music.
+
+`mainMenu.asm`: Code for the main menu interface and navigation.
+
+`sprites.asm`: Sprite data and metadata for the game’s visual assets.
+
+`/bin`: This directory is allocated for the compiled output of the source code, consisting of:
+
+`game.com`: The primary executable file of the game ready for distribution and execution.
+
+`/docs`: Documentation related to the project is maintained here, formatted in Markdown for ease of access and editing. It includes:
+
+`FunctionalSpecifications.md`: Describes the game’s intended functionality and user interaction.`
+
+`TechnicalSpecifications.md`: Details the technical approach, including algorithms, data structures, and system design.
+
+`TestPlan.md`: Outlines the testing procedures, criteria, and benchmarks for quality assurance.
+
+*__Inside the /docs directory, there is a /management subdirectory, which further contains:__*
+
+`/docs/management/WeeklyReport.md`: A log of weekly progress reports detailing development updates (there is one document like this for each weeks).
+
+`/docs/management/management.md`: Documents related to project management, including task assignments and milestones.
+
+*__Additionally in the /docs directory, there is also a /src subdirectory, which stores all media assets used in the documentation, such as images and audio files, each document type within the /docs directory has its corresponding subdirectory to organize related media assets:__*
+
+`/docs/src/technicalSpecifications`: Contains images and audio pertinent to the technical specifications.
+
+`/docs/src/functionalSpecifications`: Houses media related to functional specifications.
+
+`/docs/src/QA`: Stores quality assurance related media.
+
+`/docs/src/management`: Organizes media for management documentation.
+
+`/docs/src/readme`: Contains assets for the README documentation.
+
+`/tools`: This directory includes auxiliary tools and utilities that facilitate development, such as:
+
+`NASM.exe`: The Netwide Assembler used for compiling assembly code.
+
+`DOSBox.exe`: An x86 emulator with DOS compatibility for testing and running the game in a controlled environment.
+
+`buildGame.sh`: A shell script for automating the build process on Unix-like systems.
+
+`buildGame.cmd`: A command script for automating the build process on Windows systems.
+
+`/tests`: Dedicated to the testing phase, this directory contains:
+
+`testScript.asm`: Assembly test scripts designed to validate individual units of game code and integrated subsystems.
+
+`.github/ISSUE_TEMPLATE/`: This folder contains issue templates to standardize the submission of bug reports (`bugReport.yml`) and test cases (`testCase.yml`) on GitHub.
+
+`.gitignore`: A configuration file that tells Git which files or directories to ignore in the project.
+
+`readme.md`: This file serves as the project's README, offering an overview and essential information for anyone interacting with the repository.
+
+This structure is crafted to promote ease of navigation, efficient workflow, and effective version control management, ensuring a streamlined development process and facilitating collaboration among team members.
+
+The following diagram visualises the directory and file structure for the Pac-Man clone project, highlighting the organisation of source code, compiled binaries, documentation, development tools and tests.
 
 ![folderStructure.png](../Documents/pictures/technical/folderStructure_1701076714060_0.png)
 
