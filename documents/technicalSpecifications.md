@@ -464,7 +464,7 @@ The font of the original Pac-Man video game in 1980, was made of 7 pixels in wid
 
 In the image below, we can clearly see each pixel and its spacing.
 
-<img src="../Documents/pictures/technical/letter_A.png" width="330"></img>
+<img src="../Documents/pictures/technical/letter_A.png" width="200px"></img>
 
 #### ➭ <ins>Displaying the score</ins>
 
