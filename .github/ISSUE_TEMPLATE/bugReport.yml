@@ -40,6 +40,11 @@ body:
       label: "Expected result"
       description: "What were you expecting to happen?"
   - type: textarea
+    id: actual
+    attributes:
+      label: "Actual result"
+      description: "What results do you get?"
+  - type: textarea
     id: solution
     attributes:
       label: "Potential solution"

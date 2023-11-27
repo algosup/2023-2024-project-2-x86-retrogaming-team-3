@@ -46,11 +46,6 @@ body:
     validations:
       required: true
   - type: textarea
-    id: solution
-    attributes:
-      label: "Potential solution"
-      description: "If you have an idea on how to solve this problem, please share it here."
-  - type: textarea
     id: other
     attributes:
       label: "Other"
