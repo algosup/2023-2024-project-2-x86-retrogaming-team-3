@@ -1,5 +1,17 @@
 # Technical Specifications
 
+
+| Role | Name | Signature | Date |
+|---|---|---|---|
+| Project Manager | Arthur LEMOINE | | |
+| Program Manager | Max BERNARD | | |
+| Tech Lead | Mathis KAKAL | ✅ | 11/27/2023 |
+| Software Developer | Pierre GORIN | | |
+| Software Developer | Evan UHRLING | | |
+| Quality Assurance | Robin DEBRY | | |
+| Quality Assurance | Quentin CLEMENT | | |
+
+
 <details>
 
 <summary>
