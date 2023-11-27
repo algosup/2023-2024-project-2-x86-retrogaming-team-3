@@ -56,7 +56,7 @@ The first step is to set up the development environment, which we can define as 
 - A working computer
 - An input method e.g. a keyboard, mouse, screen.
 - Joystick
-- 
+
 ### Software Requirements
 
 - Supposedly, any OS that supports DOSBOX
@@ -535,106 +535,185 @@ There are two scenarios for the mechanism which ghosts follow to know when to le
 
 
 In the first scenario (new game, new level):
-  The ghosts who are still in the house each have a counter. This counter is for tracking how many gums Pac-Man eats. Each gum counter is reset to zero when a level begins and can only be active when inside the ghost house house.
-  Only one ghost counter can be active at any given time regardless of how many ghosts are inside. The order of preference for choosing which ghost counter to activate is: Pinky, then Inky, then Clyde.
-  For every gum Pac-Man eats, the preferred Ghost in the house (if any) gets its gum counter increased by one. Each ghost has its gum limit associated with his counter, per level. If the most-preferred ghost  reaches or exceeds his gum limit, he immediately exits the house and its gum counter is deactivated but not reset.
-  The most preferred ghost still waiting inside the house (if any) proceeds to activate its timer at this point and begins counting gums.
-  ![GhostLeaveCounter.png](../assets/GhostLeaveCounter_1700923030686_0.png){:height 232, :width 446}
-  The actual limit for each counter is determined by the level, while Pinky's counter is always set to zero, ultimately making him leave right after Blinky every time.
-  Here is the table defining those values
+
+The ghosts who are still in the house each have a counter. This counter is for tracking how many gums Pac-Man eats. Each gum counter is reset to zero when a level begins and can only be active when inside the ghost house house.
+
+Only one ghost counter can be active at any given time regardless of how many ghosts are inside. The order of preference for choosing which ghost counter to activate is: Pinky, then Inky, then Clyde.
+
+For every gum Pac-Man eats, the preferred Ghost in the house (if any) gets its gum counter increased by one. Each ghost has its gum limit associated with his counter, per level. If the most-preferred ghost  reaches or exceeds his gum limit, he immediately exits the house and its gum counter is deactivated but not reset.
+
+The most preferred ghost still waiting inside the house (if any) proceeds to activate its timer at this point and begins counting gums.
+
+![GhostLeaveCounter.png](../assets/GhostLeaveCounter_1700923030686_0.png){:height 232, :width 446}
+
+The actual limit for each counter is determined by the level, while Pinky's counter is always set to zero, ultimately making him leave right after Blinky every time.
+  
+Here is the table defining those values:
+
   | Gum Limit | Ghost |
   |---|---|
   | Always zero | Pinky |
   | L1: 30; L2: zero; L3+: zero | Inky |
   | L1: 60; L2: 50; L3+: zero | Clyde |
+
 In the second scenario (after life lost):
+
 Whenever a life is lost, the system disables (but does not reset) the ghosts' individual gum counters and uses a global gum counter instead. This counter is enabled and reset to zero after a life is lost, counting the number of dots eaten from that point forward. The three ghosts inside the house must wait for this special counter to tell them when to leave. Pinky is released when the counter value is equal to 7 and Inky is released when it equals 17.
+
 The only way to deactivate the counter is for Clyde to be inside the house when the counter equals 32; otherwise, it will keep counting gums even after the ghost house is empty. If Clyde *is* present at the appropriate time, the global counter is reset to zero and deactivated, and the ghosts' personal gum limits are re-enabled and used as before for determining when to leave the house (including Clyde who is still in the house at this time). If gum counters were the only control, Pac-Man could simply stop eating gums early on and keep the ghosts trapped inside the house forever.
+
 Once out of the box the Ghosts still have to choose whether they go left or right.
+
 Ghosts will typically go left but if the game has changed modes while they were inside, they will go right upon leaving the house
+
 ![ghostExitDirection.png](../assets/ghostExitDirection_1701076594402_0.png)
+
 ##### Ghosts eaten back to base mode
+
 Once ghosts are eaten by Pac-Man in fright mode, they will transform into the disembodied eyes and aim for going back to the base defined by the Green square, then aim for 3 blocks below, once they have reached it.
+
 Once the tile is reached, the ghost reverts to its previous shape after being frozen for 3 frames and may exit again following the previously described sequence.
+
 Once a ghost leaves, it cannot reenter unless it is first captured by Pac-Man.
+
 The disembodied eyes can then return home to be revived.
+
 Disembodied travel at three times Pac-Man's 100% speed
+
 ![backToBase.png](../assets/backToBase_1701075440395_0.png)
+
 ##### Ghosts' target tiles
+
 ![target tiles.png](../assets/targetTiles.png)
+
 Whenever a ghost is in chase or scatter mode, it is trying to reach a target tile somewhere on (or off) the screen.
+
 A target tile is merely a way to describe the tile a ghost would like to occupy at any given moment. This tile can be fixed in place or change location frequently. Whenever the ghosts scatter to the corners of the maze, for example, each ghost is striving to reach a fixed target tile located somewhere near its home corner.
+
 In chase mode, the target tile is usually (but not always) related to Pac-Man's current tile which changes often.
+
 Although it may not be obvious at first, the only difference between chase and scatter mode to a ghost is where its target tile is located. The same pathfinding logic applies in either case.
+
 ##### Red Ghost (Blinky)
+
 ![blinky.png](../assets/blinky_1701078658938_0.png)
+
 He is by far the most aggressive of the four and will pursue Pac-Man once behind him.
+
 ![blinkyAI.png](../assets/blinkyAI_1701078912988_0.png)
+
 Of all the ghosts' targeting schemes for chase mode, Blinky's is the most simple and direct, using Pac-Man's current tile as his target. In the pictures above, we can see Blinky's target tile is the same as Pac-Man's currently occupied tile.
+
 All ghosts move at the same rate of speed when a level begins, but Blinky will increase his rate of speed twice each round based on the number of dots remaining in the maze. While in this accelerated state, Blinky is called “*Cruise Elroy*”.
+
 On the first level, for example, Blinky becomes Elroy when there are 20 dots remaining in the maze, accelerating to be as fast as Pac-Man. More importantly, his scatter mode behavior is also modified at this time to keep targeting Pac-Man's current tile in lieu of his typical fixed target tile for any remaining scatter periods in the level (he will still reverse direction when entering/exiting a scatter period).
+
 This results in Elroy continuing to chase Pac-Man while the other three ghosts head for their corners as normal. As if that weren't bad enough, when only 10 dots remain, Elroy speeds up *again* to the point where he is now moving faster than Pac-Man. As the levels progress, Blinky will turn into Elroy with more dots remaining in the maze than in previous rounds.
 Refer to the level specifications in the extras section for gum counts and speeds for both Elroy changes, per level.
+
 ##### Pink Ghost (Pinky)
+
 ![Pinky.png](../assets/Pinky_1701078844642_0.png)
+
 In chase mode, Pinky behaves as he does because he does not target Pac-Man's tile directly. Instead, he selects an offset four tiles away from Pac-Man in the direction Pac-Man is currently moving (with one exception).
 The pictures below illustrate the four possible offsets Pinky will use to determine his target tile based on Pac-Man's orientation:
+
 If Pac-Man is moving left, Pinky's target tile will be four game tiles to the left of Pac-Man's current tile. If Pac-Man is moving right, Pinky's tile will be four tiles to the right. If Pac-Man is moving down, Pinky's target is four tiles below. Finally, if Pac-Man is moving up, Pinky's target tile will be four tiles up **and** four tiles to the left.
+
 ![PinkyAI.png](../assets/PinkyAI_1701079385639_0.png)
+
 ##### Cyan Ghost (Inky)
+
 ![Inky.png](../assets/Inky_1701078853358_0.png)
+
 Inky uses the most complex targeting scheme of the four ghosts in chase mode. He needs Pac-Man's current tile/orientation **and** Blinky's current tile to calculate his final target.
+
 ![InkyAI1.png](../assets/InkyAI1_1701079670123_0.png)
+
 To determine Inky's target, we must first establish an intermediate offset two tiles in front of Pac-Man in the direction he is moving (represented by the tile bracketed in green above). Now imagine drawing a vector from the center of the red ghost's current tile to the center of the offset tile, then double the vector length by extending it out just as far again beyond the offset tile. The tile this new, extended vector points to is Inky's actual target as shown above.
+
 Inky's targeting logic will keep him away from Pac-Man when Blinky is far away from Pac-Man, but as Blinky draws closer, so will Inky's target tile.
+
 ##### Orange Ghost (Clyde)
+
 ![Clyde.png](../assets/Clyde_1701078863455_0.png)
+
 Clyde is the last ghost to leave the pen and tends to separate himself from the other ghosts by shying away from Pac-Man and doing his own thing when he isn't patrolling his corner of the maze. Although not nearly as dangerous as the other three ghosts, his behavior can seem unpredictable at times and should still be considered a threat.
+
 ![ClydeAI.png](../assets/ClydeAI_1701079933510_0.png)
+
 During chase mode, Clyde's targeting logic changes based on his proximity to Pac-Man (represented by the green target tile above). He first calculates the Euclidean distance between his tile and Pac-Man's tile.
+
 If the distance between them is eight tiles or more, Clyde targets Pac-Man directly just as Blinky does. If the distance between them is less than eight tiles, however, Clyde switches his target to the tile he normally uses during scatter mode and heads for his corner until he gets far enough away to start targeting Pac-Man again.
+
 In the picture above, Clyde is stuck in an endless loop (as long as Pac-Man stays where he is) thanks to this scheme. While occupying any tile completely outside the dashed perimeter, Clyde's target is Pac-Man. Upon entering the area, Clyde changes his mind and heads for his scatter target instead. Once he exits the perimeter, his target will change *back* to Pac-Man's current tile again. The end result is Clyde circling around and around until Pac-Man moves elsewhere or a mode change occurs.
+
 ##### "Forbidden" Areas
+
 ![areasToExploit.png](../assets/areasToExploit.png)
+
 The marked in pink are areas where ghosts are forbidden to make upward turns during both scatter and chase modes, but are ignored during fright mode, While the red areas are always enforced.
+
 ### Collision
+
 At any point in the game, the game must check for collisions from Pac-Man with the following elements:
-Walls
-Ghost Door
-Gums
-Super Gums
-Ghosts
-Frightened Ghosts
-Fruits
+- Walls
+- Ghost Door
+- Gums
+- Super Gums
+- Ghosts
+- Frightened Ghosts
+- Fruits
+
 This will be done with a tileset (list) which will serve as an abstraction of the map and which will make the comparison easier for the game logic.
+
 With this taken into consideration, a value should be given to each cell in this "collision map":
-0: the cell is empty
-1: the cell contains a ghost
-2: the cell contains a frightened ghost
-4: the cell contains a wall
-5: the cell contains a Gum
-6: the cell contains a Super-Gum
-7: the cell contains a fruit
-8: the cell contains Pac-Man
-To verify collisions we will compare the cell Pac-Mac collided with with previous values.
+- 0: the cell is empty
+- 1: the cell contains a ghost
+- 2: the cell contains a frightened ghost
+- 4: the cell contains a wall
+- 5: the cell contains a Gum
+- 6: the cell contains a Super-Gum
+- 7: the cell contains a fruit
+- 8: the cell contains Pac-Man
+- To verify collisions we will compare the cell Pac-Mac collided with with previous values.
+
 Character collisions:
+
 If there is a collision between Pac-Man and a ghost it means there are both on the same cell. It will be represented with a result on the sum that is equal to 9 (1+9). If a cell value is equal to 9, the death event will be triggered.If there is a collision between Pac-Man and a frightened ghost, it means the sum is equal to 10 (2+8). If a cell value is equal to 10, the Pac-Man eating a ghost event will be triggered.
+
 Environment collisions:
+
 If there is a collision between Pac-Man and a wall, it means the sum is equal to 12 (4+8).
+
 If a cell value is equal to 12, Pac-Man will not be able to go to the next cell in the same direction because it means that there is a wall.
+
 If there is a collision between Pac-Man and a Gum, it means the sum is equal to 13 (5+8).
+
 If a cell value is equal to 13, the Pac-Man eating a Gum event will be triggered.
+
 If there is a collision between Pac-Man and a Super-Gum, it means the sum is equal to 14 (6+8). If a cell value is equal to 13, the Pac-Man eating a Super-Gum event will be triggered.If there is a collision between Pac-Man and a fruit, it means the sum is equal to 5 (7+8).
+
 If a cell value is equal to 14, the Pac-Man eating a fruit event will be triggered.
+
 ## Scoring
+
 ### Incrementing Score
+
 #### Eating a Gum
+
 The score is incremented by 10 for eating one gum
+
 #### Eating a Super Gum
+
 The score is incremented by 50 for eating one super gum
+
 #### Eating Ghosts
-Eating ghosts give increasingly more points if done during one fright mode period.
+
+Eating ghosts give increasingly more points if done during one fright mode period.`
+
 Here is the table describing bonus points you get for each consecutive ghost.
+
 | Ghosts amount | points |
 |---|---|
 | 1st ghost | 200 |
@@ -642,7 +721,9 @@ Here is the table describing bonus points you get for each consecutive ghost.
 | 3rd ghost | 800 |
 | 4th ghost | 1600 |
 #### Eating Fruits
+
 Fruits, described earlier in "Placement" chapter, yield the following points to the player
+
 | Fruit | Reward | Level |
 |---|---|---|
 | Cherry | 100 | 1 |
@@ -653,32 +734,59 @@ Fruits, described earlier in "Placement" chapter, yield the following points to 
 | Galaxian | 2000 | 9-10 |
 | Bell | 3000 | 11-12 |
 | Key | 5000 | 13+ |
+
 #### 10k Extra life
+
 An extra life is granted to the player every 10000 points earned.
+
 The player starts with 3 lives.
+
 The player cannot have more than 5 lives maximum.
+
 ### Saving Score in Memory and leaderboard mechanics
+
 At the end of the game, the score must be saved into persistent memory and compared to a list of the ten best scores.
+
 Upon first boot, the list is initialized with 0 entries
+
 The current score is compared to the list starting from the bottom and inserted into it above a lower score and below a higher score as should be.
+
 The previous last score of the lis should disappear naturally.
+
 If the current score isn't worthy of being in the leaderboard, the leaderboard isn't even shown. (more on leaderboard mechanics in User Interface section)
+
 ## Animation
+
 ### Defining how animations are played
+
 We refresh and render the game assets at each iteration of the main game loop.
+
 Assets are directly hardcoded in assembly in VGA for performance purposes.
-In order to optimise assets even more, we will use superimposition to divide the number of assets we need to implement for the game. e.g. we don't need to have a variant of the ghost with each direction and eyes looking in all directions since we can just separate the two and combine them at render time.
+
+In order to optimise assets even more, we will use superimposition to divide the number of assets we need to implement for the game. (e.g. we don't need to have a variant of the ghost with each direction and eyes looking in all directions since we can just separate the two and combine them at render time.)
+
 ### Defining the different animations and their trigger
+
 => Will be defined in Technical Version 2.0
+
 # 3. Conclusion
+
 ## Thanks
+
 Huge thanks to Jamey Pittman for compiling Pac-Man dossier, which we used as a solid basis for the mechanics of the game and without which the first (analysis) phase of the project would have taken too long!
+
 Oscar Toledo for his wonderful books on assembly and boot sector games
+
 Garry Iglesias for his assembly lessons
+
 ALGOSUP and its staff for the opportunity to work on this compelling project.
+
 ## Extras
+
 ### All Value tables
-Ghost Speeds
+
+Ghost Speeds:
+
 | | PAC-MAN SPEED | | | | GHOST SPEED | | |
 |---|---|---|---|---|---|---|---|
 | LEVEL | NORM | NORM DOTS | FRIGHT | FRIGHT DOTS | NORM | FRIGHT | TUNNEL |
@@ -686,7 +794,9 @@ Ghost Speeds
 | 2 – 4 | 90% | ~79% | 95% | ~83% | 85% | 55% | 45% |
 | 5 – 20 | 100% | ~87% | 100% | ~87% | 95% | 60% | 50% |
 | 21+ | 90% | ~79% | – | – | 95% | – | 50% |
-Chase/Scatter Sequence
+
+Chase/Scatter Sequence:
+
 | Mode | Level 1 | Levels 2–4 | Levels 5+ |
 |---|---|---|---|
 | Scatter | 7 | 7 | 5 |
@@ -697,7 +807,9 @@ Chase/Scatter Sequence
 | Chase | 20 | 1033 | 1037 |
 | Scatter | 5 | 1/60 | 1/60 |
 | Chase | indefinite | indefinite | indefinite |
-Level Specifications
+
+Level Specifications:
+
 | Level | Bonus Symbol | Bonus Points | Pac-Man Speed | Pac-Man Dots Speed | Ghost Speed | Ghost Tunnel Speed | Elroy 1 Dots Left | Elroy 1 Speed | Elroy 2 Dots Left | Elroy 2 Speed | Fright. Pac-Man Speed | Fright Pac-Man Dots Speed | Fright Ghost Speed | Fright. Time (in sec.) | # of Flashes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | Cherries | 100 | 80% | ~71% | 75% | 40% | 20 | 80% | 10 | 85% | 90% | ~79% | 50% | 6 | 5 |
@@ -721,7 +833,9 @@ Level Specifications
 | 19 | Key | 5000 | 100% | ~87% | 95% | 50% | 120 | 100% | 60 | 105% | – | – | – | – | – |
 | 20 | Key | 5000 | 100% | ~87% | 95% | 50% | 120 | 100% | 60 | 105% | – | – | – | – | – |
 | 21+ | Key | 5000 | 90% | ~79% | 95% | 50% | 120 | 100% | 60 | 105% | – | – | – | – | – |
-Difficulty Specifications
+
+Difficulty Specifications:
+
 | **Normal** | **Normal Bonus** | **Hard** | **Hard Bonus** |
 |---|---|---|---|
 | 1 | Cherries | – | – |
