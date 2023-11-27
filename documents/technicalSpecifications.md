@@ -327,10 +327,12 @@ It is worth noting that Pac-Man's direction is set to "left" by default if left 
 
 #### ➭ <ins>Ghost Spawn</ins>
 
-![pacmanGhosts.jpeg](../Documents/pictures/technical/pacmanGhosts.jpeg)
+<img src="../Documents/pictures/technical/pacmanGhosts.jpeg" width="330px"></img>
 
-> From left to right and top to bottom: Pinky, Blinky, Clyde and Inky  
+> From left to right and top to bottom: Pinky, Blinky, Clyde and Inky
+
 ![ghostHouse.png](../Documents/pictures/technical/ghostHouse.png)
+
 > At the beginning of the Game, Inky, Pinky and Clyde appear in the ghost house.  
 This area is off-limits for Pac-Man
 
