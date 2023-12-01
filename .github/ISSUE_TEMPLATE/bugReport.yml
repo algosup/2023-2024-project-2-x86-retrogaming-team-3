@@ -1,6 +1,6 @@
 name: "Bug Report"
 description: "Create a report to help fixing bugs"
-title: "XXXXX [2023/XX/XX]"
+title: "XXXXX [BR] [2023/XX/XX]"
 labels: ["Bug"]
 body:
   - type: textarea
