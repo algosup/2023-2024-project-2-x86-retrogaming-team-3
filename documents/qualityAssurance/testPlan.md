@@ -101,11 +101,11 @@ The final objective of this project is to run the game with DOS on a real x86 CP
 
 ### a. Quality assurance team
 
-The testing team will be divided into 2 parts. The first half will be composed of team 4's QA's:
+The testing team will be divided into 2 parts. The first half will be composed of team 3's QA's:
 - Robin DEBRY (Mac OS)
 - Quentin CLÉMENT (Mac OS)
 
-The second half will be composed of team 5's QA's:
+The second half will be composed of team 4's QA's:
 - Thomas PLANCHARD (Mac OS)
 - Maxime CARON (Windows)
 
