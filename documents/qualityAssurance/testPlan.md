@@ -9,39 +9,51 @@
 
 - [Test plan document](#test-plan-document)
   - [Table of Contents](#table-of-contents)
-  - [1. Analyse the product](#1-analyse-the-product)
-    - [a. Who will use this pac-man game?](#a-who-will-use-this-pac-man-game)
+  - [1. Glossary](#1-glossary)
+  - [2. Overview](#2-overview)
+    - [a. Target audience](#a-target-audience)
       - [Former players](#former-players)
       - [New players](#new-players)
       - [Competitive players](#competitive-players)
     - [b. What is it used for?](#b-what-is-it-used-for)
     - [c. How will it work?](#c-how-will-it-work)
-    - [d. What are software/ hardware the game uses?](#d-what-are-software-hardware-the-game-uses)
-      - [Asssembly](#asssembly)
-      - [DosBox](#dosbox)
-  - [2. Test strategy](#2-test-strategy)
+    - [d. What are the softwares/hardwares the game uses?](#d-what-are-the-softwareshardwares-the-game-uses)
+      - [Assembly](#assembly)
+      - [DOSBox](#dosbox)
+      - [DOS](#dos)
+  - [3. Test strategy](#3-test-strategy)
     - [a. Quality assurance team](#a-quality-assurance-team)
     - [b. Testing scope](#b-testing-scope)
     - [c. Testing type](#c-testing-type)
-    - [d. Testing tools](#d-testing-tools)
-    - [e. Test cases](#e-test-cases)
-    - [f. Bug data reports](#f-bug-data-reports)
-  - [3. Test criteria](#3-test-criteria)
+      - [Agile testing](#agile-testing)
+      - [Collaborative game-testing](#collaborative-game-testing)
+    - [d. Define priorities](#d-define-priorities)
+    - [e. Test tool](#e-test-tool)
+      - [Operating system](#operating-system)
+      - [GitHub](#github)
+    - [f. Test cases](#f-test-cases)
+    - [g. Bug reports](#g-bug-reports)
+  - [4. Test criteria](#4-test-criteria)
     - [a. Suspension criteria](#a-suspension-criteria)
     - [b. Exit criteria](#b-exit-criteria)
-  - [4. Resource planning](#4-resource-planning)
-    - [a. Human resource](#a-human-resource)
-    - [b. System resource](#b-system-resource)
-    - [c. Test tool](#c-test-tool)
   - [5. Plan test environment](#5-plan-test-environment)
     - [a. Test environment for Mac](#a-test-environment-for-mac)
     - [b. Test environment for Windows](#b-test-environment-for-windows)
-  - [Schedule estimation](#schedule-estimation)
+  - [6. Schedule estimation](#6-schedule-estimation)
   - [7. Test deliverables](#7-test-deliverables)
 
-## 1. Analyse the product
+## 1. Glossary
 
-### a. Who will use this pac-man game?
+|Term|Definition|Source|
+|---|---|---|
+|Assembly|Assembly language is a low-level programming language for a computer, or other programmable device, in which there is a very strong (generally one-to-one) correspondence between the language and the architecture's machine code instructions. Each assembly language is specific to a particular computer architecture. In contrast, most high-level programming languages are generally portable across multiple architectures but require interpreting or compiling. Assembly language may also be called symbolic machine code. Assembly language usually has one statement per machine instruction (1:1), but comments and statements that are assembler directives, macros, and symbolic labels of program and memory locations are often also supported. Each assembly language is specific to a particular computer architecture. In contrast, most high-level programming languages are generally portable across multiple architectures but require interpreting or compiling. Assembly language may also be called symbolic machine code. Assembly language usually has one statement per machine instruction (1:1), but comments and statements that are assembler directives, macros, and symbolic labels of program and memory locations are often also supported.|[Wikipedia](https://en.wikipedia.org/wiki/Assembly_language)|
+|DOSBox|DOSBox is an emulator program that emulates an IBM PC compatible computer running a DOS operating system. Many IBM PC compatible graphics and sound cards are also emulated. This means that original DOS programs (including PC games) are provided with an environment in which they can run correctly, even though the modern computers have dropped support for that old environment. DOSBox is used by many retro gamers to run Doom on their modern computers, or to play Quake while pretending it's still 1996. DOSBox-X is a fork of DOSBox. It has many new features, including support for Glide, PCI, and PCMCIA emulation.|[Wikipedia](https://en.wikipedia.org/wiki/DOSBox)|
+|DOS|DOS is a platform-independent acronym for Disk Operating System which later became a common shorthand for disk-based operating systems on IBM PC compatibles. DOS primarily consists of Microsoft's MS-DOS and a rebranded IBM version under the name PC DOS, both of which were introduced in 1981. Later compatible systems from other manufacturers are DR DOS (1988), ROM-DOS (1989), PTS-DOS (1993), and FreeDOS (1998). MS-DOS dominated the IBM PC compatible market between 1981 and 1995.|[Wikipedia](https://en.wikipedia.org/wiki/DOS)|
+|CPU|A central processing unit (CPU), also called a central processor, main processor or just processor, is the electronic circuitry that executes instructions comprising a computer program. The CPU performs basic arithmetic, logic, controlling, and input/output (I/O) operations specified by the instructions in the program. This contrasts with external components such as main memory and I/O circuitry, and specialized processors such as graphics processing units (GPUs).|[Wikipedia](https://en.wikipedia.org/wiki/Central_processing_unit)|
+
+## 2. Overview
+
+### a. Target audience
 
 As testers, we will have to put ourselves in the shoes of the users. For this reason, we will have to determine all the possible different user types. By doing that, we will be able to test the product from different perspectives and make sure that it is suitable for all types of users.
 
@@ -69,19 +81,23 @@ Given that this is an exact clone of the 1980 Pac-Man, the gameplay mechanics wi
 
 The graphics and audio will stay true to the retro charm, maintaining the pixelated aesthetic and classic sound effects that defined the original Pac-Man. The game will be designed to run smoothly on modern platforms while preserving the nostalgic elements that make Pac-Man a timeless favorite.
 
-### d. What are software/ hardware the game uses?
+### d. What are the softwares/hardwares the game uses?
 
 The development of this Pac-Man clone involves a combination of software and hardware elements.
 
-#### Asssembly
+#### Assembly
 
 We will use Assembly to develop the game. Assembly is a low-level programming language that is used to write programs that are directly executable by the computer's hardware.
 
-#### DosBox
+#### DOSBox
 
-DosBox is a DOS-emulator that uses the SDL-library which makes DosBox very easy to port to different platforms. DosBox has already been ported to many different platforms, such as Windows, BeOS, Linux, MacOS X...
+DOSBox is a DOS-emulator that uses the SDL-library which makes DOSBox very easy to port to different platforms. DOSBox has already been ported to many different platforms, such as Windows, BeOS, Linux, MacOS X...
 
-## 2. Test strategy
+#### DOS
+
+The final objective of this project is to run the game with DOS on a real x86 CPU. DOS is an acronym for Disk Operating System. It is a non-graphical command line operating system developed by Microsoft for IBM compatible computers.
+
+## 3. Test strategy
 
 ### a. Quality assurance team
 
@@ -101,81 +117,62 @@ The 2 main things to test during this project will be the documents and the game
 About the documents, it's paramount to ensure their quality, so that communication with the client is clear and the whole team can work on the same basis. Not only will we check the documents for grammatical and typographical errors, but also the content itself, to ensure that no crucial points have been overlooked or erroneous elements introduced into the document. <br>
 As far as the game is concerned, we'll be testing all the features listed in the functional specifications to check that they correspond to what was originally intended. We will also be testing the game on different operating systems (Windows and MAC) to ensure that it works on all of them.
 
-<!-- All the documents and features listed in the functional specifications will be sorted by priority and product areas. If 2 features are ready for testing at the same, the one with the highest priority will be tested first. Documents will be tested first so when they are fully completed, the whole will be able to focus on the product. -->
-
 ### c. Testing type
 
-We're going to use an agile testing strategy so that as new features are released by the development team, and previous bugs are fixed, team 4 QA's will have to be reactive and test them as soon as possible (according to their priorities if 2 things are ready to be tested at the same time, priorities will be set in the test cases on the linear). <br>
+#### Agile testing
 
-### d. Testing tools
+We are going to use an agile testing strategy so that as new features are released by the development team, and previous bugs are fixed, Team 3 QA's will have to be reactive and test them as soon as possible.
 
-Linear:
+#### Collaborative game-testing
 
-GitHub Issues:
+We'll also be doing game-testing sessions in collaboration with Team 4's QA team. The aim of having the game tested by another team is to have another approach on the game in order to find other bugs. As they have knowledge of the project and QA skills, we hope they will provide accurate and clear feedback to help us improve our own game. <br>
 
-### e. Test cases
+On the other hand, we'll also be testing their game. We'll provide feedback to help them improve their game and find bugs they may not have noticed. It will also be interesting to see the things they could have done that we didn't think of. <br>
 
-To be sure that all features and all possible bugs have been tested, we will create multiple test cases on Linear/GitHub Issues. We will use a template to be sure that each test case is clear and concise. This template will be used for each test case and will be filled with the following information:
+The aim is to get two different and original end products, but of equal quality. <br>
 
-```
-Ticket ID:
+### d. Define priorities
 
-Test title [MM/DD/YYYY]:
+Priorities are a crucial point to determine which test has to be done first. It will be in corelation with priorities defined in the functional specifications.
+There will be 4 priorities that are explicit:
+- Urgent
+- High
+- Medium
+- Low
 
-Priority:
+Priorities are not definitive, they can change during the development of the project. For example if an high priority feature is defined at the beginning of the project but seems to ambitious afterwards, il will be downgraded to a lower priority. <br>
 
-Labels: Test Case, ...
+### e. Test tool
 
-Test description:
+#### Operating system
 
-Steps:
+The different team members are working on different operating systems. Some are working on Windows, others on Mac OS. <br>
+As the first step is to make it run on DOSBox, with our own computer, we will have to test the game on different operating systems to be sure that it works on all of them. <br>
+The final objective of this project is to run the game with DOS on a real x86 CPU. That's why the final tests will be done on a real x86 CPU with DOS. <br>
 
-Expected result:
+#### GitHub
 
-Actual result:
+As the project is hosted on GitHub, we will use it to create tickets for test cases and bug reports. Thanks to that, when people will look at our project, they will be able to see what has to be implemented and if they are bugs, what are they
 
-Status:
+### f. Test cases
 
-Comments:
-```
+To be sure that all features and all possible bugs have been tested, test cases will be created via tickets on GitHub Issues. We will use this tool so that it is easy for QA's to see what has to be tested and what has already been tested. But also for the whole team to be aware of features that are not working yet or that haven't been implemented yet. That's why we've chosen to create tickets rather than a spreadsheet. <br>
+A mention [TC] will be added to the title of each test case to make it easier to identify between all the issues. The creation date of the test case will also be added to the title. <br>
+Each test case will be created on GitHub issues with the label "Test Case". <br>
+The QA's and the people in charge of the feature will be set as assignees. <br>
+A template for those tickets have been created and is stored in [testCase.yml](../../.github/ISSUE_TEMPLATE/testCase.yml). <br>
 
-### f. Bug data reports
+### g. Bug reports
 
-When a bug is found, we will create a ticket on Linear/GitHub issues with the label "bug" so the developpers can see it by sorting the tickets with this particular label, and fix it as soon as possible. The ticket will be filled with the following information:
+When a bug is found, a bug report will be created.
+They will also be created via tickets on GitHub Issues, so that it is easy for the development team to see when a bug has been found. <br>
+When an update has been made to fix a bug, the QA's will be notified via a comment on the ticket by the person who tried to resolve it. <br>
+A mention [BR] will be added to the title of each bug report to make it easier to identify between all the issues. The date on which the bug was last reported will also be added to the title. <br>
+Each bug report will be created on GitHub issues with the label "Bug". <br>
+The people in charge of resolving the bug will be set as assignees. <br>
+A template for those tickets have been created and is stored in [bugReport.yml](../../.github/ISSUE_TEMPLATE/bugReport.yml). <br>
 
-```
-Ticket ID:
-
-Bug title [MM/DD/YYYY]:
-
-Priority:
-
-Labels: Bug, ...
-
-Bug description:
-
-Steps to reproduce the bug:
-
-Expected result:
-
-Actual result:
-
-Potential solution:
-
-Comments:
-```
-
-<!-- ### d. Document testing
-
-Documents are milestones in this project. They are an important way of communication within the team and between the team and the external world. Their quality and their pertinance is paramount so the whole way of thinking of the team can be transmitted. Moreover, each point has to be clear and precise so the final product is as close as possible to the specifications and ALGOSUP's requirements.
-As the functional and technical specifications are the most important documents, they will be tested as a priority and published as soon as possible so that the teams can base their production work on them.
-
-### e. Game testing
-
-About the product in itself, all the features listed in the functional specifications will be tested to verify if they are corresponding to what was planned in the specifications. -->
-
-
-## 3. Test criteria
+## 4. Test criteria
 
 ### a. Suspension criteria
 
@@ -198,40 +195,13 @@ Achieving high pass rate is a goal.
 
 A weekly report will be make each friday to confirm the exit criteria with the report of the test results
 
-## 4. Resource planning
 
-### a. Human resource
-
-The Quality Assurance of this team will take all QA roles together like Test manager,Tester, developer in test, test administrator and software quality assurance(SQA).
-
-|No|Member|Tasks|
-|---|---|---|
-|1|Tester|Execute the tests, Log results and report the defects|
-|2|Developer in test|Implement the test cases, the test units|
-|3|Test Administrator|Builds up and ensure the test environment to be use by the test|
-|4|SQA|Take in charge the quality assurance. Check to confirm the testing process is meeting specified requirements of the customers|
-
-### b. System resource
-
-|No|Resources|Description|
-|---|---|---|
-|1|Test tools|Builds up and ensure the test environment to be use by the test.|
-|2|Computer|We will use 2 different OS (Windows and MAC to be sure that the game works in each of them|
-
-### c. Test tool
-
-For this project we will use Linear(https://linear.app). It will be useful for all issues make each weeks for each features needs for the game. After that we will convert the issue into github.
-
-![Linear_overview](../pictures/QA/linearOverview.png)
-
-We can see that we can add a description, a priority, a label, a milestone, a project, a assignee, a due date and a estimate time.
-The only difference with github is that we can add a estimate time and a due date. Also is better to understand in which part of the project the issue is and to see if a issue it's already in progress or not. Finally each members of the team can see is own issues and the issues of the team.
 
 ## 5. Plan test environment
 
 ### a. Test environment for Mac
 
-To test the game we will use NASM to compile the game and DosBox to run the game.
+To test the game we will use NASM to compile the game and DOSBox to run the game.
 
 To compile the game we will use a file bash to compile the game
 
@@ -239,15 +209,15 @@ To compile the game we will use a file bash to compile the game
  nasm pacman.asm -f bin -o "pacman.com"
 ```
 
-after that we will create a file bash to open DosBox and run the game
+after that we will create a file bash to open DOSBox and run the game
 
-We will use this command to open DosBox
+We will use this command to open DOSBox
 
 ```bash
 DOSBOX_BIN="/Applications/dosbox.app/Contents/MacOS/DOSBox"
 ```
 
-and this command to run the game directly when DosBox is open
+and this command to run the game directly when DOSBox is open
 
 ```bash
 dosbox -c "mount c ${BIN_DIR}" -c "pacman.com" -c "exit"
@@ -255,6 +225,6 @@ dosbox -c "mount c ${BIN_DIR}" -c "pacman.com" -c "exit"
 
 ### b. Test environment for Windows
 
-## Schedule estimation
+## 6. Schedule estimation
 
 ## 7. Test deliverables
