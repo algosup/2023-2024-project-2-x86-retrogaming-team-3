@@ -2,8 +2,8 @@
 
 |Author|Robin DEBRY and Quentin CLÉMENT|
 |---|---|
-|Created|11/09/2023|
-|Last Modified|20/09/2023|
+|Created|09/11/2023|
+|Last Modified|04/12/2023|
 
 ## Table of Contents
 
@@ -33,9 +33,14 @@
       - [GitHub](#github)
     - [f. Test cases](#f-test-cases)
     - [g. Bug reports](#g-bug-reports)
+      - [By QA's](#by-qas)
+      - [By users](#by-users)
   - [4. Test criteria](#4-test-criteria)
     - [a. Suspension criteria](#a-suspension-criteria)
-    - [b. Exit criteria](#b-exit-criteria)
+      - [Environment issues](#environment-issues)
+      - [Critical bugs](#critical-bugs)
+    - [b. Entry criteria](#b-entry-criteria)
+    - [c. Exit criteria](#c-exit-criteria)
   - [5. Plan test environment](#5-plan-test-environment)
     - [a. Test environment for Mac](#a-test-environment-for-mac)
     - [b. Test environment for Windows](#b-test-environment-for-windows)
@@ -50,6 +55,7 @@
 |DOSBox|DOSBox is an emulator program that emulates an IBM PC compatible computer running a DOS operating system. Many IBM PC compatible graphics and sound cards are also emulated. This means that original DOS programs (including PC games) are provided with an environment in which they can run correctly, even though the modern computers have dropped support for that old environment. DOSBox is used by many retro gamers to run Doom on their modern computers, or to play Quake while pretending it's still 1996. DOSBox-X is a fork of DOSBox. It has many new features, including support for Glide, PCI, and PCMCIA emulation.|[Wikipedia](https://en.wikipedia.org/wiki/DOSBox)|
 |DOS|DOS is a platform-independent acronym for Disk Operating System which later became a common shorthand for disk-based operating systems on IBM PC compatibles. DOS primarily consists of Microsoft's MS-DOS and a rebranded IBM version under the name PC DOS, both of which were introduced in 1981. Later compatible systems from other manufacturers are DR DOS (1988), ROM-DOS (1989), PTS-DOS (1993), and FreeDOS (1998). MS-DOS dominated the IBM PC compatible market between 1981 and 1995.|[Wikipedia](https://en.wikipedia.org/wiki/DOS)|
 |CPU|A central processing unit (CPU), also called a central processor, main processor or just processor, is the electronic circuitry that executes instructions comprising a computer program. The CPU performs basic arithmetic, logic, controlling, and input/output (I/O) operations specified by the instructions in the program. This contrasts with external components such as main memory and I/O circuitry, and specialized processors such as graphics processing units (GPUs).|[Wikipedia](https://en.wikipedia.org/wiki/Central_processing_unit)|
+|Open source|Open source is source code that is made freely available for possible modification and redistribution. Products include permission to use the source code, design documents, or content of the product. It most commonly refers to the open-source model, in which open-source software or other products are released under an open-source license as part of the open-source-software movement. Use of the term originated with software, but has expanded beyond the software sector to cover other open content and forms of open collaboration.|[Wikipedia](https://en.wikipedia.org/wiki/Open_source)|
 
 ## 2. Overview
 
@@ -152,7 +158,7 @@ The final objective of this project is to run the game with DOS on a real x86 CP
 
 #### GitHub
 
-As the project is hosted on GitHub, we will use it to create tickets for test cases and bug reports. Thanks to that, when people will look at our project, they will be able to see what has to be implemented and if they are bugs, what are they
+As the project is hosted on GitHub, we will use the Issues feature to create tickets for test cases and bug reports. Thanks to that, when people will look at our project, they will be able to see what has to be implemented and if they are bugs, what are they.
 
 ### f. Test cases
 
@@ -164,6 +170,8 @@ A template for those tickets have been created and is stored in [testCase.yml](.
 
 ### g. Bug reports
 
+#### By QA's
+
 When a bug is found, a bug report will be created.
 They will also be created via tickets on GitHub Issues, so that it is easy for the development team to see when a bug has been found. <br>
 When an update has been made to fix a bug, the QA's will be notified via a comment on the ticket by the person who tried to resolve it. <br>
@@ -172,41 +180,70 @@ Each bug report will be created on GitHub issues with the label "Bug". <br>
 The people in charge of resolving the bug will be set as assignees. <br>
 A template for those tickets have been created and is stored in [bugReport.yml](../../.github/ISSUE_TEMPLATE/bugReport.yml). <br>
 
+#### By users
+
+As the project is open source, everyone can access it and try it at every moment. <br>
+It's paramount to receive the feedback of the users to improve the game. Non-stakeholders have a totally different point of view on the project and on the game itself. They will be able to see things that we didn't see and to give us feedback on the game. <br>
+Because of that, they might find bugs that we didn't see. If they find a bug they will be able to check on GitHub Issues if it has already been reported. If it has already been reported, they will be able to add a comment to the ticket to say that they also encountered the bug. If it hasn't been reported yet, they will be able to create a new ticket to report the bug. They could either use the bug report template with the "Bug" label or open a blank ticket to develop their own bug report. <br>
+
 ## 4. Test criteria
 
 ### a. Suspension criteria
 
-The active test cycle will be suspended until the criteria are resolved.
+The objective of suspension criteria is to prevent wasted effort and resources. If testing cannot proceed effectively due to defects, environmental issues, or other roadblocks, it makes sense to pause testing activities until these issues are resolved. This allows for more efficient use of testing resources and can help ensure the accuracy and validity of test results.
 
 ![suspensionCriteria](../pictures/qa/suspensionCriteria.png)
 
-We will use this test criteria for tests with critical priority, because if a test is with critical priority, it means we absolutely need it on our game, also we will need these features for the MVP.
+If a suspension criteria is reached, the QA team will help the development team to resolve the issue before restarting the test cycle.
 
-### b. Exit criteria
+#### Environment issues
 
-We will use this test criteria for tests with a priority between low and high for each development phases.
-For that we need to target a run rate and a pass rate.
+If for some reason, we start to encounter problems due to DOSBox or another mandatory software/hardware, we will suspend the test cycle until the problem is resolved.
 
-**run rate** will be the ratio between the number test cases executed/total test cases.
-**pass rate** will be the ratio between number test cases passed/test cases executed.
+#### Critical bugs
 
-Run rate is mandatory to be 100%.
-Achieving high pass rate is a goal.
+Critical bugs are bugs that prevent the game from working properly and from implementing new features before resolving those bugs.
+If we encounter a critical bug, we will suspend the test cycle until the bug is resolved.
 
-A weekly report will be make each friday to confirm the exit criteria with the report of the test results
+### b. Entry criteria
 
+As the name specifies, entry criteria is a set of conditions or requirements, which are required to be fulfilled or achieved to create a suitable & favorable condition for testing. Finalized & decided upon after a thorough analysis of software & business requirements, entry criteria ensures the accuracy of the testing process and neglecting it can impact its quality.
 
+- Testable code is available.
 
+- Verify if the unit tests are ready.
+
+- Verify if the test environment is working: the computer, DOSBox and GitHub issues (if GitHub issues is not working, we will report bugs via a spreadsheet).
+  
+- Verify if the test cases have been written.
+
+### c. Exit criteria
+
+Exit criteria should specify the conditions and requirements that are required to be achieved or fulfilled before the end of software testing process. With the assistance of exit criteria, we will be able to conclude the testing without compromising the quality and effectiveness of the software.
+Here are the ones we will apply for this project:
+
+- Verify if all tests planned have been run.
+
+- Verify if the level of requirement coverage of 80% has been met.
+
+- Verify if there are no critical or high severity defects that are left outstanding.
+
+- Verify if all high risk areas are passing the tests.
+
+- Verify if all medium and low severity bugs have been reported via issues.
+
+- Verify if the whole code has been clearly commented.
+  
 ## 5. Plan test environment
 
 ### a. Test environment for Mac
 
-To test the game we will use NASM to compile the game and DOSBox to run the game.
+To test the game we will use NASM to compile the game and DOSBox to run it. [DOSBox](https://www.dosbox.com/wiki/DOSBox_and_Mac_OS_X) has to be installed on the computer to run the game.
 
-To compile the game we will use a file bash to compile the game
+To compile the game we will use a bash file named [buildGame.sh](../../tools/main).
 
 ```bash
- nasm pacman.asm -f bin -o "pacman.com"
+ nasm main.asm -f bin -o "game.com"
 ```
 
 after that we will create a file bash to open DOSBox and run the game
@@ -225,6 +262,12 @@ dosbox -c "mount c ${BIN_DIR}" -c "pacman.com" -c "exit"
 
 ### b. Test environment for Windows
 
+<!-- TODO -->
+
 ## 6. Schedule estimation
 
+<!-- TODO -->
+
 ## 7. Test deliverables
+
+<!-- TODO -->
