@@ -6,45 +6,45 @@ section .data
 
 
     ; maze array
-    maze db 17,13,13,13,13,13,13,13,13,13,13,13,13,21,22,13,13,13,13,13,13,13,13,13,13,13,13,18
-         db 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,15
-         db 16, 0, 5,33,33, 6, 0, 5,33,33,33, 6, 0, 4, 3, 0, 5,33,33,33, 6, 0, 5,33,33, 6, 0,15
-         db 16, 0, 4, 0, 0, 3, 0, 4, 0, 0, 0, 3, 0, 4, 3, 0, 4, 0, 0, 0, 3, 0, 4, 0, 0, 3, 0,15
-         db 16, 0, 8, 2, 2, 7, 0, 8, 2, 2, 2, 7, 0, 8, 7, 0, 8, 2, 2, 2, 7, 0, 8, 2, 2, 7, 0,15
-         db 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,15
-         db 16, 0, 5,33,33, 6, 0, 5, 6, 0, 5,33,33,33,33,33,33, 6, 0, 5, 6, 0, 5,33,33, 6, 0,15
-         db 16, 0, 8, 2, 2, 7, 0, 4, 3, 0, 8, 2, 2,10, 9, 2, 2, 7, 0, 4, 3, 0, 8, 2, 2, 7, 0,15
-         db 16, 0, 0, 0, 0, 0, 0, 4, 3, 0, 0, 0, 0, 4, 3, 0, 0, 0, 0, 4, 3, 0, 0, 0, 0, 0, 0,15
-         db 20,14,14,14,14, 6, 0, 4,12,33,33, 6, 0, 4, 3, 0, 5,33,33,11, 3, 0, 5,14,14,14,14,19
-         db  0, 0, 0, 0, 0,16, 0, 4, 9, 2, 2, 7, 0, 8, 7, 0, 8, 2, 2,10, 3, 0,15, 0, 0, 0, 0, 0
-         db  0, 0, 0, 0, 0,16, 0, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 3, 0,15, 0, 0, 0, 0, 0
-         db  0, 0, 0, 0, 0,16, 0, 4, 3, 0,29,14,27, 1, 1,28,14,30, 0, 4, 3, 0,15, 0, 0, 0, 0, 0
-         db 13,13,13,13,13, 7, 0, 8, 7, 0,15, 0, 0, 0, 0, 0, 0,16, 0, 8, 7, 0, 8,13,13,13,13,13
-         db  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,15, 0, 0, 0, 0, 0, 0,16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-         db 14,14,14,14,14, 6, 0, 5, 6, 0,15, 0, 0, 0, 0, 0, 0,16, 0, 5, 6, 0, 5,14,14,14,14,14
-         db  0, 0, 0, 0, 0,16, 0, 4, 3, 0,32,13,13,13,13,13,13,31, 0, 4, 3, 0,15, 0, 0, 0, 0, 0
-         db  0, 0, 0, 0, 0,16, 0, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 3, 0,15, 0, 0, 0, 0, 0
-         db  0, 0, 0, 0, 0,16, 0, 4, 3, 0, 5,33,33,33,33,33,33, 6, 0, 4, 3, 0,15, 0, 0, 0, 0, 0
-         db 17,13,13,13,13, 7, 0, 8, 7, 0, 8, 2, 2,10, 9, 2, 2, 7, 0, 8, 7, 0, 8,13,13,13,13,18
-         db 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,15
-         db 16, 0, 5,33,33, 6, 0, 5,33,33,33, 6, 0, 4, 3, 0, 5,33,33,33, 6, 0, 5,33,33, 6, 0,15
-         db 16, 0, 8, 2,10, 3, 0, 8, 2, 2, 2, 7, 0, 8, 7, 0, 8, 2, 2, 2, 7, 0, 4, 9, 2, 7, 0,15
-         db 16, 0, 0, 0, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 3, 0, 0, 0,15
-         db 24,33, 6, 0, 4, 3, 0, 5, 6, 0, 5,33,33,33,33,33,33, 6, 0, 5, 6, 0, 4, 3, 0, 5,33,25
-         db 23, 2, 7, 0, 8, 7, 0, 4, 3, 0, 8, 2, 2,10, 9, 2, 2, 7, 0, 4, 3, 0, 8, 7, 0, 8, 2,26
-         db 16, 0, 0, 0, 0, 0, 0, 4, 3, 0, 0, 0, 0, 4, 3, 0, 0, 0, 0, 4, 3, 0, 0, 0, 0, 0, 0,15
-         db 16, 0, 5,33,33,33,33,11,12,33,33, 6, 0, 4, 3, 0, 5,33,33,11,12,33,33,33,33, 6, 0,15
-         db 16, 0, 8, 2, 2, 2, 2, 2, 2, 2, 2, 7, 0, 8, 7, 0, 8, 2, 2, 2, 2, 2, 2, 2, 2, 7, 0,15
-         db 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,15
-         db 20,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,19
+    maze db 26,22,22,22,22,22,22,22,22,22,22,22,22,30,31,22,22,22,22,22,22,22,22,22,22,22,22,27
+         db 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,13,12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,24
+         db 25, 0,14,10,10,15, 0,14,10,10,10,15, 0,13,12, 0,14,10,10,10,15, 0,14,10,10,15, 0,24
+         db 25, 0,13, 0, 0,12, 0,13, 0, 0, 0,12, 0,13,12, 0,13, 0, 0, 0,12, 0,13, 0, 0,12, 0,24
+         db 25, 0,17,11,11,16, 0,17,11,11,11,16, 0,17,16, 0,17,11,11,11,16, 0,17,11,11,16, 0,24
+         db 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,24
+         db 25, 0,14,10,10,15, 0,14,15, 0,14,10,10,10,10,10,10,15, 0,14,15, 0,14,10,10,15, 0,24
+         db 25, 0,17,11,11,16, 0,13,12, 0,17,11,11,19,18,11,11,16, 0,13,12, 0,17,11,11,16, 0,24
+         db 25, 0, 0, 0, 0, 0, 0,13,12, 0, 0, 0, 0,13,12, 0, 0, 0, 0,13,12, 0, 0, 0, 0, 0, 0,24
+         db 29,23,23,23,23,15, 0,13,21,10,10,15, 0,13,12, 0,14,10,10,20,12, 0,14,23,23,23,23,28
+         db  0, 0, 0, 0, 0,25, 0,13,18,11,11,16, 0,17,16, 0,17,11,11,19,12, 0,24, 0, 0, 0, 0, 0
+         db  0, 0, 0, 0, 0,25, 0,13,12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,13,12, 0,24, 0, 0, 0, 0, 0
+         db  0, 0, 0, 0, 0,25, 0,13,12, 0,38,23,36, 1, 1,37,23,39, 0,13,12, 0,24, 0, 0, 0, 0, 0
+         db 22,22,22,22,22,16, 0,17,16, 0,24, 0, 0, 0, 0, 0, 0,25, 0,17,16, 0,17,22,22,22,22,22
+         db  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,24, 0, 0, 0, 0, 0, 0,25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+         db 23,23,23,23,23,15, 0,14,15, 0,24, 0, 0, 0, 0, 0, 0,25, 0,14,15, 0,14,23,23,23,23,23
+         db  0, 0, 0, 0, 0,25, 0,13,12, 0,41,22,22,22,22,22,22,40, 0,13,12, 0,24, 0, 0, 0, 0, 0
+         db  0, 0, 0, 0, 0,25, 0,13,12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,13,12, 0,24, 0, 0, 0, 0, 0
+         db  0, 0, 0, 0, 0,25, 0,13,12, 0,14,10,10,10,10,10,10,15, 0,13,12, 0,24, 0, 0, 0, 0, 0
+         db 26,22,22,22,22,16, 0,17,16, 0,17,11,11,19,18,11,11,16, 0,17,16, 0,17,22,22,22,22,27
+         db 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,13,12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,24
+         db 25, 0,14,10,10,15, 0,14,10,10,10,15, 0,13,12, 0,14,10,10,10,15, 0,14,10,10,15, 0,24
+         db 25, 0,17,11,19,12, 0,17,11,11,11,16, 0,17,16, 0,17,11,11,11,16, 0,13,18,11,16, 0,24
+         db 25, 0, 0, 0,13,12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,13,12, 0, 0, 0,24
+         db 33,10,15, 0,13,12, 0,14,15, 0,14,10,10,10,10,10,10,15, 0,14,15, 0,13,12, 0,14,10,34
+         db 32,11,16, 0,17,16, 0,13,12, 0,17,11,11,19,18,11,11,16, 0,13,12, 0,17,16, 0,17,11,35
+         db 25, 0, 0, 0, 0, 0, 0,13,12, 0, 0, 0, 0,13,12, 0, 0, 0, 0,13,12, 0, 0, 0, 0, 0, 0,24
+         db 25, 0,14,10,10,10,10,20,21,10,10,15, 0,13,12, 0,14,10,10,20,21,10,10,10,10,15, 0,24
+         db 25, 0,17,11,11,11,11,11,11,11,11,16, 0,17,16, 0,17,11,11,11,11,11,11,11,11,16, 0,24
+         db 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,24
+         db 29,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,28
     ; ---------------------------------------------------------------------
     Column dw 28    ; number of columns
     Row dw 31       ; number of rows
-    nbpixel dw 1920 ; number of pixels in a row of tile
+    nbpixel dw 2072 ; number of pixels in a row of tile
 
 section .text
-    mov ah, 00h
-    mov al, 13h
+    mov ah, 00h     ;--------------------------------
+    mov al, 13h     ; set screen 320x200 256colours
     int 10h         ;--------------------------------
 
     mov ax, 0xA000  ; clear the screen
@@ -91,85 +91,90 @@ section .text
         ret
        
     Maze:
-        mov di, 0               ; set the position
+        mov di, 152               ; set the position
         mov bx, maze            ; put the maze array to a register to follow the maze pattern
         wallchoice:
             mov al, [bx]        ; look wich sprite he has to put in a tile
             cmp al, 0           ; then he call a function to draw the correct sprite
-            je drawEmpty        ;
-            cmp al, 33
-            je DrawSmplwall1
-            cmp al, 2
-            je DrawSmplwall2
-            cmp al, 3
-            je DrawSmplwall3
-            cmp al, 4
-            je DrawSmplwall4
-            cmp al, 5
-            je DrawSmplangle11
-            cmp al, 6
-            je DrawSmplangle12
-            cmp al, 7
-            je DrawSmplangle13
-            cmp al, 8
-            je DrawSmplangle14
-            cmp al, 9
-            je DrawSmplangle21
-            cmp al, 10
-            je DrawSmplangle22
-            cmp al, 11
-            je DrawSmplangle23
-            cmp al, 12
-            je DrawSmplangle24
-            cmp al, 13
-            je DrawDblwall1
-            cmp al, 14
-            je DrawDblwall2
-            cmp al, 15
-            je DrawDblwall3
-            cmp al, 16
-            je DrawDblwall4
-            cmp al, 17
-            je DrawDblangle1
-            cmp al, 18
-            je DrawDblangle2
-            cmp al, 19
-            je DrawDblangle3
-            cmp al, 20
-            je DrawDblangle4
-            cmp al, 21
-            je DrawDblwallangle1
-            cmp al, 22
-            je DrawDblwallangle2
-            cmp al, 23
-            je DrawDblwallangle3
-            cmp al, 24
-            je DrawDblwallangle4
-            cmp al, 25
-            je DrawDblwallangle5
-            cmp al, 26
-            je DrawDblwallangle6
-            cmp al, 27
-            je DrawDblstrgwall1
-            cmp al, 28
-            je DrawDblstrgwall2
-            cmp al, 29
-            je DrawDblstrgangle1
-            cmp al, 30
-            je DrawDblstrgangle2
-            cmp al, 31
-            je DrawDblstrgangle3
-            cmp al, 32
-            je DrawDblstrgangle4
+            je DrawEmpty        ;
             cmp al, 1
             je DrawDoor
+            cmp al, 10
+            je DrawSmplwall1
+            cmp al, 11
+            je DrawSmplwall2
+            cmp al, 12
+            je DrawSmplwall3
+            cmp al, 13
+            je DrawSmplwall4
+            cmp al, 14
+            je DrawSmplangle11
+            cmp al, 15
+            je DrawSmplangle12
+            cmp al, 16
+            je DrawSmplangle13
+            cmp al, 17
+            je DrawSmplangle14
+            cmp al, 18
+            je DrawSmplangle21
+            cmp al, 19
+            je DrawSmplangle22
+            cmp al, 20
+            je DrawSmplangle23
+            cmp al, 21
+            je DrawSmplangle24
+            cmp al, 22
+            je DrawDblwall1
+            cmp al, 23
+            je DrawDblwall2
+            cmp al, 24
+            je DrawDblwall3
+            cmp al, 25
+            je DrawDblwall4
+            cmp al, 26
+            je DrawDblangle1
+            cmp al, 27
+            je DrawDblangle2
+            cmp al, 28
+            je DrawDblangle3
+            cmp al, 29
+            je DrawDblangle4
+            cmp al, 30
+            je DrawDblwallangle1
+            cmp al, 31
+            je DrawDblwallangle2
+            cmp al, 32
+            je DrawDblwallangle3
+            cmp al, 33
+            je DrawDblwallangle4
+            cmp al, 34
+            je DrawDblwallangle5
+            cmp al, 35
+            je DrawDblwallangle6
+            cmp al, 36
+            je DrawDblstrgwall1
+            cmp al, 37
+            je DrawDblstrgwall2
+            cmp al, 38
+            je DrawDblstrgangle1
+            cmp al, 39
+            je DrawDblstrgangle2
+            cmp al, 40
+            je DrawDblstrgangle3
+            cmp al, 41
+            je DrawDblstrgangle4
         ret
 
-    drawEmpty:
-        mov si, empty           ; tell which sprite he want to draw
-        call drawWalls          ; call the function to draw the tile
-        jmp wallchoice          ; return to the function where he will look which sprite to use
-                                ; does the same in the following functions for each sprite
+    DrawEmpty:                  ; tell which sprite he want to draw
+        mov si, empty           ; call the function to draw the tile
+        call drawWalls          ; return to the function where he will look which sprite to use
+        jmp wallchoice          ; does the same in the following functions for each sprite\
+                                
+    DrawDoor:
+        mov si, door
+        call drawWalls
+        jmp wallchoice
+
     DrawSmplwall1:              
         mov si, smplwall1
         call drawWalls
@@ -327,11 +332,6 @@ section .text
 
     DrawDblstrgangle4:
         mov si, dblstrgangle4
-        call drawWalls
-        jmp wallchoice
-
-    DrawDoor:
-        mov si, door
         call drawWalls
         jmp wallchoice
 
