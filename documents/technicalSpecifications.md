@@ -216,7 +216,7 @@ Due to the complex nature of Assembly, a higher level language like C++ will be 
 - Input devices: Keyboard, Mouse and/or Joystick
 - Memory Requirements: 512MB RAM
 - Sound Output Device
-- Screen List minimal resolution 224x288 is the minimal resolution for running the game.
+- Screen List minimal resolution 320x200 is the minimal resolution for running the game, and is DOSBOX's standard resolution
   
 ### Software Requirements
 
@@ -410,6 +410,9 @@ You need a variable to display the number of lives you have at the beginning you
 
 ### Movement Direction
 
+> [!NOTE]
+> Tell more about the final choices made.
+
 For the movement, we need at the beginning 4 different functions for each direction but before that, you need to tell the program you will use the keyboard for that you need to implement this.
 
 ```asm
@@ -438,8 +441,14 @@ We will preserve Pac-Man's default orientation (Portrait) and use DOSBOX's scali
 
 ### Grid System
 
-The visible game screen should be thought of as a regular grid of tiles, each eight pixels square. The actual pixel dimensions of the screen are 224 x 288, so dividing each value by eight yields a grid that is 28 x 36 tiles in size
+The visible game screen should be thought of as a regular grid of tiles, each eight pixels square. The actual pixel dimensions of the screen are 320 x 200. We will be downscaling the assets to 6x6 vs 8x8 in the original game to make it fit vertically.
+
+The maze is 28x31 in tile dimensions which leave us with a 168x186 maze, while the left and right of the screens will be used for displaying the score, lives and other UI elemements originally located on above and below the maze.
+
 The different data for each tile are explained both in the data structures and collision sections a little more extensively.
+
+> [!NOTE]
+> Paste the new grid here.
 
 ![mazeGrid.png](../Documents/pictures/technical/mazeGrid_1700915551105_0.png)
 
@@ -447,11 +456,17 @@ The different data for each tile are explained both in the data structures and c
 
 #### ➭ <ins>Splash Screen</ins>
 
+> [!NOTE]
+> Paste the screen here.
+
 The splash screen for our Pac-Man-like game on x86 assembly will be displayed by setting the graphics mode and copying the splash screen image directly into video memory. This involves using basic assembly instructions to place the image data at the correct location in memory where the graphics hardware will read it and show it on the screen. 
 
 We'll also set the colour palette to match the vibrant colours of the game. The process is orchestrated by the CPU until the splash screen is fully rendered and ready for player interaction.
 
 #### ➭ <ins>Menu</ins>
+
+> [!NOTE]
+> Paste the image here.
 
 For the menu in our Pac-Man-like game, the display will be simplified to show four options: "Single Player," "Multi-Player" (which will appear inactive or "greyed out"), "Credits," and "Exit." In assembly language on the x86 architecture, we will use a series of instructions to draw text on the screen for each menu item. 
 
@@ -471,9 +486,21 @@ In the image below, we can clearly see each pixel and its spacing.
 
 <img src="../Documents/pictures/technical/letter_A.png" width="200px"></img>
 
+We have chosen a 5x5 font that looks like the original game's one and added padding to the bottom and left sides to match the original font's spacing making it a 6x6 font. 
+
+This is the font we will use in our game
+
+> [!NOTE]
+> Paste the font here.
+
 #### ➭ <ins>Displaying the score</ins>
 
-In the game, the player's current score appears in the top left, with each digit occupying a single cell, while the high score is centrally displayed at the top of the screen. The current score is updated instantaneously as players collect pellets and overcome ghosts.
+In the original game, the player's current score appears in the top left, with each digit occupying a single cell, while the high score is centrally displayed at the top of the screen. The current score is updated instantaneously as players collect pellets and overcome ghosts.
+
+> In our version, the score has been moved to the left, while the maze and the game in itself is aligned to the right border of the screen
+
+> [!NOTE]
+> Paste the new render here.
 
 ![Scores](../Documents/pictures/technical/scoresGraphics.png)
 
@@ -506,6 +533,9 @@ Whether it is at the beginning of a game, at the beginning of a new level, or af
 It is worth noting that Pac-Man's direction is set to "left" by default if left unattended.
 
 #### ➭ <ins>Ghost Spawn</ins>
+
+> [!NOTE]
+> FIx ghost image with new sprites.
 
 <img src="../Documents/pictures/technical/pacmanGhosts.jpeg" width="330px"></img>
 
@@ -573,6 +603,9 @@ Fruits/Level:
 #### ➭ <ins>Player</ins>
 
 #### ➭ <ins>Player Speed</ins>
+
+> [!NOTE]
+> False information?.
 
 Pac-Man moves exactly 80 pixels per second, or 10 tiles per second. All the other movement speeds in the game are computed from this speed.
 
@@ -851,6 +884,9 @@ The marked in pink are areas where ghosts are forbidden to make upward turns dur
 
 ### Collision
 
+> [!NOTE]
+> Remake this section with Evan's new info.
+
 At any point in the game, the game must check for collisions from Pac-Man with the following elements:
 - Walls
 - Ghost Door
@@ -946,7 +982,7 @@ Upon first boot, the list is initialized with 0 entries
 
 The current score is compared to the list starting from the bottom and inserted into it above a lower score and below a higher score as should be.
 
-The previous last score of the lis should disappear naturally.
+The previous last score of the list should disappear naturally.
 
 If the current score isn't worthy of being in the leaderboard, the leaderboard isn't even shown. (more on leaderboard mechanics in User Interface section)
 
