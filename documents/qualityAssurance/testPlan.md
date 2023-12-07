@@ -3,7 +3,7 @@
 |Author|Robin DEBRY and Quentin CLÉMENT|
 |---|---|
 |Created|09/11/2023|
-|Last Modified|04/12/2023|
+|Last Modified|07/12/2023|
 
 ## Table of Contents
 
@@ -51,9 +51,9 @@
 
 |Term|Definition|Source|
 |---|---|---|
-|Assembly|Assembly language is a low-level programming language for a computer, or other programmable device, in which there is a very strong (generally one-to-one) correspondence between the language and the architecture's machine code instructions. Each assembly language is specific to a particular computer architecture. In contrast, most high-level programming languages are generally portable across multiple architectures but require interpreting or compiling. Assembly language may also be called symbolic machine code. Assembly language usually has one statement per machine instruction (1:1), but comments and statements that are assembler directives, macros, and symbolic labels of program and memory locations are often also supported. Each assembly language is specific to a particular computer architecture. In contrast, most high-level programming languages are generally portable across multiple architectures but require interpreting or compiling. Assembly language may also be called symbolic machine code. Assembly language usually has one statement per machine instruction (1:1), but comments and statements that are assembler directives, macros, and symbolic labels of program and memory locations are often also supported.|[Wikipedia](https://en.wikipedia.org/wiki/Assembly_language)|
+|Assembly|Assembly language is a low-level programming language for a computer, or other programmable device, in which there is a very strong (generally one-to-one) correspondence between the language and the architecture's machine code instructions. Each assembly language is specific to a particular computer architecture. In contrast, most high-level programming languages are generally portable across multiple architectures but require interpreting or compiling. Assembly language may also be called symbolic machine code.|[Wikipedia](https://en.wikipedia.org/wiki/Assembly_language)|
 |DOSBox|DOSBox is an emulator program that emulates an IBM PC-compatible computer running a DOS operating system. Many IBM PC-compatible graphics and sound cards are also emulated. This means that original DOS programs (including PC games) are provided with an environment in which they can run correctly, even though modern computers have dropped support for that old environment. DOSBox is used by many retro gamers to run Doom on their modern computers or to play Quake while pretending it's still 1996. DOSBox-X is a fork of DOSBox. It has many new features, including support for Glide, PCI, and PCMCIA emulation.|[Wikipedia](https://en.wikipedia.org/wiki/DOSBox)|
-|DOS|DOS is a platform-independent acronym for Disk Operating System which later became a common shorthand for disk-based operating systems on IBM PC compatibles. DOS primarily consists of Microsoft's MS-DOS and a rebranded IBM version under the name PC DOS, both of which were introduced in 1981. Later compatible systems from other manufacturers are DR-DOS (1988), ROM-DOS (1989), PTS-DOS (1993), and FreeDOS (1998). MS-DOS dominated the IBM PC-compatible market between 1981 and 1995.|[Wikipedia](https://en.wikipedia.org/wiki/DOS)|
+|DOS|DOS is a platform-independent acronym for Disk Operating System which later became a common shorthand for disk-based operating systems on IBM PC-compatibles. DOS primarily consists of Microsoft's MS-DOS and a rebranded IBM version under the name PC DOS, both of which were introduced in 1981. Later compatible systems from other manufacturers are DR-DOS (1988), ROM-DOS (1989), PTS-DOS (1993), and FreeDOS (1998). MS-DOS dominated the IBM PC-compatible market between 1981 and 1995.|[Wikipedia](https://en.wikipedia.org/wiki/DOS)|
 |CPU|A central processing unit (CPU), also called a central processor, main processor or just processor, is the electronic circuitry that executes instructions comprising a computer program. The CPU performs basic arithmetic, logic, controlling, and input/output (I/O) operations specified by the instructions in the program. This contrasts with external components such as main memory and I/O circuitry, and specialized processors such as graphics processing units (GPUs).|[Wikipedia](https://en.wikipedia.org/wiki/Central_processing_unit)|
 |Open source|Open source is source code that is made freely available for possible modification and redistribution. Products include permission to use the source code, design documents, or content of the product. It most commonly refers to the open-source model, in which open-source software or other products are released under an open-source license as part of the open-source software movement. Use of the term originated with software, but has expanded beyond the software sector to cover other open content and forms of open collaboration.|[Wikipedia](https://en.wikipedia.org/wiki/Open_source)|
 
@@ -69,13 +69,11 @@ The principal targetted audience is nostalgic gamers who have a fondness for cla
 
 #### New players
 
-The second targetted audience Pac-Man was really popular during the 80's and the 90's, it became less played and a lot of people never played the original Pac-Man game. This is why, newbies are also a targetted audience. They will be able to discover the game and the retro gaming world.
+The second targetted audience Pac-Man was really popular during the 80's and the 90's, afterwards it became less played and a lot of people never played the original Pac-Man game. This is why, newbies are also a targetted audience. They will be able to discover the game and the retro gaming world.
 
 #### Competitive players
 
 Competitive Pac-Man players are a tiny part of the target audience, but they do exist. These players will be aiming to beat their records, whether in terms of speed, score. But also to achieve the various challenges that are popular in this community.
-
-<!-- This Pac-Man game is designed for nostalgic gamers who have a fondness for classic arcade experiences. It caters to those who remember the iconic Pac-Man of 1980 and want to relive the excitement of chomping pellets and evading ghosts. Whether you're a seasoned gamer who grew up with the original or a newcomer curious about gaming history, this clone appeals to a broad audience of all ages. -->
 
 ### b. What is it used for?
 
@@ -90,6 +88,8 @@ The graphics and audio will stay true to the retro charm, maintaining the pixela
 ### d. What are the softwares/hardwares the game uses?
 
 The development of this Pac-Man clone involves a combination of software and hardware elements.
+
+<!-- TODO -->
 
 #### Assembly
 
@@ -107,6 +107,10 @@ The final objective of this project is to run the game with DOS on a real x86 CP
 
 ### a. Quality assurance team
 
+The testing team will be divided into 2 parts. The first half will be composed of team 3's QA's:
+- Robin DEBRY (Mac OS)
+- Quentin CLÉMENT (Mac OS)
+
 The second half will be composed of team 4's QA's:
 
 - Thomas PLANCHARD (Mac OS)
@@ -116,8 +120,10 @@ Sparing the testing team in 2 parts will allow us to test the game on 2 differen
 
 ### b. Testing scope
 
-The 2 main things to test during this project will be the documents and the game itself. <br>
-About the documents, it's paramount to ensure their quality, so that communication with the client is clear and the whole team can work on the same basis. Not only will we check the documents for grammatical and typographical errors, but also the content itself, to ensure that no crucial points have been overlooked or erroneous elements introduced into the document. <br>
+The 2 main things to test during this project will be the documents and the game itself. 
+\
+About the documents, it's paramount to ensure their quality, so that communication with the client is clear and the whole team can work on the same basis. Not only will we check the documents for grammatical and typographical errors, but also the content itself, to ensure that no crucial points have been overlooked or erroneous elements introduced into the document. 
+
 As far as the game is concerned, we'll be testing all the features listed in the functional specifications to check that they correspond to what was originally intended. We will also be testing the game on different operating systems (Windows and MAC) to ensure that it works on all of them.
 
 ### c. Testing type
@@ -128,18 +134,18 @@ We are going to use an agile testing strategy so that as new features are releas
 
 #### Collaborative game-testing
 
-We'll also be doing game-testing sessions in collaboration with Team 4's QA team. The aim of having the game tested by another team is to have another approach to the game to find other bugs. As they have knowledge of the project and QA skills, we hope they will provide accurate and clear feedback to help us improve our own game. <br>
+We'll also be doing game-testing sessions in collaboration with Team 4's QA team. The aim of having the game tested by another team is to have another approach to the game to find other bugs. As they have knowledge of the project and QA skills, we hope they will provide accurate and clear feedback to help us improve our own game.
 
-On the other hand, we'll also be testing their game. We'll provide feedback to help them improve their game and find bugs they may not have noticed. It will also be interesting to see the things they could have done that we didn't think of. <br>
+On the other hand, we'll also be testing their game. We'll provide feedback to help them improve their game and find bugs they may not have noticed. It will also be interesting to see the things they could have done that we didn't think of.
 
-The aim is to get two different and original end products but of equal quality. <br>
+The aim is to get two different and original end products, but of equal quality. \
+They will open an issue and report the bugs they found on the game or the things they think could be improved. This issue will be named "Xth QA meeting with team 4 [dd/mm/yyyy]
 
 ### d. Define priorities
 
-Priorities are a crucial point to determine which test has to be done first. It will be in correlation with priorities defined in the functional specifications.
+Priorities are a crucial point to determine which test has to be done first. It will be in corelation with priorities defined in the functional specifications.
 There will be 4 explicit priorities:
-
-- Urgent
+- Critical
 - High
 - Medium
 - Low
@@ -165,6 +171,7 @@ A mention [TC] will be added to the title of each test case to make it easier to
 Each test case will be created on GitHub issues with the label "Test Case". <br>
 The QA's and the people in charge of the feature will be set as assignees. <br>
 A template for those tickets has been created and is stored in [testCase.yml](../../.github/ISSUE_TEMPLATE/testCase.yml). <br>
+About the steps to reproduce, "launch the game" means launch DOSBox, run the executable file for the Pac-Man game on DOSBox and click on the single player button on the main menu. <br>
 
 ### g. Bug reports
 
@@ -205,13 +212,13 @@ If we encounter a critical bug, we will suspend the test cycle until the bug is 
 
 ### b. Entry criteria
 
-As the name specifies, entry criteria are a set of conditions or requirements, which are required to be fulfilled or achieved to create a suitable & favourable condition for testing. Finalized & decided upon after a thorough analysis of software & business requirements, entry criteria ensure the accuracy of the testing process and neglecting it can impact its quality.
+As the name specifies, entry criteria are a set of conditions or requirements, which are required to be fulfilled or achieved to create a suitable & favourable condition for testing. Finalised & decided upon after a thorough analysis of software & business requirements, entry criteria ensure the accuracy of the testing process and neglecting it can impact its quality.
 
 - Testable code is available.
 
 - Verify if the unit tests are ready.
 
-- Verify if the test environment is working: the computer, DOSBox and GitHub issues (if GitHub issues are not working, we will report bugs via a spreadsheet).
+- Verify if the test environment is working: the computer, DOSBox and GitHub Issues (if GitHub Issues are not working, we will report bugs via a spreadsheet).
   
 - Verify if the test cases have been written.
 
@@ -232,24 +239,47 @@ Here are the ones we will apply for this project:
 
 - Verify if the whole code has been commented.
   
-## 5. Plan test environment
+## 5. Plan test environment 
+
+We want to test the game on different operating systems to be sure that it works on all of them. Because of that it is important to ensure that the set up of the test environment is the same for everyone. 
 
 ### a. Test environment for Mac
 
-To test the game we will use NASM to compile the game and DOSBox to run it. [DOSBox](https://www.dosbox.com/wiki/DOSBox_and_Mac_OS_X) has to be installed on the computer to run the game.
-
-To compile the game we will use a bash file named [buildGame.sh](../../tools/main).
+To test the game on MacOS, we will use NASM to compile the game and DOSBox to run it. \
+To install them, we will use Homebrew in the command line. ([install brew](https://brew.sh/) if it's not already installed on your computer) \
+[Install NASM](https://formulae.brew.sh/formula/nasm) in the command line:
 
 ```bash
- nasm main.asm -f bin -o "game.com"
+brew install nasm
 ```
 
-after that, we will create a file bash to open DOSBox and run the game
+[Install DOSBox](https://formulae.brew.sh/formula/dosbox) in the command line:
+
+```bash
+brew install dosbox
+```
+
+To compile the game and DOSBox we will use a bash file named [buildGame.sh](../../tools/main). Use this path to go the good folder (we assume you already are in the project folder):
+```bash
+cd tools
+```
+
+Then run this command to compile the game and to open DOSBox:
+```bash
+ chmod +x buildGame.sh
+```
+
+```bash
+./buildGame.sh
+```
 
 We will use this command to open DOSBox
 
 ```bash
-DOSBOX_BIN="/Applications/dosbox.app/Contents/MacOS/DOSBox"
+chmod +x runDOSBox.sh
+```
+
+```bash"
 ```
 
 and this command runs the game directly when DOSBox is open
