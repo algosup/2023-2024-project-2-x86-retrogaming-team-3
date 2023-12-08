@@ -3,11 +3,24 @@
 |Author|Robin DEBRY and Quentin CLÉMENT|
 |---|---|
 |Created|09/11/2023|
-|Last Modified|07/12/2023|
+|Last Modified|08/12/2023|
+
+## Test Plan approval
+
+| Role | Name | Signature | Date |
+|---|---|---|---|
+| Project Manager | Arthur LEMOINE | | |
+| Program Manager | Max BERNARD | | |
+| Tech Lead | Mathis KAKAL | | |
+| Software Developer | Pierre GORIN | | |
+| Software Developer | Evan UHRLING | | |
+| Quality Assurance | Robin DEBRY | | |
+| Quality Assurance | Quentin CLEMENT | | |
 
 ## Table of Contents
 
 - [Test Plan](#test-plan)
+  - [Test Plan approval](#test-plan-approval)
   - [Table of Contents](#table-of-contents)
   - [1. Glossary](#1-glossary)
   - [2. Overview](#2-overview)
@@ -47,6 +60,9 @@
     - [b. Test environment for Windows](#b-test-environment-for-windows)
   - [6. Schedule estimation](#6-schedule-estimation)
   - [7. Test deliverables](#7-test-deliverables)
+
+
+
 
 ## 1. Glossary
 
@@ -312,11 +328,13 @@ We will work for 7 weeks on this project.
 |Analyse requirement specification| - Review functional specifications <br> - Review technical specification| - 8 hours <br> - 8 hours
 | Create the test specification|  - Create the test plan <br> - Create test cases <br> - Review the test cases|- 48 hours <br> - 16 hours <br> - 4 hours
 |Execute the test cases| - Build up the test environment <br> - Execute the test cases <br> - Update test cases status|- 4 hours <br> - 40 hours <br> - 16 hours
-|Report the bug| - Create bug reports <br> - Report bug to the team| - 12 hours <br> - 80 hours
+|Report the bug| - Create bug reports <br> - Create bug data report | - 24 hours <br> - 24 hours
 
-At the end of the project with this estimation, we will have spent 336 hours on the QA's part for this project. <br>
+At the end of the project with this estimation, we will have spent 192 hours on the QA's part for this project. <br>
 
 ## 7. Test deliverables
 
-- Test plan/test strategy: define the testing strategy and all aspects of the testing process to guarantee product quality. 
-- Test cases: define all the test 
+- **Test plan/test strategy:** define the testing strategy and how the tests will be done.
+- **Test cases:** define all the test that will be done to be sure that the game works as intended.
+- **Bug reports:** report all the bugs that have been found during the tests.
+- **Bug data report:** to have a global view of the bugs that have been found during the tests.
