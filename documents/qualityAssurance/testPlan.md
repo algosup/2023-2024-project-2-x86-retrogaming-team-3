@@ -13,7 +13,7 @@
 | Program Manager | Max BERNARD | ✅ | 08/12/2023 |
 | Tech Lead | Mathis KAKAL | | |
 | Software Developer | Pierre GORIN | | |
-| Software Developer | Evan UHRLING | | |
+| Software Developer | Evan UHRLING | ✅ | 08/12/2023 |
 | Quality Assurance | Robin DEBRY | | |
 | Quality Assurance | Quentin CLEMENT | | |
 
