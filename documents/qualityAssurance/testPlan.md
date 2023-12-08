@@ -108,6 +108,7 @@ The final objective of this project is to run the game with DOS on a real x86 CP
 ### a. Quality assurance team
 
 The testing team will be divided into 2 parts. The first half will be composed of team 3's QA's:
+
 - Robin DEBRY (Mac OS)
 - Quentin CLÉMENT (Mac OS)
 
@@ -122,7 +123,7 @@ Sparing the testing team in 2 parts will allow us to test the game on 2 differen
 
 The 2 main things to test during this project will be the documents and the game itself. 
 \
-About the documents, it's paramount to ensure their quality, so that communication with the client is clear and the whole team can work on the same basis. Not only will we check the documents for grammatical and typographical errors, but also the content itself, to ensure that no crucial points have been overlooked or erroneous elements introduced into the document. 
+About the documents, it's paramount to ensure their quality, so that communication with the client is clear and the whole team can work on the same basis. Not only will we check the documents for grammatical and typographical errors, but also the content itself, to ensure that no crucial points have been overlooked or erroneous elements introduced into the document.
 
 As far as the game is concerned, we'll be testing all the features listed in the functional specifications to check that they correspond to what was originally intended. We will also be testing the game on different operating systems (Windows and MAC) to ensure that it works on all of them.
 
@@ -145,6 +146,7 @@ They will open an issue and report the bugs they found on the game or the things
 
 Priorities are a crucial point to determine which test has to be done first. It will be in corelation with priorities defined in the functional specifications.
 There will be 4 explicit priorities:
+
 - Critical
 - High
 - Medium
@@ -239,7 +241,7 @@ Here are the ones we will apply for this project:
 
 - Verify if the whole code has been commented.
   
-## 5. Plan test environment 
+## 5. Plan test environment
 
 We want to test the game on different operating systems to be sure that it works on all of them. Because of that it is important to ensure that the set up of the test environment is the same for everyone. 
 
@@ -279,8 +281,7 @@ We will use this command to open DOSBox
 chmod +x runDOSBox.sh
 ```
 
-```bash"
-```
+
 
 and this command runs the game directly when DOSBox is open
 
@@ -294,7 +295,17 @@ dosbox -c "mount c ${BIN_DIR}" -c "pacman.com" -c "exit"
 
 ## 6. Schedule estimation
 
-<!-- TODO -->
+For this schedule we estimate the time to test or review each subtask. For that we have 2 Quality Assurance.
+
+1  day is a working day that is equal to 8 hours of work.
+1 week is a working week that is equal to 5 days of work.
+
+| Task | Subtask | Time estimation |
+|------|---------|-------------|
+|Analyse requirement specification| - Review functional specifications <br> - Review technical specification| - 1 day <br> - 1 day
+| Create the test specification|  - Create the test plan <br> - Create test cases <br> - Review the test cases|- 4 days <br> - 3 days <br> - 1 day
+|Execute the test cases| - Build up the test environment <br> - Execute the test cases <br> - Review test execution result|- 1 day <br> - 2 weeks
+|Report the bug| - Create bug reports <br> - Report bug to the team| - 1 day <br> - 2 weeks
 
 ## 7. Test deliverables
 
