@@ -47,6 +47,8 @@ The team's feeling is geting a bit down as we don't think we are making as much 
 
 ### Progression Overview
 
+This progression is calculated using done and remaining KPIs. The coefficient of each KPI was discussed and set by the team after deliberation.
+
 <div align="center">
 
 ![Progression](../pictures/weeklyReport/progressionWeek4.png)

@@ -44,6 +44,8 @@ The team's opinion is quite uniform, we all think we are making good progress. W
 
 ### Progression Overview
 
+This progression is calculated using done and remaining KPIs. The coefficient of each KPI was discussed and set by the team after deliberation.
+
 <div align="center">
 
 ![Progression](../pictures/weeklyReport/progressionWeek3.png)
