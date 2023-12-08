@@ -312,7 +312,8 @@ This structure is crafted to promote ease of navigation, efficient workflow, and
 
 The following diagram visualises the directory and file structure for the Pac-Man clone project, highlighting the organisation of source code, compiled binaries, documentation, development tools and tests.
 
-![folderStructure.png](../Documents/pictures/technical/folderStructure_1701076714060_0.png)
+![folderStructure.png](../documents/pictures/technicalSpecifications/folderStructure_1701076714060_0.png)
+
 
 ## Data Structures
 
@@ -450,7 +451,8 @@ The different data for each tile are explained both in the data structures and c
 > [!NOTE]
 > Paste the new grid here.
 
-![mazeGrid.png](../Documents/pictures/technical/mazeGrid_1700915551105_0.png)
+![mazeGrid.png](../documents/pictures/technicalSpecificationsmazeGrid_1700915551105_0.png)
+
 
 ### User Interface
 
@@ -480,11 +482,12 @@ The menu options will be strategically placed vertically on the screen, with "Si
 
 The font of the original Pac-Man video game in 1980, was made of 7 pixels in width and the same height, knowing each cell of the grid is composed of 8 pixels in width and height and we put one letter by cell each letter is spaced by 1 pixel.
 
-![Pacman Font](../Documents/pictures/technical/pacmanOGFont.png)
+![Pacman Font](../documents/pictures/technicalSpecifications/pacmanOGFont.png)
 
 In the image below, we can clearly see each pixel and its spacing.
 
-<img src="../Documents/pictures/technical/letter_A.png" width="200px"></img>
+<img src="../documents/pictures/technicalSpecifications/letter_A.png" width="200px"></img>
+
 
 We have chosen a 5x5 font that looks like the original game's one and added padding to the bottom and left sides to match the original font's spacing making it a 6x6 font. 
 
@@ -502,7 +505,8 @@ In the original game, the player's current score appears in the top left, with e
 > [!NOTE]
 > Paste the new render here.
 
-![Scores](../Documents/pictures/technical/scoresGraphics.png)
+![Scores](../documents/pictures/technicalSpecifications/scoresGraphics.png)
+
 
 ## Placement, Movement & Collision
 
@@ -516,19 +520,21 @@ An actor is only associated with a single tile at a time, although its graphics 
 
 Consider the following example:
 
-![TileMove2.png](../Documents/pictures/technical/TileMove2_1700916915615_0.png)
+![TileMove2.png](../documents/pictures/technicalSpecifications/TileMove2_1700916915615_0.png)
 
-The underlying concept of tiles is essential for understanding the ghosts' pathfinding logic as it only cares about the tile an actor occupies—not its per-pixel location within that tile. To the logic routines, the five actors look very much like the picture below.
+The underlying concept of tiles is essential for understanding the ghosts' pathfinding logic as it only cares about the tile an actor occupies—not its per-pixel location within that tile. To the logic routines, the five actors look very much like the picture below.
 
 Each actor is defined by the tile it presently occupies along with its current direction of travel. Distances between actors are also measured in tiles (the pink ghost is five tiles away from Pac-Man horizontally and one tile away vertically, for example).
 
-![TileGame.png](../Documents/pictures/technical/TileGame_1700917089119_0.png)
+![TileGame.png](../documents/pictures/technicalSpecifications/TileGame_1700917089119_0.png)
+
 
 #### ➭ <ins>Pacman Spawn</ins>
 
 Whether it is at the beginning of a game, at the beginning of a new level, or after a death, Pac-Man always (re)spawns at the same point in the maze, at the intersection of the tiles 14 and 15 (from left to right) and tile 28 from the top.
 
-![pacmanSpawn.png](../Documents/pictures/technical/pacmanSpawn.png)
+![pacmanSpawn.png](../documents/pictures/technicalSpecifications/pacmanSpawn.png)
+
 
 It is worth noting that Pac-Man's direction is set to "left" by default if left unattended.
 
@@ -537,11 +543,11 @@ It is worth noting that Pac-Man's direction is set to "left" by default if left 
 > [!NOTE]
 > FIx ghost image with new sprites.
 
-<img src="../Documents/pictures/technical/pacmanGhosts.jpeg" width="330px"></img>
+<img src="../documents/pictures/technicalSpecifications/pacmanGhosts.jpeg" width="330px"></img>
 
 > From left to right and top to bottom: Pinky, Blinky, Clyde and Inky
 
-![ghostHouse.png](../Documents/pictures/technical/ghostHouse.png)
+![ghostHouse.png](../documents/pictures/technicalSpecifications/ghostHouse.png)
 
 > At the beginning of the Game, Inky, Pinky and Clyde appear in the ghost house.  
 This area is off-limits for Pac-Man
@@ -556,7 +562,7 @@ Since Blinky is already on the outside after a level is completed or a life is l
 
 The 244 Gums should be placed on every single non-solid tile of the Maze apart from the two spawn tiles, the center square, its connectors to other sections as well as the two horizontal corridors, as seen in the image below, represented by the white Gums:
 
-![gums.png](../Documents/pictures/technical/gums_1701042199892_0.png)
+![gums.png](../documents/pictures/technicalSpecifications/gums_1701042199892_0.png)
 
 The 4 Super Gums can also be seen on this image, one per corner of the map (represented by the large white Gums).
 
@@ -609,7 +615,8 @@ Fruits/Level:
 
 Pac-Man moves exactly 80 pixels per second, or 10 tiles per second. All the other movement speeds in the game are computed from this speed.
 
-The game starts with Pac-Man at 80% of his maximum speed. By the fifth level, Pac-Man is moving at full speed and will continue to do so until the 21st level. At that point, he slows back down to 90% and holds this speed for the remainder of the game.
+The game starts with Pac-Man at 80% of his maximum speed. By the fifth level, Pac-Man is moving at full speed and will continue to do so until the 21st level. At that point, he slows back down to 90% and holds this speed for the remainder of the game.
+
 
 | | PAC-MAN SPEED | | | |
 |---|---|---|---|---|
@@ -621,7 +628,8 @@ The game starts with Pac-Man at 80% of his maximum speed. By the fifth level, Pa
 
 #### ➭ <ins>Eating Gum stops you</ins>
 
-Every time Pac-Man eats a regular gum, he stops moving for one frame (1/60th of a second), slowing his progress by roughly ten percent—just enough for a following ghost to overtake him.
+Every time Pac-Man eats a regular gum, he stops moving for one frame (1/60th of a second), slowing his progress by roughly ten percent—just enough for a following ghost to overtake him.
+
 
 #### ➭ <ins>Eating Super Gum stops you even more</ins>
 
@@ -631,13 +639,13 @@ Eating an energizer gum causes Pac-Man to stop moving for three frames.
 
 Pac-Man is able to navigate the turns in the maze faster than his enemies. He does not have to wait until he reaches the middle of a turn to change direction as the ghosts do (see picture below)
 
-![Cornering.png](../Documents/pictures/technical/Cornering.png)
+![Cornering.png](../documents/pictures/technicalSpecifications/Cornering.png)
 
 Whenever Pac-Man makes a pre-turn or post-turn, his orientation changes, and he starts to move one pixel in his new direction for every pixel traveled in his old direction, effectively doubling his speed as he moves at a 45 degree angle.
 
 Once he reaches the centerline of the new direction's path, he starts moving purely in that direction and his speed returns to normal. The greatest distance advantage is thereby gained by making the earliest pre-turn possible. The illustration below shows the layout of pre-turn pixels (shown in green), center point pixels (shown in yellow), and post-turn pixels (shown in red) for each of the four possible directions a turn can be approached.
 
-![cornering_example2.png](../Documents/pictures/technical/cornering_example2.png)
+![cornering_example2.png](../documents/pictures/technicalSpecifications/cornering_example2.png)
 
 Basically, it pays to move the joystick well before reaching a turn to maximize your speed.
 
@@ -665,25 +673,29 @@ Each tile has four potential exits to be considered: right, left, up, and down. 
 
 With three of the four possible exits eliminated from tile B, moving left is the only remaining choice
 
-![AISimple2.png](../Documents/pictures/technical/AISimple2_1701077769273_0.png)
+![AISimple2.png](../documents/pictures/technicalSpecifications/AISimple2_1701077769273_0.png)
+
 
 ##### <ins>Intersections</ins>
 
 When a ghost arrives one tile away from an upcoming intersection, it must choose between several possible directions in which to proceed.
 
-![IntersectALL.png](../Documents/pictures/technical/IntersectALL_1701078022140_0.png)
+
+![IntersectALL.png](../documents/pictures/technicalSpecifications/IntersectALL_1701078022140_0.png)
 
 In the first picture, the red ghost has just reached tile A and is seeking its target (shown as the green tile). It immediately looks ahead to the subsequent tile along its present direction of travel (up). In this case, that tile is a four-way intersection.
-As this intersection tile has no walls blocking off any of the exits, the ghost can only discard his reverse direction (down), leaving three exits open for travel. It looks one tile beyond the intersection in each of the three remaining directions, collecting “test tiles” (shown as the tiles with dashed, white lines).
+As this intersection tile has no walls blocking off any of the exits, the ghost can only discard his reverse direction (down), leaving three exits open for travel. It looks one tile beyond the intersection in each of the three remaining directions, collecting “test tiles” (shown as the tiles with dashed, white lines).
+
 
 In the middle picture, the ghost triangulates the distance from each of these test tiles to its target tile. Whichever direction's test tile has the shortest distance to the target becomes the direction the ghost will take upon reaching the intersection tile.
 In this case, the right test tile has the shortest distance to the target, and the ghost updates its chosen direction for the intersection tile accordingly.
 
 Sometimes, however, a ghost is presented with two or more test tiles that have the same distance to the target tile. In the example below, the red ghost must choose between moving down or left at the upcoming intersection tile. Unfortunately, both test tiles have the same distance to the target (bottom left).
 
-To break the tie, the ghost prefers directions in this order: *up, left, down, right*. Up is the most preferred direction; right is the least. Therefore, the ghost chooses to go left at the intersection because left precedes down in the preference list.
+To break the tie, the ghost prefers directions in this order: *up, left, down, right*. Up is the most preferred direction; right is the least. Therefore, the ghost chooses to go left at the intersection because left precedes down in the preference list.
 
-![TieBreakALL.png](../Documents/pictures/technical/TieBreakALL_1701078136156_0.png)
+![TieBreakALL.png](../documents/pictures/technicalSpecifications/TieBreakALL_1701078136156_0.png)
+
 
 ##### <ins>Scatter & Chase</ins>
 
@@ -772,7 +784,7 @@ For every gum Pac-Man eats, the preferred Ghost in the house (if any) gets its g
 
 The most preferred ghost still waiting inside the house (if any) proceeds to activate its timer at this point and begins counting gums.
 
-![GhostLeaveCounter.png](../Documents/pictures/technical/GhostLeaveCounter_1700923030686_0.png)
+![GhostLeaveCounter.png](../documents/pictures/technicalSpecifications/GhostLeaveCounter_1700923030686_0.png)
 
 The actual limit for each counter is determined by the level, while Pinky's counter is always set to zero, ultimately making him leave right after Blinky every time.
   
@@ -788,13 +800,15 @@ In the second scenario (after life lost):
 
 Whenever a life is lost, the system disables (but does not reset) the ghosts' individual gum counters and uses a global gum counter instead. This counter is enabled and reset to zero after a life is lost, counting the number of Gums eaten from that point forward. The three ghosts inside the house must wait for this special counter to tell them when to leave. Pinky is released when the counter value is equal to 7 and Inky is released when it equals 17.
 
-The only way to deactivate the counter is for Clyde to be inside the house when the counter equals 32; otherwise, it will keep counting gums even after the ghost house is empty. If Clyde *is* present at the appropriate time, the global counter is reset to zero and deactivated, and the ghosts' personal gum limits are re-enabled and used as before for determining when to leave the house (including Clyde who is still in the house at this time). If gum counters were the only control, Pac-Man could simply stop eating gums early on and keep the ghosts trapped inside the house forever.
+The only way to deactivate the counter is for Clyde to be inside the house when the counter equals 32; otherwise, it will keep counting gums even after the ghost house is empty. If Clyde *is* present at the appropriate time, the global counter is reset to zero and deactivated, and the ghosts' personal gum limits are re-enabled and used as before for determining when to leave the house (including Clyde who is still in the house at this time). If gum counters were the only control, Pac-Man could simply stop eating gums early on and keep the ghosts trapped inside the house forever.
 
 Once out of the box the Ghosts still have to choose whether they go left or right.
 
 Ghosts will typically go left but if the game has changed modes while they were inside, they will go right upon leaving the house
 
-<img src="../Documents/pictures/technical/ghostExitDirection_1701076594402_0.png" width="500px"></img>
+
+<img src="../documents/pictures/technicalSpecifications/ghostExitDirection_1701076594402_0.png" width="500px"></img>
+
 
 ##### <ins>Ghosts eaten back to base mode</ins>
 
@@ -808,15 +822,16 @@ The disembodied eyes can then return home to be revived.
 
 Disembodied travel at three times Pac-Man's 100% speed
 
-![backToBase.png](../Documents/pictures/technical/backToBase_1701075440395_0.png)
+![backToBase.png](../documents/pictures/technicalSpecifications/backToBase_1701075440395_0.png)
 
 ##### <ins>Ghosts' target tiles</ins>
 
-![target tiles.png](../Documents/pictures/technical/targetTiles.png)
+![target tiles.png](../documents/pictures/technicalSpecifications/targetTiles.png)
 
-Whenever a ghost is in chase or scatter mode, it is trying to reach a target tile somewhere on (or off) the screen.
+Whenever a ghost is in chase or scatter mode, it is trying to reach a target tile somewhere on (or off) the screen.
 
-A target tile is merely a way to describe the tile a ghost would like to occupy at any given moment. This tile can be fixed in place or change location frequently. Whenever the ghosts scatter to the corners of the maze, for example, each ghost is striving to reach a fixed target tile located somewhere near its home corner.
+A target tile is merely a way to describe the tile a ghost would like to occupy at any given moment. This tile can be fixed in place or change location frequently. Whenever the ghosts scatter to the corners of the maze, for example, each ghost is striving to reach a fixed target tile located somewhere near its home corner.
+
 
 In chase mode, the target tile is usually (but not always) related to Pac-Man's current tile which changes often.
 
@@ -824,11 +839,11 @@ Although it may not be obvious at first, the only difference between chase and s
 
 ##### <ins>Red Ghost (Blinky)</ins>
 
-![blinky.png](../Documents/pictures/technical/blinky_1701078658938_0.png)
+![blinky.png](../documents/pictures/technicalSpecifications/blinky_1701078658938_0.png)
 
 He is by far the most aggressive of the four and will pursue Pac-Man once behind him.
 
-![blinkyAI.png](../Documents/pictures/technical/blinkyAI_1701078912988_0.png)
+![blinkyAI.png](../documents/pictures/technicalSpecifications/blinkyAI_1701078912988_0.png)
 
 Of all the ghosts' targeting schemes for chase mode, Blinky's is the most simple and direct, using Pac-Man's current tile as his target. In the pictures above, we can see Blinky's target tile is the same as Pac-Man's currently occupied tile.
 
@@ -836,27 +851,30 @@ All ghosts move at the same rate of speed when a level begins, but Blinky will i
 
 On the first level, for example, Blinky becomes Elroy when there are 20 Gums remaining in the maze, accelerating to be as fast as Pac-Man. More importantly, his scatter mode behavior is also modified at this time to keep targeting Pac-Man's current tile in lieu of his typical fixed target tile for any remaining scatter periods in the level (he will still reverse direction when entering/exiting a scatter period).
 
-This results in Elroy continuing to chase Pac-Man while the other three ghosts head for their corners as normal. As if that weren't bad enough, when only 10 Gums remain, Elroy speeds up *again* to the point where he is now moving faster than Pac-Man. As the levels progress, Blinky will turn into Elroy with more Gums remaining in the maze than in previous rounds.
+
+This results in Elroy continuing to chase Pac-Man while the other three ghosts head for their corners as normal. As if that weren't bad enough, when only 10 Gums remain, Elroy speeds up *again* to the point where he is now moving faster than Pac-Man. As the levels progress, Blinky will turn into Elroy with more Gums remaining in the maze than in previous rounds.
 Refer to the level specifications in the extras section for gum counts and speeds for both Elroy changes, per level.
 
 ##### <ins>Pink Ghost (Pinky)</ins>
 
-![Pinky.png](../Documents/pictures/technical/Pinky_1701078844642_0.png)
+![Pinky.png](../documents/pictures/technicalSpecifications/Pinky_1701078844642_0.png)
+
 
 In chase mode, Pinky behaves as he does because he does not target Pac-Man's tile directly. Instead, he selects an offset four tiles away from Pac-Man in the direction Pac-Man is currently moving (with one exception).
 The pictures below illustrate the four possible offsets Pinky will use to determine his target tile based on Pac-Man's orientation:
 
-If Pac-Man is moving left, Pinky's target tile will be four game tiles to the left of Pac-Man's current tile. If Pac-Man is moving right, Pinky's tile will be four tiles to the right. If Pac-Man is moving down, Pinky's target is four tiles below. Finally, if Pac-Man is moving up, Pinky's target tile will be four tiles up **and** four tiles to the left.
+If Pac-Man is moving left, Pinky's target tile will be four game tiles to the left of Pac-Man's current tile. If Pac-Man is moving right, Pinky's tile will be four tiles to the right. If Pac-Man is moving down, Pinky's target is four tiles below. Finally, if Pac-Man is moving up, Pinky's target tile will be four tiles up **and** four tiles to the left.
 
-![PinkyAI.png](../Documents/pictures/technical/PinkyAI_1701079385639_0.png)
+![PinkyAI.png](../documents/pictures/technicalSpecifications/PinkyAI_1701079385639_0.png)
 
 ##### <ins>Cyan Ghost (Inky)</ins>
 
-![Inky.png](../Documents/pictures/technical/Inky_1701078853358_0.png)
+![Inky.png](../documents/pictures/technicalSpecifications/Inky_1701078853358_0.png)
 
-Inky uses the most complex targeting scheme of the four ghosts in chase mode. He needs Pac-Man's current tile/orientation **and** Blinky's current tile to calculate his final target.
+Inky uses the most complex targeting scheme of the four ghosts in chase mode. He needs Pac-Man's current tile/orientation **and** Blinky's current tile to calculate his final target.
 
-![InkyAI1.png](../Documents/pictures/technical/InkyAI1_1701079670123_0.png)
+![InkyAI1.png](../documents/pictures/technicalSpecifications/InkyAI1_1701079670123_0.png)
+
 
 To determine Inky's target, we must first establish an intermediate offset two tiles in front of Pac-Man in the direction he is moving (represented by the tile bracketed in green above). Now imagine drawing a vector from the center of the red ghost's current tile to the center of the offset tile, then double the vector length by extending it out just as far again beyond the offset tile. The tile this new, extended vector points to is Inky's actual target as shown above.
 
@@ -864,21 +882,23 @@ Inky's targeting logic will keep him away from Pac-Man when Blinky is far away f
 
 ##### <ins>Orange Ghost (Clyde)</ins>
 
-![Clyde.png](../Documents/pictures/technical/Clyde_1701078863455_0.png)
+![Clyde.png](../documents/pictures/technicalSpecifications/Clyde_1701078863455_0.png)
 
 Clyde is the last ghost to leave the pen and tends to separate himself from the other ghosts by shying away from Pac-Man and doing his own thing when he isn't patrolling his corner of the maze. Although not nearly as dangerous as the other three ghosts, his behavior can seem unpredictable at times and should still be considered a threat.
 
-![ClydeAI.png](../Documents/pictures/technical/ClydeAI_1701079933510_0.png)
+![ClydeAI.png](../documents/pictures/technicalSpecifications/ClydeAI_1701079933510_0.png)
+
 
 During chase mode, Clyde's targeting logic changes based on his proximity to Pac-Man (represented by the green target tile above). He first calculates the Euclidean distance between his tile and Pac-Man's tile.
 
 If the distance between them is eight tiles or more, Clyde targets Pac-Man directly just as Blinky does. If the distance between them is less than eight tiles, however, Clyde switches his target to the tile he normally uses during scatter mode and heads for his corner until he gets far enough away to start targeting Pac-Man again.
 
-In the picture above, Clyde is stuck in an endless loop (as long as Pac-Man stays where he is) thanks to this scheme. While occupying any tile completely outside the dashed perimeter, Clyde's target is Pac-Man. Upon entering the area, Clyde changes his mind and heads for his scatter target instead. Once he exits the perimeter, his target will change *back* to Pac-Man's current tile again. The end result is Clyde circling around and around until Pac-Man moves elsewhere or a mode change occurs.
+In the picture above, Clyde is stuck in an endless loop (as long as Pac-Man stays where he is) thanks to this scheme. While occupying any tile completely outside the dashed perimeter, Clyde's target is Pac-Man. Upon entering the area, Clyde changes his mind and heads for his scatter target instead. Once he exits the perimeter, his target will change *back* to Pac-Man's current tile again. The end result is Clyde circling around and around until Pac-Man moves elsewhere or a mode change occurs.
 
 ##### <ins>"Forbidden" Areas</ins>
 
-![areasToExploit.png](../Documents/pictures/technical/areasToExploit.png)
+![areasToExploit.png](../documents/pictures/technicalSpecifications/areasToExploit.png)
+
 
 The marked in pink are areas where ghosts are forbidden to make upward turns during both scatter and chase modes, but are ignored during fright mode, While the red areas are always enforced.
 
