@@ -1,0 +1,56 @@
+name: "Bug Report"
+description: "Create a report to help fixing bugs"
+title: "XXXXX [BR] [2023/XX/XX]"
+labels: ["Bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "Please enter an explicit description of your issue."
+      placeholder: "Write a clear description of your incident..."
+  - type: dropdown
+    id: severity
+    attributes:
+      label: "Severity"
+      options:
+        - 1 - Critical
+        - 2 - High
+        - 3 - Medium
+        - 4 - Low
+        - 5 - None
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: "Testing environment"
+      description: "What are some details about the testing environment?"
+      value: |
+        Operating system: Windows/MacOS/Linux
+        Other:
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Steps taken"
+      description: "What did you do to arrive at this point?"
+  - type: textarea
+    id: expected
+    attributes:
+      label: "Expected result"
+      description: "What were you expecting to happen?"
+  - type: textarea
+    id: actual
+    attributes:
+      label: "Actual result"
+      description: "What results do you get?"
+  - type: textarea
+    id: solution
+    attributes:
+      label: "Potential solution"
+      description: "If you have an idea on how to solve this problem, please share it here."
+  - type: textarea
+    id: other
+    attributes:
+      label: "Other"
+      description: "If you have anything else to say."
