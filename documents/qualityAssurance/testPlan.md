@@ -299,7 +299,8 @@ cd tools\buildGame.cmd
 
 ## 6. Schedule estimation
 
-For this schedule we estimate the time to test or review each subtask. For that we have 2 Quality Assurance.
+For this schedule we estimate the time needed to complete each task. We are 2 QA's working on this project.
+We will work for 7 weeks on this project.
 
 | Task | Subtask | Time estimation |
 |------|---------|-------------|
@@ -307,6 +308,8 @@ For this schedule we estimate the time to test or review each subtask. For that 
 | Create the test specification|  - Create the test plan <br> - Create test cases <br> - Review the test cases|- 32 hours <br> - 24 hours <br> - 8 hours
 |Execute the test cases| - Build up the test environment <br> - Execute the test cases <br> - Review test execution result|- 8 hours <br> - 80 hours <br> - 80 hours
 |Report the bug| - Create bug reports <br> - Report bug to the team| - 8 hours <br> - 80 hours
+
+At the end of the project with this estimation, we will have spent 336 hours on the QA's part for this project. <br>
 
 ## 7. Test deliverables
 
