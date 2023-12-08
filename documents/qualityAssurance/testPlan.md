@@ -102,11 +102,11 @@ DOSBox is a DOS emulator that uses the SDL library which makes DOSBox very easy 
 
 #### DOS
 
-DOSBox is just a DOS emulator but the real proof of the software working in a DOS environment would be to test . DOS is an acronym for Disk Operating System. It is a non-graphical command line operating system developed by Microsoft for IBM compatible computers.
+DOSBox is just a DOS emulator but the real proof of the software working would be to test it in a DOS environment  . DOS is an acronym for Disk Operating System. It is a non-graphical command line operating system developed by Microsoft for IBM compatible computers.
 
 #### x86 CPU
 
-With this project, we want to port our game to an environment as close as possible to the original. That's why, rather than using a modern CPU architecture and a modern environment, we'll be using DOS and an x86 CPU. The x86 architecture has been introduced in 1978 with the release of the Intel 8086 microprocessor.
+DOS 
 
 ## 3. Test strategy
 
@@ -178,6 +178,9 @@ A mention [TC] will be added to the title of each test case to make it easier to
 Each test case will be created on GitHub issues with the label "Test Case". <br>
 The QA's and the people in charge of the feature will be set as assignees. <br>
 A template for those tickets has been created and is stored in [testCase.yml](../../.github/ISSUE_TEMPLATE/testCase.yml). <br>
+
+![testCaseTemplate](../pictures/qa/testCaseTemplate.png)
+
 About the steps to reproduce, "launch the game" means launch DOSBox, run the executable file for the Pac-Man game on DOSBox and click on the single player button on the main menu. <br>
 
 ### g. Bug reports
@@ -191,6 +194,8 @@ A mention [BR] will be added to the title of each bug report to make it easier t
 Each bug report will be created on GitHub issues with the label "Bug". <br>
 The people in charge of resolving the bug will be set as assignees. <br>
 A template for those tickets has been created and is stored in [bugReport.yml](../../.github/ISSUE_TEMPLATE/bugReport.yml). <br>
+
+![bugReportTemplate](../pictures/qa/bugReportTemplate.png)
 
 #### By users
 
@@ -305,9 +310,9 @@ We will work for 7 weeks on this project.
 | Task | Subtask | Time estimation |
 |------|---------|-------------|
 |Analyse requirement specification| - Review functional specifications <br> - Review technical specification| - 8 hours <br> - 8 hours
-| Create the test specification|  - Create the test plan <br> - Create test cases <br> - Review the test cases|- 32 hours <br> - 24 hours <br> - 8 hours
-|Execute the test cases| - Build up the test environment <br> - Execute the test cases <br> - Review test execution result|- 8 hours <br> - 80 hours <br> - 80 hours
-|Report the bug| - Create bug reports <br> - Report bug to the team| - 8 hours <br> - 80 hours
+| Create the test specification|  - Create the test plan <br> - Create test cases <br> - Review the test cases|- 48 hours <br> - 16 hours <br> - 4 hours
+|Execute the test cases| - Build up the test environment <br> - Execute the test cases <br> - Update test cases status|- 4 hours <br> - 40 hours <br> - 16 hours
+|Report the bug| - Create bug reports <br> - Report bug to the team| - 12 hours <br> - 80 hours
 
 At the end of the project with this estimation, we will have spent 336 hours on the QA's part for this project. <br>
 
