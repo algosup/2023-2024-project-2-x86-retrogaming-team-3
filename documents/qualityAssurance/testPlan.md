@@ -10,7 +10,7 @@
 | Role | Name | Signature | Date |
 |---|---|---|---|
 | Project Manager | Arthur LEMOINE | | |
-| Program Manager | Max BERNARD | | |
+| Program Manager | Max BERNARD | ✅ | 08/12/2023 |
 | Tech Lead | Mathis KAKAL | | |
 | Software Developer | Pierre GORIN | | |
 | Software Developer | Evan UHRLING | | |
