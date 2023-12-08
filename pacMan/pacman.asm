@@ -89,7 +89,7 @@ section .text
         add ax, 1920        ; save the number of pixel to go to the next line
         mov [nbpixel], ax   ;
         ret
-       
+
     Maze:
         mov di, 152               ; set the position
         mov bx, maze            ; put the maze array to a register to follow the maze pattern
@@ -169,7 +169,7 @@ section .text
         mov si, empty           ; call the function to draw the tile
         call drawWalls          ; return to the function where he will look which sprite to use
         jmp wallchoice          ; does the same in the following functions for each sprite\
-                                
+
     DrawDoor:
         mov si, door
         call drawWalls
