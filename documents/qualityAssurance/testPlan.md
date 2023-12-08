@@ -12,7 +12,7 @@
 | Project Manager | Arthur LEMOINE | ✅ | 08/12/2023 |
 | Program Manager | Max BERNARD | ✅ | 08/12/2023 |
 | Tech Lead | Mathis KAKAL | ✅ | 08/12/2023 |
-| Software Developer | Pierre GORIN | | |
+| Software Developer | Pierre GORIN | ✅ | 08/12/2023 |
 | Software Developer | Evan UHRLING | ✅ | 08/12/2023 |
 | Quality Assurance | Robin DEBRY | | |
 | Quality Assurance | Quentin CLEMENT | | |
