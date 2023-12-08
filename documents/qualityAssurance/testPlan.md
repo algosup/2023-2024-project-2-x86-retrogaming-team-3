@@ -1,6 +1,6 @@
 # Test Plan 
 
-|Author|Robin DEBRY and Quentin CLÉMENT|
+|Authors|Robin DEBRY and Quentin CLÉMENT|
 |---|---|
 |Created|09/11/2023|
 |Last Modified|08/12/2023|
@@ -13,9 +13,9 @@
 | Program Manager | Max BERNARD | ✅ | 08/12/2023 |
 | Tech Lead | Mathis KAKAL | ✅ | 08/12/2023 |
 | Software Developer | Pierre GORIN | ✅ | 08/12/2023 |
-| Software Developer | Evan UHRLING | ✅ | 08/12/2023 |
+| Software Developer | Evan UHRING | ✅ | 08/12/2023 |
 | Quality Assurance | Robin DEBRY | | |
-| Quality Assurance | Quentin CLEMENT | | |
+| Quality Assurance | Quentin CLEMENT | ✅  | 08/12/2023 |
 
 ## Table of Contents
 
@@ -75,7 +75,7 @@
 |CPU|A central processing unit (CPU), also called a central processor, main processor or just processor, is the electronic circuitry that executes instructions comprising a computer program. The CPU performs basic arithmetic, logic, controlling, and input/output (I/O) operations specified by the instructions in the program. This contrasts with external components such as main memory and I/O circuitry, and specialized processors such as graphics processing units (GPUs).|[Wikipedia](https://en.wikipedia.org/wiki/Central_processing_unit)|
 |Open source|Open source is source code that is made freely available for possible modification and redistribution. Products include permission to use the source code, design documents, or content of the product. It most commonly refers to the open-source model, in which open-source software or other products are released under an open-source license as part of the open-source software movement. Use of the term originated with software, but has expanded beyond the software sector to cover other open content and forms of open collaboration.|[Wikipedia](https://en.wikipedia.org/wiki/Open_source)|
 |x86|The x86 architecture is a family of instruction set architectures initially developed by Intel based on the Intel 8086 microprocessor and its 8088 variant. The 8086 was introduced in 1978 as a fully 16-bit extension of Intel's 8-bit 8080 microprocessor, with memory segmentation as a solution for addressing more memory than can be covered by a plain 16-bit address. The term "x86" came into being because the names of several successors to Intel's 8086 processor end in "86", including the 80186, 80286, 80386 and 80486 processors.|[Wikipedia](https://en.wikipedia.org/wiki/X86)|
-|SBD|A single-board computer (SBC) is a complete computer built on a single circuit board, with microprocessor(s), memory, input/output (I/O) and other features required of a functional computer. Single-board computers were made as demonstration or development systems, for educational systems, or for use as embedded computer controllers. Many types of home computers or portable computers integrate all their functions onto a single printed circuit board.|[Wikipedia](https://en.wikipedia.org/wiki/Single-board_computer)|
+|SBC|A single-board computer (SBC) is a complete computer built on a single circuit board, with microprocessor(s), memory, input/output (I/O) and other features required of a functional computer. Single-board computers were made as demonstration or development systems, for educational systems, or for use as embedded computer controllers. Many types of home computers or portable computers integrate all their functions onto a single printed circuit board.|[Wikipedia](https://en.wikipedia.org/wiki/Single-board_computer)|
 
 ## 2. Overview
 
@@ -127,7 +127,7 @@ DOS is working on a x86 architecture so if we use DOS instead of emulating it, w
 
 #### Raspberry PI 3B+ (1Go) (3B Plus)
 
-As we want our final product to be an arcade game, we're going to build our own arcade machine, but we're planning for it to be able to host other games in the future, so we won't be using a computer with an x86 CPU, but an SBD with a newer CPU architecture. This SBD will be a Raspberry PI 3B+ (1GB) (3B Plus) with an ARMv8 CPU architecture. We will install DOSBox on it to be able to run the game.
+As we want our final product to be an arcade game, we're going to build our own arcade machine, but we're planning for it to be able to host other games in the future, so we won't be using a computer with an x86 CPU, but an SBC with a newer CPU architecture. This SBC will be a Raspberry PI 3B+ (1GB) (3B Plus) with an ARMv8 CPU architecture. We will install DOSBox on it to be able to run the game.
 
 ## 3. Test strategy
 
