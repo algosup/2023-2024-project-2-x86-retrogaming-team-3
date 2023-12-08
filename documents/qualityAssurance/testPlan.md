@@ -61,6 +61,8 @@
     - [b. Test environment for Windows](#b-test-environment-for-windows)
   - [6. Schedule estimation](#6-schedule-estimation)
   - [7. Test deliverables](#7-test-deliverables)
+  - [8. Conclusion and acknowledgements](#8-conclusion-and-acknowledgements)
+  - [9. Sources](#9-sources)
 
 
 
@@ -325,8 +327,8 @@ cd tools\buildGame.cmd
 
 ## 6. Schedule estimation
 
-For this schedule we estimate the time needed to complete each task. We are 2 QA's working on this project.
-We will work for 7 weeks on this project.
+To spread out over the duration of the project, we estimated the time it would take to complete each test task. \
+The project will last 7 weeks, so it's important to plan the QA's tasks to be sure that we will have enough time to test the game and ensure its quality.
 
 | Task | Subtask | Time estimation |
 |------|---------|-------------|
@@ -343,3 +345,29 @@ At the end of the project with this estimation, we will have spent 192 hours on 
 - **Test cases:** define all the test that will be done to be sure that the game works as intended.
 - **Bug reports:** report all the bugs that have been found during the tests.
 - **Bug data report:** to have a global view of the bugs that have been found during the tests.
+
+## 8. Conclusion and acknowledgements
+
+Running into bugs or other problems while playing the game will spoil the user's experience and enjoyment. That's why the testing phase is a crucial part of the project. It will enable us to guarantee the quality of the game and ensure that it works as intended. It will make the difference between a good project and a very good one. 
+
+<br>
+
+Within our team, we would like to thank the development team for their work and their availability to answer our questions. \
+We would also like to thank the program manager for the information he provided and the completeness of his functional specifications, on which we based our test plan. \
+Then, we'd like to thank the project manager for guiding the whole team towards a common goal. \
+Afterwards, we would like to thank team 4's QA for the collaboration and the feedback they provided. <br>
+
+<br>
+
+Next, we'd like to thank [Caroline CORDIER](https://www.linkedin.com/in/caroline-cordier-dpo/) for her course on quality assurance. It was very interesting and helped us a lot in writing this test plan.
+
+<br>
+
+Finally, we'd like to thank [ALGOSUP](https://www.algosup.com/) for giving us the opportunity to work on this project, and we hope they'll be happy with the product we provide. <br>
+
+## 9. Sources
+
+- [Wikipedia](https://en.wikipedia.org/wiki/Main_Page)
+- [Guru99](https://www.guru99.com/)
+- [Quality Certain](https://www.qualitycertain.com/)
+
