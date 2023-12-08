@@ -1,4 +1,4 @@
-# Test plan document
+# Test Plan 
 
 |Author|Robin DEBRY and Quentin CLÉMENT|
 |---|---|
@@ -7,7 +7,7 @@
 
 ## Table of Contents
 
-- [Test plan document](#test-plan-document)
+- [Test Plan](#test-plan)
   - [Table of Contents](#table-of-contents)
   - [1. Glossary](#1-glossary)
   - [2. Overview](#2-overview)
@@ -21,6 +21,7 @@
       - [Assembly](#assembly)
       - [DOSBox](#dosbox)
       - [DOS](#dos)
+      - [x86 CPU](#x86-cpu)
   - [3. Test strategy](#3-test-strategy)
     - [a. Quality assurance team](#a-quality-assurance-team)
     - [b. Testing scope](#b-testing-scope)
@@ -97,11 +98,15 @@ We will use Assembly to develop the game. Assembly is a low-level programming la
 
 #### DOSBox
 
-DOSBox is a DOS emulator that uses the SDL library which makes DOSBox very easy to port to different platforms. DOSBox has already been ported to many different platforms, such as Windows, BeOS, Linux, MacOS X...
+DOSBox is a DOS emulator that uses the SDL library which makes DOSBox very easy to port to different platforms. We'll emulate the game on our computer to check, firstly, whether it can run in a real DOS environment with an x86 CPU. DOSBox has already been ported to many different platforms, such as Windows, BeOS, Linux, MacOS X...
 
 #### DOS
 
-The final objective of this project is to run the game with DOS on a real x86 CPU. DOS is an acronym for Disk Operating System. It is a non-graphical command line operating system developed by Microsoft for IBM compatible computers.
+DOSBox is just a DOS emulator but the real proof of the software working in a DOS environment would be to test . DOS is an acronym for Disk Operating System. It is a non-graphical command line operating system developed by Microsoft for IBM compatible computers.
+
+#### x86 CPU
+
+With this project, we want to port our game to an environment as close as possible to the original. That's why, rather than using a modern CPU architecture and a modern environment, we'll be using DOS and an x86 CPU. The x86 architecture has been introduced in 1978 with the release of the Intel 8086 microprocessor.
 
 ## 3. Test strategy
 
@@ -214,6 +219,8 @@ If we encounter a critical bug, we will suspend the test cycle until the bug is 
 
 ### b. Entry criteria
 
+![entryExitCriteria](../pictures/qa/entryExitCriteria.png)
+
 As the name specifies, entry criteria are a set of conditions or requirements, which are required to be fulfilled or achieved to create a suitable & favourable condition for testing. Finalised & decided upon after a thorough analysis of software & business requirements, entry criteria ensure the accuracy of the testing process and neglecting it can impact its quality.
 
 - Testable code is available.
@@ -245,6 +252,8 @@ Here are the ones we will apply for this project:
 
 We want to test the game on different operating systems to be sure that it works on all of them. Because of that it is important to ensure that the set up of the test environment is the same for everyone. 
 
+Changing DOSBox preferences is mandatory to have the best experience possible. This step is explained in the [technical specifications](../technicalSpecifications.md). 
+
 ### a. Test environment for Mac
 
 To test the game on MacOS, we will use NASM to compile the game and DOSBox to run it. \
@@ -261,37 +270,32 @@ brew install nasm
 brew install dosbox
 ```
 
-To compile the game and DOSBox we will use a bash file named [buildGame.sh](../../tools/main). Use this path to go the good folder (we assume you already are in the project folder):
+To compile the game and DOSBox we will use a bash file named [buildGame.sh](../../tools/main). Use this command to go the good folder (we assume you already are in the project folder):
 ```bash
 cd tools
 ```
 
-Then run this command to compile the game and to open DOSBox:
+Then run this command to compile the game and DOSBox:
 ```bash
- chmod +x buildGame.sh
+chmod +x buildGame.sh
 ```
+
+Finally, run this command to build the game:
 
 ```bash
 ./buildGame.sh
 ```
 
-We will use this command to open DOSBox
-
-```bash
-chmod +x runDOSBox.sh
-```
-
-
-
-and this command runs the game directly when DOSBox is open
-
-```bash
-dosbox -c "mount c ${BIN_DIR}" -c "pacman.com" -c "exit"
-```
-
 ### b. Test environment for Windows
 
-<!-- TODO -->
+To test the game on MacOS, we will use NASM to compile the game and DOSBox to run it. \
+[Install NASM](https://www.nasm.us/pub/nasm/releasebuilds/?C=M;O=D) and [DOSBox](https://www.dosbox.com/wiki/Basic_Setup_and_Installation_of_DosBox) on your computer.
+
+Now double click on buildGame.cmd to compile and build the game and DOSBox. You can also do it manually with the following commands (we assume you already are in the project folder):
+
+```cmd
+cd tools\buildGame.cmd
+```
 
 ## 6. Schedule estimation
 
@@ -309,4 +313,5 @@ For this schedule we estimate the time to test or review each subtask. For that 
 
 ## 7. Test deliverables
 
-<!-- TODO -->
+- Test plan/test strategy: define the testing strategy and all aspects of the testing process to guarantee product quality. 
+- Test cases: define all the test 
