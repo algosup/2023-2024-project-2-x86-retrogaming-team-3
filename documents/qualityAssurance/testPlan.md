@@ -301,15 +301,12 @@ cd tools\buildGame.cmd
 
 For this schedule we estimate the time to test or review each subtask. For that we have 2 Quality Assurance.
 
-1  day is a working day that is equal to 8 hours of work.
-1 week is a working week that is equal to 5 days of work.
-
 | Task | Subtask | Time estimation |
 |------|---------|-------------|
-|Analyse requirement specification| - Review functional specifications <br> - Review technical specification| - 1 day <br> - 1 day
-| Create the test specification|  - Create the test plan <br> - Create test cases <br> - Review the test cases|- 4 days <br> - 3 days <br> - 1 day
-|Execute the test cases| - Build up the test environment <br> - Execute the test cases <br> - Review test execution result|- 1 day <br> - 2 weeks
-|Report the bug| - Create bug reports <br> - Report bug to the team| - 1 day <br> - 2 weeks
+|Analyse requirement specification| - Review functional specifications <br> - Review technical specification| - 8 hours <br> - 8 hours
+| Create the test specification|  - Create the test plan <br> - Create test cases <br> - Review the test cases|- 32 hours <br> - 24 hours <br> - 8 hours
+|Execute the test cases| - Build up the test environment <br> - Execute the test cases <br> - Review test execution result|- 8 hours <br> - 80 hours <br> - 80 hours
+|Report the bug| - Create bug reports <br> - Report bug to the team| - 8 hours <br> - 80 hours
 
 ## 7. Test deliverables
 
