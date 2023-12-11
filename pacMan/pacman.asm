@@ -7,6 +7,14 @@ section .data
 
     position dw 43751
 
+    blinkyPos dw 20711
+
+    inkyPos dw 26780
+
+    pinkyPos dw 26791
+
+    clydePos dw 26802
+
     nbtestcoll db 4
     postestcoll dw 0
 
@@ -57,7 +65,10 @@ section .text
 
     call Maze   ; display the maze
     call initPac
-
+    call initBlinky
+    call initInky
+    call initPinky
+    call initClyde
     call moveLeft
 
     gameLoop:
@@ -380,9 +391,38 @@ section .text
 
 ; INITIALISATION PACMAN ------------------------------------------------
     initPac:
-       mov si, pacManWaka1L
-       call drawPac
-       ret
+    mov si, pacManWaka1L
+    call drawPac
+    ret
+
+    initBlinky:
+    mov si, blinky1L
+    mov di, [blinkyPos]
+    mov dx, 10
+    call drawBlinky
+    ret
+
+    initInky:
+    mov si, inky1U
+    mov di, [inkyPos]
+    mov dx, 10
+    call drawInky
+
+    ret
+
+    initPinky:
+    mov si, pinky1D
+    mov di, [pinkyPos]
+    mov dx, 10
+    call drawPinky
+
+    ret
+
+    initClyde:
+    mov si, clyde1U
+    mov di, [clydePos]
+    mov dx, 10
+    call drawClyde
 
     drawPac:
         mov di, [position]
@@ -394,6 +434,34 @@ section .text
             dec dx
             jnz eachline
         ret
+
+
+drawBlinky:
+    mov di, [blinkyPos]
+    mov dx, 10
+    call eachline
+    ret
+
+drawInky:
+    mov di, [inkyPos]
+    mov dx, 10
+    call eachline
+    ret
+
+drawPinky:
+    mov di, [pinkyPos]
+    mov dx, 10
+    call eachline
+    ret
+
+drawClyde:
+    mov di, [clydePos]
+    mov dx, 10
+    call eachline
+    ret
+
+
+
 ; END INITIALISATION PACMAN --------------------------------------------
 
 ; COLLISIONS -----------------------------------------------------------
@@ -765,8 +833,7 @@ section .text
         mov cx, 1
         rep movsb
         ret
-
-
+    
 
     end:
         int 21h
