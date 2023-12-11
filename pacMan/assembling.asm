@@ -3,6 +3,7 @@ org 100h
 %include "sprite.asm"
 
 section .data
+    pixpos dw 322
 ; pacman
     ; initialisation
     position dw 43751
@@ -70,7 +71,7 @@ section .text
     int 10h         ;--------------------------------
 
     initGame:       ; initialise the game
-        call clearScreen     ; clear the screen before everything
+        call clearScreen
         call Maze
         start:
             mov ah, 01h
@@ -83,22 +84,26 @@ section .text
             jmp readyClear
 
     gameLoop:
-        ;jmp wantGoDirection
-        jmp actualDirection
-    keyCheck:
-        mov ah, 00h 
-        int 16h         ; read the key
-        cmp ah, 4Bh     ; left arrow key 
-        je moveLeft
-        cmp ah, 4Dh     ; right arrow key 
-        je moveRight
-        cmp ah, 48h     ; up arrow key    
-        je moveUp 
-        cmp ah, 50h     ; down arrow key
-        je moveDown
-        
-    ;return:
-    ;    ret
+
+    pacmanMovement:
+        jmp wantGoDirection
+        ;jmp actualDirection
+        keyCheck:
+            mov ah, 01h
+            int 16h
+            jz pacmanMovement
+            mov ah, 00h 
+            int 16h         ; read the key
+            cmp ah, 4Bh     ; left arrow key 
+            je beforeLeft
+            cmp ah, 4Dh     ; right arrow key 
+            je beforeRight
+            cmp ah, 48h     ; up arrow key    
+            je beforeUp 
+            cmp ah, 50h     ; down arrow key
+            je beforeDown
+            jmp pacmanMovement
+            
 
 ; MAZE -------------------------------------------------------------------
     ; DRAW WALL ---------------------------
@@ -118,7 +123,7 @@ section .text
         mov ax, [Column]    ;------------------------------------------------------
         dec ax              ; decrement Column to count the number of drawn column
         mov [Column], ax    ;------------------------------------------------------
-        cmp ax, 0           ; look if he has finished the row
+        cmp ax, 0           ; look if it has finished the row
         je nextRow          ; if yes, call the function for the next row of tiles
         sub di, 1914        ; go the the next column
         ret
@@ -127,7 +132,7 @@ section .text
         mov ax, [Row]       ;------------------------------------------------
         dec ax              ; decrement Row to count the number of drawn row
         mov [Row], ax       ;------------------------------------------------
-        cmp ax, 0           ; look if he has finished the every rows
+        cmp ax, 0           ; look if it has finished the every rows
         je initPac          ; if yes, finish
         mov ax, 28          ;  
         mov [Column], ax    ; setup the number of columns for the next row
@@ -139,11 +144,11 @@ section .text
     ; END DRAW WALL ----------------------   
     ; WALL CHOICE ------------------------
     Maze:
-        mov di, 152               ; set the position
+        mov di, 152             ; set the position
         mov bx, maze            ; put the maze array to a register to follow the maze pattern
         wallchoice:
-            mov al, [bx]        ; look wich sprite he has to put in a tile
-            cmp al, 0           ; then he call a function to draw the correct sprite
+            mov al, [bx]        ; look wich sprite it has to put in a tile
+            cmp al, 0           ; then it call a function to draw the correct sprite
             je DrawEmpty        ;
             cmp al, 1
             je DrawDoor
@@ -440,381 +445,450 @@ section .text
 ; COLLISIONS -----------------------------------------------------------
     ; SIMPLE --------------------------
     wCollLeft:              ; collision for straight direction to stop when seing a wall
+        mov dx, 1
         mov ax, [position]
-        sub ax, 1
-        mov cx, 320         ; nb of pixels in a row
-        div cx              ; division to calculate the x and y position of the pixel where we test the collision
+        add ax, 959
+        mov bx, 320         ; nb of pixels in a row
+        div bx              ; division to calculate the x and y position of the pixel where we test the collision
         mov bx, ax          ; save the quotient
         mov ah, 0Dh         ; int to read the pixel color
         mov cx, dx          ; remainder goes to x position
         mov dx, bx          ; quotient goes to y position
         int 10h
         cmp al, 0x10        ; test if the color is the same as the maze
-        je gameLoop
-        ret
+        je pacLeft1
+        jmp continueMoveLeft
         
     wCollRight:
+        mov dx, 1
         mov ax, [position]
-        add ax, 10
-        mov cx, 320         
-        div cx              
+        add ax, 970
+        mov bx, 320         
+        div bx              
         mov bx, ax          
         mov ah, 0Dh         
         mov cx, dx          
         mov dx, bx          
         int 10h
         cmp al, 0x10        
-        je gameLoop
-        ret
+        je pacRight1
+        jmp continueMoveRight
         
     wCollUp:
+        mov dx, 1
         mov ax, [position]
-        sub ax, 320
-        mov cx, 320         
-        div cx              
+        sub ax, 315
+        mov bx, 320         
+        div bx              
         mov bx, ax          
         mov ah, 0Dh         
         mov cx, dx          
         mov dx, bx          
         int 10h
         cmp al, 0x10        
-        je gameLoop
-        ret
+        je pacUp1
+        jmp continueMoveUp
 
     wCollDown:
+        mov dx, 1
         mov ax, [position]
-        add ax, 3200
-        mov cx, 320         
-        div cx              
+        add ax, 3205
+        mov bx, 320         
+        div bx              
         mov bx, ax          
         mov ah, 0Dh         
         mov cx, dx          
         mov dx, bx          
         int 10h
         cmp al, 0x10        
-        je gameLoop
-        ret
+        je pacDown1
+        jmp continueMoveDown
     ; END SIMPLE -----------------------
     ; COMPLEX --------------------------
-    ;beforeLeft:             ; collision test before turning, if collision is detected, save the direction for when he can turn
-    ;    mov ax, 1
-    ;    mov bx, 0
-    ;    mov [wantgoleft], ax
-    ;    mov [wantgoright], bx
-    ;    mov [wantgoup], bx
-    ;    mov [wantgodown], bx
-    ;    mov ax, [position]
-    ;    sub ax, 1
-    ;    lineCollLeft:
-    ;        mov [postestcoll], ax
-    ;        mov cx, 320         
-    ;        div cx
-    ;        mov bx, ax          
-    ;        mov ah, 0Dh         
-    ;        mov cx, dx          
-    ;        mov dx, bx          
-    ;        int 10h
-    ;        cmp al, 0x10        
-    ;        je actualDirection
-    ;    mov dx, [nbtestcoll]
-    ;    sub dx, 1
-    ;    mov [nbtestcoll], dx
-    ;    cmp dx, 0
-    ;    je moveLeft
-    ;    mov ax, [postestcoll]
-    ;    add ax, 960
-    ;    mov dx, 0
-    ;    jmp lineCollLeft
+    beforeLeft:             ; collision test before turning, if collision is detected, save the direction for when he can turn
+        mov ax, 1
+        mov bx, 0
+        mov [wantgoleft], ax
+        mov [wantgoright], bx
+        mov [wantgoup], bx
+        mov [wantgodown], bx
+        mov ax, [position]
+        sub ax, 1
+        mov [postestcoll], ax
+        mov dx, 1
+        mov cx, 320             ; nb of pixels in a row
+        div cx                  ; division to calculate the x and y position of the pixel where we test the collision
+        mov bx, ax              ; save the quotient
+        mov ah, 0Dh             ; int to read the pixel color
+        mov cx, dx              ; remainder goes to x position
+        mov dx, bx              ; quotient goes to y position
+        int 10h 
+        cmp al, 0x10            ; test if the color is the same as the maze
+        je actualDirection  
+        mov dx, 1
+        mov ax, [postestcoll]
+        add ax, 2880
+        mov [postestcoll], ax
+        mov cx, 320             
+        div cx                  
+        mov bx, ax              
+        mov ah, 0Dh             
+        mov cx, dx              
+        mov dx, bx              
+        int 10h 
+        cmp al, 0x10            
+        je actualDirection 
+        mov dx, 1
+        mov ax, [postestcoll]
+        sub ax, 960
+        mov [postestcoll], ax
+        mov cx, 320             
+        div cx                  
+        mov bx, ax              
+        mov ah, 0Dh             
+        mov cx, dx              
+        mov dx, bx              
+        int 10h 
+        cmp al, 0x10            
+        je actualDirection
+        jmp moveLeft
+;;
+    beforeRight:
+        mov ax, 1
+        mov bx, 0
+        mov [wantgoleft], bx
+        mov [wantgoright], ax
+        mov [wantgoup], bx
+        mov [wantgodown], bx
+        mov ax, [position]
+        add ax, 10
+        mov [postestcoll], ax
+        mov dx, 1
+        mov cx, 320             
+        div cx                  
+        mov bx, ax              
+        mov ah, 0Dh             
+        mov cx, dx              
+        mov dx, bx              
+        int 10h 
+        cmp al, 0x10            
+        je actualDirection  
+        mov dx, 1
+        mov ax, [postestcoll]
+        add ax, 2880
+        mov [postestcoll], ax
+        mov cx, 320             
+        div cx                  
+        mov bx, ax              
+        mov ah, 0Dh             
+        mov cx, dx              
+        mov dx, bx              
+        int 10h 
+        cmp al, 0x10            
+        je actualDirection 
+        mov dx, 1
+        mov ax, [postestcoll]
+        sub ax, 960
+        mov [postestcoll], ax
+        mov cx, 320             
+        div cx                  
+        mov bx, ax              
+        mov ah, 0Dh             
+        mov cx, dx              
+        mov dx, bx              
+        int 10h 
+        cmp al, 0x10            
+        je actualDirection  
+        jmp moveRight
+;;
+    beforeUp:
+        mov ax, 1
+        mov bx, 0
+        mov [wantgoleft], bx
+        mov [wantgoright], bx
+        mov [wantgoup], ax
+        mov [wantgodown], bx
+        mov ax, [position]
+        sub ax, 320
+        mov [postestcoll], ax
+        mov dx, 1
+        mov cx, 320             
+        div cx                  
+        mov bx, ax              
+        mov ah, 0Dh             
+        mov cx, dx              
+        mov dx, bx              
+        int 10h 
+        cmp al, 0x10            
+        je actualDirection 
+        mov dx, 1
+        mov ax, [postestcoll]
+        add ax, 9
+        mov [postestcoll], ax
+        mov cx, 320             
+        div cx                  
+        mov bx, ax              
+        mov ah, 0Dh             
+        mov cx, dx              
+        mov dx, bx              
+        int 10h 
+        cmp al, 0x10            
+        je actualDirection
+        mov dx, 1
+        mov ax, [postestcoll]
+        sub ax, 3
+        mov [postestcoll], ax
+        mov cx, 320             
+        div cx                  
+        mov bx, ax              
+        mov ah, 0Dh             
+        mov cx, dx              
+        mov dx, bx              
+        int 10h 
+        cmp al, 0x10            
+        je actualDirection
+        jmp moveUp
 ;
-    ;beforeRight:
-    ;    mov ax, 1
-    ;    mov bx, 0
-    ;    mov [wantgoleft], bx
-    ;    mov [wantgoright], ax
-    ;    mov [wantgoup], bx
-    ;    mov [wantgodown], bx
-    ;    mov ax, [position]
-    ;    add ax, 10
-    ;    lineCollRight:
-    ;        mov [postestcoll], ax
-    ;        mov cx, 320         
-    ;        div cx              
-    ;        mov bx, ax          
-    ;        mov ah, 0Dh         
-    ;        mov cx, dx          
-    ;        mov dx, bx          
-    ;        int 10h
-    ;        cmp al, 0x10        
-    ;        je actualDirection
-    ;    mov dx, [nbtestcoll]
-    ;    sub dx, 1
-    ;    mov [nbtestcoll], dx
-    ;    cmp dx, 0
-    ;    je moveRight
-    ;    mov ax, [postestcoll]
-    ;    add ax, 960
-    ;    mov dx, 0
-    ;    jmp lineCollRight
-;
-    ;beforeUp:
-    ;    mov ax, 1
-    ;    mov bx, 0
-    ;    mov [wantgoleft], bx
-    ;    mov [wantgoright], bx
-    ;    mov [wantgoup], ax
-    ;    mov [wantgodown], bx
-    ;    mov ax, [position]
-    ;    sub ax, 320
-    ;    lineCollUp:
-    ;        mov [postestcoll], ax
-    ;        mov cx, 320         
-    ;        div cx              
-    ;        mov bx, ax          
-    ;        mov ah, 0Dh         
-    ;        mov cx, dx          
-    ;        mov dx, bx          
-    ;        int 10h
-    ;        cmp al, 0x10        
-    ;        je actualDirection
-    ;    mov dx, [nbtestcoll]
-    ;    sub dx, 1
-    ;    mov [nbtestcoll], dx
-    ;    cmp dx, 0
-    ;    je moveUp
-    ;    mov ax, [postestcoll]
-    ;    add ax, 3
-    ;    mov dx, 0
-    ;    jmp lineCollUp
-;
-    ;beforeDown:
-    ;    mov ax, 1
-    ;    mov bx, 0
-    ;    mov [wantgoleft], bx
-    ;    mov [wantgoright], bx
-    ;    mov [wantgoup], bx
-    ;    mov [wantgodown], ax
-    ;    mov ax, [position]
-    ;    add ax, 3200
-    ;    lineCollDown:
-    ;        mov [postestcoll], ax
-    ;        mov cx, 320         
-    ;        div cx              
-    ;        mov bx, ax          
-    ;        mov ah, 0Dh         
-    ;        mov cx, dx          
-    ;        mov dx, bx          
-    ;        int 10h
-    ;        cmp al, 0x10        
-    ;        je actualDirection
-    ;    mov dx, [nbtestcoll]
-    ;    sub dx, 1
-    ;    mov [nbtestcoll], dx
-    ;    cmp dx, 0
-    ;    je moveDown
-    ;    mov ax, [postestcoll]
-    ;    add ax, 3
-    ;    mov dx, 0
-    ;    jmp lineCollDown
+    beforeDown:
+        mov ax, 1
+        mov bx, 0
+        mov [wantgoleft], bx
+        mov [wantgoright], bx
+        mov [wantgoup], bx
+        mov [wantgodown], ax
+        mov ax, [position]
+        add ax, 3200
+        mov [postestcoll], ax
+        mov dx, 1
+        mov cx, 320             ; nb of pixels in a row
+        div cx                  ; division to calculate the x and y position of the pixel where we test the collision
+        mov bx, ax              ; save the quotient
+        mov ah, 0Dh             ; int to read the pixel color
+        mov cx, dx              ; remainder goes to x position
+        mov dx, bx              ; quotient goes to y position
+        int 10h 
+        cmp al, 0x10            ; test if the color is the same as the maze
+        je actualDirection  
+        mov dx, 1
+        mov ax, [postestcoll]
+        add ax, 9
+        mov [postestcoll], ax
+        mov cx, 320             
+        div cx                  
+        mov bx, ax              
+        mov ah, 0Dh             
+        mov cx, dx              
+        mov dx, bx              
+        int 10h 
+        cmp al, 0x10            
+        je actualDirection 
+        mov dx, 1
+        mov ax, [postestcoll]
+        sub ax, 3
+        mov [postestcoll], ax
+        mov cx, 320             
+        div cx                  
+        mov bx, ax              
+        mov ah, 0Dh             
+        mov cx, dx              
+        mov dx, bx              
+        int 10h 
+        cmp al, 0x10            
+        je actualDirection
+        jmp moveDown
+
     ;END COMPLEX -----------------------
 ; END COLLISIONS -------------------------------------------------------
 
 ; ANIMATIONS -----------------------------------------------------------
     ; CHOICE ------------------------------
     animLeft:               ; choose the right sprite to make the animation
-        mov bl, [frame]
-        inc bl
-        mov [frame], bl
-        cmp bl, 4
+        sub word [position], 1
+        mov al, [frame]
+        inc al
+        mov [frame], al
+        cmp al, 4
         jl pacLeft1
-        cmp bl, 8
+        cmp al, 8
         jl pacLeft2
-        mov bl, 1
-        mov [frame], bl
+        mov al, 1
+        mov [frame], al
         jmp pacLeft1
 
     animRight:
-        mov bl, [frame]
-        inc bl
-        mov [frame], bl
-        cmp bl, 4
+        add word [position], 1
+        mov al, [frame]
+        inc al
+        mov [frame], al
+        cmp al, 4
         jl pacRight1
-        cmp bl, 8
+        cmp al, 8
         jl pacRight2
-        mov bl, 1
-        mov [frame], bl
+        mov al, 1
+        mov [frame], al
         jmp pacRight1
 
     animUp:
-        mov bl, [frame]
-        inc bl
-        mov [frame], bl
-        cmp bl, 4
+        sub word [position], 320
+        mov al, [frame]
+        inc al
+        mov [frame], al
+        cmp al, 4
         jl pacUp1
-        cmp bl, 8
+        cmp al, 8
         jl pacUp2
-        mov bl, 1
-        mov [frame], bl
+        mov al, 1
+        mov [frame], al
         jmp pacUp1
 
     animDown:
-        mov bl, [frame]
-        inc bl
-        mov [frame], bl
-        cmp bl, 4
+        add word [position], 320
+        mov al, [frame]
+        inc al
+        mov [frame], al
+        cmp al, 4
         jl pacDown1
-        cmp bl, 8
+        cmp al, 8
         jl pacDown2
-        mov bl, 1
-        mov [frame], bl
+        mov al, 1
+        mov [frame], al
         jmp pacDown1
     ; END CHOICE --------------------------
     ; SET ANIMATIONS ----------------------
     pacLeft1:
         mov si, pacManWaka1L
         call drawPac
-        jmp gameLoop
+        jmp keyCheck
 
     pacLeft2:
         mov si, pacManWaka2L
         call drawPac
-        jmp gameLoop
+        jmp keyCheck
 
     pacRight1:
         mov si, pacManWaka1R
         call drawPac
-        jmp gameLoop
+        jmp keyCheck
 
     pacRight2:
         mov si, pacManWaka2R
         call drawPac
-        jmp gameLoop
+        jmp keyCheck
 
     pacUp1:
         mov si, pacManWaka1U
         call drawPac
-        jmp gameLoop
+        jmp keyCheck
 
     pacUp2:
         mov si, pacManWaka2U
         call drawPac
-        jmp gameLoop
+        jmp keyCheck
 
     pacDown1:
         mov si, pacManWaka1D
         call drawPac
-        jmp gameLoop
+        jmp keyCheck
 
     pacDown2:
         mov si, pacManWaka2D
         call drawPac
-        jmp gameLoop
+        jmp keyCheck
     ; END SET ANIMATIONS ------------------
 ; END ANIMATIONS -------------------------------------------------------
 
 ; PACMAN MOVEMENTS -----------------------------------------------------
     ; ACTUAL DIRECTION --------------------
     actualDirection:        ; test wich direction he is going
-        mov cx, [goleft]
-        cmp cx, 1
+        mov ax, [goleft]
+        cmp ax, 1
         je moveLeft
-        mov cx, [goright]
-        cmp cx, 1
+        mov ax, [goright]
+        cmp ax, 1
         je moveRight
-        mov cx, [goup]
-        cmp cx, 1
+        mov ax, [goup]
+        cmp ax, 1
         je moveUp
-        mov cx, [godown]
-        cmp cx, 1
+        mov ax, [godown]
+        cmp ax, 1
         je moveDown
     ; END ACTUAL DIRECTION ----------------
     ; ACTUAL MOVEMENT ---------------------
     moveLeft:
-        mov ah, 01h
-        int 16h
-        jnz keyCheck
         mov ax, 1
-        mov bx, 0               
+        mov dx, 0               
         mov [goleft], ax        ; use to save wich direction he is going
-        mov [goright], bx       ;
-        mov [goup], bx          ;
-        mov [godown], bx        ;
-        call wCollisionLeft
+        mov [goright], dx       ;
+        mov [goup], dx          ;
+        mov [godown], dx        ;
+        jmp wCollLeft
+    continueMoveLeft:
         mov cx, 35000
         call waitLoop
         call waitLoop
         call clearPac
-        sub word [position], 1
         jmp animLeft
 
     moveRight:
-        mov ah, 01h
-        int 16h
-        jnz keyCheck 
         mov ax, 1
-        mov bx, 0               
-        mov [goleft], bx        ; use to save wich direction he is going
+        mov dx, 0               
+        mov [goleft], dx        ; use to save wich direction he is going
         mov [goright], ax       ;
-        mov [goup], bx          ;
-        mov [godown], bx        ;
-        call wCollRight
+        mov [goup], dx          ;
+        mov [godown], dx        ;
+        jmp wCollRight
+    continueMoveRight:
         mov cx, 35000
         call waitLoop
         call waitLoop
         call clearPac
-        add word [position], 1
         jmp animRight
     
     moveUp:
-        mov ah, 01h
-        int 16h
-        jnz keyCheck 
         mov ax, 1
-        mov bx, 0               
-        mov [goleft], bx        ; use to save wich direction he is going
-        mov [goright], bx       ;
+        mov dx, 0               
+        mov [goleft], dx        ; use to save wich direction he is going
+        mov [goright], dx       ;
         mov [goup], ax          ;
-        mov [godown], bx        ;
-        call wCollUp
+        mov [godown], dx        ;
+        jmp wCollUp
+    continueMoveUp:
         mov cx, 35000
         call waitLoop
         call waitLoop
         call clearPac
-        sub word [position], 320
         jmp animUp
 
     moveDown:
-        mov ah, 01h
-        int 16h
-        jnz keyCheck
         mov ax, 1
-        mov bx, 0               
-        mov [goleft], bx        ; use to save wich direction he is going
-        mov [goright], bx       ;
-        mov [goup], bx          ;
+        mov dx, 0               
+        mov [goleft], dx        ; use to save wich direction he is going
+        mov [goright], dx       ;
+        mov [goup], dx          ;
         mov [godown], ax        ;
-        call wCollDown
+        jmp wCollDown
+    continueMoveDown:
         mov cx, 35000
         call waitLoop
         call waitLoop
         call clearPac
-        add word [position], 320
         jmp animDown
     ; END ACTUAL MOVEMENT ----------------
     ;  CHECK WANTED MOVEMENT -------------
-    ;wantGoDirection:            ; test wich direction he wants to go
-    ;    mov cx, [wantgoleft]
-    ;    cmp cx, 1
-    ;    je beforeLeft
-    ;    mov cx, [wantgoright]
-    ;    cmp cx, 1
-    ;    je beforeRight
-    ;    mov cx, [wantgoup]
-    ;    cmp cx, 1
-    ;    je beforeUp
-    ;    mov cx, [wantgodown]
-    ;    cmp cx, 1
-    ;    je beforeDown
-    ;    ret
+    wantGoDirection:            ; test wich direction he wants to go
+        mov cx, [wantgoleft]
+        cmp cx, 1
+        je beforeLeft
+        mov cx, [wantgoright]
+        cmp cx, 1
+        je beforeRight
+        mov cx, [wantgoup]
+        cmp cx, 1
+        je beforeUp
+        mov cx, [wantgodown]
+        cmp cx, 1
+        je beforeDown
+        jmp actualDirection
     ; END CHECK WANTED MOVEMENT ----------
     clearPac:
         mov si, clear
@@ -825,5 +899,41 @@ section .text
         loop waitLoop
         ret
  
+    resetRegisters: 
+        xor ax, ax
+        xor bx, bx
+        xor cx, cx
+        xor dx, dx
+        xor si, si
+        xor di, di
+        ret
+
+    pixLeft:
+        call drawPixel
+        jmp pacLeft1
+
+    pixRight:
+        call drawPixel
+        jmp pacRight1
+
+    pixUp:
+        call drawPixel
+        jmp pacUp1
+
+    pixDown:
+        call drawPixel
+        jmp pacDown1
+
+    drawPixel:
+        mov ax, [pixpos]
+        mov di, ax
+        mov si, pix
+        mov dx, 1
+        mov cx, 1
+        rep movsb
+        add ax, 2
+        mov [pixpos], ax
+        ret
+            
     end:
         int 21h
