@@ -40,6 +40,8 @@ Even if we are a bit late on the schedule compared to what our objective was for
 
 ### Progression Overview
 
+This progression is calculated using done and remaining KPIs. The coefficient of each KPI was discussed and set by the team after deliberation.
+
 <div align="center">
 
 ![Progression](../pictures/weeklyReport/progressionWeek1.png)
