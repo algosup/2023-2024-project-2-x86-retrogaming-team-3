@@ -46,7 +46,7 @@ section .data
     ; ---------------------------------------------------------------------
     Column dw 28    ; number of columns
     Row dw 31       ; number of rows
-    nbpixel dw 2072 ; number of pixels in a row of tile
+    nbpixel dw 1036 ; number of pixels in a row of tile
 
 section .text
     mov ah, 00h     ;--------------------------------
@@ -108,7 +108,7 @@ section .text
        
     ; WALL CHOICE ------------------------
     Maze:
-        mov di, 152               ; set the position
+        mov di, 76               ; set the position
         mov bx, maze            ; put the maze array to a register to follow the maze pattern
         wallchoice:
             mov al, [bx]        ; look wich sprite he has to put in a tile
