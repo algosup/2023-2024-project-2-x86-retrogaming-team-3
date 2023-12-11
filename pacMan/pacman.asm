@@ -3,13 +3,10 @@ org 100h
 %include "sprite.asm"
 
 section .data
-    blinkyPos dw 20711
-
-    inkyPos dw 26780
-
-    pinkyPos dw 26791
-
-    clydePos dw 26802
+    blinkyPos dw 21595      ;previously (20711 + (320x3))-76
+    inkyPos dw 27664        ;previously (26780 + (320x3))-76
+    pinkyPos dw 27675       ;previously (26791 + (320x3))-76
+    clydePos dw 27686       ;previously (26802 + (320x3))-76
 
     ; maze array
     maze db  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
