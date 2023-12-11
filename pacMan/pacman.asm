@@ -7,6 +7,9 @@ section .data
 
     position dw 43751
 
+    nbtestcoll db 4
+    postestcoll dw 0
+
     frame db 1
     ; maze array
     maze db 26,22,22,22,22,22,22,22,22,22,22,22,22,30,31,22,22,22,22,22,22,22,22,22,22,22,22,27
@@ -53,11 +56,10 @@ section .text
     call clearScreen     ; clear the screen before everything
 
     call Maze   ; display the maze
-
     call initPac
 
     call moveLeft
-    
+
     gameLoop:
         mov ah, 01h
         int 16h
@@ -73,11 +75,12 @@ section .text
         je moveRight
         cmp ah, 50h ; Down arrow key
         je moveDown
-        ;call pixel
+
     return:
         ret
 
 ; MAZE -------------------------------------------------------------------
+    ; DRAW WALL ---------------------------
     drawWalls:
         ; draw 1 tile
         mov dx, 6           ; number of row of a sprite
@@ -92,7 +95,6 @@ section .text
         ret
 
     nextColumn:
-        ; go to the next column
         mov ax, [Column]    ;------------------------------------------------------
         dec ax              ; decrement Column to count the number of drawn column
         mov [Column], ax    ;------------------------------------------------------
@@ -114,7 +116,9 @@ section .text
         add ax, 1920        ; save the number of pixel to go to the next line
         mov [nbpixel], ax   ;
         ret
+    ; END DRAW WALL ----------------------
        
+    ; WALL CHOICE ------------------------
     Maze:
         mov di, 152               ; set the position
         mov bx, maze            ; put the maze array to a register to follow the maze pattern
@@ -189,7 +193,9 @@ section .text
             cmp al, 41
             je DrawDblstrgangle4
         ret
+    ; END WALL CHOICE -----------------
 
+    ; SET WALL ------------------------
     DrawEmpty:                  ; tell which sprite he want to draw
         mov si, empty           ; call the function to draw the tile
         call drawWalls          ; return to the function where he will look which sprite to use
@@ -359,27 +365,8 @@ section .text
         mov si, dblstrgangle4
         call drawWalls
         jmp wallchoice
+    ; END SET WALL ------------------
 ; END MAZE ------------------------------------------------------------
-
-; TEST PIXEL ----------------------------------------------------------
-;    pixel:
-;        mov ax, 1116
-;        mov [cPos], ax
-;        mov di, [cPos]
-;        mov si, pix
-;        mov cx, 1
-;        rep movsd
-;        ret
-; END TEST PIXEL ------------------------------------------------------
-
-; PACMAN/WALL COLLISION -----------------------------------------------------------
-    
-        ;sub ax, 320  the top        ; depending on the direction
-        ;add ax, 1    the right      ;
-        ;add ax, 320  the bottom     ;
-        
-        ret
-; END PACMAN/WALL COLLISION --------------------------------------------------------
 
 ; CLEAR SCREEN ---------------------------------------------------------
     clearScreen:
@@ -393,12 +380,12 @@ section .text
 
 ; INITIALISATION PACMAN ------------------------------------------------
     initPac:
-       mov di, [position]
        mov si, pacManWaka1L
        call drawPac
        ret
 
     drawPac:
+        mov di, [position]
         mov dx, 10
         eachline:
             mov cx, 10
@@ -409,22 +396,22 @@ section .text
         ret
 ; END INITIALISATION PACMAN --------------------------------------------
 
+; COLLISIONS -----------------------------------------------------------
+    
+; END COLLISIONS -------------------------------------------------------
+
 ; PACMAN MOVEMENTS -----------------------------------------------------
     FlopY:
         mov bl, [frame]
         cmp bl, 4
         jl setblinkyU
-
         cmp bl, 8
         jl setAltU
-
         mov bl, 0
         mov [frame], bl
         jmp FlopY
-
         FlopYret:
-            mov di, [position] ; Accéder à yPos dans le tableau
-            call AllGhosts
+            call drawPac
             mov cx, 60000
             call waitLoop
             jmp gameLoop
@@ -433,17 +420,13 @@ section .text
         mov bl, [frame]
         cmp bl, 4
         jl setblinkyD
-
         cmp bl, 8
         jl setAltD
-
         mov bl, 0
         mov [frame], bl
         jmp noFlopY
-
         noFlopYret:
-            mov di, [position]  ; Accéder à yPos dans le tableau
-            call AllGhosts
+            call drawPac
             mov cx, 60000
             call waitLoop
             jmp gameLoop
@@ -452,17 +435,13 @@ section .text
         mov bl, [frame]
         cmp bl, 4
         jl setblinkyR
-
         cmp bl, 8
         jl setAltR
-
         mov bl, 0
         mov [frame], bl
         jmp FlopX
-
         FlopXret:
-            mov di, [position]  ; Accéder à xPos dans le tableau
-            call AllGhosts
+            call drawPac
             mov cx, 60000
             call waitLoop
             jmp gameLoop
@@ -471,69 +450,230 @@ section .text
         mov bl, [frame]
         cmp bl, 4
         jl setblinkyL
-
         cmp bl, 8
         jl setAltL
-
         mov bl, 0
         mov [frame], bl
         jmp noFlopX
-
         noFlopXret:
-            mov di, [position]  ; Accéder à xPos dans le tableau
-            call AllGhosts
+            call drawPac
             mov cx, 60000
-            waitLoop:
-                loop waitLoop
+            call waitLoop
             jmp gameLoop 
 
     moveLeft:
+        wCollisionLeft:
+            mov ax, [position]  ; get the position of the sprite
+            sub ax, 1           ; where the collision is tested
+            mov [postestcoll], ax
+            lineLeft:
+                mov dx, 1
+                mov cx, 320         ; nb of pixels in a row
+                div cx              ; division to calculate the x and y position of the pixel where we test the collision
+                mov bx, ax          ; save the quotient
+                mov ah, 0Dh         ; int to read the pixel color
+                mov cx, dx          ; remainder goes to x position
+                mov dx, bx          ; quotient goes to y position
+                int 10h
+                cmp al, 0x10        ; test if the color is the same as the maze
+                je stopPacLeft  
+
+                mov dx, 1
+                mov ax, [postestcoll]
+                add ax, 2880
+                mov [postestcoll], ax
+                mov cx, 320         ; nb of pixels in a row
+                div cx              ; division to calculate the x and y position of the pixel where we test the collision
+                mov bx, ax          ; save the quotient
+                mov ah, 0Dh         ; int to read the pixel color
+                mov cx, dx          ; remainder goes to x position
+                mov dx, bx          ; quotient goes to y position
+                int 10h
+                cmp al, 0x10        ; test if the color is the same as the maze
+                je stopPacLeft 
+
+                mov dx, 1
+                mov ax, [postestcoll]
+                sub ax, 960
+                mov [postestcoll], ax
+                mov cx, 320         ; nb of pixels in a row
+                div cx              ; division to calculate the x and y position of the pixel where we test the collision
+                mov bx, ax          ; save the quotient
+                mov ah, 0Dh         ; int to read the pixel color
+                mov cx, dx          ; remainder goes to x position
+                mov dx, bx          ; quotient goes to y position
+                int 10h
+                cmp al, 0x10        ; test if the color is the same as the maze
+                je stopPacLeft 
+            ;mov ax, [postestcoll]
+            ;add ax, 960
+            ;mov [postestcoll], ax
+            ;mov bx, [nbtestcoll]
+            ;dec bx
+            ;mov [nbtestcoll], bx
+            ;cmp bx, 0
+            ;jg lineLeft
+            ;mov bx, 4
+            ;mov [nbtestcoll], bx
         call clearPac
-        sub word [position], 2
+        sub word [position], 1
         call noFlopX
-        collision:
-            mov ax, [position]      ; get the position of the sprite
-            sub ax, 1    ;the left       ; where the collision is tested
-            mov cx, 320         ; nb of pixels in a row
-            div cx              ; division to calculate the x and y position of the pixel where we test the collision
-            mov bx, ax          ; save the quotient
-            mov ah, 0Dh         ; int to read the pixel color
-            mov cx, dx          ; remainder goes to x position
-            mov dx, bx          ; quotient goes to y position
-            int 10h
-            cmp al, 0x20        ; test if the color is the same as the maze
-            je stopPacLeft      ; if yes, clear the screen (test purpose)
+        skipLeft:
         call gameLoop
         jmp moveLeft
 
     moveRight:
-        ; Handle the right arrow key
+        wCollisionRight:
+            mov ax, [position] 
+            add ax, 10
+            mov [postestcoll], ax
+            lineRight:
+                mov dx, 1
+                mov cx, 320         ; nb of pixels in a row
+                div cx              ; division to calculate the x and y position of the pixel where we test the collision
+                mov bx, ax          ; save the quotient
+                mov ah, 0Dh         ; int to read the pixel color
+                mov cx, dx          ; remainder goes to x position
+                mov dx, bx          ; quotient goes to y position
+                int 10h
+                cmp al, 0x10        ; test if the color is the same as the maze
+                je stopPacRight  
+
+                mov dx, 1
+                mov ax, [postestcoll]
+                add ax, 2880
+                mov [postestcoll], ax
+                mov cx, 320         ; nb of pixels in a row
+                div cx              ; division to calculate the x and y position of the pixel where we test the collision
+                mov bx, ax          ; save the quotient
+                mov ah, 0Dh         ; int to read the pixel color
+                mov cx, dx          ; remainder goes to x position
+                mov dx, bx          ; quotient goes to y position
+                int 10h
+                cmp al, 0x10        ; test if the color is the same as the maze
+                je stopPacRight 
+
+                mov dx, 1
+                mov ax, [postestcoll]
+                sub ax, 960
+                mov [postestcoll], ax
+                mov cx, 320         ; nb of pixels in a row
+                div cx              ; division to calculate the x and y position of the pixel where we test the collision
+                mov bx, ax          ; save the quotient
+                mov ah, 0Dh         ; int to read the pixel color
+                mov cx, dx          ; remainder goes to x position
+                mov dx, bx          ; quotient goes to y position
+                int 10h
+                cmp al, 0x10        ; test if the color is the same as the maze
+                je stopPacRight              
         call clearPac
-        add word [position], 2
+        add word [position], 1
         call FlopX
+        skipRight:
         call gameLoop
         jmp moveRight
 
     moveUp:
-        ; Handle the up arrow key*
+        wCollisionUp:
+            mov ax, [position]
+            sub ax, 320
+            mov [postestcoll], ax
+            lineUp:
+                mov dx, 1
+                mov cx, 320         ; nb of pixels in a row
+                div cx              ; division to calculate the x and y position of the pixel where we test the collision
+                mov bx, ax          ; save the quotient
+                mov ah, 0Dh         ; int to read the pixel color
+                mov cx, dx          ; remainder goes to x position
+                mov dx, bx          ; quotient goes to y position
+                int 10h
+                cmp al, 0x10        ; test if the color is the same as the maze
+                je stopPacUp  
+
+                mov dx, 1
+                mov ax, [postestcoll]
+                add ax, 9
+                mov [postestcoll], ax
+                mov cx, 320         ; nb of pixels in a row
+                div cx              ; division to calculate the x and y position of the pixel where we test the collision
+                mov bx, ax          ; save the quotient
+                mov ah, 0Dh         ; int to read the pixel color
+                mov cx, dx          ; remainder goes to x position
+                mov dx, bx          ; quotient goes to y position
+                int 10h
+                cmp al, 0x10        ; test if the color is the same as the maze
+                je stopPacUp 
+
+                mov dx, 1
+                mov ax, [postestcoll]
+                sub ax, 3
+                mov [postestcoll], ax
+                mov cx, 320         ; nb of pixels in a row
+                div cx              ; division to calculate the x and y position of the pixel where we test the collision
+                mov bx, ax          ; save the quotient
+                mov ah, 0Dh         ; int to read the pixel color
+                mov cx, dx          ; remainder goes to x position
+                mov dx, bx          ; quotient goes to y position
+                int 10h
+                cmp al, 0x10        ; test if the color is the same as the maze
+                je stopPacUp           
         call clearPac
-        sub word [position], 640
+        sub word [position], 320
         call FlopY
+        skipUp:
         call gameLoop
         jmp moveUp
 
     moveDown:
-        ; Handle the down arrow key
+        wCollisionDown:
+            mov ax, [position]  
+            add ax, 3200
+            mov [postestcoll], ax
+            lineDown:
+                mov dx, 1
+                mov cx, 320         ; nb of pixels in a row
+                div cx              ; division to calculate the x and y position of the pixel where we test the collision
+                mov bx, ax          ; save the quotient
+                mov ah, 0Dh         ; int to read the pixel color
+                mov cx, dx          ; remainder goes to x position
+                mov dx, bx          ; quotient goes to y position
+                int 10h
+                cmp al, 0x10        ; test if the color is the same as the maze
+                je stopPacDown  
+
+                mov dx, 1
+                mov ax, [postestcoll]
+                add ax, 9
+                mov [postestcoll], ax
+                mov cx, 320         ; nb of pixels in a row
+                div cx              ; division to calculate the x and y position of the pixel where we test the collision
+                mov bx, ax          ; save the quotient
+                mov ah, 0Dh         ; int to read the pixel color
+                mov cx, dx          ; remainder goes to x position
+                mov dx, bx          ; quotient goes to y position
+                int 10h
+                cmp al, 0x10        ; test if the color is the same as the maze
+                je stopPacDown 
+
+                mov dx, 1
+                mov ax, [postestcoll]
+                sub ax, 3
+                mov [postestcoll], ax
+                mov cx, 320         ; nb of pixels in a row
+                div cx              ; division to calculate the x and y position of the pixel where we test the collision
+                mov bx, ax          ; save the quotient
+                mov ah, 0Dh         ; int to read the pixel color
+                mov cx, dx          ; remainder goes to x position
+                mov dx, bx          ; quotient goes to y position
+                int 10h
+                cmp al, 0x10        ; test if the color is the same as the maze
+                je stopPacDown            
         call clearPac
-        add word [position], 640
+        add word [position], 320
         call noFlopY
+        skipDown:
         call gameLoop
         jmp moveDown
-
-
-    ; si must have the sprite address
-    ; di must have the target address
-    
 
     setAltR:
         add bl, 1
@@ -583,36 +723,52 @@ section .text
         mov si, pacManWaka2D
         jmp noFlopYret
 
-    AllGhosts:
-        mov dx, 10
-        eachline2:
-            mov cx, 10
-            rep movsb
-            add di, 320-10 ; Move to the next line
-            dec dx
-            jnz eachline2
-        ret
-
     clearPac:
         mov di, [position]
         mov si, clear
-        call AllGhosts
+        call drawPac
         ret
 
     stopPacLeft:
-        mov di, [position]
+        mov bx, 4
+        mov [nbtestcoll], bx
         mov si, pacManWaka1L
-        call AllGhosts
-        jmp gameLoop
+        call drawPac
+        jmp skipLeft
+
+    stopPacRight:
+        mov si, pacManWaka1R
+        call drawPac
+        jmp skipRight
+
+    stopPacUp:
+        mov si, pacManWaka1U
+        call drawPac
+        jmp skipUp
+
+    stopPacDown:
+        mov si, pacManWaka1D
+        call drawPac
+        jmp skipDown
 
 
+    waitLoop:
+        loop waitLoop
+        ret
 
-
-
-
-
-
+    drawPixel:
+        mov bx, [postestcoll]
+        add bx, 1
+        mov di, bx
+        mov si, pix
+        mov dx, 1
+        mov cx, 1
+        rep movsb
+        ret
 
 
 
     end:
+        int 21h
+
+
