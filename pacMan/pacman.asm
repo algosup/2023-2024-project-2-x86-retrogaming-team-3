@@ -8,6 +8,12 @@ section .data
     pinkyPos dw 27675       ;previously (26791 + (320x3))-76
     clydePos dw 27686       ;previously (26802 + (320x3))-76
 
+    ; beige is 0x57
+    ; yellow is 0x2C
+    ; white is 0x20
+
+    gameTitle db 0x00, 0x00, 0x00, 0x57, 0x57, 0x57, 0x57, 0x57, 0x57, 0x57, 0x57, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x00, 0x00, 0x00, 0x00, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2c, 0x2c, 0x2c, 0x2c, 0x2c, 0x2c, 0x2c, 0x2c, 0x00, 0x00
+
     ; maze array
     maze db  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
          db 26,22,22,22,22,22,22,22,22,22,22,22,22,30,31,22,22,22,22,22,22,22,22,22,22,22,22,27
@@ -52,8 +58,11 @@ section .text
     int 10h         ;--------------------------------
 
     initGame:       ; initialise the game
+
         call clearScreen
         call Maze
+        call ui
+
         start:
             mov ah, 01h
             int 16h
@@ -367,6 +376,33 @@ section .text
         jmp wallchoice
     ; END SET WALL ------------------
 ; END MAZE ------------------------------------------------------------
+
+; UI -------------------------------------------------------------------
+    ; the UI is split into 8 categories: header, subheader, score(left), lives(left), fruits(right) and instructions
+ui:
+    uiGameTitle:       ;ui gametitle is a static part, it consists of one game title to the right of the screen 
+        
+        mov di, 1               ; set the position
+        mov bx, gameTitle        ; load the address of the sprite
+        mov al, [bx]             ; load into al the first part of the sprite
+
+
+    ;uiTeamTitle:        ; same but team title and to the right
+
+    ;uiScoreSubTitle:    ; indicates that the score is displayed below
+
+    ;uiFruitSubtitle:    ; indicates that the fruits are displayed below
+
+    ;uiLives:            ; indicates the number of lives remaining
+
+    ;uiFruits:           ; indicates, depending on the level, the fruit stats
+
+    ;uiInstructionsLeft: ; idicates movement instructions to the left of the maze
+
+    ;uiInstructionsRight:; indicates pausing instructions to the right of the maze
+
+
+; END UI
 
 ; CLEAR SCREEN ---------------------------------------------------------
     clearScreen:
