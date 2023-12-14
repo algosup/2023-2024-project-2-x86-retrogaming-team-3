@@ -1,6 +1,6 @@
 name: "Bug Report"
 description: "Create a report to help fixing bugs"
-title: "XXXXX [BR] [DD/MM/YYYY]"
+title: "XXXXX"
 labels: ["Bug"]
 body:
   - type: textarea
@@ -9,6 +9,12 @@ body:
       label: "Description"
       description: "Please enter an explicit description of your issue."
       placeholder: "Write a clear description of your incident..."
+  - type: textarea
+    id: testcase
+    attributes:
+      label: "Test case used"
+      description: "Please enter the ID and the link of the test case you used to find this bug."
+      placeholder: "ID and link of the test case"
   - type: dropdown
     id: severity
     attributes:

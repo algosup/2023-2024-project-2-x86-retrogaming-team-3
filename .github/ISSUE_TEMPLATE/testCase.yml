@@ -1,6 +1,6 @@
 name: "Test Case"
 description: "Create a test case for future tests"
-title: "XXXXX [TC] [DD/MM/YYYY]"
+title: "XXXXX"
 labels: ["Test Case"]
 body:
   - type: textarea
