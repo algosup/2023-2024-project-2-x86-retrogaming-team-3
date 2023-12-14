@@ -23,14 +23,13 @@
   - [Test Plan approval](#test-plan-approval)
   - [Table of Contents](#table-of-contents)
   - [1. Glossary](#1-glossary)
-  - [2. Overview](#2-overview)
-    - [a. Target audience](#a-target-audience)
+  - [2. Introduction](#2-introduction)
+    - [a. Overview](#a-overview)
+    - [b. Targetted audience](#b-targetted-audience)
       - [Former players](#former-players)
       - [New players](#new-players)
       - [Competitive players](#competitive-players)
-    - [b. What is it used for?](#b-what-is-it-used-for)
-    - [c. How will it work?](#c-how-will-it-work)
-    - [d. What are the softwares/hardwares the game uses?](#d-what-are-the-softwareshardwares-the-game-uses)
+    - [c. What are the softwares/hardwares the game uses?](#c-what-are-the-softwareshardwares-the-game-uses)
       - [Assembly](#assembly)
       - [DOSBox](#dosbox)
       - [DOS](#dos)
@@ -79,9 +78,14 @@
 |x86|The x86 architecture is a family of instruction set architectures initially developed by Intel based on the Intel 8086 microprocessor and its 8088 variant. The 8086 was introduced in 1978 as a fully 16-bit extension of Intel's 8-bit 8080 microprocessor, with memory segmentation as a solution for addressing more memory than can be covered by a plain 16-bit address. The term "x86" came into being because the names of several successors to Intel's 8086 processor end in "86", including the 80186, 80286, 80386 and 80486 processors.|[Wikipedia](https://en.wikipedia.org/wiki/X86)|
 |SBC|A single-board computer (SBC) is a complete computer built on a single circuit board, with microprocessor(s), memory, input/output (I/O) and other features required of a functional computer. Single-board computers were made as demonstration or development systems, for educational systems, or for use as embedded computer controllers. Many types of home computers or portable computers integrate all their functions onto a single printed circuit board.|[Wikipedia](https://en.wikipedia.org/wiki/Single-board_computer)|
 
-## 2. Overview
+## 2. Introduction
 
-### a. Target audience
+### a. Overview
+
+Our team was tasked with creating a Pac-Man clone, with the added restriction that it had to be coded in assembly and run on an x86 CPU architecture 16-bit system. \
+The Pac-Man clone game will serve as a delightful escape into the past, offering a virtual time machine to the golden era of arcade gaming. It's a source of entertainment and nostalgia, allowing players to immerse themselves in the simple yet addictive gameplay that made Pac-Man a timeless classic. Additionally, it can be a great way to introduce younger generations to the joy of retro gaming, fostering a sense of appreciation for the roots of the gaming industry. Overall, it's a fun and engaging experience that transcends generations.
+
+### b. Targetted audience
 
 As testers, we will have to put ourselves in the shoes of the users. For this reason, we will have to determine all the possible different user types. By doing that, we will be able to test the product from different perspectives and make sure that it is suitable for all types of users.
 
@@ -97,17 +101,7 @@ The second targetted audience Pac-Man was really popular during the 80's and the
 
 Competitive Pac-Man players are a tiny part of the target audience, but they do exist. These players will be aiming to beat their records, whether in terms of speed, score. But also to achieve the various challenges that are popular in this community.
 
-### b. What is it used for?
-
-The Pac-Man game serves as a delightful escape into the past, offering a virtual time machine to the golden era of arcade gaming. It's a source of entertainment and nostalgia, allowing players to immerse themselves in the simple yet addictive gameplay that made Pac-Man a timeless classic. Additionally, it can be a great way to introduce younger generations to the joy of retro gaming, fostering a sense of appreciation for the roots of the gaming industry. Overall, it's a fun and engaging experience that transcends generations.
-
-### c. How will it work?
-
-Given that this is an exact clone of the 1980 Pac-Man, the gameplay mechanics will faithfully replicate the original experience. Players will navigate through a maze, controlling the iconic yellow character to consume pellets while avoiding colourful ghosts. The controls will mimic the simplicity of the arcade joystick, ensuring an authentic feel for players. Here's a [link](https://www.nintendo.co.jp/clv/manuals/en/pdf/CLV-P-NABME.pdf) to the official instruction manual we'll be referring to.
-
-The graphics and audio will stay true to the retro charm, maintaining the pixelated aesthetic and classic sound effects that defined the original Pac-Man. The game will be designed to run smoothly on modern platforms while preserving the nostalgic elements that make Pac-Man a timeless favourite.
-
-### d. What are the softwares/hardwares the game uses?
+### c. What are the softwares/hardwares the game uses?
 
 The development of this Pac-Man clone involves a combination of software and hardware elements.
 
@@ -135,7 +129,7 @@ As we want our final product to be an arcade game, we're going to build our own 
 
 ### a. Quality assurance team
 
-The testing team will be divided into 2 parts. The first half will be composed of team 3's QA's:
+The testing team will be divided into two parts. The first half will be composed of team 3's QA's:
 
 - Robin DEBRY (Mac OS)
 - Quentin CLÉMENT (Mac OS)
@@ -145,11 +139,11 @@ The second half will be composed of team 4's QA's:
 - Thomas PLANCHARD (Mac OS)
 - Maxime CARON (Windows)
 
-Sparing the testing team in 2 parts will allow us to test the game on 2 different OS (Windows and MAC) to be sure that the game works in each of them. As Thomas and Maxime are not part of our team and of the development of the project, their point of view will be completely different from ours and will allow us to have a more objective point of view on the quality of our product.
+Sparing the testing team in two parts will allow us to test the game on two different OS (Windows and MAC) to be sure that the game works in each of them. As Thomas and Maxime are not part of our team and of the development of the project, their point of view will be completely different from ours and will allow us to have a more objective point of view on the quality of our product.
 
 ### b. Testing scope
 
-The 2 main things to test during this project will be the documents and the game itself. 
+The two main things to test during this project will be the documents and the game itself. 
 \
 About the documents, it's paramount to ensure their quality, so that communication with the client is clear and the whole team can work on the same basis. Not only will we check the documents for grammatical and typographical errors, but also the content itself, to ensure that no crucial points have been overlooked or erroneous elements introduced into the document.
 
@@ -168,7 +162,7 @@ We'll also be doing game-testing sessions in collaboration with Team 4's QA team
 On the other hand, we'll also be testing their game. We'll provide feedback to help them improve their game and find bugs they may not have noticed. It will also be interesting to see the things they could have done that we didn't think of.
 
 The aim is to get two different and original end products, but of equal quality. \
-They will open an issue and report the bugs they found on the game or the things they think could be improved. This issue will be named "Xth QA meeting with team 4 [dd/mm/yyyy]
+Team 4's QAs will use their own test cases to test our game. They will then open an issue and report the bugs they found on the game or the things they think could be improved. This issue will be named "Xth QA meeting with team 4"
 
 ### d. Define priorities
 
@@ -192,12 +186,12 @@ The final objective of this project is to run the game with DOS on a real x86 CP
 
 #### GitHub
 
-As the project is hosted on GitHub, we will use the Issues feature to create tickets for test cases and bug reports. Thanks to that, when people look at our project, they will be able to see what has to be implemented and if they are bugs, what are they.
+As the project is hosted on GitHub, we will use the Issues feature to create tickets for test cases and bug reports. Thanks to that, when people look at our project, they will be able to see what has to be implemented and if they are bugs, what are they?
 
 ### f. Test cases
 
 To be sure that all features and all possible bugs have been tested, test cases will be created via tickets on GitHub Issues. We will use this tool so that it is easy for QA's to see what has to be tested and what has already been tested. But also for the whole team to be aware of features that are not working yet or that haven't been implemented yet. That's why we've chosen to create tickets rather than a spreadsheet. <br>
-A mention [TC] will be added to the title of each test case to make it easier to identify between all the issues. The creation date of the test case will also be added to the title. <br>
+The title must be clear and explicit so that everyone can understand what has to be tested. <br>
 Each test case will be created on GitHub issues with the label "Test Case". <br>
 The QA's and the people in charge of the feature will be set as assignees. <br>
 A template for those tickets has been created and is stored in [testCase.yml](../../.github/ISSUE_TEMPLATE/testCase.yml). <br>
@@ -213,7 +207,7 @@ About the steps to reproduce, "launch the game" means launch DOSBox, run the exe
 When a bug is found, a bug report will be created.
 They will also be created via tickets on GitHub Issues so that it is easy for the development team to see when a bug has been found. <br>
 When an update has been made to fix a bug, the QA will be notified via a comment on the ticket by the person who tried to resolve it. <br>
-A mention [BR] will be added to the title of each bug report to make it easier to identify between all the issues. The date on which the bug was last reported will also be added to the title. <br>
+The title must be clear and explicit so that everyone can understand what the bug is. <br>
 Each bug report will be created on GitHub issues with the label "Bug". <br>
 The people in charge of resolving the bug will be set as assignees. <br>
 A template for those tickets has been created and is stored in [bugReport.yml](../../.github/ISSUE_TEMPLATE/bugReport.yml). <br>
