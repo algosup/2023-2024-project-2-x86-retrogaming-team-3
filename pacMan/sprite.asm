@@ -1,5 +1,10 @@
 org 100h
 
+; beige is 0x57
+; yellow is 0x2C
+; white is 0x20
+
+
 section .data
         pix db 0x2F
 ; ready sprites

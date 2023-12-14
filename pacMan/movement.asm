@@ -4,7 +4,7 @@ section .data
     pixpos dw 322
 
     ; pacman initialisation
-    position dw 43751
+    position dw 44635           ;previously (43751 + (320x3))-76
 
     ; mouvement related
     frame db 1
@@ -50,13 +50,13 @@ section .text
 
     ; READY -------------------------
     readyDraw:
-        mov di, 32852
+        mov di, 33736           ;previously (32852 + (320x3))-76
         mov si, ready
         call drawReady
         jmp start
 
     readyClear:
-        mov di, 32852
+        mov di, 33736           ;previously (32852 + (320x3))-76
         mov si, clearready
         call drawReady
         jmp moveLeft

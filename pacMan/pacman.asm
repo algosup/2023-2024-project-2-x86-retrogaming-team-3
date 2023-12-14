@@ -3,16 +3,20 @@ org 100h
 %include "sprite.asm"
 
 section .data
-    blinkyPos dw 20711
+    blinkyPos dw 21595      ;previously (20711 + (320x3))-76
+    inkyPos dw 27664        ;previously (26780 + (320x3))-76
+    pinkyPos dw 27675       ;previously (26791 + (320x3))-76
+    clydePos dw 27686       ;previously (26802 + (320x3))-76
 
-    inkyPos dw 26780
+    ; beige is 0x57
+    ; yellow is 0x2C
+    ; white is 0x20
 
-    pinkyPos dw 26791
-
-    clydePos dw 26802
+    gameTitle db 0x00, 0x00, 0x00, 0x57, 0x57, 0x57, 0x57, 0x57, 0x57, 0x57, 0x57, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x00, 0x00, 0x00, 0x00, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2c, 0x2c, 0x2c, 0x2c, 0x2c, 0x2c, 0x2c, 0x2c, 0x00, 0x00
 
     ; maze array
-    maze db 26,22,22,22,22,22,22,22,22,22,22,22,22,30,31,22,22,22,22,22,22,22,22,22,22,22,22,27
+    maze db  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+         db 26,22,22,22,22,22,22,22,22,22,22,22,22,30,31,22,22,22,22,22,22,22,22,22,22,22,22,27
          db 25, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,13,12, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,24
          db 25, 2,14,10,10,15, 2,14,10,10,10,15, 2,13,12, 2,14,10,10,10,15, 2,14,10,10,15, 2,24
          db 25, 3,13, 0, 0,12, 2,13, 0, 0, 0,12, 2,13,12, 2,13, 0, 0, 0,12, 2,13, 0, 0,12, 3,24
@@ -45,8 +49,8 @@ section .data
          db 29,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,28
     ; ---------------------------------------------------------------------
     Column dw 28    ; number of columns
-    Row dw 31       ; number of rows
-    nbpixel dw 2072 ; number of pixels in a row of tile
+    Row dw 32       ; number of rows
+    nbpixel dw 1036 ; number of pixels in a row of tile
 
 section .text
     mov ah, 00h     ;--------------------------------
@@ -54,8 +58,11 @@ section .text
     int 10h         ;--------------------------------
 
     initGame:       ; initialise the game
+
         call clearScreen
         call Maze
+        call ui
+
         start:
             mov ah, 01h
             int 16h
@@ -108,7 +115,7 @@ section .text
        
     ; WALL CHOICE ------------------------
     Maze:
-        mov di, 152               ; set the position
+        mov di, 76               ; set the position
         mov bx, maze            ; put the maze array to a register to follow the maze pattern
         wallchoice:
             mov al, [bx]        ; look wich sprite he has to put in a tile
@@ -369,6 +376,33 @@ section .text
         jmp wallchoice
     ; END SET WALL ------------------
 ; END MAZE ------------------------------------------------------------
+
+; UI -------------------------------------------------------------------
+    ; the UI is split into 8 categories: header, subheader, score(left), lives(left), fruits(right) and instructions
+ui:
+    uiGameTitle:       ;ui gametitle is a static part, it consists of one game title to the right of the screen 
+        
+        mov di, 1               ; set the position
+        mov bx, gameTitle        ; load the address of the sprite
+        mov al, [bx]             ; load into al the first part of the sprite
+
+
+    ;uiTeamTitle:        ; same but team title and to the right
+
+    ;uiScoreSubTitle:    ; indicates that the score is displayed below
+
+    ;uiFruitSubtitle:    ; indicates that the fruits are displayed below
+
+    ;uiLives:            ; indicates the number of lives remaining
+
+    ;uiFruits:           ; indicates, depending on the level, the fruit stats
+
+    ;uiInstructionsLeft: ; idicates movement instructions to the left of the maze
+
+    ;uiInstructionsRight:; indicates pausing instructions to the right of the maze
+
+
+; END UI
 
 ; CLEAR SCREEN ---------------------------------------------------------
     clearScreen:
