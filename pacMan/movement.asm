@@ -19,21 +19,16 @@ section .data
     goup db 0
     godown db 0
 
-    nbtestcoll db 4
     postestcoll dw 0
 
 section .text
-    mov ah, 00h     ;--------------------------------
-    mov al, 13h     ; set screen 320x200 256colours
-    int 10h 
-    
     pacmanMovement:
         jmp wantGoDirection
         ;jmp actualDirection
         keyCheck:
             mov ah, 01h
             int 16h
-            jz pacmanMovement
+            jz gameLoop
             mov ah, 00h 
             int 16h         ; read the key
             cmp ah, 4Bh     ; left arrow key 
@@ -44,7 +39,7 @@ section .text
             je beforeUp 
             cmp ah, 50h     ; down arrow key
             je beforeDown
-            jmp pacmanMovement
+            jmp gameLoop
             
 
 
@@ -173,7 +168,7 @@ section .text
         mov dx, bx              ; quotient goes to y position
         int 10h 
         cmp al, 0x10            ; test if the color is the same as the maze
-        je actualDirection  
+        je actualDirection
         mov dx, 1
         mov ax, [postestcoll]
         add ax, 2880
@@ -200,6 +195,7 @@ section .text
         int 10h 
         cmp al, 0x10            
         je actualDirection
+
         jmp moveLeft
 ;;
     beforeRight:
@@ -472,9 +468,6 @@ section .text
         mov [godown], dx        ;
         jmp wCollLeft
     continueMoveLeft:
-        mov cx, 35000
-        call waitLoop
-        call waitLoop
         call clearPac
         jmp animLeft
 
@@ -487,9 +480,6 @@ section .text
         mov [godown], dx        ;
         jmp wCollRight
     continueMoveRight:
-        mov cx, 35000
-        call waitLoop
-        call waitLoop
         call clearPac
         jmp animRight
     
@@ -502,9 +492,6 @@ section .text
         mov [godown], dx        ;
         jmp wCollUp
     continueMoveUp:
-        mov cx, 35000
-        call waitLoop
-        call waitLoop
         call clearPac
         jmp animUp
 
@@ -517,9 +504,6 @@ section .text
         mov [godown], ax        ;
         jmp wCollDown
     continueMoveDown:
-        mov cx, 35000
-        call waitLoop
-        call waitLoop
         call clearPac
         jmp animDown
     ; END ACTUAL MOVEMENT ----------------

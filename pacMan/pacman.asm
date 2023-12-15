@@ -3,14 +3,6 @@ org 100h
 %include "sprite.asm"
 
 section .data
-    blinkyPos dw 20711
-
-    inkyPos dw 26780
-
-    pinkyPos dw 26791
-
-    clydePos dw 26802
-
     ; maze array
     maze db 26,22,22,22,22,22,22,22,22,22,22,22,22,30,31,22,22,22,22,22,22,22,22,22,22,22,22,27
          db 25, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,13,12, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,24
@@ -66,7 +58,12 @@ section .text
             jne start
             jmp readyClear
 
-        jmp pacmanMovement
+    gameLoop:
+        mov cx, 15000
+        call waitLoop
+        call waitLoop
+
+        call blinkyDirection
 
 ; MAZE -------------------------------------------------------------------
     ; DRAW WALL ---------------------------
@@ -381,69 +378,6 @@ section .text
 ; END CLEAR SCREEN -----------------------------------------------------
 
 ; INITIALISATION GHOST ------------------------------------------------
-    initBlinky:
-        mov si, blinky1L
-        mov di, [blinkyPos]
-        mov dx, 10
-        call drawBlinky
-        
-        ret
-
-    initInky:
-        mov si, inky1U
-        mov di, [inkyPos]
-        mov dx, 10
-        call drawInky
-
-        ret
-
-    initPinky:
-        mov si, pinky1D
-        mov di, [pinkyPos]
-        mov dx, 10
-        call drawPinky
-
-        ret
-
-    initClyde:
-        mov si, clyde1U
-        mov di, [clydePos]
-        mov dx, 10
-        call drawClyde
-
-        ret
-
-    drawBlinky:
-        mov di, [blinkyPos]
-        mov dx, 10
-        call eachLine10
-        ret
-
-    drawInky:
-        mov di, [inkyPos]
-        mov dx, 10
-        call eachLine10
-        ret
-
-    drawPinky:
-        mov di, [pinkyPos]
-        mov dx, 10
-        call eachLine10
-        ret
-
-    drawClyde:
-        mov di, [clydePos]
-        mov dx, 10
-        call eachLine10
-        ret
-
-    eachLine10:
-        mov cx, 10
-        rep movsb
-        add di, 320-10 ; Move to the next line
-        dec dx
-        jnz eachLine10
-        ret
 
     initAll:
         call initBlinky
@@ -453,3 +387,4 @@ section .text
         call initPac
 
 %include "movement.asm"
+%include "ghost.inc"
