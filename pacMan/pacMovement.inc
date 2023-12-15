@@ -310,33 +310,25 @@ section .text
 ; PACMAN MOVEMENTS -----------------------------------------------------
     ; CHECK WANTED MOVEMENT --------------
     wantGoDirection:            ; test wich direction he wants to go
-        mov cx, [wantgoleft]
-        cmp cx, 1
+        cmp byte [wantgoleft], 1
         je beforeLeft
-        mov cx, [wantgoright]
-        cmp cx, 1
+        cmp byte [wantgoright], 1
         je beforeRight
-        mov cx, [wantgoup]
-        cmp cx, 1
+        cmp byte [wantgoup], 1
         je beforeUp
-        mov cx, [wantgodown]
-        cmp cx, 1
+        cmp byte [wantgodown], 1
         je beforeDown
         jmp actualDirection
     ; END CHECK WANTED MOVEMENT ----------
     ; ACTUAL DIRECTION --------------------
     actualDirection:        ; test wich direction he is going
-        mov ax, [goleft]
-        cmp ax, 1
+        cmp byte [goleft], 1
         je moveLeft
-        mov ax, [goright]
-        cmp ax, 1
+        cmp byte [goright], 1
         je moveRight
-        mov ax, [goup]
-        cmp ax, 1
+        cmp byte [goup], 1
         je moveUp
-        mov ax, [godown]
-        cmp ax, 1
+        cmp byte [godown], 1
         je moveDown
     ; END ACTUAL DIRECTION ----------------
     ; ACTUAL MOVEMENT ---------------------
