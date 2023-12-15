@@ -1,0 +1,66 @@
+Project x86-retrogaming -- Team 3
+---
+
+<h2 align="center">Weekly Report 6</h2>
+
+<h4 align="center">11/12/2023 to 15/12/2023</h4>
+
+<p align="right">last modified : 14/12/2023</p>
+
+### Ongoing tasks
+
+<div align="center">
+
+|           Task            |   Member Assigned   |   Progression   |   End Of Week objective   |   Start Date  |
+|:-------------------------:|:-------------------:|:---------------:|:-------------------------:|:-------------:|
+|Score (logic)              |Mathis               |5%               |50%                        |11/12/2023     |
+|Bartop Arcade              |Arthur               |20%              |20%                        |04/12/2023     |
+|Ghosts common behaviour    |Robin                |10%              |25%                        |14/12/2023     |
+|Score (UI)                 |Evan                 |80%              |50%                        |14/12/2023     |
+|Movement advanced          |Max                  |60%              |50%                        |14/12/2023     |
+|Presentation               |Pierre               |5%               |/                          |15/12/2023     |
+
+</div>
+
+### Finished tasks
+
+<div align="center">
+
+|           Task            |   Member Assigned     |  Start Date   |   End Date  |
+|:-------------------------:|:---------------------:|:-------------:|:-----------:|
+|Gantt Diagram Simplified   |Arthur                 |06/11/2023     |09/11/2023   |
+|Project Charter            |Arthur                 |08/11/2023     |10/11/2023   |
+|Defining KPIs              |Team                   |09/11/2023     |10/11/2023   |
+|Functional Specifications  |Max                    |06/11/2023     |13/11/2023   |
+|Gantt Diagram              |Arthur                 |13/11/2023     |17/11/2023   |
+|Ghost Sprite               |Pierre                 |13/11/2023     |01/12/2023   |
+|Pac-Man Sprite             |Max                    |17/11/2023     |01/12/2023   |
+|Level Sprites              |Evan                   |13/11/2023     |01/12/2023   |
+|Basic Movement             |Max & Robin            |23/11/2023     |01/12/2023   |
+|Technical Specifications   |Mathis                 |13/11/2023     |04/12/2023   |
+|Fruits Sprites             |Quentin                |17/11/2023     |04/12/2023   |
+|Test Plan                  |Quentin & Robin        |06/11/2023     |08/12/2023   |
+|Merge current Features     |Max                    |04/12/2023     |07/12/2023   |
+|Tilemap & collisions       |Evan                   |04/12/2023     |08/12/2023   |
+|Resize sprites             |Pierre                 |04/12/2023     |08/12/2023   |
+|Change Ghosts Sprites      |Pierre                 |14/12/2023     |15/12/2023   |
+|Test cases creation        |Quentin & Robin        |13/11/2023     |15/12/2023   |
+
+
+</div>
+
+### Week Feedback
+
+This week, we've realised as a team that we won't be able to meet our current objectives by the end of the project. As a result, we decided to switch strategy and cut some content out, mainly the sound design to concentrate on the quality of features instead of quantity.
+
+We all feel like we've made a bit of progress this week but not enough to meet our objectives. Still, we believe that we can achieve a less complete but qualitative game.
+
+### Progression Overview
+
+This progression is calculated using done and remaining KPIs. The coefficient of each KPI was discussed and set by the team after deliberation.
+
+<div align="center">
+
+![Progression](../pictures/weeklyReport/progressionWeek6.png)
+
+</div>
