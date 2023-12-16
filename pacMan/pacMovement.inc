@@ -63,7 +63,7 @@ section .text
     wCollLeft:                  ; collision for straight direction to stop when seing a wall
         mov dx, 1   
         mov ax, [position]  
-        add ax, 959 
+        add ax, 1279 
         mov bx, 320             ; nb of pixels in a row
         div bx                  ; division to calculate the x and y position of the pixel where we test the collision
         mov bx, ax              ; save the quotient
@@ -73,12 +73,14 @@ section .text
         int 10h 
         cmp al, 0x10            ; test if the color is the same as the maze
         je pacLeft1
+        cmp al, 0x11
+        je tpRight
         jmp continueMoveLeft
         
     wCollRight:
         mov dx, 1
         mov ax, [position]
-        add ax, 970
+        add ax, 1290
         mov bx, 320         
         div bx              
         mov bx, ax          
@@ -88,6 +90,8 @@ section .text
         int 10h
         cmp al, 0x10        
         je pacRight1
+        cmp al, 0x11
+        je tpLeft
         jmp continueMoveRight
         
     wCollUp:
@@ -330,6 +334,7 @@ section .text
         je moveUp
         cmp byte [godown], 1
         je moveDown
+        jmp moveLeft
     ; END ACTUAL DIRECTION ----------------
     ; ACTUAL MOVEMENT ---------------------
     moveLeft:              
@@ -371,6 +376,16 @@ section .text
     continueMoveDown:
         call clearPac
         jmp animDown
+
+    tpRight:
+        call clearPac
+        mov word [position], 26473
+        jmp moveLeft
+
+    tpLeft:
+        call clearPac
+        mov word [position], 26317
+        jmp moveRight
     ; END ACTUAL MOVEMENT ----------------
 ; END PACMAN MOVEMENTS -------------------------------------------------
 
@@ -378,70 +393,58 @@ section .text
     ; CHOICE ------------------------------
     animLeft:               ; choose the right sprite to make the animation
         sub word [position], 1
-        mov al, [frame]
-        inc al
-        mov [frame], al
-        cmp al, 3
+        inc byte [frame]
+        cmp byte [frame], 3
         jl pacSphere
-        cmp al, 6
+        cmp byte [frame], 6
         jl pacLeft1
-        cmp al, 9
+        cmp byte [frame], 9
         jl pacLeft2
-        cmp al, 12
+        cmp byte [frame], 12
         jl pacLeft1
-        mov al, 1
-        mov [frame], al
+        mov byte [frame], 1
         jmp pacSphere
 
     animRight:
         add word [position], 1
-        mov al, [frame]
-        inc al
-        mov [frame], al
-        cmp al, 2
+        inc byte [frame]
+        cmp byte [frame], 2
         jl pacSphere
-        cmp al, 6
+        cmp byte [frame], 6
         jl pacRight1
-        cmp al, 9
+        cmp byte [frame], 9
         jl pacRight2
-        cmp al, 12
+        cmp byte [frame], 12
         jl pacRight1
-        mov al, 1
-        mov [frame], al
+        mov byte [frame], 1
         jmp pacSphere
 
     animUp:
         sub word [position], 320
-        mov al, [frame]
-        inc al
-        mov [frame], al
-        cmp al, 3
+        inc byte [frame]
+        cmp byte [frame], 3
         jl pacSphere
-        cmp al, 6
+        cmp byte [frame], 6
         jl pacUp1
-        cmp al, 9
+        cmp byte [frame], 9
         jl pacUp2
-        cmp al, 12
+        cmp byte [frame], 12
         jl pacUp1
-        mov al, 1
-        mov [frame], al
+        mov byte [frame], 1
         jmp pacSphere
 
     animDown:
         add word [position], 320
-        mov al, [frame]
-        inc al
-        mov [frame], al
-        cmp al, 3
+        inc byte [frame]
+        cmp byte [frame], 3
         jl pacSphere
-        cmp al, 6
+        cmp byte [frame], 6
         jl pacDown1
-        cmp al, 9
+        cmp byte [frame], 9
         jl pacDown2
-        cmp al, 12
+        cmp byte [frame], 12
         jl pacDown1
-        mov al, 1
-        mov [frame], al
+        mov byte [frame], 1
         jmp pacSphere
     ; END CHOICE --------------------------
     ; SET ANIMATIONS ----------------------

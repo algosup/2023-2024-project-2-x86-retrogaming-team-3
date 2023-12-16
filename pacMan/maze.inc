@@ -313,28 +313,4 @@ section .text
         mov si, tunnelleft
         jmp drawWalls
     ; END SET WALL ------------------
-    ; READY -------------------------
-    readyDraw:
-        mov di, 32776
-        mov si, ready
-        call drawReady
-        ret
-
-    readyClear:
-        mov byte [enterpressed], 1
-        mov di, 32776
-        mov si, clearready
-        call drawReady
-        jmp keyBottomLeft
-
-    drawReady:
-        mov dx, 7
-        eachlineReady:
-            mov cx, 48
-            rep movsb
-            add di, 320-48
-            dec dx
-            jnz eachlineReady
-        ret
-    ; END READY ---------------------
 ; END MAZE ------------------------------------------------------------
