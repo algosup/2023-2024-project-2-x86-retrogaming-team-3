@@ -1,6 +1,5 @@
-org 100h
-
 section .data
+%define WALL_SIZE 6
     ; maze array
     maze db 26,22,22,22,22,22,22,22,22,22,22,22,22,30,31,22,22,22,22,22,22,22,22,22,22,22,22,27
          db 25, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,13,12, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,24
@@ -34,19 +33,22 @@ section .data
          db 25, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,24
          db 29,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,28
     ; ---------------------------------------------------------------------
-    Column dw 28    ; number of columns
-    Row dw 31       ; number of rows
-    nbpixel dw 1996 ; number of pixels in a row of tile
+    initColumn dw 28    ; number of columns
+    Column dw 0
+    initRow dw 31       ; number of rows
+    Row dw 0
+    initnbpixel dw 1996 ; number of pixels in a row of tile
+    nbpixel dw 0
 
 section .text
 ; MAZE -------------------------------------------------------------------
     ; DRAW WALL ---------------------------
     drawWalls:     ; draw 1 tile
-        mov dx, 6               ; number of row of a sprite
+        mov dx, WALL_SIZE               ; number of row of a sprite
         eachLineMaze:   
-            mov cx, 6           ; number of column of a sprite
+            mov cx, WALL_SIZE           ; number of column of a sprite
             rep movsb           ; draw the sprite
-            add di, 320-6       ; go to the next row
+            add di, 320-WALL_SIZE       ; go to the next row
             dec dx              ; count the number of rows drawn
             jnz eachLineMaze    ; if the number of rows drawn is not zero, go to draw the next line
         jmp nextColumn          ; call the function to go to the next tile
@@ -75,9 +77,14 @@ section .text
         mov [nbpixel], ax   ;
         jmp wallchoice 
     ; END DRAW WALL ----------------------
-
     ; WALL CHOICE ------------------------
     Maze:
+        mov ax, [initColumn]
+        mov word [Column], ax
+        mov ax, [initRow]
+        mov word [Row], ax
+        mov ax, [initnbpixel]
+        mov word [nbpixel], ax
         mov di, 76             ; set the position
         mov bx, maze            ; put the maze array to a register to follow the maze pattern
         wallchoice:
@@ -159,7 +166,6 @@ section .text
             cmp al, 43
             je DrawTunnelLeft
     ; END WALL CHOICE -----------------
-
     ; SET WALL ------------------------
     DrawGum:
         mov si, gum
@@ -313,28 +319,4 @@ section .text
         mov si, tunnelleft
         jmp drawWalls
     ; END SET WALL ------------------
-    ; READY -------------------------
-    readyDraw:
-        mov di, 32776
-        mov si, ready
-        call drawReady
-        ret
-
-    readyClear:
-        mov byte [enterpressed], 1
-        mov di, 32776
-        mov si, clearready
-        call drawReady
-        jmp keyBottomLeft
-
-    drawReady:
-        mov dx, 7
-        eachlineReady:
-            mov cx, 48
-            rep movsb
-            add di, 320-48
-            dec dx
-            jnz eachlineReady
-        ret
-    ; END READY ---------------------
 ; END MAZE ------------------------------------------------------------
