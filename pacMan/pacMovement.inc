@@ -447,47 +447,47 @@ section .text
     pacSphere:
         mov si, pacManStart
         call drawPac
-        jmp keyCheck
+        jmp blinkyMovement
 
     pacLeft1:
         mov si, pacManWaka1L
         call drawPac
-        jmp keyCheck
+        jmp blinkyMovement
 
     pacLeft2:
         mov si, pacManWaka2L
         call drawPac
-        jmp keyCheck
+        jmp blinkyMovement
 
     pacRight1:
         mov si, pacManWaka1R
         call drawPac
-        jmp keyCheck
+        jmp blinkyMovement
 
     pacRight2:
         mov si, pacManWaka2R
         call drawPac
-        jmp keyCheck
+        jmp blinkyMovement
 
     pacUp1:
         mov si, pacManWaka1U
         call drawPac
-        jmp keyCheck
+        jmp blinkyMovement
 
     pacUp2:
         mov si, pacManWaka2U
         call drawPac
-        jmp keyCheck
+        jmp blinkyMovement
 
     pacDown1:
         mov si, pacManWaka1D
         call drawPac
-        jmp keyCheck
+        jmp blinkyMovement
 
     pacDown2:
         mov si, pacManWaka2D
         call drawPac
-        jmp keyCheck
+        jmp blinkyMovement
     ; END SET ANIMATIONS ------------------
     clearPac:
         mov si, clear

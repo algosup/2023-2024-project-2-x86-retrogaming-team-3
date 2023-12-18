@@ -7,7 +7,6 @@ section .data
 
     started db 0
 
-    blinkyPos dw 20635
     inkyPos dw 26704 
     pinkyPos dw 26715
     clydePos dw 26726
@@ -58,11 +57,6 @@ section .text
 ; END CLEAR SCREEN -----------------------------------------------------
 
 ; INITIALISATION GHOST -------------------------------------------------
-    initBlinky:
-        mov si, blinky1L
-        mov di, [blinkyPos]
-        call drawGhosts
-        ret
 
     initInky:
         mov si, inky1U
@@ -112,3 +106,4 @@ section .text
 %include "maze.inc"
 %include "UI.inc"
 %include "pacMovement.inc"
+%include "pinky.inc"
