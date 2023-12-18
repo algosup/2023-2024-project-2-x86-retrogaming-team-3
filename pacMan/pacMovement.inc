@@ -37,7 +37,7 @@ section .data
 section .text
     pacmanMovement:
         keyCheck:
-            mov cx, 50000
+            mov cx, 60000
             call waitLoop
             mov ah, 01h         ; is a key pressed ?
             int 16h
@@ -86,6 +86,8 @@ section .text
         je pacLeft1
         cmp al, 0x11
         je tpRight
+        cmp al, 0x57
+        je verifyEatGumLeft
         cmp al, 0x28
         je pacDead
         cmp al, 0x3C
@@ -104,6 +106,8 @@ section .text
         je pacRight1
         cmp al, 0x11
         je tpLeft
+        cmp al, 0x57
+        je verifyEatGumRight
         cmp al, 0x28
         je pacDead
         cmp al, 0x3C
@@ -120,6 +124,8 @@ section .text
         call collTest
         cmp al, 0x10        
         je pacUp1
+        cmp al, 0x57
+        je verifyEatGumUp
         cmp al, 0x28
         je pacDead
         cmp al, 0x3C
@@ -136,6 +142,8 @@ section .text
         call collTest
         cmp al, 0x10        
         je pacDown1
+        cmp al, 0x57
+        je verifyEatGumDown
         cmp al, 0x28
         je pacDead
         cmp al, 0x3C
@@ -383,6 +391,98 @@ section .text
         ret
     ; END PACMAN DIE ---------------------
 ; END PACMAN MOVEMENTS -------------------------------------------------
+
+; EAT GUM --------------------------------------------------------------
+    verifyEatGumLeft:
+        mov ax, [position]  
+        add ax, 1278
+        call collTest 
+        cmp al, 0x57
+        je eatGum
+        jmp continueMoveLeft
+
+    verifyEatGumRight:
+        mov ax, [position]
+        add ax, 1291
+        call collTest
+        cmp al, 0x57
+        je eatGum
+        jmp continueMoveRight
+
+    verifyEatGumUp:
+        mov ax, [position]
+        sub ax, 635
+        call collTest
+        cmp al, 0x57
+        je eatGum
+        jmp continueMoveUp
+
+    verifyEatGumDown:
+        mov ax, [position]
+        add ax, 3525
+        call collTest
+        cmp al, 0x57
+        je eatGum
+        jmp continueMoveDown
+
+    eatGum:
+        add word [scorenb1], 1
+        cmp word [scorenb1], 10
+        je nextNb1
+        call scoreNumberWriting
+        jmp afterGumEated
+
+    nextNb1:
+        sub word [scorenb1], 10
+        add word [scorenb2], 1
+        cmp word [scorenb2], 10
+        je nextNb2
+        call scoreNumberWriting
+        jmp afterGumEated
+
+    nextNb2:
+        sub word [scorenb2], 10
+        add word [scorenb3], 1
+        cmp word [scorenb3], 10
+        je nextNb3
+        call scoreNumberWriting
+        jmp afterGumEated
+
+    nextNb3:
+        sub word [scorenb3], 10
+        add word [scorenb4], 1
+        cmp word [scorenb4], 10
+        je nextNb4
+        call scoreNumberWriting
+        jmp afterGumEated
+
+    nextNb4:
+        sub word [scorenb4], 10
+        add word [scorenb5], 1
+        cmp word [scorenb5], 10
+        je nextNb5
+        call scoreNumberWriting
+        jmp afterGumEated
+
+    nextNb5:
+        sub word [scorenb5], 10
+        add word [scorenb6], 1
+        cmp word [scorenb6], 10
+        je end
+        call scoreNumberWriting
+        jmp afterGumEated
+
+    afterGumEated:
+        cmp byte [goleft], 1
+        je continueMoveLeft
+        cmp byte [goright], 1
+        je continueMoveRight
+        cmp byte [goup], 1
+        je continueMoveUp
+        cmp byte [godown], 1
+        je continueMoveDown
+        jmp actualDirection
+;END EAT GUM -----------------------------------------------------------
 
 ; PACMAN ANIMATIONS ----------------------------------------------------
     ; CHOICE ------------------------------

@@ -6,12 +6,12 @@ section .data
     initlivespos dw 0
     livespos dw 0
 
-    scorenb1 dw 7
-    scorenb2 dw 6
-    scorenb3 dw 6
+    scorenb1 dw 0
+    scorenb2 dw 0
+    scorenb3 dw 0
     scorenb4 dw 0
-    scorenb5 dw 2
-    scorenb6 dw 4
+    scorenb5 dw 0
+    scorenb6 dw 0
 
     displaynumber dw font0
                   dw font1

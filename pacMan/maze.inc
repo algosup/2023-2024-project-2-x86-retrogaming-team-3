@@ -80,6 +80,9 @@ section .text
         jmp wallchoice 
     ; END DRAW WALL ----------------------
     ; WALL CHOICE ------------------------
+    initMaze:
+        mov bx, maze            ; put the maze array to a register to follow the maze pattern
+        ret
     Maze:
         mov ax, [initColumn]
         mov word [Column], ax
@@ -88,7 +91,7 @@ section .text
         mov ax, [initnbpixel]
         mov word [nbpixel], ax
         mov di, 76             ; set the position
-        mov bx, maze            ; put the maze array to a register to follow the maze pattern
+        mov bx, maze
         wallchoice:
             mov al, [bx]        ; look wich sprite he has to put in a tile
             cmp al, 0           ; then he call a function to draw the correct sprite
