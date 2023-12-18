@@ -3,12 +3,12 @@ org 100h
 %include "sprite.inc"
 
 section .data
-    scorenb1 dw 0
-    scorenb2 dw 0
-    scorenb3 dw 0
+%define GET_LINEAR_CELL( X , Y )  ((Y*320)+X)
+
+    started db 0
 
     blinkyPos dw 20635
-    inkyPos dw 26704
+    inkyPos dw 26704 
     pinkyPos dw 26715
     clydePos dw 26726
 
@@ -17,18 +17,22 @@ section .text
     mov al, 13h     ; set screen 320x200 256colours
     int 10h         ;--------------------------------
 
+    call clearScreen
+
     initGame:       ; initialise the game
-        call clearScreen
         jmp Maze
         initAll:
-            call initScore
             call initFruits
+            call initLives
             call initPac
             call initBlinky
             call initInky
             call initPinky
             call initClyde
             call readyDraw
+            cmp byte [started], 1
+            je keyBottomLeft
+            call initScore
             jmp extraUI
         start:          ; press enter to play the game
             mov ah, 01h 
@@ -41,7 +45,7 @@ section .text
             jmp readyClear
 
     gameLoop:
-    jmp pacmanMovement
+        jmp pacmanMovement
 
 ; CLEAR SCREEN ---------------------------------------------------------
     clearScreen:
@@ -88,7 +92,6 @@ section .text
             jnz eachLineGhosts
         ret
 ; END INITIALISATION GHOSTS --------------------------------------------
-
 
     waitLoop:
         loop waitLoop

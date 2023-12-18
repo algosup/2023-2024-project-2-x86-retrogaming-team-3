@@ -1,6 +1,29 @@
-org 100h
-
 section .data
+%define FONT_SIZE 5
+
+    nblives db 5
+    nbdrawlives db 0
+    initlivespos dw 0
+    livespos dw 0
+
+    scorenb1 dw 7
+    scorenb2 dw 6
+    scorenb3 dw 6
+    scorenb4 dw 0
+    scorenb5 dw 2
+    scorenb6 dw 4
+
+    displaynumber dw font0
+                  dw font1
+                  dw font2
+                  dw font3
+                  dw font4
+                  dw font5
+                  dw font6
+                  dw font7
+                  dw font8
+                  dw font9
+
     enterpressed db 0
     letterpos dw 0
 
@@ -77,13 +100,84 @@ section .text
         add word [letterpos], 5
         call drawDblDot
         ret
-    
+    ; END INITIALISATION SCORE --------------
+    ; DISPLAY SCORE -------------------------
     scoreNumberWriting:
         mov word [letterpos], 13181
         call draw0
+        sub word [letterpos], 6
+        mov ax, [scorenb1]
+        call setNumber
+        sub word [letterpos], 6
+        mov ax, [scorenb2]
+        call setNumber
+        sub word [letterpos], 9
+        mov ax, [scorenb3]
+        call setNumber
+        sub word [letterpos], 6
+        mov ax, [scorenb4]
+        call setNumber
+        sub word [letterpos], 6
+        mov ax, [scorenb5]
+        call setNumber
+        sub word [letterpos], 9
+        mov ax, [scorenb6]
+        call setNumber
         ret
-    ; END INITIALISATION SCORE --------------
+
+    setNumber:
+        mov bx, displaynumber
+        mov cx, 2
+        mul cx
+        add bx, ax
+        mov si, [bx]
+        call drawLetter
+        ret
+    ; END DISPLAY SCORE ---------------------
 ; END SCORE ------------------------------------------------------------
+
+; LIVES ----------------------------------------------------------------
+    initLives:
+        mov word [livespos], GET_LINEAR_CELL(40,70)
+        mov ax, [nblives]
+        dec ax
+        mov [nbdrawlives], ax
+        cmp byte [nbdrawlives], 0
+        je return
+        .eachLives:
+            mov di, [livespos]
+            mov si, pacManWaka1R
+            mov dx, 10
+            .eachLineLives:
+                mov cx, 10
+                rep movsb
+                add di, 320-10 
+                dec dx
+                jnz .eachLineLives
+            add word [livespos], 3840
+            dec byte [nbdrawlives]
+            jnz .eachLives
+        return:
+            ret
+
+    clearLives:
+        mov word [livespos], GET_LINEAR_CELL(40,70)
+        mov bx, 5
+        .eachLives:
+            mov di, [livespos]
+            mov si, clear
+            mov dx, 10
+            .eachLineLives:
+                mov cx, 10
+                rep movsb
+                add di, 320-10 
+                dec dx
+                jnz .eachLineLives
+            add word [livespos], 3840
+            dec bx
+            jnz .eachLives
+        ret
+; END LIVES ------------------------------------------------------------
 
 ; FRUITS ---------------------------------------------------------------
     ; INITIALISATION FRUITS ------------------
@@ -96,12 +190,12 @@ section .text
         mov di, 8571
         mov si, fruitTitleBox
         mov dx, 10
-        eachLineFruit:
+        .eachLineFruit:
             mov cx, 39
             rep movsb
             add di, 320-39
             dec dx
-            jnz eachLineFruit
+            jnz .eachLineFruit
         ret
 
     drawFruitsWriting:
@@ -143,6 +237,7 @@ section .text
 
 ; EXTRA UI -------------------------------------------------------------
     extraUI:
+        mov byte [started], 1
         call drawTopLeft
         call drawTopRight
         call drawBottomLeft
@@ -152,24 +247,24 @@ section .text
         mov di, 968
         mov si, topleft
         mov dx, 14
-        eachLineTopLeft:
+        .eachLineTopLeft:
             mov cx, 62
             rep movsb
             add di, 320-62
             dec dx
-            jnz eachLineTopLeft
+            jnz .eachLineTopLeft
         ret
 
     drawTopRight:
         mov di, 1211
         mov si, topright
         mov dx, 14
-        eachLineTopRight:
+        .eachLineTopRight:
             mov cx, 62
             rep movsb
             add di, 320-62
             dec dx
-            jnz eachLineTopRight
+            jnz .eachLineTopRight
         ret
 
     drawBottomLeft:
@@ -186,12 +281,12 @@ section .text
         mov di, 57000
         mov si, bottomleft
         mov dx, 5
-        eachLineBottomLeft:
+        .eachLineBottomLeft:
             mov cx, 26
             rep movsb
             add di, 320-26
             dec dx
-            jnz eachLineBottomLeft
+            jnz .eachLineBottomLeft
         ret
 
         drawBottomRight:
@@ -238,102 +333,133 @@ section .text
             jmp start
 ; DRAW LETTERS ---------------------------------------------------------
     drawClearLetter:
-        mov di, [letterpos]
         mov si, clearletter
         call drawLetter
         ret
 
     drawA:
-        mov di, [letterpos]
         mov si, fontA
         call drawLetter
         ret
 
     drawC:
-        mov di, [letterpos]
         mov si, fontC
         call drawLetter
         ret
 
     drawE:
-        mov di, [letterpos]
         mov si, fontE
         call drawLetter
         ret
 
     drawF:
-        mov di, [letterpos]
         mov si, fontF
         call drawLetter
         ret
 
     drawI:
-        mov di, [letterpos]
         mov si, fontI
         call drawLetter
         ret
 
     drawN:
-        mov di, [letterpos]
         mov si, fontN
         call drawLetter
         ret
 
     drawO:
-        mov di, [letterpos]
         mov si, fontO
         call drawLetter
         ret
 
     drawP:
-        mov di, [letterpos]
         mov si, fontP
         call drawLetter
         ret
 
     drawR:
-        mov di, [letterpos]
         mov si, fontR
         call drawLetter
         ret
 
     drawS:
-        mov di, [letterpos]
         mov si, fontS
         call drawLetter
         ret
 
     drawT:
-        mov di, [letterpos]
         mov si, fontT
         call drawLetter
         ret
         
     drawU:
-        mov di, [letterpos]
         mov si, fontU
         call drawLetter
         ret 
 
     draw0:
-        mov di, [letterpos]
         mov si, font0
         call drawLetter
         ret
 
+    draw1:
+        mov si, font1
+        call drawLetter
+        ret
+        
+    draw2:
+        mov si, font2
+        call drawLetter
+        ret
+
+    draw3:
+        mov si, font3
+        call drawLetter
+        ret
+
+    draw4:
+        mov si, font4
+        call drawLetter
+        ret
+
+    draw5:
+        mov si, font5
+        call drawLetter
+        ret
+
+    draw6:
+        mov si, font6
+        call drawLetter
+        ret
+
+    draw7:
+        mov si, font7
+        call drawLetter
+        ret
+
+    draw8:
+        mov si, font8
+        call drawLetter
+        ret
+
+    draw9:
+        mov si, font9
+        call drawLetter
+        ret
+
     drawDblDot:
-        mov di, [letterpos]
         mov si, fontDblDot
         call drawLetter
         ret
 
 
     drawLetter:
-    mov dx, 5
+    mov di, [letterpos]
+    mov dx, FONT_SIZE
     eachLineLetter:
-        mov cx, 5
+        mov cx, FONT_SIZE
         rep movsb
-        add di, 320-5
+        add di, 320-FONT_SIZE
         dec dx
         jnz eachLineLetter
     ret
