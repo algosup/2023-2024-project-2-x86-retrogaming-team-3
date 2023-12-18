@@ -17,6 +17,7 @@ section .text
     mov al, 13h     ; set screen 320x200 256colours
     int 10h         ;--------------------------------
 
+    preStart:
     call clearScreen
 
     initGame:       ; initialise the game

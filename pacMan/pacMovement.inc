@@ -37,8 +37,7 @@ section .data
 section .text
     pacmanMovement:
         keyCheck:
-            mov cx, 15000
-            call waitLoop
+            mov cx, 50000
             call waitLoop
             mov ah, 01h         ; is a key pressed ?
             int 16h
@@ -369,7 +368,7 @@ section .text
         mov byte [enterpressed], 0
         call clearLives
         dec byte [nblives]
-        jz end
+        jz gameOver
         jmp initGame
 
     resetDirection:

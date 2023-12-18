@@ -235,6 +235,55 @@ section .text
         ret
 ; END PAUSE ------------------------------------------------------------
 
+; GAME OVER ------------------------------------------------------------
+    gameOver: 
+        mov byte [started], 0
+        mov word [letterpos], GET_LINEAR_CELL(133,102)
+        call drawG 
+        add word [letterpos], 6
+        call drawA 
+        add word [letterpos], 6
+        call drawM 
+        add word [letterpos], 6
+        call drawE 
+        add word [letterpos], 12
+        call drawO 
+        add word [letterpos], 6
+        call drawV 
+        add word [letterpos], 6
+        call drawE 
+        add word [letterpos], 6
+        call drawR 
+        mov word [letterpos], 57210
+        call drawE 
+        add word [letterpos], 6
+        call drawN 
+        add word [letterpos], 6
+        call drawT 
+        add word [letterpos], 6
+        call drawE 
+        add word [letterpos], 6
+        call drawR 
+        mov byte [nblives], 5
+        mov word [scorenb1], 0
+        mov word [scorenb2], 0
+        mov word [scorenb3], 0
+        mov word [scorenb4], 0
+        mov word [scorenb5], 0
+        mov word [scorenb6], 0
+        waitRestart:
+            mov ah, 01h 
+            int 16h
+            jz waitRestart
+            mov ah, 00h 
+            int 16h
+            cmp ah, 1Ch
+            jne waitRestart
+            jmp preStart
+        ret
+
+; END GAME OVER --------------------------------------------------------
+
 ; EXTRA UI -------------------------------------------------------------
     extraUI:
         mov byte [started], 1
@@ -357,8 +406,18 @@ section .text
         call drawLetter
         ret
 
+    drawG:
+        mov si, fontG
+        call drawLetter
+        ret
+
     drawI:
         mov si, fontI
+        call drawLetter
+        ret
+
+    drawM:
+        mov si, fontM
         call drawLetter
         ret
 
@@ -396,6 +455,11 @@ section .text
         mov si, fontU
         call drawLetter
         ret 
+
+    drawV:
+        mov si, fontV
+        call drawLetter
+        ret
 
     draw0:
         mov si, font0
