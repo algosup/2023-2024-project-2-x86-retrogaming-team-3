@@ -1,6 +1,8 @@
 section .data
 %define PACMAN_SIZE 10
 
+    gotlife db 0
+
     initposition dw 43675
     position dw 0
 
@@ -396,6 +398,7 @@ section .text
     verifyEatGumLeft:
         mov ax, [position]  
         add ax, 1278
+        mov [gumpos], ax
         call collTest 
         cmp al, 0x57
         je eatGum
@@ -404,6 +407,7 @@ section .text
     verifyEatGumRight:
         mov ax, [position]
         add ax, 1291
+        mov [gumpos], ax
         call collTest
         cmp al, 0x57
         je eatGum
@@ -412,6 +416,7 @@ section .text
     verifyEatGumUp:
         mov ax, [position]
         sub ax, 635
+        mov [gumpos], ax
         call collTest
         cmp al, 0x57
         je eatGum
@@ -420,12 +425,20 @@ section .text
     verifyEatGumDown:
         mov ax, [position]
         add ax, 3525
+        mov [gumpos], ax
         call collTest
         cmp al, 0x57
         je eatGum
         jmp continueMoveDown
 
     eatGum:
+        call resetRegisters
+        mov ax, [gumpos]
+        mov cx, 320
+        div cx
+        mov [xPos], dx
+        mov [yPos], ax
+
         add word [scorenb1], 1
         cmp word [scorenb1], 10
         je nextNb1
@@ -451,6 +464,8 @@ section .text
     nextNb3:
         sub word [scorenb3], 10
         add word [scorenb4], 1
+        cmp byte [gotlife], 0
+        je gainlife
         cmp word [scorenb4], 10
         je nextNb4
         call scoreNumberWriting

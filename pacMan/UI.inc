@@ -177,6 +177,13 @@ section .text
             dec bx
             jnz .eachLives
         ret
+
+    gainlife: 
+        mov byte [gotlife], 1
+        add byte [nblives], 1
+        call initLives
+        call scoreNumberWriting
+        jmp afterGumEated
 ; END LIVES ------------------------------------------------------------
 
 ; FRUITS ---------------------------------------------------------------

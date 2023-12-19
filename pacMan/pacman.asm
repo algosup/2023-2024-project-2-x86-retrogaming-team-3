@@ -104,8 +104,6 @@ section .text
         xor bx, bx
         xor cx, cx
         xor dx, dx
-        xor si, si
-        xor di, di
         ret
 
     end:
