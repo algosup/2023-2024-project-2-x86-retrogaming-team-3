@@ -7,10 +7,6 @@ section .data
 
     started db 0
 
-    inkyPos dw 26704 
-    pinkyPos dw 26715
-    clydePos dw 26726
-
 section .text
     mov ah, 00h     ;--------------------------------
     mov al, 13h     ; set screen 320x200 256colours
@@ -24,10 +20,23 @@ section .text
             call initFruits
             call initLives
             call initPac
-            call initBlinky
-            call initInky
-            call initPinky
-            call initClyde
+
+            mov ax, 0
+            mov [ghostIndex], ax
+            call initGhost
+
+            mov ax, 2
+            mov [ghostIndex], ax
+            call initGhost
+
+            mov ax, 4
+            mov [ghostIndex], ax
+            call initGhost
+
+            mov ax, 6
+            mov [ghostIndex], ax
+            call initGhost
+
             call readyDraw
             cmp byte [started], 1
             je keyBottomLeft
@@ -55,38 +64,6 @@ section .text
         rep stosb
         ret
 ; END CLEAR SCREEN -----------------------------------------------------
-
-; INITIALISATION GHOST -------------------------------------------------
-
-    initInky:
-        mov si, inky1U
-        mov di, [inkyPos]
-        call drawGhosts
-        ret
-
-    initPinky:
-        mov si, pinky1D
-        mov di, [pinkyPos]
-        call drawGhosts
-        ret
-
-    initClyde:
-        mov si, clyde1U
-        mov di, [clydePos]
-        call drawGhosts
-        ret
-
-    drawGhosts:
-    mov dx, 10
-        eachLineGhosts:
-            mov cx, 10
-            rep movsb
-            add di, 320-10 
-            dec dx
-            jnz eachLineGhosts
-        ret
-; END INITIALISATION GHOSTS --------------------------------------------
-
     waitLoop:
         loop waitLoop
         ret
@@ -106,4 +83,4 @@ section .text
 %include "maze.inc"
 %include "UI.inc"
 %include "pacMovement.inc"
-%include "pinky.inc"
+%include "ghost.inc"
