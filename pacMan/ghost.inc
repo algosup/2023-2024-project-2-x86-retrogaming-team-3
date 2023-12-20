@@ -1,9 +1,20 @@
 section .data
     ;All Ghost Data
+        frameFromStart dw 0
+
+        testVariable dw 0
+
+        %define penDoor 20635
+
         ghostInitposition dw 20635
                           dw 26715
                           dw 26704
                           dw 26726
+
+        ghostMoveTime db 0 ;the time after which the ghost are moved out of the ghost pen
+                      db 20
+                      db 40
+                      db 60
 
         ghostPosition dw 0
                       dw 0
@@ -105,23 +116,92 @@ section .data
 
 section .text
     blinkyMovement:
-        mov ax, 0
-        mov [ghostIndex], ax
+        mov word [ghostIndex], blinkyIndex
 
-        je ghostBeforeUp 
-        jmp ghostWantGoDirection
+        mov bx, ghostMoveTime
+        add bx, word [ghostIndex]
+
+        mov ax, [frameFromStart]
+        cmp ax, 0
+        je exitPen
+        jg blinkyRandomAI
+        jl nextGhost
+
+    pinkyMovement:
+        mov word [ghostIndex], pinkyIndex
+
+        mov bx, ghostMoveTime
+        add bx, word [ghostIndex]
+
+        mov ax, [frameFromStart]
+        cmp ax, 20
+        je exitPen
+        jg pinkyRandomAI
+        jl nextGhost
+
+    inkyMovement:
+        mov word [ghostIndex], inkyIndex
+
+        mov bx, ghostMoveTime
+        add bx, word [ghostIndex]
+
+        mov ax, [frameFromStart]
+        cmp ax, 40
+        je exitPen
+        jg inkyRandomAI
+        jl nextGhost
+
+    clydeMovement:
+        mov word [ghostIndex], clydeIndex
+
+        mov bx, ghostMoveTime
+        add bx, word [ghostIndex]
+
+        mov ax, [frameFromStart]
+        cmp ax, 60
+        je exitPen
+        jg clydeRandomAI
+        jl nextGhost
+
+
+    nextGhost:
+        cmp word [ghostIndex], 0
+        je pinkyMovement
+
+        cmp word [ghostIndex], 2
+        je inkyMovement
+
+        cmp word [ghostIndex], 4
+        je clydeMovement
+
+        cmp word [ghostIndex], 6
+        je keyCheck
+
+    exitPen:
+        call clearGhost
+        mov bx, ghostPosition
+        add bx, word [ghostIndex]
+        mov word [bx], penDoor
+        jmp pinkyRandomAI
+
+
+    incFrameFromStart:
+        mov ax, [frameFromStart]
+        cmp ax, 100
+        jl .incUp
+        .incUp :
+            inc ax
+        mov [frameFromStart], ax
+        ret
             
 ; INITIALISATION PACMAN ------------------------------------------------
     initGhost:
-        mov cx, [ghostIndex]
         mov bx, ghostInitposition
         add bx, word [ghostIndex]
         mov ax, [bx]
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov word [bx], ax
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov di, [bx]
@@ -138,7 +218,6 @@ section .text
     ; SIMPLE --------------------------
     ghostWCollLeft:                  ; collision for straight direction to stop when seing a wall
          
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov ax, [bx]  
@@ -152,7 +231,6 @@ section .text
         
     ghostWCollRight:
          
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov ax, [bx]
@@ -166,7 +244,6 @@ section .text
         
     ghostWCollUp:
      
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov ax, [bx]
@@ -178,7 +255,6 @@ section .text
 
     ghostWCollDown:
          
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov ax, [bx]
@@ -191,28 +267,22 @@ section .text
     ; COMPLEX --------------------------
     ghostBeforeLeft:             ; collision test before turning, if collision is detected, save the direction for when he can turn
          
-        mov bx, ghostIndex
         mov bx, ghostWantGoLeft
         add bx, word [ghostIndex]
         mov byte [bx], 1
-        mov bx, ghostIndex
         mov bx, ghostWantGoRight
         add bx, word [ghostIndex]
         mov byte [bx], 0
-        mov bx, ghostIndex
         mov bx, ghostWantGoUp
         add bx, word [ghostIndex]
         mov byte [bx], 0
-        mov bx, ghostIndex
         mov bx, ghostWantGoDown
         add bx, word [ghostIndex]
         mov byte [bx], 0
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov ax, [bx]
         sub ax, 1
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov [bx], ax
@@ -221,12 +291,10 @@ section .text
         call collTest     
         cmp al, 0x10                ; test if the color is the same as the maze
         je ghostActualDirection  
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov ax, [bx]
         add ax, 2880
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov [bx], ax
@@ -234,12 +302,10 @@ section .text
         call collTest 
         cmp al, 0x10            
         je ghostActualDirection 
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov ax, [bx]
         sub ax, 960
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov [bx], ax
@@ -251,52 +317,42 @@ section .text
         jmp ghostMoveLeft
 
     ghostBeforeRight:
-        mov bx, ghostIndex
         mov bx, ghostWantGoLeft
         add bx, word [ghostIndex]
         mov byte [bx], 0
-        mov bx, ghostIndex
         mov bx, ghostWantGoRight
         add bx, word [ghostIndex]
         mov byte [bx], 1
-        mov bx, ghostIndex
         mov bx, ghostWantGoUp
         add bx, word [ghostIndex]
         mov byte [bx], 0
-        mov bx, ghostIndex
         mov bx, ghostWantGoDown
         add bx, word [ghostIndex]
         mov byte [bx], 0
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov ax, [bx]
         add ax, 10
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov [bx], ax
         call collTest 
         cmp al, 0x10            
         je ghostActualDirection  
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov ax, [bx]
         add ax, 2880
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov [bx], ax
         call collTest 
         cmp al, 0x10            
         je ghostActualDirection 
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov ax, [bx]
         sub ax, 960
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov [bx], ax
@@ -306,52 +362,42 @@ section .text
         jmp ghostMoveRight
 
     ghostBeforeUp:
-        mov bx, ghostIndex
         mov bx, ghostWantGoLeft
         add bx, word [ghostIndex]
         mov byte [bx], 0
-        mov bx, ghostIndex
         mov bx, ghostWantGoRight
         add bx, word [ghostIndex]
         mov byte [bx], 0
-        mov bx, ghostIndex
         mov bx, ghostWantGoUp
         add bx, word [ghostIndex]
         mov byte [bx], 1
-        mov bx, ghostIndex
         mov bx, ghostWantGoDown
         add bx, word [ghostIndex]
         mov byte [bx], 0
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov ax, [bx]
         sub ax, 320
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov [bx], ax
         call collTest 
         cmp al, 0x10            
         je ghostActualDirection 
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov ax, [bx]
         add ax, 9
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov [bx], ax
         call collTest 
         cmp al, 0x10            
         je ghostActualDirection
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov ax, [bx]
         sub ax, 3
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov [bx], ax
@@ -361,52 +407,42 @@ section .text
         jmp ghostMoveUp
 
     ghostBeforeDown:
-        mov bx, ghostIndex
         mov bx, ghostWantGoLeft
         add bx, word [ghostIndex]
         mov byte [bx], 0
-        mov bx, ghostIndex
         mov bx, ghostWantGoRight
         add bx, word [ghostIndex]
         mov byte [bx], 0
-        mov bx, ghostIndex
         mov bx, ghostWantGoUp
         add bx, word [ghostIndex]
         mov byte [bx], 0
-        mov bx, ghostIndex
         mov bx, ghostWantGoDown
         add bx, word [ghostIndex]
         mov byte [bx], 1
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov ax, [bx]
         add ax, 3200
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov [bx], ax
         call collTest
         cmp al, 0x10            
         je ghostActualDirection  
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov ax, [bx]
         add ax, 9
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov [bx], ax
         call collTest 
         cmp al, 0x10            
         je ghostActualDirection 
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov ax, [bx]
         sub ax, 3
-        mov bx, ghostIndex
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov [bx], ax
@@ -420,22 +456,18 @@ section .text
 ; PACMAN MOVEMENTS -----------------------------------------------------
     ; CHECK WANTED MOVEMENT --------------
     ghostWantGoDirection:            ; test wich direction he wants to go
-        mov bx, ghostIndex
         mov bx, ghostWantGoLeft
         add bx, word [ghostIndex]
         cmp byte [bx], 1
         je ghostBeforeLeft
-        mov bx, ghostIndex
         mov bx, ghostWantGoRight
         add bx, word [ghostIndex]
         cmp byte [bx], 1
         je ghostBeforeRight
-        mov bx, ghostIndex
         mov bx, ghostWantGoUp
         add bx, word [ghostIndex]
         cmp byte [bx], 1
         je ghostBeforeUp
-        mov bx, ghostIndex
         mov bx, ghostWantGoDown
         add bx, word [ghostIndex]
         cmp byte [bx], 1
@@ -444,22 +476,18 @@ section .text
     ; END CHECK WANTED MOVEMENT ----------
     ; ACTUAL DIRECTION --------------------
     ghostActualDirection:        ; test wich direction he is going
-        mov bx, ghostIndex
         mov bx, ghostGoLeft
         add bx, word [ghostIndex]
         cmp byte [bx], 1
         je ghostMoveLeft
-        mov bx, ghostIndex
         mov bx, ghostGoRight
         add bx, word [ghostIndex]
         cmp byte [bx], 1
         je ghostMoveRight
-        mov bx, ghostIndex
         mov bx, ghostGoUp
         add bx, word [ghostIndex]
         cmp byte [bx], 1
         je ghostMoveUp
-        mov bx, ghostIndex
         mov bx, ghostGoDown
         add bx, word [ghostIndex]
         cmp byte [bx], 1
@@ -468,19 +496,15 @@ section .text
     ; END ACTUAL DIRECTION ----------------
     ; ACTUAL MOVEMENT ---------------------
     ghostMoveLeft:              
-        mov bx, ghostIndex
         mov bx, ghostGoLeft
         add bx, word [ghostIndex]
         mov byte [bx], 1        ; use to save wich direction he is going
-        mov bx, ghostIndex
         mov bx, ghostGoRight
         add bx, word [ghostIndex]
         mov byte [bx], 0       ;
-        mov bx, ghostIndex
         mov bx, ghostGoUp
         add bx, word [ghostIndex]
         mov byte [bx], 0          ;
-        mov bx, ghostIndex
         mov bx, ghostGoDown
         add bx, word [ghostIndex]
         mov byte [bx], 0        ;
@@ -490,19 +514,15 @@ section .text
         jmp ghostAnimLeft
 
     ghostMoveRight:
-        mov bx, ghostIndex
         mov bx, ghostGoLeft
         add bx, word [ghostIndex]
         mov byte [bx], 0 
-        mov bx, ghostIndex
         mov bx, ghostGoRight
         add bx, word [ghostIndex]
         mov byte [bx], 1
-        mov bx, ghostIndex
         mov bx, ghostGoUp
         add bx, word [ghostIndex]
         mov byte [bx], 0   
-        mov bx, ghostIndex
         mov bx, ghostGoDown
         add bx, word [ghostIndex]
         mov byte [bx], 0       
@@ -512,19 +532,15 @@ section .text
         jmp ghostAnimRight
     
     ghostMoveUp:
-        mov bx, ghostIndex
         mov bx, ghostGoLeft
         add bx, word [ghostIndex]
         mov byte [bx], 0 
-        mov bx, ghostIndex
         mov bx, ghostGoRight
         add bx, word [ghostIndex]
         mov byte [bx], 0
-        mov bx, ghostIndex
         mov bx, ghostGoUp
         add bx, word [ghostIndex]
         mov byte [bx], 1   
-        mov bx, ghostIndex
         mov bx, ghostGoDown
         add bx, word [ghostIndex]
         mov byte [bx], 0         
@@ -534,19 +550,15 @@ section .text
         jmp ghostAnimUp
 
     ghostMoveDown:
-        mov bx, ghostIndex
         mov bx, ghostGoLeft
         add bx, word [ghostIndex]
         mov byte [bx], 0 
-        mov bx, ghostIndex
         mov bx, ghostGoRight
         add bx, word [ghostIndex]
         mov byte [bx], 0
-        mov bx, ghostIndex
         mov bx, ghostGoUp
         add bx, word [ghostIndex]
         mov byte [bx], 0   
-        mov bx, ghostIndex
         mov bx, ghostGoDown
         add bx, word [ghostIndex]
         mov byte [bx], 1        
@@ -557,7 +569,6 @@ section .text
 
     ghostTpRight:
         call clearGhost
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov word [bx], 26473
@@ -565,7 +576,6 @@ section .text
 
     ghostTpLeft:
         call clearGhost
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov word [bx], 26317
@@ -577,24 +587,19 @@ section .text
     ; CHOICE ------------------------------
     ghostAnimLeft:               ; choose the right sprite to make the animation
          
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         sub word [bx], 1
-        mov bx, ghostIndex
         inc byte [ghostFrame + ecx*2]
 
-        mov bx, ghostIndex
         mov bx, ghostFrame
         add bx, word [ghostIndex]
         cmp byte [bx], 4
         jl ghostLeft2
-        mov bx, ghostIndex
         mov bx, ghostFrame
         add bx, word [ghostIndex]
         cmp byte [bx], 8
         jl ghostLeft1
-        mov bx, ghostIndex
         mov bx, ghostFrame
         add bx, word [ghostIndex]
         mov byte [bx], 0
@@ -602,24 +607,19 @@ section .text
 
     ghostAnimRight:
          
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         add word [bx], 1
-        mov bx, ghostIndex
         inc byte [ghostFrame + ecx*2]
 
-        mov bx, ghostIndex
         mov bx, ghostFrame
         add bx, word [ghostIndex]
         cmp byte [bx], 4
         jl ghostRight2
-        mov bx, ghostIndex
         mov bx, ghostFrame
         add bx, word [ghostIndex]
         cmp byte [bx], 8
         jl ghostRight1
-        mov bx, ghostIndex
         mov bx, ghostFrame
         add bx, word [ghostIndex]
         mov byte [bx], 0
@@ -627,24 +627,19 @@ section .text
 
     ghostAnimUp:
          
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         sub word [bx], 320
-        mov bx, ghostIndex
         inc byte [ghostFrame + ecx*2]
 
-        mov bx, ghostIndex
         mov bx, ghostFrame
         add bx, word [ghostIndex]
         cmp byte [bx], 4
         jl ghostUp2
-        mov bx, ghostIndex
         mov bx, ghostFrame
         add bx, word [ghostIndex]
         cmp byte [bx], 8
         jl ghostUp1
-        mov bx, ghostIndex
         mov bx, ghostFrame
         add bx, word [ghostIndex]
         mov byte [bx], 0
@@ -652,24 +647,19 @@ section .text
 
     ghostAnimDown:
          
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         add word [bx], 320
-        mov bx, ghostIndex
         inc byte [ghostFrame + ecx*2]
 
-        mov bx, ghostIndex
         mov bx, ghostFrame
         add bx, word [ghostIndex]
         cmp byte [bx], 4
         jl ghostDown2
-        mov bx, ghostIndex
         mov bx, ghostFrame
         add bx, word [ghostIndex]
         cmp byte [bx], 8
         jl ghostDown1
-        mov bx, ghostIndex
         mov bx, ghostFrame
         add bx, word [ghostIndex]
         mov byte [bx], 0
@@ -683,101 +673,92 @@ section .text
         mov ax, [ghostIndex]
         add bx, ax
         mov si, [bx]
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov di, [bx]
         call drawGhosts
-        jmp keyCheck
+        jmp nextGhost
 
     ghostLeft2:
         mov bx, ghost2L
         mov ax, [ghostIndex]
         add bx, ax
         mov si, [bx]
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov di, [bx]
         call drawGhosts
-        jmp keyCheck
+        jmp nextGhost
 
     ghostRight1:
         mov bx, ghost1R
         mov ax, [ghostIndex]
         add bx, ax
         mov si, [bx]
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov di, [bx]
         call drawGhosts
-        jmp keyCheck
+        jmp nextGhost
 
     ghostRight2:
         mov bx, ghost2R
         mov ax, [ghostIndex]
         add bx, ax
         mov si, [bx]
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov di, [bx]
         call drawGhosts
-        jmp keyCheck
+        jmp nextGhost
 
     ghostUp1:
         mov bx, ghost1U
         mov ax, [ghostIndex]
         add bx, ax
         mov si, [bx]
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov di, [bx]
         call drawGhosts
-        jmp keyCheck
+        jmp nextGhost
 
     ghostUp2:
         mov bx, ghost2U
         mov ax, [ghostIndex]
         add bx, ax
         mov si, [bx]
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov di, [bx]
         call drawGhosts
-        jmp keyCheck
+        jmp nextGhost
 
     ghostDown1:
         mov bx, ghost1D
         mov ax, [ghostIndex]
         add bx, ax
         mov si, [bx]
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov di, [bx]
         call drawGhosts
-        jmp keyCheck
+        jmp nextGhost
 
     ghostDown2:
         mov bx, ghost2D
         add bx, word [ghostIndex]
         mov si, [bx]
 
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov di, [bx]
 
         call drawGhosts
-        jmp keyCheck
+        jmp nextGhost
     ; END SET ANIMATIONS ------------------
     clearGhost:
         mov si, clear
-        mov bx, ghostIndex
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov di, [bx]
@@ -795,6 +776,11 @@ section .text
             dec dx
             jnz eachLineGhosts
         ret
+
+%include "ghostAI.inc"
+
+
+; I'm keeping those regex here jsut in case.
 
 ;(\w+ \w+), \[(\w+) \+ ecx\*2\]
 ;

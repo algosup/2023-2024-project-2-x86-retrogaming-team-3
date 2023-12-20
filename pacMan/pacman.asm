@@ -7,6 +7,11 @@ section .data
 
     started db 0
 
+    %define blinkyIndex 0
+    %define pinkyIndex 2
+    %define inkyIndex 4
+    %define clydeIndex 6
+
 section .text
     mov ah, 00h     ;--------------------------------
     mov al, 13h     ; set screen 320x200 256colours
@@ -21,20 +26,16 @@ section .text
             call initLives
             call initPac
 
-            mov ax, 0
-            mov [ghostIndex], ax
+            mov word [ghostIndex], blinkyIndex
             call initGhost
 
-            mov ax, 2
-            mov [ghostIndex], ax
+            mov word [ghostIndex], pinkyIndex
             call initGhost
 
-            mov ax, 4
-            mov [ghostIndex], ax
+            mov word [ghostIndex], inkyIndex
             call initGhost
 
-            mov ax, 6
-            mov [ghostIndex], ax
+            mov word [ghostIndex], clydeIndex
             call initGhost
 
             call readyDraw
