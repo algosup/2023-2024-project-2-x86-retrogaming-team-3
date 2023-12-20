@@ -1,6 +1,15 @@
 section .data
 %define PACMAN_SIZE 10
 
+    nbgumeated dw 0
+
+    xPos dw 0
+    yPos dw 0
+    xTilePos dw 0
+    yTilePos dw 0
+    gumtilepos dw 0
+    gumpos dw 0
+
     gotlife db 0
 
     initposition dw 43675
@@ -373,7 +382,7 @@ section .text
             call waitLoop
             dec dx
             jnz waitBeforeContinue
-        call resetDirection
+        call resetVariables
         mov byte [nbdeathanim], 12
         mov byte [enterpressed], 0
         call clearLives
@@ -381,7 +390,7 @@ section .text
         jz gameOver
         jmp initGame
 
-    resetDirection:
+    resetVariables:
         mov byte [goleft], 0 
         mov byte [goright], 0
         mov byte [goup], 0   
@@ -390,6 +399,7 @@ section .text
         mov byte [wantgoright], 0
         mov byte [wantgoup], 0
         mov byte [wantgodown], 0
+        mov byte [gotlife], 0
         ret
     ; END PACMAN DIE ---------------------
 ; END PACMAN MOVEMENTS -------------------------------------------------
@@ -434,14 +444,31 @@ section .text
     eatGum:
         call resetRegisters
         mov ax, [gumpos]
-        mov cx, 320
-        div cx
+        mov bx, 320
+        div bx
         mov [xPos], dx
         mov [yPos], ax
-
+        call tilePos
+        call clearTile
+        mov bx, maze
+        add bx, [gumtilepos]
+        mov al, [bx]
+        cmp al, 3
+        je superGumEated
+        mov bx, [gumtilepos]
+        mov byte [maze+bx], 0
         add word [scorenb1], 1
         cmp word [scorenb1], 10
         je nextNb1
+        call scoreNumberWriting
+        jmp afterGumEated
+
+    superGumEated:
+        mov bx, [gumtilepos]
+        mov byte [maze+bx], 0
+        add word [scorenb1], 5
+        cmp word [scorenb1], 10
+        jge nextNb1
         call scoreNumberWriting
         jmp afterGumEated
 
@@ -488,6 +515,9 @@ section .text
         jmp afterGumEated
 
     afterGumEated:
+        add word [nbgumeated], 1
+        cmp word [nbgumeated], 246
+        je nextLevel
         cmp byte [goleft], 1
         je continueMoveLeft
         cmp byte [goright], 1
@@ -497,12 +527,63 @@ section .text
         cmp byte [godown], 1
         je continueMoveDown
         jmp actualDirection
+
+    tilePos:
+        xor dx, dx
+        mov ax, [xPos]
+        sub ax, 76
+        mov bx, 6
+        div bx
+        mov [xTilePos], ax
+        call resetRegisters
+        mov ax, [yPos]
+        mov bx, 6
+        div bx
+        mov [yTilePos], ax
+        call resetRegisters
+        mov ax, [yTilePos]
+        mov bx, 28
+        mul bx
+        mov bx, [xTilePos]
+        add ax, bx
+        mov [gumtilepos], ax
+        ret
+
+    clearTile:
+        call resetRegisters
+        mov ax, [yTilePos]
+        mov bx, 6
+        mul bx
+        mov bx, 320
+        mul bx
+        mov [yPos], ax
+        call resetRegisters
+        mov ax, [xTilePos]
+        mov bx, 6
+        mul bx
+        add ax, 76
+        mov [xPos], ax
+        call resetRegisters
+        mov ax, [yPos]
+        mov bx, [xPos]
+        add ax, bx
+        xor bx, bx
+        mov di, ax
+        mov si, empty
+        mov dx, 6
+        .eachLineClearTile:
+            mov cx, 6
+            rep movsb
+            add di, 320-6
+            dec dx
+            jnz .eachLineClearTile
+        ret
 ;END EAT GUM -----------------------------------------------------------
 
 ; PACMAN ANIMATIONS ----------------------------------------------------
     ; CHOICE ------------------------------
     animLeft:               ; choose the right sprite to make the animation
-        sub word [position], 1
+        sub word [position], 1 
         inc byte [frame]
         cmp byte [frame], 3
         jl pacSphere
@@ -608,3 +689,26 @@ section .text
         call drawPac
         ret
 ; END PACMAN ANIMATIONS ------------------------------------------------
+
+; NEXT LEVEL -----------------------------------------------------------
+    nextLevel:
+        mov dx, 50
+        .waitBeforeNextLevel:
+            mov cx, 50000
+            call waitLoop
+            dec dx
+            jnz .waitBeforeNextLevel
+        mov byte [levelstarted], 0
+        mov word [nbgumeated], 0
+        mov byte [goleft], 0 
+        mov byte [goright], 0
+        mov byte [goup], 0   
+        mov byte [godown], 0 
+        mov byte [wantgoleft], 0
+        mov byte [wantgoright], 0
+        mov byte [wantgoup], 0
+        mov byte [wantgodown], 0
+        mov byte [enterpressed], 0
+        jmp initGame
+
+; END NEXT LEVEL -------------------------------------------------------

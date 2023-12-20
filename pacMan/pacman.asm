@@ -19,10 +19,9 @@ section .text
 
     preStart:
     call clearScreen
-    call initMaze
 
     initGame:       ; initialise the game
-        jmp Maze
+        call initMaze
         initAll:
             call initFruits
             call initLives
