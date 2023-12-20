@@ -25,6 +25,7 @@ section .text
             call initFruits
             call initLives
             call initPac
+            mov word [frameFromStart], 0
 
             mov word [ghostIndex], blinkyIndex
             call initGhost

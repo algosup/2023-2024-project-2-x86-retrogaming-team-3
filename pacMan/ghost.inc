@@ -2,8 +2,6 @@ section .data
     ;All Ghost Data
         frameFromStart dw 0
 
-        testVariable dw 0
-
         %define penDoor 20635
 
         ghostInitposition dw 20635
