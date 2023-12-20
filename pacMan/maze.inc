@@ -74,17 +74,19 @@ section .data
 
     levelstarted db 0
 
+    totalnbtile dw 0
+
 section .text
 ; MAZE -------------------------------------------------------------------
     ; DRAW WALL ---------------------------
     drawWalls:     ; draw 1 tile
         mov dx, WALL_SIZE               ; number of row of a sprite
-        eachLineMaze:   
+        .eachLineMaze:   
             mov cx, WALL_SIZE           ; number of column of a sprite
             rep movsb           ; draw the sprite
             add di, 320-WALL_SIZE       ; go to the next row
             dec dx              ; count the number of rows drawn
-            jnz eachLineMaze    ; if the number of rows drawn is not zero, go to draw the next line
+            jnz .eachLineMaze    ; if the number of rows drawn is not zero, go to draw the next line
         jmp nextColumn          ; call the function to go to the next tile
 
     nextColumn:
@@ -113,30 +115,27 @@ section .text
     ; END DRAW WALL ----------------------
     ; WALL CHOICE ------------------------
     initMaze:
-        mov ax, [initColumn]
-        mov word [Column], ax
-        mov ax, [initRow]
-        mov word [Row], ax
-        mov ax, [initnbpixel]
-        mov word [nbpixel], ax
+        call initTileVariables
         cmp byte [levelstarted], 1
         je Maze
-        mov bx, 0
-        mov ax, mazesave            ; put the maze array to a register to follow the maze pattern
+        mov word [totalnbtile], 0
         eachTile:
-            cmp ax, 2
+            mov bx, mazesave            ; put the maze array to a register to follow the maze pattern
+            add bx, [totalnbtile]
+            mov al, [bx]
+            cmp al, 2
             je setGum
-            cmp ax, 3
+            cmp al, 3
             je setSuperGum
-            inc ax
-            inc bx
-            cmp bx, 868
+            inc word [totalnbtile]
+            cmp word [totalnbtile], 867
             jne eachTile
         mov bx, mazesave
         mov di, 76
         mov byte [levelstarted], 1
         jmp wallchoice
     Maze:
+        call initTileVariables
         mov di, 76             ; set the position
         mov bx, maze
         wallchoice:
@@ -372,14 +371,23 @@ section .text
         jmp drawWalls
     ; END SET WALL ------------------
     setGum:
+        mov bx, [totalnbtile]
         mov byte [maze+bx], 2
-        inc ax
-        inc bx
+        inc word [totalnbtile]
         jmp eachTile
 
     setSuperGum:
+        mov bx, [totalnbtile]
         mov byte [maze+bx], 3
-        inc ax
-        inc bx
+        inc word [totalnbtile]
         jmp eachTile
+
+    initTileVariables: 
+        mov ax, [initColumn]
+        mov word [Column], ax
+        mov ax, [initRow]
+        mov word [Row], ax
+        mov ax, [initnbpixel]
+        mov word [nbpixel], ax
+        ret
 ; END MAZE ------------------------------------------------------------
