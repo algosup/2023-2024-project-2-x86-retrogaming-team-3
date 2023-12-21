@@ -7,32 +7,46 @@ section .data
 
     started db 0
 
-    blinkyPos dw 20635
-    inkyPos dw 26704 
-    pinkyPos dw 26715
-    clydePos dw 26726
+    %define blinkyIndex 0
+    %define pinkyIndex 2
+    %define inkyIndex 4
+    %define clydeIndex 6
 
 section .text
     mov ah, 00h     ;--------------------------------
     mov al, 13h     ; set screen 320x200 256colours
     int 10h         ;--------------------------------
 
+    preStart:
     call clearScreen
 
     initGame:       ; initialise the game
-        jmp Maze
+        jmp initMaze
         initAll:
             call initFruits
             call initLives
             call initPac
-            call initBlinky
-            call initInky
-            call initPinky
-            call initClyde
+            mov word [frameFromStart], 0
+
+            mov word [ghostIndex], blinkyIndex
+            call initGhost
+
+            mov word [ghostIndex], pinkyIndex
+            call initGhost
+
+            mov word [ghostIndex], inkyIndex
+            call initGhost
+
+            mov word [ghostIndex], clydeIndex
+            call initGhost
+
             call readyDraw
+            call initScore
+            call initLevelNb
+            jmp selectFruit
+            isGameStarted:
             cmp byte [started], 1
             je keyBottomLeft
-            call initScore
             jmp extraUI
         start:          ; press enter to play the game
             mov ah, 01h 
@@ -56,43 +70,6 @@ section .text
         rep stosb
         ret
 ; END CLEAR SCREEN -----------------------------------------------------
-
-; INITIALISATION GHOST -------------------------------------------------
-    initBlinky:
-        mov si, blinky1L
-        mov di, [blinkyPos]
-        call drawGhosts
-        ret
-
-    initInky:
-        mov si, inky1U
-        mov di, [inkyPos]
-        call drawGhosts
-        ret
-
-    initPinky:
-        mov si, pinky1D
-        mov di, [pinkyPos]
-        call drawGhosts
-        ret
-
-    initClyde:
-        mov si, clyde1U
-        mov di, [clydePos]
-        call drawGhosts
-        ret
-
-    drawGhosts:
-    mov dx, 10
-        eachLineGhosts:
-            mov cx, 10
-            rep movsb
-            add di, 320-10 
-            dec dx
-            jnz eachLineGhosts
-        ret
-; END INITIALISATION GHOSTS --------------------------------------------
-
     waitLoop:
         loop waitLoop
         ret
@@ -102,8 +79,6 @@ section .text
         xor bx, bx
         xor cx, cx
         xor dx, dx
-        xor si, si
-        xor di, di
         ret
 
     end:
@@ -112,3 +87,5 @@ section .text
 %include "maze.inc"
 %include "UI.inc"
 %include "pacMovement.inc"
+%include "ghost.inc"
+%include "ghostAI.inc"
