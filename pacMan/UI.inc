@@ -13,6 +13,10 @@ section .data
     scorenb5 dw 0
     scorenb6 dw 0
 
+    levelnb1 dw 1
+    levelnb2 dw 0
+    levelnb3 dw 0
+
     displaynumber dw font0
                   dw font1
                   dw font2
@@ -24,8 +28,27 @@ section .data
                   dw font8
                   dw font9
 
+    displayfruit dw 0
+                 dw cherry
+                 dw strawberry
+                 dw orange
+                 dw orange
+                 dw apple
+                 dw apple
+                 dw melon
+                 dw melon
+                 dw galaxian
+                 dw galaxian
+                 dw bell
+                 dw bell
+    
+    selectfruit dw 0
+
     enterpressed db 0
     letterpos dw 0
+
+    fruitposUI dw 0
+    selectfruitpos dw 0
 
 section .text
 ; READY ---------------------------------------------------------------
@@ -191,18 +214,19 @@ section .text
     initFruits:
         call drawFruitTitleBox
         call drawFruitsWriting
+        call drawFruits
         ret
 
     drawFruitTitleBox:
         mov di, 8571
         mov si, fruitTitleBox
         mov dx, 10
-        .eachLineFruit:
+        .eachLineFruitBox:
             mov cx, 39
             rep movsb
             add di, 320-39
             dec dx
-            jnz .eachLineFruit
+            jnz .eachLineFruitBox
         ret
 
     drawFruitsWriting:
@@ -219,8 +243,244 @@ section .text
         add word [letterpos], 5
         call drawDblDot
         ret
+
+    drawFruits:
+        mov di, [selectfruitpos]
+        mov si, clearselectfruitBox
+        mov dx, 14
+        .eachLineSelect:
+            mov cx, 14
+            rep movsb
+            add di, 320-14
+            dec dx
+            jnz .eachLineSelect
+        mov word [fruitposUI], 13373
+        mov di, [fruitposUI]
+        mov si, cherry
+        call drawFruit
+        add word [fruitposUI], 14
+        mov di, [fruitposUI]
+        mov si, strawberry
+        call drawFruit
+        add word [fruitposUI], 14
+        mov di, [fruitposUI]
+        mov si, orange
+        call drawFruit
+        add word [fruitposUI], 4452
+        mov di, [fruitposUI]
+        mov si, apple
+        call drawFruit
+        add word [fruitposUI], 14
+        mov di, [fruitposUI]
+        mov si, melon
+        call drawFruit
+        add word [fruitposUI], 14
+        mov di, [fruitposUI]
+        mov si, galaxian
+        call drawFruit
+        add word [fruitposUI], 4452
+        mov di, [fruitposUI]
+        mov si, bell
+        call drawFruit
+        add word [fruitposUI], 14
+        mov di, [fruitposUI]
+        mov si, key
+        call drawFruit
+        ret
+
+    selectFruit:
+        mov si, selectfruitBox
+        call chooseFruit
+        cmp word [selectfruit], 1
+        je selectCherry
+        cmp word [selectfruit], 2
+        je selectStrawberry
+        cmp word [selectfruit], 4
+        jle selectOrange
+        cmp word [selectfruit], 6
+        jle selectApple
+        cmp word [selectfruit], 8
+        jle selectMelon
+        cmp word [selectfruit], 10
+        jle selectGalaxian
+        cmp word [selectfruit], 12
+        jle selectBell
+        cmp word [selectfruit], 13
+        jge selectKey
+
+    drawFruit:
+        mov dx, 9
+        .eachLineFruit:
+            mov cx, 9
+            rep movsb
+            add di, 320-9
+            dec dx
+            jnz .eachLineFruit
+        ret
+
+    drawSelectFruit:
+        mov di, [selectfruitpos]
+        mov dx, 14
+        .eachLineSelectFruit:
+            mov cx, 14
+            .eachPixel:
+                lodsb                   
+                cmp al, 0     
+                je .skipDraw            
+                stosb                   
+                jmp .nextPixel          
+            .skipDraw:
+                add di, 1               
+                .nextPixel:
+                loop .eachPixel         
+            add di, 320-14      
+            dec dx
+            jnz .eachLineSelectFruit
+        ret
+
+        selectCherry:
+            mov word [selectfruitpos], 12730
+            call drawSelectFruit
+            jmp isGameStarted
+
+        selectStrawberry:
+            mov word [selectfruitpos], 12744
+            call drawSelectFruit
+            jmp isGameStarted
+
+        selectOrange:
+            mov word [selectfruitpos], 12758
+            call drawSelectFruit
+            jmp isGameStarted
+
+        selectApple:
+            mov word [selectfruitpos], 17210
+            call drawSelectFruit
+            jmp isGameStarted
+
+        selectMelon:
+            mov word [selectfruitpos], 17224
+            call drawSelectFruit
+            jmp isGameStarted
+
+        selectGalaxian:
+            mov word [selectfruitpos], 17238
+            call drawSelectFruit
+            jmp isGameStarted
+
+        selectBell:
+            mov word [selectfruitpos], 21690
+            call drawSelectFruit
+            jmp isGameStarted
+
+        selectKey:
+            mov word [selectfruitpos], 21704
+            call drawSelectFruit
+            jmp isGameStarted
+
+        chooseFruit:
+            mov ax, [levelnb1]
+            mov word [selectfruit], ax
+            mov ax, [levelnb2]
+            mov cx, 10
+            mul cx
+            add word [selectfruit], ax
+            mov ax, [levelnb3]
+            mov cx, 100
+            mul cx
+            add word [selectfruit], ax
+            ret
+
+        spawnFruit:
+            call chooseFruit
+            mov ax, [selectfruit]
+            cmp ax, 13
+            jge drawKeyFruit
+            mov bx, displayfruit
+            mov cx, 2
+            mul cx
+            add bx, ax
+            mov si, [bx]
+            mov di, 32157
+            call drawFruit
+            jmp actualDirection
+
+        drawKeyFruit:
+            mov si, key
+            mov di, 32157
+            call drawFruit
+            jmp actualDirection
     ; END INITIALISATION FRUITS --------------
 ; END FRUITS -----------------------------------------------------------
+
+; LEVEL NUMBER ---------------------------------------------------------
+    initLevelNb:
+        call drawLevelTitleBox
+        call drawLevelNumberBox
+        call levelTitleWriting
+        call levelNumberWriting
+        ret
+
+    drawLevelTitleBox:
+        mov di, 42491
+        mov si, levelTitleBox
+        mov dx, 10
+        eachLineLevelTitleBox:
+            mov cx, 39
+            rep movsb
+            add di, 320-39
+            dec dx
+            jnz eachLineLevelTitleBox
+        ret
+
+    drawLevelNumberBox:
+        mov di, 46330
+        mov si, levelNbBox
+        mov dx, 10
+        eachLineLevelNumberBox:
+            mov cx, 22
+            rep movsb
+            add di, 320-22
+            dec dx
+            jnz eachLineLevelNumberBox
+        ret
+
+    levelTitleWriting:
+        mov word [letterpos], 43455
+        call drawL 
+        add word [letterpos], 6
+        call drawE 
+        add word [letterpos], 6
+        call drawV 
+        add word [letterpos], 6
+        call drawE 
+        add word [letterpos], 6
+        call drawL 
+        add word [letterpos], 5
+        call drawDblDot
+        ret
+
+    levelNumberWriting:
+        mov word [letterpos], 47305
+        mov ax, [levelnb1]
+        call setLevelNumber
+        sub word [letterpos], 6
+        mov ax, [levelnb2]
+        call setLevelNumber
+        sub word [letterpos], 6
+        mov ax, [levelnb3]
+        call setLevelNumber
+        ret
+
+    setLevelNumber:
+        mov bx, displaynumber
+        mov cx, 2
+        mul cx
+        add bx, ax
+        mov si, [bx]
+        call drawLetter
+        ret
+; END LEVEL NUMBER -----------------------------------------------------
 
 ; PAUSE ----------------------------------------------------------------
     pauseMenu:
@@ -244,6 +504,11 @@ section .text
 
 ; GAME OVER ------------------------------------------------------------
     gameOver: 
+        mov byte [levelstarted], 0
+        mov byte [levelnb1], 1
+        mov byte [levelnb2], 0
+        mov byte [levelnb3], 0
+        mov byte [gotlife], 0
         mov byte [started], 0
         mov word [letterpos], GET_LINEAR_CELL(133,102)
         call drawG 
@@ -288,7 +553,6 @@ section .text
             jne waitRestart
             jmp preStart
         ret
-
 ; END GAME OVER --------------------------------------------------------
 
 ; EXTRA UI -------------------------------------------------------------
@@ -420,6 +684,11 @@ section .text
 
     drawI:
         mov si, fontI
+        call drawLetter
+        ret
+
+    drawL:
+        mov si, fontL
         call drawLetter
         ret
 

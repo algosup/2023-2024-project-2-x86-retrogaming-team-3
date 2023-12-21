@@ -100,13 +100,17 @@ section .text
         cmp al, 0x57
         je verifyEatGumLeft
         cmp al, 0x28
-        je pacDead
-        cmp al, 0x3C
-        je pacDead
-        cmp al, 0x34
-        je pacDead
+        je fruitEated
         cmp al, 0x42
-        je pacDead
+        je fruitEated
+        cmp al, 0x30
+        je fruitEated
+        cmp al, 0x20
+        je fruitEated
+        cmp al, 0x2C
+        je fruitEated
+        cmp al, 0x1B
+        je fruitEated
         jmp continueMoveLeft
         
     wCollRight:
@@ -120,13 +124,17 @@ section .text
         cmp al, 0x57
         je verifyEatGumRight
         cmp al, 0x28
-        je pacDead
-        cmp al, 0x3C
-        je pacDead
-        cmp al, 0x34
-        je pacDead
+        je fruitEated
         cmp al, 0x42
-        je pacDead
+        je fruitEated
+        cmp al, 0x30
+        je fruitEated
+        cmp al, 0x20
+        je fruitEated
+        cmp al, 0x2C
+        je fruitEated
+        cmp al, 0x1B
+        je fruitEated
         jmp continueMoveRight
         
     wCollUp:
@@ -399,7 +407,6 @@ section .text
         mov byte [wantgoright], 0
         mov byte [wantgoup], 0
         mov byte [wantgodown], 0
-        mov byte [gotlife], 0
         ret
     ; END PACMAN DIE ---------------------
 ; END PACMAN MOVEMENTS -------------------------------------------------
@@ -442,6 +449,7 @@ section .text
         jmp continueMoveDown
 
     eatGum:
+        add word [nbgumeated], 1
         call resetRegisters
         mov ax, [gumpos]
         mov bx, 320
@@ -476,7 +484,7 @@ section .text
         sub word [scorenb1], 10
         add word [scorenb2], 1
         cmp word [scorenb2], 10
-        je nextNb2
+        jge nextNb2
         call scoreNumberWriting
         jmp afterGumEated
 
@@ -484,7 +492,7 @@ section .text
         sub word [scorenb2], 10
         add word [scorenb3], 1
         cmp word [scorenb3], 10
-        je nextNb3
+        jge nextNb3
         call scoreNumberWriting
         jmp afterGumEated
 
@@ -494,7 +502,7 @@ section .text
         cmp byte [gotlife], 0
         je gainlife
         cmp word [scorenb4], 10
-        je nextNb4
+        jge nextNb4
         call scoreNumberWriting
         jmp afterGumEated
 
@@ -502,7 +510,7 @@ section .text
         sub word [scorenb4], 10
         add word [scorenb5], 1
         cmp word [scorenb5], 10
-        je nextNb5
+        jge nextNb5
         call scoreNumberWriting
         jmp afterGumEated
 
@@ -510,22 +518,17 @@ section .text
         sub word [scorenb5], 10
         add word [scorenb6], 1
         cmp word [scorenb6], 10
-        je end
+        jge end
         call scoreNumberWriting
         jmp afterGumEated
 
     afterGumEated:
-        add word [nbgumeated], 1
+        cmp word [nbgumeated], 70
+        je spawnFruit
+        cmp word [nbgumeated], 170
+        je spawnFruit
         cmp word [nbgumeated], 246
         je nextLevel
-        cmp byte [goleft], 1
-        je continueMoveLeft
-        cmp byte [goright], 1
-        je continueMoveRight
-        cmp byte [goup], 1
-        je continueMoveUp
-        cmp byte [godown], 1
-        je continueMoveDown
         jmp actualDirection
 
     tilePos:
@@ -579,7 +582,100 @@ section .text
             jnz .eachLineClearTile
         ret
 ;END EAT GUM -----------------------------------------------------------
+    fruitEated:
+        call chooseFruit
+        cmp word [selectfruit], 1
+        je eatCherry
+        cmp word [selectfruit], 2
+        je eatStrawberry
+        cmp word [selectfruit], 4
+        jle eatOrange
+        cmp word [selectfruit], 6
+        jle eatApple
+        cmp word [selectfruit], 8
+        jle eatMelon
+        cmp word [selectfruit], 10
+        jle eatGalaxian
+        cmp word [selectfruit], 12
+        jle eatBell
+        cmp word [selectfruit], 13
+        jge eatKey
 
+    eatCherry:
+        call clearFruit
+        add word [scorenb2], 1
+        cmp word [scorenb2], 10
+        jge nextNb2
+        call scoreNumberWriting
+        jmp actualDirection
+
+    eatStrawberry:
+        call clearFruit
+        add word [scorenb2], 3
+        cmp word [scorenb2], 10
+        jge nextNb2
+        call scoreNumberWriting
+        jmp actualDirection
+
+    eatOrange:
+        call clearFruit
+        add word [scorenb2], 5
+        cmp word [scorenb2], 10
+        jge nextNb2
+        call scoreNumberWriting
+        jmp actualDirection
+
+    eatApple:
+        call clearFruit
+        add word [scorenb2], 7
+        cmp word [scorenb2], 10
+        jge nextNb2
+        call scoreNumberWriting
+        jmp actualDirection
+    
+    eatMelon:
+        call clearFruit
+        add word [scorenb3], 1
+        cmp word [scorenb3], 10
+        jge nextNb3
+        call scoreNumberWriting
+        jmp actualDirection
+
+    eatGalaxian:
+        call clearFruit
+        add word [scorenb3], 2
+        cmp word [scorenb3], 10
+        jge nextNb3
+        call scoreNumberWriting
+        jmp actualDirection
+
+    eatBell:
+        call clearFruit
+        add word [scorenb3], 3
+        cmp word [scorenb3], 10
+        jge nextNb3
+        call scoreNumberWriting
+        jmp actualDirection
+
+    eatKey:
+        call clearFruit
+        add word [scorenb3], 5
+        cmp word [scorenb3], 10
+        jge nextNb3
+        call scoreNumberWriting
+        jmp actualDirection
+
+    clearFruit:
+        mov di, 31837
+        mov si, clear
+        mov dx, 10
+        .eachLineClearFruit:
+            mov cx, 10
+            rep movsb
+            add di, 320-10
+            dec dx
+            jnz .eachLineClearFruit
+        ret
 ; PACMAN ANIMATIONS ----------------------------------------------------
     ; CHOICE ------------------------------
     animLeft:               ; choose the right sprite to make the animation
@@ -698,6 +794,7 @@ section .text
             call waitLoop
             dec dx
             jnz .waitBeforeNextLevel
+        call clearPac
         mov byte [levelstarted], 0
         mov word [nbgumeated], 0
         mov byte [goleft], 0 
@@ -709,6 +806,21 @@ section .text
         mov byte [wantgoup], 0
         mov byte [wantgodown], 0
         mov byte [enterpressed], 0
+    nextLevelNb1:
+        add word [levelnb1], 1
+        cmp word [levelnb1], 10
+        je nextLevelNb2
         jmp initGame
-
+    nextLevelNb2:
+        sub word [levelnb1], 10
+        add word [levelnb2], 1
+        cmp word [levelnb2], 10
+        je nextLevelNb3
+        jmp initGame
+    nextLevelNb3:
+        sub word [levelnb2], 10
+        add word [levelnb3], 1
+        cmp word [levelnb3], 10
+        je end
+        jmp initGame
 ; END NEXT LEVEL -------------------------------------------------------

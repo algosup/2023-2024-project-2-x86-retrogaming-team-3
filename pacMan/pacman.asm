@@ -21,7 +21,7 @@ section .text
     call clearScreen
 
     initGame:       ; initialise the game
-        call initMaze
+        jmp initMaze
         initAll:
             call initFruits
             call initLives
@@ -31,9 +31,12 @@ section .text
             call initPinky
             call initClyde
             call readyDraw
+            call initScore
+            call initLevelNb
+            jmp selectFruit
+            isGameStarted:
             cmp byte [started], 1
             je keyBottomLeft
-            call initScore
             jmp extraUI
         start:          ; press enter to play the game
             mov ah, 01h 
