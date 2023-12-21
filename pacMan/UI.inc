@@ -254,7 +254,7 @@ section .text
             add di, 320-14
             dec dx
             jnz .eachLineSelect
-        mov word [fruitposUI], 13373
+        mov word [fruitposUI], 13372
         mov di, [fruitposUI]
         mov si, cherry
         call drawFruit
@@ -311,9 +311,9 @@ section .text
     drawFruit:
         mov dx, 9
         .eachLineFruit:
-            mov cx, 9
+            mov cx, 11
             rep movsb
-            add di, 320-9
+            add di, 320-11
             dec dx
             jnz .eachLineFruit
         ret
@@ -401,13 +401,13 @@ section .text
             mul cx
             add bx, ax
             mov si, [bx]
-            mov di, 32157
+            mov di, 32156
             call drawFruit
             jmp actualDirection
 
         drawKeyFruit:
             mov si, key
-            mov di, 32157
+            mov di, 32156
             call drawFruit
             jmp actualDirection
     ; END INITIALISATION FRUITS --------------

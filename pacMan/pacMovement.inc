@@ -100,16 +100,8 @@ section .text
         cmp al, 0x57
         je verifyEatGumLeft
         cmp al, 0x28
-        je fruitEated
-        cmp al, 0x42
-        je fruitEated
-        cmp al, 0x30
-        je fruitEated
-        cmp al, 0x20
-        je fruitEated
-        cmp al, 0x2C
-        je fruitEated
-        cmp al, 0x1B
+        je pacDead
+        cmp al, 0xFF
         je fruitEated
         jmp continueMoveLeft
         
@@ -124,16 +116,8 @@ section .text
         cmp al, 0x57
         je verifyEatGumRight
         cmp al, 0x28
-        je fruitEated
-        cmp al, 0x42
-        je fruitEated
-        cmp al, 0x30
-        je fruitEated
-        cmp al, 0x20
-        je fruitEated
-        cmp al, 0x2C
-        je fruitEated
-        cmp al, 0x1B
+        je pacDead
+        cmp al, 0xFF
         je fruitEated
         jmp continueMoveRight
         
@@ -666,13 +650,13 @@ section .text
         jmp actualDirection
 
     clearFruit:
-        mov di, 31837
-        mov si, clear
+        mov di, 31836
+        mov si, clearfruit
         mov dx, 10
         .eachLineClearFruit:
-            mov cx, 10
+            mov cx, 11
             rep movsb
-            add di, 320-10
+            add di, 320-11
             dec dx
             jnz .eachLineClearFruit
         ret
