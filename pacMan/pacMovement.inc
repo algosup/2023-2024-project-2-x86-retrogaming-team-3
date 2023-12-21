@@ -969,15 +969,19 @@ section .text
         mov word [ghostIndex], blinkyIndex
         call resetFrame
         call clearGhost
+        call resetFrightMode
         mov word [ghostIndex], inkyIndex
         call resetFrame
         call clearGhost
+        call resetFrightMode
         mov word [ghostIndex], pinkyIndex
         call resetFrame
         call clearGhost
+        call resetFrightMode
         mov word [ghostIndex], clydeIndex
         call resetFrame
         call clearGhost
+        call resetFrightMode
         mov byte [nbeatedghosts], 1
         mov word [delayforwaitloop], 1
         mov byte [levelstarted], 0
