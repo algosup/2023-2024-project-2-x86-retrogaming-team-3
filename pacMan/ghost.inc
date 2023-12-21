@@ -306,10 +306,6 @@ section .text
         cmp al, 0x10            
         je ghostActualDirection
 
-        mov bx, lastTurn
-        add bx, word [ghostIndex]
-        mov word [bx], 1
-
         jmp ghostMoveLeft
 
     ghostBeforeRight:
@@ -355,10 +351,6 @@ section .text
         call collTest 
         cmp al, 0x10            
         je ghostActualDirection  
-
-        mov bx, lastTurn
-        add bx, word [ghostIndex]
-        mov word [bx], 1
 
         jmp ghostMoveRight
 
@@ -406,10 +398,6 @@ section .text
         cmp al, 0x10            
         je ghostActualDirection
 
-        mov bx, lastTurn
-        add bx, word [ghostIndex]
-        mov word [bx], 1
-
         jmp ghostMoveUp
 
     ghostBeforeDown:
@@ -455,10 +443,6 @@ section .text
         call collTest
         cmp al, 0x10            
         je ghostActualDirection
-
-        mov bx, lastTurn
-        add bx, word [ghostIndex]
-        mov word [bx], 1
 
         jmp ghostMoveDown
     ; END COMPLEX -----------------------
@@ -774,7 +758,6 @@ section .text
         add bx, word [ghostIndex]
         mov di, [bx]
         call drawGhosts
-         
         ret
 ; END PACMAN ANIMATIONS ------------------------------------------------
 

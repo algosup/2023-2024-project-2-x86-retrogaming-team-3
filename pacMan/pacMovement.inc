@@ -44,18 +44,21 @@ section .data
     
     nbdeathanim db 12
 
+    delayforwaitloop dw 1
+
     waitframedeathanim db 4
+
 section .text
     pacmanMovement:
         keyCheck:
-            ;mov cx, 30000
-            ;call waitLoop
+            mov cx, [delayforwaitloop]
+            call waitLoop
             mov ah, 01h         ; is a key pressed ?
             int 16h
             jz wantGoDirection   ; if no, skip
             mov ah, 00h 
             int 16h         ; read the key
-            cmp ah, 01h
+            cmp ah, 01h     ; Escape key
             je pauseMenu
             cmp ah, 4Bh     ; left arrow key 
             je beforeLeft
@@ -356,6 +359,18 @@ section .text
             call waitLoop
             dec dx
             jnz waitBeforeDie
+        mov word [ghostIndex], blinkyIndex
+        call resetFrame
+        call clearGhost
+        mov word [ghostIndex], inkyIndex
+        call resetFrame
+        call clearGhost
+        mov word [ghostIndex], pinkyIndex
+        call resetFrame
+        call clearGhost
+        mov word [ghostIndex], clydeIndex
+        call resetFrame
+        call clearGhost
         mov bx, pacmandeath
         mov ax, 2
     deathAnim:
@@ -434,6 +449,7 @@ section .text
         jmp continueMoveDown
 
     eatGum:
+        add word [delayforwaitloop], 120
         add word [nbgumeated], 1
         call resetRegisters
         mov ax, [gumpos]
@@ -663,7 +679,7 @@ section .text
         ret
 ; PACMAN ANIMATIONS ----------------------------------------------------
     ; CHOICE ------------------------------
-    animLeft:               ; choose the right sprite to make the animation
+    animLeft:                   ; choose the right sprite to make the animation
         sub word [position], 1 
         inc byte [frame]
         cmp byte [frame], 3
@@ -789,7 +805,21 @@ section .text
             dec dx
             jnz .waitBeforeNextLevel
         call clearPac
+        mov word [ghostIndex], blinkyIndex
+        call resetFrame
+        call clearGhost
+        mov word [ghostIndex], inkyIndex
+        call resetFrame
+        call clearGhost
+        mov word [ghostIndex], pinkyIndex
+        call resetFrame
+        call clearGhost
+        mov word [ghostIndex], clydeIndex
+        call resetFrame
+        call clearGhost
+        mov word [delayforwaitloop], 1
         mov byte [levelstarted], 0
+        mov byte [levelisstarted], 0
         mov word [nbgumeated], 0
         mov byte [goleft], 0 
         mov byte [goright], 0
