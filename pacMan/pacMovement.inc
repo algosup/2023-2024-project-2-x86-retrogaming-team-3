@@ -978,6 +978,7 @@ section .text
         mov word [ghostIndex], clydeIndex
         call resetFrame
         call clearGhost
+        mov byte [nbeatedghosts], 1
         mov word [delayforwaitloop], 1
         mov byte [levelstarted], 0
         mov byte [levelisstarted], 0
