@@ -37,7 +37,7 @@ section .data
 section .text
     pacmanMovement:
         keyCheck:
-            mov cx, 15000
+            mov cx, 5000
             call waitLoop
             call waitLoop
             mov ah, 01h         ; is a key pressed ?
