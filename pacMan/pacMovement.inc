@@ -48,8 +48,8 @@ section .data
 section .text
     pacmanMovement:
         keyCheck:
-            mov cx, 60000
-            call waitLoop
+            ;mov cx, 30000
+            ;call waitLoop
             mov ah, 01h         ; is a key pressed ?
             int 16h
             jz wantGoDirection   ; if no, skip
@@ -383,6 +383,7 @@ section .text
         jmp initGame
 
     resetVariables:
+        mov byte [levelisstarted], 0
         mov byte [goleft], 0 
         mov byte [goright], 0
         mov byte [goup], 0   
@@ -722,47 +723,56 @@ section .text
     pacSphere:
         mov si, pacManStart
         call drawPac
-        jmp keyCheck
+        call incFrameFromStart
+        jmp Maze
 
     pacLeft1:
         mov si, pacManWaka1L
         call drawPac
-        jmp keyCheck
+        call incFrameFromStart
+        jmp Maze
 
     pacLeft2:
         mov si, pacManWaka2L
         call drawPac
-        jmp keyCheck
+        call incFrameFromStart
+        jmp Maze
 
     pacRight1:
         mov si, pacManWaka1R
         call drawPac
-        jmp keyCheck
+        call incFrameFromStart
+        jmp Maze
 
     pacRight2:
         mov si, pacManWaka2R
         call drawPac
-        jmp keyCheck
+        call incFrameFromStart
+        jmp Maze
 
     pacUp1:
         mov si, pacManWaka1U
         call drawPac
-        jmp keyCheck
+        call incFrameFromStart
+        jmp Maze
 
     pacUp2:
         mov si, pacManWaka2U
         call drawPac
-        jmp keyCheck
+        call incFrameFromStart
+        jmp Maze
 
     pacDown1:
         mov si, pacManWaka1D
         call drawPac
-        jmp keyCheck
+        call incFrameFromStart
+        jmp Maze
 
     pacDown2:
         mov si, pacManWaka2D
         call drawPac
-        jmp keyCheck
+        call incFrameFromStart
+        jmp Maze
     ; END SET ANIMATIONS ------------------
     clearPac:
         mov si, clear

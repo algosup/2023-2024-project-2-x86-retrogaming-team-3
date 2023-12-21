@@ -73,6 +73,7 @@ section .data
     nbpixel dw 1996
 
     levelstarted db 0
+    levelisstarted db 0
 
     totalnbtile dw 0
 
@@ -106,6 +107,8 @@ section .text
         mov [Column], ax    ;------------------------------------------------------
         cmp ax, 0           ; look if it has finished the row
         je nextRow          ; if yes, call the function for the next row of tiles
+        cmp byte [levelisstarted], 1
+        je drawOnlyGums
         jmp wallchoice
 
     nextRow:
@@ -113,13 +116,15 @@ section .text
         dec ax              ; decrement Row to count the number of drawn row
         mov [Row], ax       ;------------------------------------------------
         cmp ax, 0           ; look if it has finished the every rows
-        je initAll          ; if yes, finish
+        je levelStarted          ; if yes, finish
         mov ax, 28          ;  
         mov [Column], ax    ; setup the number of columns for the next row
         mov ax, [nbpixel] 
         mov di, ax          ; go to the next row of tile
         add ax, 1920        ; save the number of pixel to go to the next line
         mov [nbpixel], ax   ;
+        cmp byte [levelisstarted], 1
+        je drawOnlyGums
         jmp wallchoice 
     ; END DRAW WALL ----------------------
     ; WALL CHOICE ------------------------
@@ -139,7 +144,7 @@ section .text
             inc word [totalnbtile]
             cmp word [totalnbtile], 867
             jne eachTile
-        mov byte [levelstarted], 1
+        ;mov byte [levelstarted], 1
         mov bx, mazesave
         mov di, 76
         jmp wallchoice
@@ -147,6 +152,8 @@ section .text
         call initTileVariables
         mov di, 76             ; set the position
         mov bx, maze
+        cmp byte [levelisstarted], 1
+        je drawOnlyGums
         wallchoice:
             mov al, [bx]        ; look wich sprite he has to put in a tile
             cmp al, 0           ; then he call a function to draw the correct sprite
@@ -225,6 +232,15 @@ section .text
             je DrawTunnelRight
             cmp al, 43
             je DrawTunnelLeft
+
+        drawOnlyGums:
+            mov al, [bx]
+            cmp al, 2
+            je DrawGum
+            cmp al, 3
+            je DrawSuperGum
+            add di, 1920
+            jmp nextColumn
     ; END WALL CHOICE -----------------
     ; SET WALL ------------------------
     DrawGum:
@@ -401,8 +417,9 @@ section .text
         ret
 
     levelStarted:
-        cmp byte [levelStarted], 1
-        je pacmanMovement
+        cmp byte [levelisstarted], 1
+        je blinkyMovement
+        mov byte [levelisstarted], 1
         mov byte [levelstarted], 1
         jmp initAll
 ; END MAZE ------------------------------------------------------------

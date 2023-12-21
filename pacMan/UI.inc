@@ -637,7 +637,7 @@ section .text
             call drawClearLetter 
             add word [letterpos], 6
             call drawClearLetter
-            jmp actualDirection
+            jmp Maze
 
         drawEnterKey:
             mov word [letterpos], 57210
