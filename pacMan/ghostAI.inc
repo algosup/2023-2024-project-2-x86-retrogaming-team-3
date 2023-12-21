@@ -333,3 +333,21 @@ Patern4:
         add bx, word [ghostIndex]
         mov word [bx], 0
         ret
+    
+    setFrightMode:
+        mov bx, infrightmode
+        add bx, word [ghostIndex]
+        mov word [bx], 1
+        mov bx, frightmodetime
+        add bx, word [ghostIndex]
+        mov word [bx], 1
+        ret
+
+    resetFrightMode:
+        mov bx, infrightmode
+        add bx, word [ghostIndex]
+        mov word [bx], 0
+        mov bx, frightmodetime
+        add bx, word [ghostIndex]
+        mov word [bx], 1
+        ret

@@ -9,6 +9,8 @@ section .data
                           dw 26704
                           dw 26726
 
+        ghostInitpositionaftereated dw 20635
+
         ghostMoveTime dw 0 ;the time after which the ghost are moved out of the ghost pen
                       dw 20
                       dw 40
@@ -112,13 +114,30 @@ section .data
                 dw inky2D
                 dw clyde2D
 
+        infrightmode dw 0
+                     dw 0
+                     dw 0
+                     dw 0
+
+        frightmodetime dw 0
+                       dw 0
+                       dw 0
+                       dw 0
+
+        nbeatedghosts db 1
+
+        posTest dw 0
+                dw 0
+                dw 0
+                dw 0
+
 section .text
     blinkyMovement:
         mov word [ghostIndex], blinkyIndex
 
         mov bx, ghostMoveTime
         add bx, word [ghostIndex]
-
+        
         mov ax, [frameFromStart]
         cmp ax, 0
         je exitPen1
@@ -230,6 +249,21 @@ section .text
         call drawGhosts
         ret
 
+    initGhostAfterEated:
+        mov bx, [ghostInitpositionaftereated]
+        mov ax, bx
+        mov bx, ghostPosition
+        add bx, word [ghostIndex]
+        mov word [bx], ax
+        mov bx, ghostPosition
+        add bx, word [ghostIndex]
+        mov di, [bx]
+        mov bx, ghost1U
+        add bx, word [ghostIndex]
+        mov si, [bx]
+        call drawGhosts
+        ret
+
     
 ; END INITIALISATION PACMAN --------------------------------------------
 
@@ -246,7 +280,7 @@ section .text
         cmp al, 0x11
         je ghostTpRight
         cmp al, 0x2C
-        je pacDead
+        je isInFrightModeLeft
         jmp ghostContinueMoveLeft
         
     ghostWCollRight:
@@ -260,7 +294,7 @@ section .text
         cmp al, 0x11
         je ghostTpLeft
         cmp al, 0x2C
-        je pacDead
+        je isInFrightModeRight
         jmp ghostContinueMoveRight
         
     ghostWCollUp:
@@ -272,7 +306,7 @@ section .text
         cmp al, 0x10        
         je ghostUp1
         cmp al, 0x2C
-        je pacDead
+        je isInFrightModeUp
         jmp ghostContinueMoveUp
 
     ghostWCollDown:
@@ -284,8 +318,8 @@ section .text
         cmp al, 0x10        
         je ghostDown1
         cmp al, 0x2C
-        je pacDead
-        jmp ghostContinueMovedown
+        je isInFrightModeDown
+        jmp ghostContinueMoveDown
     ; END SIMPLE -----------------------
     ; COMPLEX --------------------------
     ghostBeforeLeft:             ; collision test before turning, if collision is detected, save the direction for when he can turn
@@ -587,7 +621,7 @@ section .text
         add bx, word [ghostIndex]
         mov word [bx], 1        
         jmp ghostWCollDown
-    ghostContinueMovedown:
+    ghostContinueMoveDown:
         call clearGhost
         jmp ghostAnimDown
 
@@ -614,10 +648,15 @@ section .text
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         sub word [bx], 1
-        inc word [ghostFrame + ecx*2]
 
+        mov bx, infrightmode
+        add bx, word [ghostIndex]
+        cmp word [bx], 1
+        je drawFrightenGhost
+        
         mov bx, ghostFrame
         add bx, word [ghostIndex]
+        inc word [bx]
         cmp word [bx], 4
         jl ghostLeft2
         mov bx, ghostFrame
@@ -634,10 +673,15 @@ section .text
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         add word [bx], 1
-        inc word [ghostFrame + ecx*2]
+        
+        mov bx, infrightmode
+        add bx, word [ghostIndex]
+        cmp word [bx], 1
+        je drawFrightenGhost
 
         mov bx, ghostFrame
         add bx, word [ghostIndex]
+        inc word [bx]
         cmp word [bx], 4
         jl ghostRight2
         mov bx, ghostFrame
@@ -650,14 +694,18 @@ section .text
         jmp ghostRight2
 
     ghostAnimUp:
-         
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         sub word [bx], 320
-        inc word [ghostFrame + ecx*2]
+        
+        mov bx, infrightmode
+        add bx, word [ghostIndex]
+        cmp word [bx], 1
+        je drawFrightenGhost
 
         mov bx, ghostFrame
         add bx, word [ghostIndex]
+        inc word [bx]
         cmp word [bx], 4
         jl ghostUp2
         mov bx, ghostFrame
@@ -673,10 +721,15 @@ section .text
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         add word [bx], 320
-        inc word [ghostFrame + ecx*2]
+
+        mov bx, infrightmode
+        add bx, word [ghostIndex]
+        cmp word [bx], 1
+        je drawFrightenGhost
 
         mov bx, ghostFrame
         add bx, word [ghostIndex]
+        inc word [bx]
         cmp word [bx], 4
         jl ghostDown2
         mov bx, ghostFrame
@@ -690,6 +743,76 @@ section .text
 
     ; END CHOICE --------------------------
     ; SET ANIMATIONS ----------------------
+    drawFrightenGhost:
+        mov bx, frightmodetime
+        add bx, word [ghostIndex]
+        inc word [bx]
+        cmp word [bx], 250
+        jge frightModeAlmostFinished
+        mov bx, ghostFrame
+        add bx, word [ghostIndex]
+        inc word [bx]
+        cmp word [bx], 4
+        jl ghostFrightB2
+        mov bx, ghostFrame
+        add bx, word [ghostIndex]
+        cmp word [bx], 8
+        jl ghostFrightB1
+        mov bx, ghostFrame
+        add bx, word [ghostIndex]
+        mov word [bx], 0
+        jmp ghostFrightB2
+
+    frightModeAlmostFinished:
+        mov bx, frightmodetime
+        add bx, word [ghostIndex]
+        inc word [bx]
+        cmp word [bx], 350
+        jge stopFrightMode
+        mov bx, ghostFrame
+        add bx, word [ghostIndex]
+        inc word [bx]
+        cmp word [bx], 4
+        jl ghostFrightB2
+        mov bx, ghostFrame
+        add bx, word [ghostIndex]
+        cmp word [bx], 8
+        jl ghostFrightW1
+        mov bx, ghostFrame
+        add bx, word [ghostIndex]
+        mov word [bx], 0
+        jmp ghostFrightB2
+
+    stopFrightMode:
+        mov byte [nbeatedghosts], 1
+        mov bx, infrightmode
+        add bx, word [ghostIndex]
+        mov word [bx], 0
+        jmp nextGhost
+
+    ghostFrightW1:
+        mov si, frightW1
+        mov bx, ghostPosition
+        add bx, word [ghostIndex]
+        mov di, [bx]
+        call drawGhosts
+        jmp nextGhost
+
+    ghostFrightB1:
+        mov si, frightB1
+        mov bx, ghostPosition
+        add bx, word [ghostIndex]
+        mov di, [bx]
+        call drawGhosts
+        jmp nextGhost
+
+    ghostFrightB2:
+        mov si, frightB2
+        mov bx, ghostPosition
+        add bx, word [ghostIndex]
+        mov di, [bx]
+        call drawGhosts
+        jmp nextGhost
 
     ghostLeft1:
         mov bx, ghost1L
@@ -799,6 +922,37 @@ section .text
             jnz eachLineGhosts
         ret
 
+    isInFrightModeLeft:
+        mov bx, infrightmode
+        add bx, word [ghostIndex]
+        mov ax, [bx]
+        cmp ax, 0
+        je pacDead
+        jmp ghostsEated
+
+    isInFrightModeRight:
+        mov bx, infrightmode
+        add bx, word [ghostIndex]
+        mov ax, [bx]
+        cmp ax, 0
+        je pacDead
+        jmp ghostsEated
+
+    isInFrightModeUp:
+        mov bx, infrightmode
+        add bx, word [ghostIndex]
+        mov ax, [bx]
+        cmp ax, 0
+        je pacDead
+        jmp ghostsEated
+
+    isInFrightModeDown:
+        mov bx, infrightmode
+        add bx, word [ghostIndex]
+        mov ax, [bx]
+        cmp ax, 0
+        je pacDead
+        jmp ghostsEated
 ; I'm keeping those regex here jsut in case.
 
 ;(\w+ \w+), \[(\w+) \+ ecx\*2\]
