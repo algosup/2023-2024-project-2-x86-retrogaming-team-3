@@ -104,6 +104,12 @@ section .text
         je verifyEatGumLeft
         cmp al, 0x28
         je pacDead
+        cmp al, 0x3C
+        je pacDead
+        cmp al, 0x34
+        je pacDead
+        cmp al, 0x42
+        je pacDead
         cmp al, 0xFF
         je fruitEated
         jmp continueMoveLeft
@@ -119,6 +125,12 @@ section .text
         cmp al, 0x57
         je verifyEatGumRight
         cmp al, 0x28
+        je pacDead
+        cmp al, 0x3C
+        je pacDead
+        cmp al, 0x34
+        je pacDead
+        cmp al, 0x42
         je pacDead
         cmp al, 0xFF
         je fruitEated
@@ -398,6 +410,15 @@ section .text
         jmp initGame
 
     resetVariables:
+        mov byte [nbeatedghosts], 1
+        mov word [ghostIndex], blinkyIndex
+        call resetFrightMode
+        mov word [ghostIndex], inkyIndex
+        call resetFrightMode
+        mov word [ghostIndex], pinkyIndex
+        call resetFrightMode
+        mov word [ghostIndex], clydeIndex
+        call resetFrightMode
         mov word [nbgumeated], 0
         mov byte [levelisstarted], 0
         mov byte [goleft], 0 
@@ -411,7 +432,140 @@ section .text
         ret
     ; END PACMAN DIE ---------------------
 ; END PACMAN MOVEMENTS -------------------------------------------------
+    ghostsEated:
+        cmp byte [nbeatedghosts], 1
+        je firstGhostsEated
+        cmp byte [nbeatedghosts], 2
+        je secondGhostsEated
+        cmp byte [nbeatedghosts], 3
+        je thirdGhostsEated
+        cmp byte [nbeatedghosts], 4
+        je fourthGhostsEated
 
+    firstGhostsEated:
+        add byte [nbeatedghosts], 1
+        call resetFrame
+        call clearGhost
+        call waitWhenGhostEated
+        mov bx, infrightmode
+        add bx, word [ghostIndex]
+        mov word [bx], 0
+        add word [scorenb2], 2
+        cmp word [scorenb2], 10
+        jge nextNb2GhostsEated
+        call scoreNumberWriting
+        call initGhostAfterEated
+        jmp nextGhost
+
+    secondGhostsEated:
+        add byte [nbeatedghosts], 1
+        call resetFrame
+        call clearGhost
+        mov bx, ghostInitposition
+        add bx, word [ghostIndex]
+        mov di, word [bx]
+        call waitWhenGhostEated
+        mov bx, infrightmode
+        add bx, word [ghostIndex]
+        mov word [bx], 0
+        add word [scorenb2], 4
+        cmp word [scorenb2], 10
+        jge nextNb2GhostsEated
+        call scoreNumberWriting
+        call initGhostAfterEated
+        jmp nextGhost
+
+    thirdGhostsEated:
+        add byte [nbeatedghosts], 1
+        call resetFrame
+        call clearGhost
+        mov bx, ghostInitposition
+        add bx, word [ghostIndex]
+        mov di, word [bx]
+        call waitWhenGhostEated
+        mov bx, infrightmode
+        add bx, word [ghostIndex]
+        mov word [bx], 0
+        add word [scorenb2], 8
+        cmp word [scorenb2], 10
+        jge nextNb2GhostsEated
+        call scoreNumberWriting
+        call initGhostAfterEated
+        jmp nextGhost
+
+    fourthGhostsEated:
+        mov byte [nbeatedghosts], 1
+        call resetFrame
+        call clearGhost
+        mov bx, ghostInitposition
+        add bx, word [ghostIndex]
+        mov di, word [bx]
+        call waitWhenGhostEated
+        mov bx, infrightmode
+        add bx, word [ghostIndex]
+        mov word [bx], 0
+        add word [scorenb2], 6
+        cmp word [scorenb2], 10
+        jge nextNb2GhostsEated2
+        add word [scorenb2], 1
+        cmp word [scorenb2], 10
+        call scoreNumberWriting
+        call initGhostAfterEated
+        jmp nextGhost
+
+    nextNb2GhostsEated:
+        sub word [scorenb2], 10
+        add word [scorenb3], 1
+        cmp word [scorenb3], 10
+        jge nextNb3GhostsEated
+        call scoreNumberWriting
+        call initGhostAfterEated
+        jmp nextGhost
+    
+    nextNb3GhostsEated:
+        sub word [scorenb2], 10
+        add word [scorenb3], 1
+        cmp word [scorenb3], 10
+        jge nextNb4GhostsEated
+        call scoreNumberWriting
+        call initGhostAfterEated
+        jmp nextGhost
+
+    nextNb4GhostsEated:
+        sub word [scorenb2], 10
+        add word [scorenb3], 1
+        cmp word [scorenb3], 10
+        jge nextNb5GhostsEated
+        call scoreNumberWriting
+        call initGhostAfterEated
+        jmp nextGhost
+
+    nextNb5GhostsEated:
+        sub word [scorenb2], 10
+        add word [scorenb3], 1
+        cmp word [scorenb3], 10
+        jge end
+        call scoreNumberWriting
+        call initGhostAfterEated
+        jmp nextGhost
+
+    nextNb2GhostsEated2:
+        sub word [scorenb2], 10
+        add word [scorenb3], 2
+        cmp word [scorenb3], 10
+        jge nextNb3GhostsEated
+        call scoreNumberWriting
+        call initGhostAfterEated
+        jmp nextGhost
+
+    waitWhenGhostEated:
+        mov dx, 25
+        .waitGhostEated:
+            mov cx, 50000
+            call waitLoop
+            dec dx
+            jnz .waitGhostEated
+        ret
 ; EAT GUM --------------------------------------------------------------
     verifyEatGumLeft:
         mov ax, [position]  
@@ -474,6 +628,14 @@ section .text
         jmp afterGumEated
 
     superGumEated:
+        mov word [ghostIndex], blinkyIndex
+        call setFrightMode
+        mov word [ghostIndex], inkyIndex
+        call setFrightMode
+        mov word [ghostIndex], pinkyIndex
+        call setFrightMode
+        mov word [ghostIndex], clydeIndex
+        call setFrightMode
         mov bx, [gumtilepos]
         mov byte [maze+bx], 0
         add word [scorenb1], 5
@@ -529,8 +691,6 @@ section .text
         je spawnFruit
         cmp word [nbgumeated], 170
         je spawnFruit
-        cmp word [nbgumeated], 246
-        je nextLevel
         jmp actualDirection
 
     tilePos:

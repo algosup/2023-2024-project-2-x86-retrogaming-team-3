@@ -242,7 +242,49 @@ Patern4:
         cmp word [bx], 610
         jl ghostBeforeDown
 
-        cmp word [bx], 625
+        cmp word [bx], 640
+        jl ghostBeforeLeft
+
+        cmp word [bx], 700
+        jl ghostBeforeDown
+
+        cmp word [bx], 720
+        jl ghostBeforeRight
+
+        cmp word [bx], 730
+        jl ghostBeforeDown
+
+        cmp word [bx], 780
+        jl ghostBeforeRight
+
+        cmp word [bx], 810
+        jl ghostBeforeDown
+
+        cmp word [bx], 830
+        jl ghostBeforeRight
+
+        cmp word [bx], 840
+        jl ghostBeforeUp
+
+        cmp word [bx], 860
+        jl ghostBeforeRight
+
+        cmp word [bx], 870
+        jl ghostBeforeUp
+
+        cmp word [bx], 890
+        jl ghostBeforeLeft
+
+        cmp word [bx], 920
+        jl ghostBeforeUp
+
+        cmp word [bx], 960
+        jl ghostBeforeLeft
+
+        cmp word [bx], 980
+        jl ghostBeforeUp
+
+        cmp word [bx], 1009
         jl ghostBeforeLeft
 
         mov word [bx], 0
@@ -314,9 +356,44 @@ Patern4:
         cmp word [bx], 720
         jl ghostBeforeDown
 
-        cmp word [bx], 734
+        cmp word [bx], 730
         jl ghostBeforeRight
 
+        cmp word [bx], 750
+        jl ghostBeforeUp
+
+        cmp word [bx], 770
+        jl ghostBeforeRight
+
+        cmp word [bx], 785
+        jl ghostBeforeUp
+
+        cmp word [bx], 820
+        jl ghostBeforeLeft
+
+        cmp word [bx], 850
+        jl ghostBeforeUp
+
+        cmp word [bx], 920
+        jl ghostBeforeLeft
+
+        cmp word [bx], 940
+        jl ghostBeforeDown
+
+        cmp word [bx], 960
+        jl ghostBeforeRight
+
+        cmp word [bx], 1020
+        jl ghostBeforeDown
+
+        cmp word [bx], 1040
+        jl ghostBeforeRight
+
+        cmp word [bx], 1060
+        jl ghostBeforeUp
+
+        cmp word [bx], 1093
+        jl ghostBeforeRight
         mov word [bx], 0
         jmp Patern1
 
@@ -324,4 +401,22 @@ Patern4:
         mov bx, frameAI
         add bx, word [ghostIndex]
         mov word [bx], 0
+        ret
+    
+    setFrightMode:
+        mov bx, infrightmode
+        add bx, word [ghostIndex]
+        mov word [bx], 1
+        mov bx, frightmodetime
+        add bx, word [ghostIndex]
+        mov word [bx], 1
+        ret
+
+    resetFrightMode:
+        mov bx, infrightmode
+        add bx, word [ghostIndex]
+        mov word [bx], 0
+        mov bx, frightmodetime
+        add bx, word [ghostIndex]
+        mov word [bx], 1
         ret

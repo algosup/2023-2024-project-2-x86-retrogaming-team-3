@@ -244,10 +244,12 @@ section .text
     ; END WALL CHOICE -----------------
     ; SET WALL ------------------------
     DrawGum:
+        inc word [nbgumeated]
         mov si, gum
         jmp drawWalls
     
     DrawSuperGum:
+        inc word [nbgumeated]
         mov si, superGum
         jmp drawWalls
 
@@ -408,6 +410,7 @@ section .text
         jmp eachTile
 
     initTileVariables: 
+        mov word [nbgumeated], 0
         mov ax, [initColumn]
         mov word [Column], ax
         mov ax, [initRow]
@@ -417,6 +420,8 @@ section .text
         ret
 
     levelStarted:
+        cmp word [nbgumeated], 0
+        je nextLevel
         cmp byte [levelisstarted], 1
         je blinkyMovement
         mov byte [levelisstarted], 1
