@@ -15,11 +15,6 @@ For the hardware we decided to go with a Raspberry PI 3 as it was an easy-to-set
 
 The Bar-Top Arcade will be built following "The Wood Whisperer" 's tutorial. He provided cutting plans and steps to follow which will help us save time on the building. 
 
-
-#### bottom
-
- a voir mais 3 planches de 150.33 ça passe
-
 <img src="../pictures/arcade/arcadeBottom.png" width="800">
 
 <img src="../pictures/arcade/arcadeDeskFront.png" width="300">
