@@ -224,6 +224,8 @@ section .text
         je ghostLeft1
         cmp al, 0x11
         je ghostTpRight
+        cmp al, 0x2C
+        je pacDead
         jmp ghostContinueMoveLeft
         
     ghostWCollRight:
@@ -236,6 +238,8 @@ section .text
         je ghostRight1
         cmp al, 0x11
         je ghostTpLeft
+        cmp al, 0x2C
+        je pacDead
         jmp ghostContinueMoveRight
         
     ghostWCollUp:
@@ -246,6 +250,8 @@ section .text
         call collTest
         cmp al, 0x10        
         je ghostUp1
+        cmp al, 0x2C
+        je pacDead
         jmp ghostContinueMoveUp
 
     ghostWCollDown:
@@ -256,6 +262,8 @@ section .text
         call collTest
         cmp al, 0x10        
         je ghostDown1
+        cmp al, 0x2C
+        je pacDead
         jmp ghostContinueMovedown
     ; END SIMPLE -----------------------
     ; COMPLEX --------------------------
@@ -641,7 +649,6 @@ section .text
         jmp ghostUp2
 
     ghostAnimDown:
-         
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         add word [bx], 320

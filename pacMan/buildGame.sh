@@ -3,7 +3,7 @@ ROOT_DIR="$(dirname "$ROOT_DIR")"
 
 CONF="$ROOT_DIR/pacMan/conf/"
 # NASM="$ROOT_DIR/code/nasm.exe"  
-NASM="../code/nasm"
+NASM="/opt/homebrew/bin/nasm"
 BIN_DIR="$ROOT_DIR/pacMan/bin/"
 CONF_DOSBOX="/Users/pierregorin/Library/Preferences/DOSBox 0.74-3 Preferences"
 DOSBOX_BIN="/opt/homebrew/Cellar/dosbox/0.74-3_1/bin/dosbox"
