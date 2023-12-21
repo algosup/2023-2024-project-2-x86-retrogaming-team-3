@@ -398,6 +398,7 @@ section .text
         jmp initGame
 
     resetVariables:
+        mov word [nbgumeated], 0
         mov byte [levelisstarted], 0
         mov byte [goleft], 0 
         mov byte [goright], 0
