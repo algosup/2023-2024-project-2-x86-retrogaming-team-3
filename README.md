@@ -2,8 +2,7 @@
 
 <img src="https://img.shields.io/badge/Made%20in-Vierzon-brightgreen">
 
-<!-- <img src="Documents/pictures/3pac.png" height="100px"> -->
-![logo](Documents/pictures/3pac.png)
+![logo](documents/pictures/3pac.png)
 
 
 </div>
@@ -100,6 +99,6 @@ We would like to thank the following people for their help and support:
 
 <div align="center"">
 
-<img src="Documents/pictures/algosup.png" width="750px">
+<img src="documents/pictures/algosup.png" width="750px">
 
 </div>
