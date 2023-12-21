@@ -122,7 +122,7 @@ section .text
         mov ax, [frameFromStart]
         cmp ax, 0
         je exitPen
-        jg blinkyRandomAI
+        jg RandomAI
         jl nextGhost
 
     pinkyMovement:
@@ -132,9 +132,9 @@ section .text
         add bx, word [ghostIndex]
 
         mov ax, [frameFromStart]
-        cmp ax, 20
+        cmp ax, 40
         je exitPen
-        jg pinkyRandomAI
+        jg RandomAI
         jl nextGhost
 
     inkyMovement:
@@ -144,9 +144,9 @@ section .text
         add bx, word [ghostIndex]
 
         mov ax, [frameFromStart]
-        cmp ax, 40
+        cmp ax, 80
         je exitPen
-        jg inkyRandomAI
+        jg RandomAI
         jl nextGhost
 
     clydeMovement:
@@ -156,15 +156,15 @@ section .text
         add bx, word [ghostIndex]
 
         mov ax, [frameFromStart]
-        cmp ax, 60
+        cmp ax, 120
         je exitPen
-        jg clydeRandomAI
+        jg RandomAI
         jl nextGhost
 
 
     nextGhost:
         cmp word [ghostIndex], 0
-        je pinkyMovement
+        je keyCheck
 
         cmp word [ghostIndex], 2
         je inkyMovement
@@ -180,7 +180,7 @@ section .text
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov word [bx], penDoor
-        jmp pinkyRandomAI
+        jmp RandomAI
 
 
     incFrameFromStart:
@@ -215,7 +215,6 @@ section .text
 ; COLLISIONS -----------------------------------------------------------
     ; SIMPLE --------------------------
     ghostWCollLeft:                  ; collision for straight direction to stop when seing a wall
-         
         mov bx, ghostPosition
         add bx, word [ghostIndex]
         mov ax, [bx]  
@@ -281,14 +280,14 @@ section .text
         add bx, word [ghostIndex]
         mov ax, [bx]
         sub ax, 1
+        
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov [bx], ax
-
-         
         call collTest     
         cmp al, 0x10                ; test if the color is the same as the maze
-        je ghostActualDirection  
+        je ghostActualDirection
+
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov ax, [bx]
@@ -296,10 +295,10 @@ section .text
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov [bx], ax
-        
         call collTest 
         cmp al, 0x10            
-        je ghostActualDirection 
+        je ghostActualDirection
+
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov ax, [bx]
@@ -307,11 +306,14 @@ section .text
         mov bx, ghostPosTestColl
         add bx, word [ghostIndex]
         mov [bx], ax
-
-         
         call collTest 
         cmp al, 0x10            
         je ghostActualDirection
+
+        mov bx, lastTurn
+        add bx, word [ghostIndex]
+        mov word [bx], 1
+
         jmp ghostMoveLeft
 
     ghostBeforeRight:
@@ -357,6 +359,11 @@ section .text
         call collTest 
         cmp al, 0x10            
         je ghostActualDirection  
+
+        mov bx, lastTurn
+        add bx, word [ghostIndex]
+        mov word [bx], 1
+
         jmp ghostMoveRight
 
     ghostBeforeUp:
@@ -402,6 +409,11 @@ section .text
         call collTest
         cmp al, 0x10            
         je ghostActualDirection
+
+        mov bx, lastTurn
+        add bx, word [ghostIndex]
+        mov word [bx], 1
+
         jmp ghostMoveUp
 
     ghostBeforeDown:
@@ -447,6 +459,11 @@ section .text
         call collTest
         cmp al, 0x10            
         je ghostActualDirection
+
+        mov bx, lastTurn
+        add bx, word [ghostIndex]
+        mov word [bx], 1
+
         jmp ghostMoveDown
     ; END COMPLEX -----------------------
 ; END COLLISIONS -------------------------------------------------------
