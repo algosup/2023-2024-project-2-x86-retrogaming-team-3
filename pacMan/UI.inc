@@ -49,6 +49,8 @@ section .data
 
     fruitposUI dw 0
     selectfruitpos dw 0
+    isfruiteated db 1
+    timefruitspawned dw 0
 
 section .text
 ; READY ---------------------------------------------------------------
@@ -312,7 +314,6 @@ section .text
         mov dx, 9
         .eachLineFruit:
             mov cx, 11
-            rep movsb
             add di, 320-11
             dec dx
             jnz .eachLineFruit
@@ -392,6 +393,8 @@ section .text
             ret
 
         spawnFruit:
+            cmp byte [isfruiteated], 1
+            je actualDirection
             call chooseFruit
             mov ax, [selectfruit]
             cmp ax, 13
@@ -403,6 +406,9 @@ section .text
             mov si, [bx]
             mov di, 32156
             call drawFruit
+            add word [timefruitspawned], 1
+            cmp word [timefruitspawned], 750
+            je noMoreFruit
             jmp actualDirection
 
         drawKeyFruit:
@@ -411,6 +417,10 @@ section .text
             call drawFruit
             jmp actualDirection
     ; END INITIALISATION FRUITS --------------
+        noMoreFruit:
+            mov byte [isfruiteated], 1
+            call clearFruit
+            jmp actualDirection
 ; END FRUITS -----------------------------------------------------------
 
 ; LEVEL NUMBER ---------------------------------------------------------
@@ -503,7 +513,10 @@ section .text
 ; END PAUSE ------------------------------------------------------------
 
 ; GAME OVER ------------------------------------------------------------
-    gameOver: 
+    gameOver:   
+        mov byte [isfruiteated], 1
+        mov word [delayforwaitloop], 1
+        mov word [waitframedeathanim], 1
         mov byte [levelstarted], 0
         mov byte [levelnb1], 1
         mov byte [levelnb2], 0
