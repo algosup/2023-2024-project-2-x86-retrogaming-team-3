@@ -419,6 +419,7 @@ section .text
             jmp actualDirection
     ; END INITIALISATION FRUITS --------------
         noMoreFruit:
+            mov word [timefruitspawned], 0
             mov byte [isfruiteated], 1
             call clearFruit
             jmp actualDirection
@@ -515,7 +516,8 @@ section .text
 ; END PAUSE ------------------------------------------------------------
 
 ; GAME OVER ------------------------------------------------------------
-    gameOver:   
+    gameOver:  
+        mov word [timefruitspawned], 0
         mov byte [isfruiteated], 1
         mov word [delayforwaitloop], 1
         mov word [waitframedeathanim], 1

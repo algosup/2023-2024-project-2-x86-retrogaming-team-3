@@ -415,6 +415,7 @@ section .text
         jmp initGame
 
     resetVariables:
+        mov word [timefruitspawned], 0
         mov byte [nbeatedghosts], 1
         mov word [ghostIndex], blinkyIndex
         call resetFrightMode
@@ -754,6 +755,7 @@ section .text
         ret
 ;END EAT GUM -----------------------------------------------------------
     fruitEated:
+        mov word [timefruitspawned], 0
         mov byte [isfruiteated], 1
         call chooseFruit
         cmp word [selectfruit], 1
@@ -992,6 +994,7 @@ section .text
         call resetFrame
         call clearGhost
         call resetFrightMode
+        mov word [timefruitspawned], 0
         mov byte [isfruiteated], 1
         mov byte [nbeatedghosts], 1
         mov word [delayforwaitloop], 1
