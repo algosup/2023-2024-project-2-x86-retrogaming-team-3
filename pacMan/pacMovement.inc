@@ -183,19 +183,19 @@ section .text
         mov [postestcoll], ax
         call collTest     
         cmp al, 0x10                ; test if the color is the same as the maze
-        je actualDirection  
+        je spawnFruit  
         mov ax, [postestcoll]
         add ax, 2880
         mov [postestcoll], ax
         call collTest 
         cmp al, 0x10            
-        je actualDirection 
+        je spawnFruit 
         mov ax, [postestcoll]
         sub ax, 960
         mov [postestcoll], ax
         call collTest 
         cmp al, 0x10            
-        je actualDirection
+        je spawnFruit
         jmp moveLeft
 
     beforeRight:
@@ -208,19 +208,19 @@ section .text
         mov [postestcoll], ax
         call collTest 
         cmp al, 0x10            
-        je actualDirection  
+        je spawnFruit  
         mov ax, [postestcoll]
         add ax, 2880
         mov [postestcoll], ax
         call collTest 
         cmp al, 0x10            
-        je actualDirection 
+        je spawnFruit 
         mov ax, [postestcoll]
         sub ax, 960
         mov [postestcoll], ax
         call collTest 
         cmp al, 0x10            
-        je actualDirection  
+        je spawnFruit  
         jmp moveRight
 
     beforeUp:
@@ -233,19 +233,19 @@ section .text
         mov [postestcoll], ax
         call collTest 
         cmp al, 0x10            
-        je actualDirection 
+        je spawnFruit 
         mov ax, [postestcoll]
         add ax, 9
         mov [postestcoll], ax
         call collTest 
         cmp al, 0x10            
-        je actualDirection
+        je spawnFruit
         mov ax, [postestcoll]
         sub ax, 3
         mov [postestcoll], ax
         call collTest
         cmp al, 0x10            
-        je actualDirection
+        je spawnFruit
         jmp moveUp
 
     beforeDown:
@@ -258,19 +258,19 @@ section .text
         mov [postestcoll], ax
         call collTest
         cmp al, 0x10            
-        je actualDirection  
+        je spawnFruit  
         mov ax, [postestcoll]
         add ax, 9
         mov [postestcoll], ax
         call collTest 
         cmp al, 0x10            
-        je actualDirection 
+        je spawnFruit 
         mov ax, [postestcoll]
         sub ax, 3
         mov [postestcoll], ax
         call collTest
         cmp al, 0x10            
-        je actualDirection
+        je spawnFruit
         jmp moveDown
     ; END COMPLEX -----------------------
     ; TEST PIXEL ------------------------
@@ -298,7 +298,7 @@ section .text
         je beforeUp
         cmp byte [wantgodown], 1
         je beforeDown
-        jmp actualDirection
+        jmp spawnFruit
     ; END CHECK WANTED MOVEMENT ----------
     ; ACTUAL DIRECTION --------------------
     actualDirection:        ; test wich direction he is going
@@ -313,7 +313,8 @@ section .text
         jmp moveLeft
     ; END ACTUAL DIRECTION ----------------
     ; ACTUAL MOVEMENT ---------------------
-    moveLeft:              
+    moveLeft:         
+        mov byte [wantgoleft], 0
         mov byte [goleft], 1        ; use to save wich direction he is going
         mov byte [goright], 0       ;
         mov byte [goup], 0          ;
@@ -324,6 +325,7 @@ section .text
         jmp animLeft
 
     moveRight:
+        mov byte [wantgoright], 0
         mov byte [goleft], 0 
         mov byte [goright], 1
         mov byte [goup], 0   
@@ -334,6 +336,7 @@ section .text
         jmp animRight
     
     moveUp:
+        mov byte [wantgoup], 0
         mov byte [goleft], 0 
         mov byte [goright], 0
         mov byte [goup], 1   
@@ -344,6 +347,7 @@ section .text
         jmp animUp
 
     moveDown:
+        mov byte [wantgodown], 0
         mov byte [goleft], 0 
         mov byte [goright], 0
         mov byte [goup], 0   
@@ -402,6 +406,7 @@ section .text
             dec dx
             jnz waitBeforeContinue
         call resetVariables
+        call clearFruit
         mov byte [nbdeathanim], 12
         mov byte [enterpressed], 0
         call clearLives
@@ -688,10 +693,14 @@ section .text
 
     afterGumEated:
         cmp word [nbgumeated], 70
-        je spawnFruit
+        je fruitIsNotEated
         cmp word [nbgumeated], 170
-        je spawnFruit
+        je fruitIsNotEated
         jmp actualDirection
+
+    fruitIsNotEated:
+        mov byte [isfruiteated], 0
+        jmp spawnFruit
 
     tilePos:
         xor dx, dx
@@ -745,6 +754,7 @@ section .text
         ret
 ;END EAT GUM -----------------------------------------------------------
     fruitEated:
+        mov byte [isfruiteated], 1
         call chooseFruit
         cmp word [selectfruit], 1
         je eatCherry
@@ -982,6 +992,7 @@ section .text
         call resetFrame
         call clearGhost
         call resetFrightMode
+        mov byte [isfruiteated], 1
         mov byte [nbeatedghosts], 1
         mov word [delayforwaitloop], 1
         mov byte [levelstarted], 0
