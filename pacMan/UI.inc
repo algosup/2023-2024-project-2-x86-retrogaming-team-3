@@ -314,6 +314,16 @@ section .text
         mov dx, 9
         .eachLineFruit:
             mov cx, 11
+            .eachPixel:
+                lodsb                       ; load the next pixel into AL
+                cmp al, 0      ; check if the color is the excluded one
+                je .skipDraw                ; if yes, skip drawing this pixel
+                stosb                       ; draw the pixel
+                jmp .nextPixel               ; jump to the next pixel
+            .skipDraw:
+                add di, 1                   ; skip drawing the pixel but still move to the next destination
+                .nextPixel:
+                loop .eachPixel
             add di, 320-11
             dec dx
             jnz .eachLineFruit
@@ -324,16 +334,7 @@ section .text
         mov dx, 14
         .eachLineSelectFruit:
             mov cx, 14
-            .eachPixel:
-                lodsb                   
-                cmp al, 0     
-                je .skipDraw            
-                stosb                   
-                jmp .nextPixel          
-            .skipDraw:
-                add di, 1               
-                .nextPixel:
-                loop .eachPixel         
+            rep movsb
             add di, 320-14      
             dec dx
             jnz .eachLineSelectFruit
