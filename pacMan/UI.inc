@@ -495,6 +495,7 @@ section .text
 
 ; PAUSE ----------------------------------------------------------------
     pauseMenu:
+        call clearFruit
         call drawPause
         mov byte [enterpressed], 0
         jmp keyBottomLeft
